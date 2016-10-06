@@ -41,7 +41,7 @@ $ hexo server
 - [x] Render Functions (@jbruni)
 - [ ] Reactivity in Depth
 - [ ] Custom Directives
-- [ ] Mixins
+- [x] Mixins (@jbruni)
 - [ ] Plugins
 - [ ] Single File Components
 - [ ] Routing
