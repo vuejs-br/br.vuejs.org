@@ -17,6 +17,22 @@ $ hexo server
 - Não traduzir nome de variáveis (código fonte)
 - Pode traduzir textos informativos no código fonte, como por exemplo: `<div id="level-1">Nível 1</div>`
 - Não é preciso colocar expressões em inglês no itálico
+- Faça os comentários do commit em INGLÊS
+- Não faça PRs para o vuejs/master
+- Não faça PULL ou MERGE de vuejs/master, deixe isso para o @danielschmitz
+
+## Palavras reservadas
+
+Estas palavras podem ser mantidas no inglês
+
+| debug        | bundle           | standalone  | runtime |
+| ------------- |-------------| -----| --------|
+| build      | import | render | alias | router
+| store      | scaffolding  |   loader | bind |
+| loop | for | true | false |
+| number (tipo) | string (tipo) | template | feature |
+| wrapper | ? | ? | ? |
+
 
 ## Translation Status (en to pt_br)
 
@@ -25,7 +41,7 @@ $ hexo server
 
 **Guide**
 - [ ] Installation (@danielschmitz)
-- [ ] Introduction (@ErickPetru)
+- [x] Introduction (@ErickPetru)
 - [ ] The Vue Instance
 - [x] Template Syntax (@vitorarjol)
 - [ ] Computed Properties and Watchers
@@ -50,7 +66,7 @@ $ hexo server
 - [ ] Server-Side Rendering
 - [ ] Migration from Vue 1.x
 - [ ] Migration from Vue Router 0.7.x
-- [ ] Comparison with Other Frameworks
+- [ ] Comparison with Other Frameworks (@ErickPetru)
 
 **API**
 - [ ] Global Config
@@ -70,15 +86,14 @@ $ hexo server
 - [ ] Server-Side Rendering
 
 **Examples**
-- [ ] Markdown Editor
-- [ ] GitHub Commits
-- [ ] Firebase + Validation
-- [ ] Grid Component
-- [ ] Tree View
-- [ ] SVG Graph
-- [ ] Modal Component
-- [ ] Elastic Header
-- [ ] Wrapper Component
-- [ ] TodoMVC
-- [ ] HackerNews Clone
-
+- [x] Markdown Editor (@vitorarjol)
+- [x] GitHub Commits (@vitorarjol)
+- [x] Firebase + Validation (@vitorarjol)
+- [x] Grid Component (@vitorarjol)
+- [x] Tree View (@vitorarjol)
+- [x] SVG Graph (@vitorarjol)
+- [x] Modal Component (@vitorarjol)
+- [x] Elastic Header (@vitorarjol)
+- [x] Wrapper Component (@vitorarjol)
+- [x] TodoMVC (@vitorarjol)
+- [x] HackerNews Clone (@vitorarjol)
