@@ -224,7 +224,8 @@ Aliases de tecla única também são suportados.
 <input v-on:keyup.v="say('That is the first letter in Vue')">
 ```
 
-Se necessário, você pode até mesmo definir aliases personalizados para modificadores de tecla:
+Se necessário, você pode até mesmo [definir aliases personalizados](/api/#keyCodes) para modificadores de tecla através do objeto global `config.keyCodes`:
+
 
 ``` js
 // enable v-on:keyup.f1
