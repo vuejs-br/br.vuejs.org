@@ -103,7 +103,7 @@ Se você preferir também alternar entre uma classe na lista condicionalmente, u
 <div v-bind:class="[isActive ? activeClass : '', errorClass]">
 ```
 
-Isso semple aplicará `errorClass`, mas somente aplicará `activeClass` quando `isActive` for `true`.
+Isso sempre aplicará `errorClass`, mas somente aplicará `activeClass` quando `isActive` for `true`.
 
 No entanto, isso pode ser um tanto prolixo se você tiver várias classes condicionais. Por isso também é possível usar a sintaxe de objeto dentro da sintaxe de Array:
 
@@ -137,7 +137,7 @@ O HTML resultante será:
 <p class="foo bar baz boo">Oi</p>
 ```
 
-O mesmo vale para v-bind de classe:
+O mesmo vale para `v-bind` de classe:
 
 ``` html
 <my-component v-bind:class="{ active: isActive }"></my-component>
@@ -203,4 +203,4 @@ Iniciando na versão 2.3, você pode prover um Array com múltiplos valores (pre
 <div v-bind:style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }">
 ```
 
-Isto irá repnderizar apenas o último valor do Array que o navegador suportar. Neste exemplo, irá renderizar `display: flex` nos navegadores que suportam a versão sem prefixo do módulo Flexbox.
+Isto irá renderizar apenas o último valor do Array que o navegador suportar. Neste exemplo, irá renderizar `display: flex` nos navegadores que suportam a versão sem prefixo do módulo Flexbox.
