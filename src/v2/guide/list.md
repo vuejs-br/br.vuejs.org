@@ -119,7 +119,7 @@ Similar ao _template_ com `v-if`, você também pode utilizar a _tag_ `<template
 <ul>
   <template v-for="item in items">
     <li>{{ item.msg }}</li>
-    <li class="divider"></li>
+    <li class="divide"></li>
   </template>
 </ul>
 ```
