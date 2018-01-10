@@ -8,7 +8,7 @@ gz_size: "30.67"
 
 ### Sobre a Compatibilidade
 
-Vue **não** suporta IE8 e versões anteriores, porque são usadas funcionalidades ECMAScript 5 que são incompatíveis com o IE8. Entretanto, suporta todos os [navegadores compatíveis com ECMAScript 5](http://caniuse.com/#feat=es5).
+Vue **não** suporta IE8 e versões anteriores, pois usa funcionalidades ECMAScript 5 incompatíveis nestes. Entretanto, suporta todos os [navegadores compatíveis com ECMAScript 5](https://caniuse.com/#feat=es5).
 
 ### Notas de Lançamento
 

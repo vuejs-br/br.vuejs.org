@@ -11,6 +11,8 @@ Esta tradução é um projeto _open-source_ mantido por um grupo de desenvolvedo
 
 Vue (pronuncia-se /vjuː/, como **view**, em inglês) é um **framework progressivo** para a construção de interfaces de usuário. Ao contrário de outros _frameworks_ monolíticos, Vue foi projetado desde sua concepção para ser adotável incrementalmente. A biblioteca principal é focada exclusivamente na camada visual (_view layer_), sendo fácil adotar e integrar com outras bibliotecas ou projetos existentes. Por outro lado, Vue também é perfeitamente capaz de dar poder a sofisticadas _Single-Page Applications_ quando usado em conjunto com [ferramentas modernas](single-file-components.html) e [bibliotecas de apoio](https://github.com/vuejs/awesome-vue#components--libraries).
 
+Se você gostaria de saber mais sobre Vue antes de mergulhar nele, nós <a id="modal-player"  href="javascript:;">criamos um vídeo</a> passeando pelos princípios básicos com um exemplo de projeto.
+
 Se você é um desenvolvedor _frontend_ experiente e quer saber como Vue se compara a outras bibliotecas/_frameworks_, confira a [Comparação com Outros Frameworks](comparison.html).
 
 ## Primeiros Passos
@@ -375,3 +377,5 @@ Você pode ter notado que componentes Vue são muito similares aos **Elementos C
 ## Pronto para Mais?
 
 Nós introduzimos brevemente os recursos mais básicos do núcleo do Vue.js - o resto deste guia se aprofundará neles e em outros recursos avançados em um nível muito maior de detalhes, portanto certifique-se de ler tudo!
+
+<div id="video-modal" class="modal"><div class="vimeo-space" style="padding: 56.25% 0 0 0; position: relative;"><iframe src="https://player.vimeo.com/video/247494684" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%; margin: 0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script></div>

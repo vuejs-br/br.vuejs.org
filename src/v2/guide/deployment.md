@@ -46,20 +46,43 @@ module.exports = {
   NODE_ENV=production browserify -g envify -e main.js | uglifyjs -c -m > build.js
   ```
 
-- Or, using [envify](https://github.com/hughsk/envify) with Gulp:
+- Ou, usando [envify](https://github.com/hughsk/envify) com Gulp:
 
   ``` js
-  // Use the envify custom module to specify environment variables
+  // Use o módulo `custom` do envify para especificar variáveis de ambiente
   var envify = require('envify/custom')
 
   browserify(browserifyOptions)
-    .transform(vueify),
+    .transform(vueify)
     .transform(
-      // Required in order to process node_modules files
+      // Obrigatório para processar arquivos em node_modules
       { global: true },
       envify({ NODE_ENV: 'production' })
     )
     .bundle()
+  ```
+  
+- Ou, usando [envify](https://github.com/hughsk/envify) com Grunt e [grunt-browserify](https://github.com/jmreidy/grunt-browserify):
+
+  ``` js
+  // Use o módulo `custom` do envify para especificar variáveis de ambiente
+  var envify = require('envify/custom')
+  
+  browserify: {
+    dist: {
+      options: {
+        // Função para desviar da ordem padrão do grunt-browserify
+        configure: b => b
+          .transform('vueify')
+          .transform(
+            // Obrigatório para processar arquivos em node_modules
+            { global: true },
+            envify({ NODE_ENV: 'production' })
+          )
+          .bundle()
+      }
+    }
+  }
   ```
 
 #### Rollup
