@@ -205,9 +205,9 @@ Importante observar: assim como `v-bind:class` e `v-bind:style` têm tratamento 
   nativeOn: {
     click: this.nativeClickHandler
   },
-  // Diretivas personalizadas. Veja que como o bind de
-  // oldValue não pode ser setado, o Vue continua mantendo
-  // o valor dele para você
+  // Diretivas personalizadas. Veja que o bind de
+  // `oldValue` não pode ser setado, já que o Vue
+  // mantém o rastreamento para você
   directives: [
     {
       name: 'my-custom-directive',
@@ -512,9 +512,17 @@ Vue.component('meu-componente', {
   }
 })
 ```
-> Nota: em versões anteriores a 2.3.0, a opção `props` é obrigatória se você deseja aceitar propriedades em um componente funcional. Em 2.3.0+ você pode omitir `props` e todos os atributos encontrados no nó do componente serão implicitamente extraídos como propriedades.
 
-Tudo que um componente funcional necessitar é passado através de `context`, o qual é um objeto contendo:
+> Nota: em versões anteriores à 2.3.0, a opção `props` é obrigatória se você deseja aceitar propriedades em um componente funcional. No 2.3.0+ você pode omitir `props` e todos os atributos encontrados no nó do componente serão extraídos como propriedades.
+
+No 2.5.0+, se você está usando [Componentes Single-File](single-file-components.html), componentes funcionais baseados em _templates_ podem ser declarados com:
+
+```html
+<template functional>
+</template>
+```
+
+Tudo que o componente funcional necessita é passado através de `context`, o qual é um objeto contendo:
 
 - `props`: Um objeto com as propriedades
 - `children`: Um Array de elementos VNode filhos

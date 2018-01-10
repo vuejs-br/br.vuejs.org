@@ -216,6 +216,7 @@ order: 803
     'Munique, Alemanha': [48.137154, 11.576124],
     'Orlando, Estados Unidos': [28.538335, -81.379236],
     'Paris, França': [48.856614, 2.352222],
+    'Pequim, China': [39.9042, 116.4074],
     'Seul, Coreia do Sul': [37.566535, 126.977969],
     'Taquaritinga, Brasil': [-21.430094, -48.515285],
     'Teerã, Irã': [35.689197, 51.388974],
@@ -364,7 +365,7 @@ order: 803
         'vuejs.org', 'jp.vuejs.org'
       ],
       reposPersonal: [
-        'vue-i18n', 'vue-i18n-loader', 'vue-validator'
+        'vue-i18n', 'vue-i18n-loader', 'vue-i18n-extensions'
       ],
       links: [
         'https://cuusoo.com', 'http://frapwings.jp'
@@ -591,12 +592,42 @@ order: 803
       github: 'shentao',
       twitter: 'DamianDulisz',
       work: {
-        role: 'Desenvolvedor Frontend Sênior',
-        org: 'Monterail',
-        orgUrl: 'https://www.monterail.com/'
+        role: 'Consultor'
       },
       reposPersonal: [
-        'monterail/vue-multiselect', 'monterail/vue-newsletter'
+        'shentao/vue-multiselect'
+      ]
+    },
+    {
+      name: 'kingwl',
+      title: 'Abelha Nova',
+      city: 'Pequim, China',
+      languages: ['zh'],
+      work: {
+        role: 'Engenheiro de Software',
+        org: 'Chaitin',
+        orgUrl: 'https://chaitin.cn/'
+      },
+      github: 'kingwl',
+      reposOfficial: [
+        'vue'
+      ]
+    },
+    {
+      name: 'Alex Kyriakidis',
+      title: 'Vueducador Extraordinário',
+      city: 'Tessalônica, Grécia',
+      languages: ['el', 'en'],
+      github: 'hootlex',
+      twitter: 'hootlex',
+      work: {
+        role: 'Consultor / Autor'
+      },
+      reposPersonal: [
+        'vuejs-paginator', 'vuedo/vuedo', 'the-majesty-of-vuejs-2'
+      ],
+      links: [
+        'https://vuejsfeed.com/', 'https://vueschool.io/'
       ]
     }
   ]))
@@ -642,23 +673,6 @@ order: 803
       links: [
         'https://twitter.com/VueJsNews',
         'http://www.kharysharpe.com/'
-      ]
-    },
-    {
-      name: 'Alex Kyriakidis',
-      title: 'Vueducador Extraordinário',
-      city: 'Tessalônica, Grécia',
-      languages: ['el', 'en'],
-      github: 'hootlex',
-      twitter: 'hootlex',
-      work: {
-        role: 'Consultor & Escritor'
-      },
-      reposPersonal: [
-        'vuejs-paginator', 'vuedo/vuedo', 'the-majesty-of-vuejs-2'
-      ],
-      links: [
-        'https://vuejsfeed.com/', 'https://vueschool.io/'
       ]
     },
     {

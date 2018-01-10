@@ -186,7 +186,7 @@ Para resolver esse problema, o Vue fornece **modificadores de evento** para `v-o
 <form v-on:submit.prevent></form>
 
 <!-- usar modo de captura ao adicionar o evento -->
-<!-- ou seja, um evento ocorrido em um elemento interno é tratato aqui mesmo -->
+<!-- ou seja, um evento em um elemento interno é tratato aqui após ser tratado por aquele elemento -->
 <div v-on:click.capture="doThis">...</div>
 
 <!-- só aciona o manipulador se event.target é o próprio elemento -->
@@ -204,6 +204,17 @@ Para resolver esse problema, o Vue fornece **modificadores de evento** para `v-o
 ```
 
 Diferente dos outros modificadores, exclusivos para eventos nativos, o `.once` também pode ser usado em [eventos de componentes](components.html#Usando-v-on-com-Eventos-Personalizados). Se você ainda não leu sobre componentes, não se preocupe com isso neste momento.
+
+> Novo em 2.3.0+
+
+``` html
+<!-- o evento scroll não cancelará o comportamento padrão da rolagem -->
+<div v-on:scroll.passive="onScroll">...</div>
+```
+
+Em adição a estes modificadores, Vue oferece o modificador `.passive` para melhorar o desempenho, especialmente em dispositivos móveis. Por exemplo, ao utilizar a rolagem, o navegador irá rolar após o processo ser completado, pois não sabe se o manipulador do evento pretende chamar `event.preventDefault()`. O modificador `.passive` pode ser usado para avisar ao navegador que este evento não irá cancelar o comportamento padrão.
+
+<p class="tip">Não utilize `.passive` e `.prevent` juntos. Um manipulador passivo não pode previnir o evento padrão.</p>
 
 ## Modificadores de Teclado
 

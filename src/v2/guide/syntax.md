@@ -140,7 +140,7 @@ Você verá outros exemplos de modificadores futuramente, [modificadores para `v
 
 ## Abreviações
 
-O prefixo `v-` serve como dica visual para identificar atributos específicos do Vue nos _templates_. Isso é útil quando se está utilizando o Vue para aplicar comportamento dinâmico em HTML existente, mas você pode achar um pouco verboso se precisar usar frequentemente. Em casos como no desenvolvimento de uma [SPA](https://en.wikipedia.org/wiki/Single-page_application), o uso desse prefixo é menos importante, já que o Vue efetivamente gerencia todos os _templates_. Assim, podemos utilizar abreviações especiais para as duas diretivas mais utilizadas, que são o `v-bind` e o `v-on`:
+O prefixo `v-` serve como dica visual para identificar atributos específicos do Vue nos _templates_. Isso é útil quando se está utilizando o Vue para aplicar comportamento dinâmico em HTML existente, mas você pode achar um pouco verboso se precisar usar frequentemente. Ao mesmo tempo, o uso do prefixo `v-` se torna menos importante quando se está construindo uma [SPA](https://en.wikipedia.org/wiki/Single-page_application), onde o Vue gerencia cada _template_. Assim, Vue oferece abreviações especiais para as duas diretivas mais utilizadas, `v-bind` e o `v-on`:
 
 ### Abreviação para `v-bind`
 

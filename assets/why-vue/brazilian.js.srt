@@ -1,0 +1,587 @@
+1
+00:00:00,000 --> 00:00:02,418
+- Nos últimos 10 anos
+as páginas Web se tornaram
+
+2
+00:00:02,418 --> 00:00:05,600
+mais dinâmicas e poderosas
+graças ao JavaScript.
+
+3
+00:00:05,600 --> 00:00:07,541
+Movemos bastante código
+que normalmente ficaria
+
+4
+00:00:07,541 --> 00:00:10,120
+no servidor para os navegadores,
+
+5
+00:00:10,120 --> 00:00:13,051
+nos deixando com milhares
+de linhas de código JavaScript
+
+6
+00:00:13,051 --> 00:00:15,691
+conectando vários arquivos HTML e CSS
+
+7
+00:00:15,691 --> 00:00:17,821
+sem nenhuma organização formal.
+
+8
+00:00:17,821 --> 00:00:19,781
+Por isso, mais e mais
+desenvolvedores estão usando
+
+9
+00:00:19,781 --> 00:00:23,948
+frameworks JavaScript, como
+Angular, React ou Vue.
+
+10
+00:00:24,821 --> 00:00:27,829
+Vue é um framewok
+acessível, versátil e performático
+
+11
+00:00:27,829 --> 00:00:29,860
+que ajuda a criar um código
+
+12
+00:00:29,860 --> 00:00:33,381
+mais manutenível e
+simples de testar
+
+13
+00:00:33,381 --> 00:00:36,229
+Vue é um framework progressivo,
+o que significa que
+
+14
+00:00:36,229 --> 00:00:38,621
+se você já tiver
+uma aplicação server-side,
+
+15
+00:00:38,621 --> 00:00:41,627
+pode plugar Vue apenas
+em uma parte da aplicação
+
+16
+00:00:41,627 --> 00:00:44,381
+que precisar de uma experiência
+mais rica e interativa.
+
+17
+00:00:44,381 --> 00:00:46,269
+Ou, se quiser construir
+mais lógica de negócio
+
+18
+00:00:46,269 --> 00:00:48,240
+no front-end desde o início,
+
+19
+00:00:48,240 --> 00:00:50,611
+Vue tem as bibliotecas
+oficiais e o ecossistema
+
+20
+00:00:50,611 --> 00:00:52,421
+que você precisa para escalar.
+
+21
+00:00:52,421 --> 00:00:53,829
+Assim como outros frameworks,
+
+22
+00:00:53,829 --> 00:00:55,960
+Vue permite que você pegue
+uma página e a separe
+
+23
+00:00:55,960 --> 00:01:00,000
+em componentes reusáveis,
+cada um com seu próprio HTML,
+
+24
+00:01:00,000 --> 00:01:02,291
+CSS e JavaScript para renderizar
+
+25
+00:01:02,291 --> 00:01:04,269
+aquela porção da página.
+
+26
+00:01:04,269 --> 00:01:06,260
+A seguir, veremos
+Vue em ação
+
+27
+00:01:06,260 --> 00:01:08,301
+criando um inventário de produtos,
+
+28
+00:01:08,301 --> 00:01:10,187
+mas fique ligado ao final do vídeo
+
+29
+00:01:10,187 --> 00:01:13,571
+para uma mensagem do
+criador do Vue, Evan You.
+
+30
+00:01:13,571 --> 00:01:15,301
+Não estaremos ensinando a usar o Vue,
+
+31
+00:01:15,301 --> 00:01:16,981
+mas introduziremos alguns conceitos chave
+
+32
+00:01:16,981 --> 00:01:19,460
+que fazem do Vue tão útil.
+
+33
+00:01:19,460 --> 00:01:21,200
+Como em muitas aplicações JavaScript,
+
+34
+00:01:21,200 --> 00:01:24,272
+começamos da necessidade de
+exibir dados em nossa página Web.
+
+35
+00:01:24,272 --> 00:01:26,591
+Com Vue, se inicia realmente simples.
+
+36
+00:01:26,591 --> 00:01:29,745
+Incluímos a biblioteca Vue,
+criamos uma instância,
+
+37
+00:01:29,745 --> 00:01:33,673
+e plugamos nosso elemento
+raiz com o ID "app".
+
+38
+00:01:33,673 --> 00:01:36,032
+EL significa "elemento".
+
+39
+00:01:36,032 --> 00:01:39,505
+Também movemos nossos dados para um objeto
+
+40
+00:01:39,505 --> 00:01:41,993
+e trocamos o X na expressão
+
+41
+00:01:41,993 --> 00:01:44,544
+com as chaves duplas.
+
+42
+00:01:44,544 --> 00:01:46,945
+Como pode ver, isso funciona.
+
+43
+00:01:46,945 --> 00:01:50,695
+Legal, mas a mágica do Vue
+começa quando os dados mudam.
+
+44
+00:01:50,695 --> 00:01:51,975
+Se pularmos para o console,
+
+45
+00:01:51,975 --> 00:01:54,735
+mudamos o valor de nosso produto.
+
+46
+00:01:54,735 --> 00:01:57,324
+Veja que assim que o
+valor do produto muda,
+
+47
+00:01:57,324 --> 00:01:59,953
+Vue automaticamente atualiza o HTML.
+
+48
+00:01:59,953 --> 00:02:01,745
+Isto ocorre pois Vue é reativo,
+
+49
+00:02:01,745 --> 00:02:03,273
+o que significa que ao mudar os dados,
+
+50
+00:02:03,273 --> 00:02:05,193
+Vue toma conta de atualizar todos os locais
+
+51
+00:02:05,193 --> 00:02:07,255
+que estivermos usando-os na página.
+
+52
+00:02:07,255 --> 00:02:10,305
+Isso funciona para qualquer tipo
+de dados, não apenas Strings.
+
+53
+00:02:10,305 --> 00:02:11,604
+Ao invés de um único produto,
+
+54
+00:02:11,604 --> 00:02:14,604
+vamos usar um Array de produtos.
+
+55
+00:02:14,604 --> 00:02:17,865
+Vamos atualizar nosso H2
+para uma lista não ordenada,
+
+56
+00:02:17,865 --> 00:02:20,535
+e criar uma novo item
+para cada produto no Array
+
+57
+00:02:20,535 --> 00:02:22,618
+usando a diretiva v-for.
+
+58
+00:02:24,353 --> 00:02:26,615
+Assim, cada produto obtém
+seu próprio item na lista
+
+59
+00:02:26,615 --> 00:02:28,495
+como pode ver aqui.
+
+60
+00:02:28,495 --> 00:02:30,352
+No entanto isso ainda é meio forçado.
+
+61
+00:02:30,352 --> 00:02:32,312
+Então vamos começar com a lista vazia
+
+62
+00:02:32,312 --> 00:02:34,815
+e obter os produtos de uma API
+
+63
+00:02:34,815 --> 00:02:37,433
+que poderiam vir de um
+banco de dados em algum lugar.
+
+64
+00:02:37,433 --> 00:02:38,863
+Quando o aplicativo é criado,
+
+65
+00:02:38,863 --> 00:02:41,866
+vamos trazer os produtos
+mais recentes de nossa API.
+
+66
+00:02:41,866 --> 00:02:43,199
+Tudo que você precisa entender é que
+
+67
+00:02:43,199 --> 00:02:45,063
+estamos buscando a lista de produtos
+
+68
+00:02:45,063 --> 00:02:46,923
+e atualizando nossos dados com ela.
+
+69
+00:02:46,923 --> 00:02:48,281
+Como pode ver na página,
+
+70
+00:02:48,281 --> 00:02:51,435
+cada item está exibindo
+o objeto retornado.
+
+71
+00:02:51,435 --> 00:02:53,474
+Bem, ainda não é muito legível,
+
+72
+00:02:53,474 --> 00:02:56,265
+então mudaramos o formato de exibição.
+
+73
+00:02:56,265 --> 00:02:59,643
+Vamos mostrar a quantidade e o nome.
+
+74
+00:02:59,643 --> 00:03:02,265
+E aqui está, exibindo perfeitamente.
+
+75
+00:03:02,265 --> 00:03:03,563
+Podemos querer dar atenção aos
+
+76
+00:03:03,563 --> 00:03:05,675
+items com quantidade zero.
+
+77
+00:03:05,675 --> 00:03:09,595
+Adicionamos um pequeno SPAN
+informando estar fora do estoque.
+
+78
+00:03:09,595 --> 00:03:13,334
+Deve aparecer apenas se
+a quantidade do item for zero.
+
+79
+00:03:13,334 --> 00:03:16,134
+Devemos usar a diretiva v-if.
+
+80
+00:03:16,134 --> 00:03:20,362
+A jaqueta tem quantidade zero,
+fora de estoque.
+
+81
+00:03:20,362 --> 00:03:22,081
+E se quisermos exibir
+o total de produtos
+
+82
+00:03:22,081 --> 00:03:24,641
+abaixo da lista?
+
+83
+00:03:24,641 --> 00:03:26,468
+Para isso, precisamos criar
+
+84
+00:03:26,468 --> 00:03:29,570
+um dado computado chamado totalProducts
+
+85
+00:03:29,570 --> 00:03:34,228
+que retornará a soma das
+quantidades dos produtos.
+
+86
+00:03:34,228 --> 00:03:36,490
+Se você não é familiar
+com o reduce do JavaScript,
+
+87
+00:03:36,490 --> 00:03:40,468
+está somando todas as
+quantidades de cada produto.
+
+88
+00:03:40,468 --> 00:03:41,851
+Como pode ver, no navegador,
+
+89
+00:03:41,851 --> 00:03:45,308
+está somando corretamente
+todas as quantidades.
+
+90
+00:03:45,308 --> 00:03:47,588
+Aqui no navegador,
+quero mostrar a extensão
+
+91
+00:03:47,588 --> 00:03:51,380
+Vue DevTools onde podemos
+ver nosso Array de dados
+
+92
+00:03:51,380 --> 00:03:53,547
+e inspecioná-lo ali mesmo.
+
+93
+00:03:55,108 --> 00:03:57,460
+Já que estamos no console, por diversão,
+
+94
+00:03:57,460 --> 00:03:59,850
+vamos remover o último item do Array
+
+95
+00:03:59,850 --> 00:04:01,828
+e ver o que acontece.
+
+96
+00:04:01,828 --> 00:04:04,359
+Como pode ver, não apenas
+a lista é atualizada,
+
+97
+00:04:04,359 --> 00:04:07,940
+mas o total também, conforme esperado.
+
+98
+00:04:07,940 --> 00:04:10,410
+Agora, vamos adicionar
+alguma interatividade à página
+
+99
+00:04:10,410 --> 00:04:12,346
+através do uso de um botão.
+
+100
+00:04:12,346 --> 00:04:14,490
+Criaremos um botão "add"
+para cada produto
+
+101
+00:04:14,490 --> 00:04:15,850
+e quando um "click" ocorrer,
+
+102
+00:04:15,850 --> 00:04:18,850
+vamos incrementar a quantidade em um.
+
+103
+00:04:19,959 --> 00:04:22,279
+Voltando ao navegador, veja
+que ao adicionar um item,
+
+104
+00:04:22,279 --> 00:04:25,159
+não apenas o total do
+inventário é atualizado,
+
+105
+00:04:25,159 --> 00:04:27,780
+mas se incrementamos
+a quantia de jaquetas,
+
+106
+00:04:27,780 --> 00:04:30,300
+a mensagem de aviso desaparece.
+
+107
+00:04:30,300 --> 00:04:31,860
+Clicar neste botão milhões de vezes
+
+108
+00:04:31,860 --> 00:04:33,890
+deve se tornar cansativo,
+então, e se quisermos escrever
+
+109
+00:04:33,890 --> 00:04:37,719
+diretamente a quantidade
+de jaquetas ou meias?
+
+110
+00:04:37,719 --> 00:04:40,580
+Criamos um novo input e
+vinculamos ao nosso
+
+111
+00:04:40,580 --> 00:04:43,867
+atributo de quantidade
+usando a diretiva v-model,
+
+112
+00:04:43,867 --> 00:04:46,519
+especificando que sempre será número.
+
+113
+00:04:46,519 --> 00:04:48,060
+Você observará que posso informar o total
+
+114
+00:04:48,060 --> 00:04:52,450
+de cada item manualmente e
+ele é atualizado imediatamente.
+
+115
+00:04:52,450 --> 00:04:54,500
+Posso inclusive zerar a quantidade
+
+116
+00:04:54,500 --> 00:04:57,899
+e ver a mensagem de aviso novamente.
+
+117
+00:04:57,899 --> 00:05:01,232
+E meus botões ainda funcionam corretamente.
+
+118
+00:05:02,259 --> 00:05:03,999
+Se formos construir uma aplicação maior,
+
+119
+00:05:03,999 --> 00:05:05,839
+podemos querer separar
+as coisas neste ponto
+
+120
+00:05:05,839 --> 00:05:09,290
+em seus próprios componentes e arquivos.
+
+121
+00:05:09,290 --> 00:05:11,827
+Vue tem uma interface de linha de comando
+
+122
+00:05:11,827 --> 00:05:15,828
+que torna simples iniciar
+projetos reais rapidamente.
+
+123
+00:05:15,828 --> 00:05:18,879
+Podemos até usar
+Componentes Single-File
+
+124
+00:05:18,879 --> 00:05:21,770
+os quais contém seus HTML, JavaScript
+
+125
+00:05:21,770 --> 00:05:23,687
+e CSS com escopo, ou SCSS.
+
+126
+00:05:25,599 --> 00:05:28,926
+- Olá, sou Evan You, criador do Vue.js.
+
+127
+00:05:28,926 --> 00:05:31,587
+O que você viu aqui
+mal esbarra na superfície
+
+128
+00:05:31,587 --> 00:05:33,065
+do que Vue pode fazer.
+
+129
+00:05:33,065 --> 00:05:34,856
+Há muito mais no ecossistema 
+
+130
+00:05:34,856 --> 00:05:36,555
+para ajudar a construir, organizar
+
+131
+00:05:36,555 --> 00:05:39,076
+e escalar suas aplicações front-end.
+
+132
+00:05:39,076 --> 00:05:42,457
+Para ter um gostinho melhor, leia
+nossa documentação hoje mesmo.
+
+133
+00:05:42,457 --> 00:05:44,708
+Acho que você vai gostar da vista.

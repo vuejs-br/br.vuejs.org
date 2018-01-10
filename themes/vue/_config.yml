@@ -1,4 +1,12 @@
 site_description: "Vue.js - O Framework JavaScript Progressivo"
 google_analytics: UA-46852172-1
 root_domain: br.vuejs.org
-vue_version: 2.5.9
+vue_version: 2.5.13
+
+platinum_sponsors:
+  - url: https://stdlib.com
+    img: stdlib.png
+  - url: http://tooltwist.com/
+    img: tooltwist.png
+  - url: https://vueschool.io/?utm_source=Vuejs.org&utm_medium=Banner&utm_campaign=Sponsored%20Banner&utm_content=V1
+    img: vueschool.png

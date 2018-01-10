@@ -175,7 +175,7 @@ type: api
 
 ## Métodos Globais
 
-<h3 id="Vue-extend">Vue.extend( options )</h3>
+### Vue.extend( options )
 
 - **Argumentos:**
   - `{Object} options`
@@ -214,7 +214,7 @@ type: api
 
 - **Ver também:** [Componentes](../guide/components.html)
 
-<h3 id="Vue-nextTick">Vue.nextTick( [callback, context] )</h3>
+### Vue.nextTick( [callback, context] )
 
 - **Argumentos:**
   - `{Function} [callback]`
@@ -243,7 +243,7 @@ type: api
 
 - **Ver também:** [Fila de Atualização Assíncrona](../guide/reactivity.html#Async-Update-Queue)
 
-<h3 id="Vue-set">Vue.set( target, key, value )</h3>
+### Vue.set( target, key, value )
 
 - **Argumentos:**
   - `{Object | Array} target`
@@ -260,7 +260,7 @@ type: api
 
 - **Ver também:** [Reatividade em Profundidade](../guide/reactivity.html)
 
-<h3 id="Vue-delete">Vue.delete( target, key )</h3>
+### Vue.delete( target, key )
 
 - **Argumentos:**
   - `{Object | Array} target`
@@ -276,7 +276,7 @@ type: api
 
 - **Ver também:** [Reatividade em Profundidade](../guide/reactivity.html)
 
-<h3 id="Vue-directive">Vue.directive( id, [definition] )</h3>
+### Vue.directive( id, [definition] )
 
 - **Argumentos:**
   - `{string} id`
@@ -307,7 +307,7 @@ type: api
 
 - **Ver também:** [Diretivas Personalizadas](../guide/custom-directive.html)
 
-<h3 id="Vue-filter">Vue.filter( id, [definition] )</h3>
+### Vue.filter( id, [definition] )
 
 - **Argumentos:**
   - `{string} id`
@@ -327,7 +327,7 @@ type: api
   var myFilter = Vue.filter('my-filter')
   ```
 
-<h3 id="Vue-component">Vue.component( id, [definition] )</h3>
+### Vue.component( id, [definition] )
 
 - **Argumentos:**
   - `{string} id`
@@ -350,7 +350,7 @@ type: api
 
 - **Ver também:** [Componentes](../guide/components.html)
 
-<h3 id="Vue-use">Vue.use( plugin )</h3>
+### Vue.use( plugin )
 
 - **Argumentos:**
   - `{Object | Function} plugin`
@@ -363,7 +363,7 @@ type: api
 
 - **Ver também:** [Plugins](../guide/plugins.html)
 
-<h3 id="Vue-mixin">Vue.mixin( mixin )</h3>
+### Vue.mixin( mixin )
 
 - **Argumentos:**
   - `{Object} mixin`
@@ -374,7 +374,7 @@ type: api
 
 - **Ver também:** [Mixin Global](../guide/mixins.html#Global-Mixin)
 
-<h3 id="Vue-compile">Vue.compile( template )</h3>
+### Vue.compile( template )
 
 - **Argumentos:**
   - `{string} template`
@@ -397,7 +397,7 @@ type: api
 
 - **Ver também:** [Funções de Renderização](../guide/render-function.html)
 
-<h3 id="Vue-version">Vue.version</h3>
+### Vue.version
 
 - **Detalhes**: Disponibiliza a versão do Vue instalado como string. Isto é especialmente util para plugins e componentes da comunidade, onde você pode usar diferentes estratégias para diferentes versões.
 
@@ -592,11 +592,11 @@ type: api
 
 ### watch
 
-- **Tipo:** `{ [key: string]: string | Function | Object }`
+- **Tipo:** `{ [key: string]: string | Function | Object | Array}`
 
 - **Detalhes:**
 
-  Um objeto onde as chaves são expressões para observar e os valores são os callbacks correspondentes. O valor pode ser uma string do nome do método, ou um Objeto que contém opções adicionais. A instância Vue chamará `$watch()` para cada entrada no objeto na inicialização.
+  Um objeto onde as chaves são expressões para observar e os valores são os _callbacks_ correspondentes. O valor pode ser uma string do nome do método, ou um Objeto que contém opções adicionais. A instância Vue chamará `$watch()` para cada entrada no objeto na inicialização.
 
 - **Exemplo:**
 
@@ -606,7 +606,12 @@ type: api
       a: 1,
       b: 2,
       c: 3,
-      d: 4
+      d: 4,
+      e: {
+        f: {
+          g: 5
+        }
+      }
     },
     watch: {
       a: function (val, oldVal) {
@@ -623,7 +628,13 @@ type: api
       d: {
         handler: function (val, oldVal) { /* ... */ },
         immediate: true
-      }
+      },
+      e: [
+        function handle1 (val, oldVal) { /* ... */ },
+        function handle2 (val, oldVal) { /* ... */ }
+      ],
+      // watch vm.e.f's value: {g: 5}
+      'e.f': function (val, oldVal) { /* ... */ }
     }
   })
   vm.a = 2 // => new: 2, old: 1
@@ -736,7 +747,7 @@ type: api
 
 - **Detalhes:**
 
-  Invocado sincronicamente após a instância ser criada. Neste ponto, a instância finalizou o processamento das opções, o que significa que  foi configurado:  observação de dados, propriedades computadas, metodos, watch/event callbacks. Entretanto, a fase de montagem não foi iniciada, e a propriedade `$el` não estará disponível ainda.
+  Invocado sincronicamente após a instância ser criada. Neste ponto, a instância finalizou o processamento das opções, o que significa que  foi configurado:  observação de dados, propriedades computadas, metodos, watch/event _callbacks_. Entretanto, a fase de montagem não foi iniciada, e a propriedade `$el` não estará disponível ainda.
 
 - **Ver também:** [Diagrama do Ciclo de Vida](../guide/instance.html#Diagrama-do-Ciclo-de-Vida)
 
@@ -1421,7 +1432,7 @@ type: api
 
 ## Métodos da Instância / Dados
 
-<h3 id="vm-watch">vm.$watch( expOrFn, callback, [options] )</h3>
+### vm.$watch( expOrFn, callback, [options] )
 
 - **Argumentos:**
   - `{string | Function} expOrFn`
@@ -1488,7 +1499,7 @@ type: api
   // `callback` é acionada imediatamente com o novo valor de 'a'
   ```
 
-<h3 id="vm-set">vm.$set( target, key, value )</h3>
+### vm.$set( target, key, value )
 
 - **Argumentos:**
   - `{Object | Array} target`
@@ -1503,7 +1514,7 @@ type: api
 
 - **Ver também:** [Vue.set](#Vue-set)
 
-<h3 id="vm-delete">vm.$delete( target, key )</h3>
+### vm.$delete( target, key )
 
 - **Argumentos:**
   - `{Object | Array} target`
@@ -1517,7 +1528,7 @@ type: api
 
 ## Métodos da Instância / Eventos
 
-<h3 id="vm-on">vm.$on( event, callback )</h3>
+### vm.$on( event, callback )
 
 - **Argumentos:**
   - `{string | Array<string>} event` (array somente é suportado em 2.2.0+)
@@ -1537,7 +1548,7 @@ type: api
   // => "hi"
   ```
 
-<h3 id="vm-once">vm.$once( event, callback )</h3>
+### vm.$once( event, callback )
 
 - **Argumentos:**
   - `{string} event`
@@ -1547,7 +1558,7 @@ type: api
 
   Escuta um evento personalizado, porém somente uma vez. A escuta será removida assim que for acionada pela primeira vez.
 
-<h3 id="vm-off">vm.$off( [event, callback] )</h3>
+### vm.$off( [event, callback] )
 
 - **Argumentos:**
   - `{string | Array<string>} event` (array somente é suportado em 2.2.2+)
@@ -1563,7 +1574,7 @@ type: api
 
   - Se tanto o evento quanto o _callback_ forem passados, esta função somente irá remover a escuta para este _callback_ específico.
 
-<h3 id="vm-emit">vm.$emit( event, [...args] )</h3>
+### vm.$emit( event, [...args] )
 
 - **Argumentos:**
   - `{string} event`
@@ -1573,7 +1584,7 @@ type: api
 
 ## Métodos da Instância / Ciclo-de-Vida
 
-<h3 id="vm-mount">vm.$mount( [elementOrSelector] )</h3>
+### vm.$mount( [elementOrSelector] )
 
 - **Argumentos:**
   - `{Element | string} [elementOrSelector]`
@@ -1611,13 +1622,13 @@ type: api
   - [Diagrama do Ciclo de Vida](../guide/instance.html#Diagrama-do-Ciclo-de-Vida)
   - [Renderização no Lado do Servidor](../guide/ssr.html)
 
-<h3 id="vm-forceUpdate">vm.$forceUpdate()</h3>
+### vm.$forceUpdate()
 
 - **Uso:**
 
   Força a instância do Vue a renderizar novamente. Note que isso não afeta todos os componentes filhos, apenas a própria instância e os componentes filhos com conteúdo em inseridos em seus respectivos *slots*.
 
-<h3 id="vm-nextTick">vm.$nextTick( [callback] )</h3>
+### vm.$nextTick( [callback] )
 
 - **Argumentos:**
   - `{Function} [callback]`
@@ -1653,7 +1664,7 @@ type: api
   - [Vue.nextTick](#Vue-nextTick)
   - [Fila de atualização *Async*](../guide/reactivity.html#Async-Update-Queue)
 
-<h3 id="vm-destroy">vm.$destroy()</h3>
+### vm.$destroy()
 
 - **Uso:**
 
