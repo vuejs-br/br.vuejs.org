@@ -2141,7 +2141,7 @@ type: api
 
 ### slot-scope
 
-> Novo na 2.5.0+
+> Novo em 2.5.0+
 
 - **Expects:** `function argument expression`
 
@@ -2154,7 +2154,7 @@ Usado para denotar um elemento ou componente como um slot de escopo. O valor do 
 
 ### scope <sup>replaced</sup>
 
-Usado para denotar um elemento `<template>` como um slot de escopo, que é substituído por [`slot-scope`](#slot-scope) na 2.5.0+.
+Usado para denotar um elemento `<template>` como um slot de escopo, que é substituído por [`slot-scope`](#slot-scope) em 2.5.0+.
 
 - **Usage:**
 
