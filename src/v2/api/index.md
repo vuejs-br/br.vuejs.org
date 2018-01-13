@@ -42,7 +42,7 @@ type: api
 
   Define opções de mesclagem personalizadas.
 
-  A estratégia de mesclagem recebe o valor da opção definida no pai e nas instâncias filhas como o primeiro e segundo argumento, repectivamente. O contexto da instância Vue é passado como o terceiro argumento.
+  A estratégia de mesclagem recebe o valor da opção definida no pai e nas instâncias filhas como o primeiro e segundo argumento repectivamente. O contexto da instância Vue é passado como o terceiro argumento.
 
 - **Ver também:** [Estratégias de Mesclagem de Opções Personalizadas](../guide/mixins.html#Estrategias-de-Mesclagem-de-Opcoes-Personalizadas)
 
@@ -121,7 +121,7 @@ type: api
   ]
   ```
 
-  Faz com que o Vue ignore elementos customizados definidos fora do Vue (ex: usando APIs de Web Components). De outra forma, Vue iria lançar um aviso sobre `Unknown custom element` (elemento customizado desconhecido), assumindo que você esqueceu de registrar algum componente global ou escreveu erroneamente o nome de um componente.
+  Faz com que o Vue ignore elementos customizados definidos fora do Vue (ex: usando APIs de Web Components). De outra forma, Vue lançaria um aviso sobre `Unknown custom element` (elemento customizado desconhecido), pois assumiria que você esqueceu de registrar algum componente global ou escreveu erroneamente o nome de um componente.
 
 ### keyCodes
 
@@ -254,7 +254,7 @@ type: api
 
 - **Uso:**
 
-  Atribui uma propriedade em um objeto. Se o objeto é reativo, certifique-se que a propriedade é criada como uma propriedade reativa e dispara atualizações na view. Isto é usado primariamente para contornar a limitação que o Vue não consegue detectar adições de propriedades.
+  Atribui uma propriedade em um objeto. Se o objeto é reativo, certifique-se que a propriedade será criada como uma propriedade reativa e disparará atualizações na view. Isto é usado primariamente para contornar a limitação do Vue em não conseguir detectar adições de propriedades.
 
   **Note que o objeto não pode ser uma instância do Vue ou o dado de um objeto root de uma instância do Vue.**
 
@@ -359,7 +359,7 @@ type: api
 
   Instala um plugin do Vue.js. Se o plugin é um Objeto, ele deve expor um método `install`. Se for uma função, ela será tratada como o método install. O método install será chamado com Vue como argumento.
 
-  Quando este método é chamado no memso plugin múltiplas vezes, o plugin só será instalado uma única vez.
+  Quando este método é chamado no mesmo plugin múltiplas vezes, o plugin só será instalado uma única vez.
 
 - **Ver também:** [Plugins](../guide/plugins.html)
 
@@ -472,15 +472,15 @@ type: api
 - **Exemplo:**
 
   ``` js
-  // sintaxe simples 
+  // sintaxe simples
   Vue.component('props-demo-simple', {
     props: ['size', 'myMessage']
   })
 
-  // sintaxe de objeto com validação  
+  // sintaxe de objeto com validação
   Vue.component('props-demo-advanced', {
     props: {
-      // checagem de tipos 
+      // checagem de tipos
       height: Number,
       // checagem de tipos com validações
       age: {
@@ -494,8 +494,7 @@ type: api
     }
   })
   ```
-
-- **Ver também:** [Props](../guide/components.html#Props)
+- **Ver também:** [Propriedades](../guide/components.html#Propriedades)
 
 ### propsData
 
@@ -569,7 +568,7 @@ type: api
 
 - **Detalhes:**
 
-  Métodos para serem misturadas na instância Vue. Você pode acessar esses métodos diretamente na instância VM ou usar eles expressões de diretivas. Todos os métodos terão seu contexto `this` feito bind a instância Vue. 
+  Métodos para serem misturadas na instância Vue. Você pode acessar esses métodos diretamente na instância VM ou usar eles em expressões de diretivas. Todos os métodos terão seu contexto `this` feito bind a instância Vue.
 
   <p class="tip">Note que __você não deve usar arrow function para definir um método__ (ex.: `plus: () => this.a++`). A razão é que arrow functions fazem bind do contexto pai, então `this` não será a instância Vue como você está esperando e `this.a` será undefined.</p>
 
@@ -615,7 +614,7 @@ type: api
     },
     watch: {
       a: function (val, oldVal) {
-        console.log('new: %s, old: %s', val, oldVal)
+        console.log('novo: %s, antigo: %s', val, oldVal)
       },
       // nome do método como string
       b: 'someMethod',
@@ -692,9 +691,9 @@ type: api
 
   - **Detalhes:**
 
-    Uma alternativa aos _templates_ baseados em Strings, que permite aproveitar o completo poder pragmático do JavaScript. A função de renderização recebe um método `createElement` como primeiro argumento, para criar elementos `VNode`.
+    Uma alternativa aos _templates_ baseados em Strings, que permite aproveitar o completo poder pragmático do JavaScript. A função de renderização recebe um método `createElement` como primeiro argumento para criar elementos `VNode`.
 
-    Se o componente é um componente funcional, a função de renderização também recebe um argumento extra `context`, que fornece acesso a dados contextuais, uma vez que componentes funcionais não possuem instância própria.
+    Se o componente é um componente funcional, a função de renderização também recebe um argumento extra `context` que fornece acesso a dados contextuais, uma vez que componentes funcionais não possuem instância própria.
 
     <p class="tip">A função `render` tem prioridade sobre funções de renderização compiladas através da opção `template` e sobre _template_ extraído do DOM do elemento sendo montado conforme especificado com a opção `el`.</p>
 
@@ -951,9 +950,9 @@ type: api
 
 - **Detalhes:**
 
-  A opção `mixins` aceita um Array de objetos _mixin_. Esses objetos _mixin_ podem conter `options` da instância assim como as instâncias de objetos normais, e eles serão combinados com as eventuais opções usando a mesma lógica de combinação no `Vue.extend()`. Por exemplo, se o seu _mixin_ contém um gatilho _created_ e o componente por si só também contém um, as duas funções serão chamadas.
+  A opção `mixins` aceita um Array de objetos _mixin_. Esses objetos _mixin_ podem conter `options` da instância, assim como, as instâncias de objetos normais. Eles serão combinados com as eventuais opções usando a mesma lógica de combinação no `Vue.extend()`. Por exemplo, se o seu _mixin_ contém um gatilho _created_ e o componente por si só também contém um, as duas funções serão chamadas.
 
-  Os gatilhos de _mixin_ são chamados na ordem em que são fornecidos, e chamados antes dos hooks do próprio componente.
+  Os gatilhos de _mixin_ são chamados na ordem em que são fornecidos e chamados antes dos hooks do próprio componente.
 
 - **Exemplo:**
 
@@ -1101,7 +1100,7 @@ type: api
   }
   ```
 
-  Similar aos valores padrão em `props`, você precisa usar uma função de fábrica para valores não primitivos:
+  Similar aos valores padrões em `props`, você precisa usar uma função de fábrica para valores não primitivos:
 
   ``` js
   const Child = {
@@ -1124,7 +1123,7 @@ type: api
 
 - **Detalhes:**
 
-  Permite que o componente invoque a si mesmo recursivamente no seu *template*. Note que quando um componente é registrado globalmente com `Vue.component()`, seu ID global é automaticamente especificado com seu nome.
+  Permite que o componente invoque a si mesmo recursivamente no seu *template*. Note que quando um componente é registrado globalmente com `Vue.component()` e seu ID global é automaticamente especificado com seu nome.
 
   Outro benefício de se especificar a opção `name` é depuração. Componentes nomeados resultarão em mensagens de aviso mais prestativas. Além disso, ao se inspecionar uma aplicação em [vue-devtools](https://github.com/vuejs/vue-devtools), componentes não nomeados aparecerão como `<AnonymousComponent>`, o que não é muito informativo. Ao fornecer a opção `name`, você terá uma árvore de componentes muito mais informativa.
 
@@ -1158,7 +1157,7 @@ type: api
 
   Faz com que um componente seja _stateless_ (ou seja, não possui `data`) e _instanceless_ (ou seja, não possui o contexto `this`). Componentes com esta opção habilitada serão apenas uma função `render` que retorna nós virtuais, fazendo com que sejam muito menos custosos para renderizar.
 
-- **Ver também:** [Componentes funcionais](../guide/render-function.html#Functional-Components)
+- **Ver também:** [Componentes Funcionais](../guide/render-function.html#Componentes-Funcionais)
 
 ### model
 
@@ -1312,7 +1311,7 @@ type: api
 
 - **Detalhes:**
 
-  Os componentes filhos diretos da instância atual. **Note que não há ordem garantida para `$children`, e esta propriedade não é reativa.** Se você está tentando usar `$children`para *binding* de dados, considere usar um Array e `v-for` para gerar os componentes filhos, e use o Array como a fonte da verdade.
+  Os componentes filhos diretos da instância atual. **Note que não há ordem garantida para `$children` e esta propriedade não é reativa.** Se você está tentando usar `$children`para *binding* de dados, considere usar um Array e `v-for` para gerar os componentes filhos e use o Array como a fonte da verdade.
 
 ### vm.$slots
 
@@ -1322,7 +1321,7 @@ type: api
 
 - **Detalhes:**
 
-  Usado para acessar programaticamente o conteúdo [distribuído pelos *slots*](../guide/components.html#Content-Distribution-with-Slots). Cada [*slot* nomeado](../guide/components.html#Named-Slots) tem sua propriedade correspondente (por exemplo, o conteúdo do `slot="foo"` poderá ser acessado via `vm.$slots.foo`). A propriedade `default` contém todo nó que não está inserido em nenhum *slot* nomeado.
+  Usado para acessar programaticamente o conteúdo [distribuído pelos *slots*](../guide/components.html#Distribuicao-de-Conteudo-com-Slots). Cada [*slot* nomeado](../guide/components.html#Slots-Nomeados) tem sua propriedade correspondente (por exemplo, o conteúdo do `slot="foo"` poderá ser acessado via `vm.$slots.foo`). A propriedade `default` contém todo nó que não está inserido em nenhum *slot* nomeado.
 
   É bastante útil acessar `vm.$slots` quando se está escrevendo um componente com uma [função de renderização](../guide/render-function.html).
 
@@ -1468,7 +1467,7 @@ type: api
   )
   ```
 
-  `vm.$watch` retorna uma função *unwatch*, que para de lançar o _callback_:
+  `vm.$watch` retorna uma função *unwatch* que para de lançar o _callback_:
 
   ``` js
   var unwatch = vm.$watch('a', cb)
@@ -1594,11 +1593,11 @@ type: api
 
 - **Uso:**
 
-  Se a instância do Vue não recebeu a opção `el` durante a instanciação, ela estará em um estado "não montado", sem um elemento DOM associado. `vm.$mount()` pode ser usada para começar a montagem de uma instância não montada do Vue.
+  Se a instância do Vue não recebeu a opção `el` durante a instanciação, ela estará em um estado "não montado" sem um elemento DOM associado. `vm.$mount()` pode ser usada para começar a montagem de uma instância não montada do Vue.
 
-  Se o argumento `elementOrSelector` não for passado, o *template* será renderizado como um elemento "fora do documento", e você terá que usar a API nativa do DOM para inserí-lo no documento.
+  Se o argumento `elementOrSelector` não for passado, o *template* será renderizado como um elemento "fora do documento" e você terá que usar a API nativa do DOM para inserí-lo no documento.
 
-  O método retorna a própria instância, para que você possa encadear outros métodos de instâncias depois dele.
+  O método retorna a própria instância para que você possa encadear outros métodos de instâncias depois dele.
 
 - **Exemplo:**
 
@@ -1635,7 +1634,7 @@ type: api
 
 - **Uso:**
 
-  Adia a execução do _callback_ para o próximo ciclo de atualização. Use esta função imediatamente após você alterar algum dado para esperar pela atualização do DOM. Este método é o mesmo que a função global `Vue.nextTick`, exceto que o contexto do `this` no _callback_ é automaticamente vinculado (*bound*) à instância que chama este método.
+  Adia a execução do _callback_ para o próximo ciclo de atualização. Use esta função imediatamente após você alterar algum dado para esperar pela atualização do DOM. Este método é o mesmo que a função global `Vue.nextTick` exceto que o contexto do `this` no _callback_ é automaticamente vinculado (*bound*) à instância que chama este método.
 
   > Novo em 2.1.0+: retorna uma Promise se nenhum _callback_ é fornecido e Promise tiver suporte no ambiente de execução. Observe que Vue não vem com um _polyfill_ para Promise, portanto, se seu navegador alvo não oferece suporte a Promises (estamos olhando para você, IE), você precisará escolher um _polyfill_ por sua conta.
 
@@ -1662,13 +1661,13 @@ type: api
 
 - **Ver também:**
   - [Vue.nextTick](#Vue-nextTick)
-  - [Fila de atualização *Async*](../guide/reactivity.html#Async-Update-Queue)
+  - [Fila de Atualização Assíncrona](../guide/reactivity.html#Fila-de-Atualizacao-Assincrona)
 
 ### vm.$destroy()
 
 - **Uso:**
 
-  Destrói completamente a *vm*. Limpa todas as suas conexões com outras *vms*, desvincula (*unbind*) todas as suas diretivas e desliga todas as escutas de eventos.
+  Destrói completamente a *vm*. Limpa todas as suas conexões com outras *vms* e desvincula (*unbind*) todas as suas diretivas e desliga todas as escutas de eventos.
 
   Aciona os *hooks* `beforeDestroy` e `destroyed`.
 
@@ -1702,7 +1701,7 @@ type: api
 
 - **Detalhes:**
 
-  Atualiza o `innerHTML` do elemento. **Perceba que os conteúdos são inseridos como HTML puro - eles não serão compilados como templates Vue**. Se você se pegar tentando compor templates usando `v-html`, ao invés disso tente repensar a solução usando componentes.
+  Atualiza o `innerHTML` do elemento. **Perceba que os conteúdos são inseridos como HTML puro - eles não serão compilados como templates Vue**. Se você se pegar tentando compor templates usando `v-html`, tente repensar a solução usando componentes.
 
   <p class="tip">Renderizar dinamicamente HTML arbitrário em seu website pode ser muito perigoso porque isso pode facilmente levar a [ataques XSS](https://pt.wikipedia.org/wiki/Cross-site_scripting). Use `v-html` somente em conteúdo confiável e **nunca** em conteúdo fornecido por usuário.</p>
 
@@ -1822,7 +1821,7 @@ type: api
   </div>
   ```
 
-  <p class="tip">Quando usada em conjunto com v-if, v-for tem uma prioridade maior. Veja o <a href="../guide/list.html#v-for-with-v-if">guia de Renderização de Listas</a> para detalhes.</p>
+  <p class="tip">Quando usada em conjunto com v-if, v-for tem uma prioridade maior. Veja o <a href="../guide/list.html#Utilizando-v-if-com-v-for">guia de Renderização de Listas</a> para detalhes.</p>
 
   O uso detalhado de `v-for` é explicado na seção de Guia com link abaixo.
 
@@ -1853,7 +1852,7 @@ type: api
 
 - **Uso:**
 
-  Atribui uma escuta de evento ao elemento. O tipo de evento é denotado pelo argumento. A expressão pode ser um nome de método, uma declaração em linha, ou omitida quando há modificadores presentes.
+  Atribui uma escuta de evento ao elemento. O tipo de evento é denotado pelo argumento. A expressão pode ser um nome de método, uma declaração em linha ou omitida quando há modificadores presentes.
 
   Começando na 2.4.0+, `v-on` também suporta interligação a um objeto de pares evento/escutador sem argumentos. Note que, quando se usa a sintaxe de objeto, não há suporte para quaisquer modificadores.
 
@@ -1931,7 +1930,7 @@ type: api
 
   Dinamicamente faz a interligação de um ou mais atributos ou propriedades de um componente a uma expressão.
 
-  Quando usado para o vínculo de atributos `class` ou `style`, suporta tipos de valores adicionais, como Array ou Objects. Veja na seção do Guia abaixo para mais detalhes.
+  Quando usado para o vínculo de atributos `class` ou `style`, suporta tipos de valores adicionais como Array ou Objects. Veja na seção do Guia abaixo para mais detalhes.
 
   Quando usado para vincular uma propriedade, a propriedade deve ser devidamente declarada no elemento-filho.
 
@@ -2082,7 +2081,7 @@ type: api
 
 - **Espera:** `number | string`
 
-  O atributo especial `key` é usado principalmente como um aviso para o algoritmo do virtual DOM do Vue identificar VNodes quando compara a nova lista de nós com a anterior. Sem `keys`, o Vue usa um algoritmo que minimiza a movimentação de elementos e tenta corrigir/reusar elementos do mesmo tipo no local tanto quanto possível. Com `keys`, ele irá reordenar os elementos baseado na ordem de mudança das `keys`, e elementos com `keys` que não estão mais presentes serão sempre removidos/destruídos.
+  O atributo especial `key` é usado principalmente como um aviso para o algoritmo do virtual DOM do Vue identificar VNodes quando comparar a nova lista de nós com a anterior. Sem `keys`, o Vue usa um algoritmo que minimiza a movimentação de elementos e tenta corrigir/reusar elementos do mesmo tipo no local tanto quanto possível. Com `keys`, ele irá reordenar os elementos baseado na ordem de mudança das `keys` e elementos com `keys`, que não estão mais presentes, serão sempre removidos/destruídos.
 
   Componentes filhos com pai em comum precisam ter **keys únicas**. `keys` duplicadas causarão erros de renderização.
 
@@ -2107,13 +2106,13 @@ type: api
   </transition>
   ```
 
-  Quanto `text` mudar, o `<span>` será substituído em vez de alterado, então a transição será ativada.
+  Quanto `text` mudar, o `<span>` será substituído em vez de alterado e então a transição será ativada.
 
 ### ref
 
 - **Espera:** `string`
 
-  `ref` é usada para registrar a referência para um elemento ou um componente filho. A referência será registrada no objeto `$refs` do componente pai. Se usada em um elemento normal do DOM, a referência será aquele elemento; se usada em um componente filho, a referência será a instância do componente:
+  `ref` é usada para registrar a referência para um elemento ou um componente filho. A referência será registrada no objeto `$refs` do componente pai. Se usada em um elemento normal do DOM, a referência será aquele elemento; Se usada em um componente filho, a referência será a instância do componente:
 
   ``` html
   <!-- vm.$refs.p será o nó do DOM-->
@@ -2127,7 +2126,7 @@ type: api
 
   Uma observação importante sobre o tempo do registro de `ref`: como as `refs` são criadas como resultados da função de renderização, você não pode acessá-las na renderização inicial - elas ainda não existem! `$refs` são não-reativas, portanto você não deve tentar usá-las em templates para *data-binding*.
 
-- **Ver também:** [Child Component Refs](../guide/components.html#Child-Component-Refs)
+- **Ver também:** [Referencias a Componentes Filhos](../guide/components.html#Referencias-a-Componentes-Filhos)
 
 ### slot
 
@@ -2137,26 +2136,27 @@ type: api
 
   Para maiores detalhes de uso, veja a sessão no guia linkado abaixo:
 
-- **Ver também:** [Named Slots](../guide/components.html#Named-Slots)
+- **Ver também:** [Slots Nomeados](../guide/components.html#Slots-Nomeados)
 
 ### slot-scope
 
 > Novo em 2.5.0+
 
-- **Expects:** `function argument expression`
+- **Espera:** `function argument expression`
 
-- **Usage:**
+- **Uso:**
+
 Usado para denotar um elemento ou componente como um slot de escopo. O valor do atributo deve ser uma expressão de JavaScript válida que pode aparecer na posição do argumento de uma assinatura de função. Isso significa que, em ambientes suportados, você também pode usar a desestruturação ES2015 na expressão. Serve como um substituto para [`scope`](#scope-replaced) em 2.5.0+.
 
   Este atributo não suporta ligação dinâmica.
-  
-- **See also:** [Scoped Slots](../guide/components.html#Scoped-Slots)
+
+- **Ver também:** [Slot com Escopo](../guide/components.html#Slot-com-Escopo)
 
 ### scope <sup>replaced</sup>
 
-Usado para denotar um elemento `<template>` como um slot de escopo, que é substituído por [`slot-scope`](#slot-scope) em 2.5.0+.
+Usado para denotar um elemento `<template>` como um slot de escopo que foi substituído por [`slot-scope`](#slot-scope) em 2.5.0+.
 
-- **Usage:**
+- **Uso:**
 
   O mesmo que [`slot-scope`](#slot-scope) exceto que `scope` somente pode ser utilizado em elementos `<template>`.
 
@@ -2164,7 +2164,7 @@ Usado para denotar um elemento `<template>` como um slot de escopo, que é subst
 
 - **Espera:** `string`
 
-  Usado para [componentes dinâmicos](../guide/components.html#Dynamic-Components) e para trabalhar [limitações dos templates do DOM](../guide/components.html#DOM-Template-Parsing-Caveats).
+  Usado para [Componentes Dinâmicos](../guide/components.html#Componentes-Dinamicos) e para trabalhar [limitações dos templates do DOM](../guide/components.html#Cuidados-com-o-Uso-no-DOM).
 
   Por exemplo:
 
@@ -2182,8 +2182,8 @@ Usado para denotar um elemento `<template>` como um slot de escopo, que é subst
   Para maiores detalhes de uso, veja os links na descrição abaixo.
 
 - **Ver também:**
-  - [Componentes Dinâmicos](../guide/components.html#Dynamic-Components)
-  - [Ressalvas do processamento do template do DOM](../guide/components.html#DOM-Template-Parsing-Caveats)
+  - [Componentes Dinâmicos](../guide/components.html#Componentes-Dinamicos)
+  - [Cuidados com o Uso no DOM](../guide/components.html#Cuidados-com-o-Uso-no-DOM)
 
 ## Componentes Integrados
 
@@ -2198,25 +2198,24 @@ Usado para denotar um elemento `<template>` como um slot de escopo, que é subst
   Um "componente meta" para renderizar componentes dinâmicos. O componente real a renderizar é determinado pelo propriedade `is`:
 
   ```html
-  <!-- a dynamic component controlled by -->
-  <!-- the `componentId` property on the vm -->
+  <!-- um componente dinâmico controlado -->
+  <!-- pela propriedade `componentId` na vm -->
   <component :is="componentId"></component>
 
-  <!-- can also render registered component or component passed as prop -->
+  <!-- pode também renderizar um componente registrado ou componente passado como propriedade -->
   <component :is="$options.components.child"></component>
   ```
 
-- **Ver também:** [Dynamic Components](../guide/components.html#Dynamic-Components)
+- **Ver também:** [Componentes Dinâmicos](../guide/components.html#Componentes-Dinamicos)
 
 ### transition
 
-- **Props:**
-  - `name` - string,Usado para gerar automaticamente nomes de classes CSS de transição. por exemplo. `name: 'fade'` expandirá automaticamente para`.fade-enter`, `.fade-enter-active`, etc. Por padrão `"v"`.
-  - `appear` - boolean, Se deseja aplicar a transição na renderização inicial. Por padrão `false`.
-  - `css` - boolean, 
-Seja para aplicar aulas de transição CSS. Padrão para  `true`. Se configurado para `false`, apenas irá desencadear ganchos JavaScript registrados por meio de eventos de componentes.
-  - `type` - string, Especifique o tipo de eventos de transição a aguardar para determinar o tempo final da transição. Valores disponíveis são `"transition"` e `"animation"`.Por padrão, ele detectará automaticamente o tipo que tenha uma duração mais longa.
-  - `mode` - string, Controla a sequência de temporização das transições de saída / entrada. Modos disponíveis são `"out-in"` e `"in-out"`; padrão para simultaneamente.
+- **Propriedades:**
+  - `name` - string. Usado para gerar automaticamente nomes de classes CSS de transição. Por exemplo, `name: 'fade'` expandirá automaticamente para `.fade-enter`, `.fade-enter-active` e etc. Por padrão, `"v"` (`v-enter`, `v-enter-active`).
+  - `appear` - boolean. Usado para aplicar a transição na renderização inicial. Por padrão, `false`.
+  - `css` - boolean. Usado para aplicar classes de transição CSS. Padrão para  `true`. Se configurado para `false`, apenas irá desencadear gatilhos registrado no JavaScript por meio de eventos de componentes.
+  - `type` - string. Especifica os tipos de eventos de transição à aguardar a especificação do tempo final da transição. Valores disponíveis são `"transition"` e `"animation"`. Por padrão, será detectado automaticamente o tipo que tenha uma duração mais longa.
+  - `mode` - string. Controla a sequência de temporização das transições de saída / entrada. Modos disponíveis são `"out-in"` e `"in-out"`. Por padrão, simultaneamente.
   - `enter-class` - string
   - `leave-class` - string
   - `appear-class` - string
@@ -2227,7 +2226,7 @@ Seja para aplicar aulas de transição CSS. Padrão para  `true`. Se configurado
   - `leave-active-class` - string
   - `appear-active-class` - string
 
-- **Events:**
+- **Eventos:**
   - `before-enter`
   - `before-leave`
   - `before-appear`
@@ -2238,17 +2237,17 @@ Seja para aplicar aulas de transição CSS. Padrão para  `true`. Se configurado
   - `after-leave`
   - `after-appear`
   - `enter-cancelled`
-  - `leave-cancelled` (`v-show` only)
+  - `leave-cancelled` (`v-show` somente)
   - `appear-cancelled`
 
 - **Uso:**
 
-  `<transition>` servem como efeitos de transição para **single** element/component. A `<transition>` aplica apenas o comportamento de transição para o conteúdo envolvido dentro; ele não processa um elemento DOM extra, ou aparece na hierarquia dos componentes inspecionados.
+  `<transition>` servem como efeitos de transição para elemento/componente **único**. O `<transition>` aplica apenas o comportamento de transição para o conteúdo envolvido dentro; Ele não processa um elemento DOM extra ou aparece na hierarquia dos componentes inspecionados.
 
   ```html
   <!-- simple element -->
   <transition>
-    <div v-if="ok">toggled content</div>
+    <div v-if="ok">conteúdo alternado</div>
   </transition>
 
   <!-- dynamic component -->
@@ -2259,7 +2258,7 @@ Seja para aplicar aulas de transição CSS. Padrão para  `true`. Se configurado
   <!-- event hooking -->
   <div id="transition-demo">
     <transition @after-enter="transitionComplete">
-      <div v-show="ok">toggled content</div>
+      <div v-show="ok">conteúdo alternado</div>
     </transition>
   </div>
   ```
@@ -2269,32 +2268,32 @@ Seja para aplicar aulas de transição CSS. Padrão para  `true`. Se configurado
     ...
     methods: {
       transitionComplete: function (el) {
-        // for passed 'el' that DOM element as the argument, something ...
+        // para o 'el' passado que é um elemento do DOM como um argumento
       }
     }
     ...
   }).$mount('#transition-demo')
   ```
 
-- **Ver também:** [Transitions: Entering, Leaving, and Lists](../guide/transitions.html)
+- **Ver também:** [Transições: Transicao-de-Entrada-Saida-de-Lista](../guide/transitions.html#Transicao-de-Entrada-Saida-de-Lista)
 
 ### transition-group
 
-- **Props:**
-  - `tag` - string, padrão para `span`.
-  - `move-class` - substituir a classe CSS aplicada durante a transição em movimento.
-  - expõe os mesmos adereços que `<transition>` exceto `mode`.
+- **Propriedades:**
+  - `tag` - string. Padrão para `span`.
+  - `move-class` - Substituí a classe CSS aplicada durante a transição em movimento.
+  - Expõe as mesmas propriedades que `<transition>` exceto `mode`.
 
-- **Events:**
-  - expõe os mesmos eventos que `<transition>`.
+- **Eventos:**
+  - Expõe os mesmos eventos que `<transition>`.
 
 - **Uso:**
 
   `<transition-group>` serve como efeito de transição para **multiplos** elementos/componentes. O `<transition-group>` renderiza um elemento DOM real. Por padrão ele renderiza um `<span>`, e você pode configurar que elemento deverá ser renderizado através do atributo `tag` attribute.
 
-  Note que cada filho em um `<transition-group>` deve ser **uniquely keyed** para as animações funcionarem corretametne.
+  Note que cada filho em um `<transition-group>` deve ser **identificado unicamente** para as animações funcionarem corretametne.
 
-  `<transition-group>` suporta transições em movimento via transformação CSS. Quando a posição de uma criança na tela mudou após uma atualização, ela aplicará uma classe CSS em movimento (gerada automaticamente a partir do atributo `name` ou configurada com o atributo` move-class`).  Se a propriedade CSS `transform` for  transit-able" quando a classe de movimento for aplicada, o elemento será animado de forma suave para seu destino usando o [FLIP technique](https://aerotwist.com/blog/flip-your-animations/).
+  `<transition-group>` suporta transições em movimento via transformação CSS. Quando a posição de um filho na tela muda após uma atualização, ele aplicará uma classe CSS de movimento (gerada automaticamente a partir do atributo `name` ou configurada com o atributo` move-class`).  Se a propriedade CSS `transform` é passível de transiçã, quando a classe de movimento for aplicada, o elemento será animado de forma suave para seu destino usando a [técnica FLIP](https://aerotwist.com/blog/flip-your-animations/).
 
   ```html
   <transition-group tag="ul" name="slide">
@@ -2304,11 +2303,11 @@ Seja para aplicar aulas de transição CSS. Padrão para  `true`. Se configurado
   </transition-group>
   ```
 
-- **Ver também:** [Transitions: Entering, Leaving, and Lists](../guide/transitions.html)
+- **Ver também:** [Transições: Transicao-de-Entrada-Saida-de-Lista](../guide/transitions.html#Transicao-de-Entrada-Saida-de-Lista)
 
 ### keep-alive
 
-- **Props:**
+- **Propriedades:**
   - `include` - string ou RegExp ou Array. Somente os componentes correspondentes serão armazenados em cache.
   - `exclude` - string ou RegExp ou Array. Qualquer componente compatível com isso não será armazenado em cache.
 
@@ -2318,23 +2317,23 @@ Seja para aplicar aulas de transição CSS. Padrão para  `true`. Se configurado
 
   Quando um componente é alternado dentro de `<keep-alive>`, os hooks de ciclo de vida 'ativados' e 'desativados' serão invocados de acordo.
 
-  > Em 2.2.0+ e acima, "activated" e "deactivated" dispararão para todos os componentes aninhados dentro de uma árvore `<keep-alive>`.
+  > Em 2.2.0+, "activated" e "deactivated" dispararão para todos os componentes aninhados dentro de uma árvore `<keep-alive>`.
 
  Principalmente usado com preservar o estado do componente ou evitar re-renderização.
 
   ```html
-  <!-- basic -->
+  <!-- básico -->
   <keep-alive>
     <component :is="view"></component>
   </keep-alive>
 
-  <!-- multiple conditional children -->
+  <!-- filhos com multi condicional -->
   <keep-alive>
     <comp-a v-if="a > 1"></comp-a>
     <comp-b v-else></comp-b>
   </keep-alive>
 
-  <!-- used together with `<transition>` -->
+  <!-- usado junto com `<transition>` -->
   <transition>
     <keep-alive>
       <component :is="view"></component>
@@ -2348,43 +2347,43 @@ Seja para aplicar aulas de transição CSS. Padrão para  `true`. Se configurado
 
   > Novo em 2.1.0+
 
-Os acessórios `include` e` exclude` permitem que os componentes sejam armazenados em cache condicionalmente. Ambos os adereços podem ser uma string delimitada por vírgulas, um RegExp ou uma matriz:
+Os acessórios `include` e `exclude` permitem que os componentes sejam armazenados em cache condicionalmente. Ambas as propriedades podem ser uma string delimitada por vírgulas, um RegExp ou uma Array:
 
   ``` html
-  <!-- comma-delimited string -->
+  <!-- string delimitada por vírgulas -->
   <keep-alive include="a,b">
     <component :is="view"></component>
   </keep-alive>
 
-  <!-- regex (use `v-bind`) -->
+  <!-- regex (usando `v-bind`) -->
   <keep-alive :include="/a|b/">
     <component :is="view"></component>
   </keep-alive>
 
-  <!-- Array (use `v-bind`) -->
+  <!-- Array (usando `v-bind`) -->
   <keep-alive :include="['a', 'b']">
     <component :is="view"></component>
   </keep-alive>
   ```
 
-A correspondência é verificada pela primeira vez na opção `name` do componente, em seguida, seu nome de registro local (a chave na opção` components` do pai) se a opção `name` não estiver disponível. Os componentes anônimos não podem ser comparados.
+A correspondência é verificada pela primeira vez na opção `name` do componente, em seguida, pelo nome no registro local (a chave dentro das opções do `components` pai) se a opção `name` não estiver disponível. Os componentes anônimos não podem ser comparados.
 
   <p class="tip">`<keep-alive>` não funciona com componentes funcionais porque eles não têm instâncias a serem armazenadas em cache.</p>
 
-- **Ver também:** [Dynamic Components - keep-alive](../guide/components.html#keep-alive)
+- **Ver também:** [Componentes Dinâmicos - keep-alive](../guide/components.html#keep-alive)
 
 ### slot
 
-- **Props:**
-  - `name` - string, Usado para o slot nomeado.
+- **Propriedades:**
+  - `name` - string. Usado para o slot nomeado.
 
 - **Uso:**
 
-  `<slot>` servem como pontos de distribuição de conteúdo em modelos de componentes. `<slot> ` em si será substituído.
+  `<slot>` servem como pontos de distribuição de conteúdo em modelos de componentes. O `<slot>` em si será substituído.
 
  Para um uso detalhado, veja a seção do guia ligada abaixo.
 
-- **Ver também:** [Content Distribution with Slots](../guide/components.html#Content-Distribution-with-Slots)
+- **Ver também:** [Distribuição de Conteúdo com Slots](../guide/components.html#Distribuicao-de-Conteudo-com-Slots)
 
 ## Interface VNode
 
