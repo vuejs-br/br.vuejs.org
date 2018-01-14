@@ -80,7 +80,7 @@ Similar ao `v-else`, um `v-else-if` deve seguir imediatamente um elemento `v-if`
 
 ### Controlando Reutilização com `key`
 
-Vue busca renderizar elementos com a maior eficiência possível, os reutilizando ao invés de renderizar do zero. Além de ajudar o Vue a ser mais rápido, isto também traz vantagens úteis. Por exemplo, se você permite a seus usuários alternar entre múltiplos tipos de _login_:
+Vue busca renderizar elementos com a maior eficiência possível, os reutilizando em vez de renderizar do zero. Além de ajudar o Vue a ser mais rápido, isto também traz vantagens úteis. Por exemplo, se você permite a seus usuários alternar entre múltiplos tipos de _login_:
 
 ``` html
 <template v-if="loginType === 'username'">
@@ -190,9 +190,9 @@ A diferença é que um elemento com `v-show` sempre será renderizado e permanec
 
 `v-if` também é **preguiçoso**: se a condição for _false_ na renderização inicial, nada será feito - o bloco condicional não será processado até que a condição se torne _true_ pela primeira vez.
 
-Em comparação, `v-show` é mais simples - o elemento sempre será renderizado independetemente da condição inicial, com alternância baseada em CSS.
+Em comparação, `v-show` é mais simples - o elemento sempre será renderizado independentemente da condição inicial, com alternância baseada em CSS.
 
-De modo geral, `v-if` tem custo maior durante alternâncias de visibilidade, enquanto `v-show` tem custo maior na renderização inicial. Então prefira `v-show` se precisar alternar a visibilidade de algo com muita frequencia; e prefira `v-if` se a condição não tem tanta probabilidade de se modificar durante a execução.
+De modo geral, `v-if` tem custo maior durante alternâncias de visibilidade, enquanto `v-show` tem custo maior na renderização inicial. Então prefira `v-show` se precisar alternar a visibilidade de algo com muita frequência; e prefira `v-if` se a condição não tem tanta probabilidade de se modificar durante a execução.
 
 ## `v-if` com `v-for`
 

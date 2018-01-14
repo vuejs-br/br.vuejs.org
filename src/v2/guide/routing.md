@@ -40,4 +40,4 @@ Combinado com a API de histórico do HTML5, você pode criar um roteador do lado
 
 ## Integração com Roteadores de Terceiros
 
-Se há uma bliblioteca de terceiros para rotas que você prefira usar, como [Page.js](https://github.com/visionmedia/page.js) ou [Director](https://github.com/flatiron/director), a integração é [igualmente fácil](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/compare/master...pagejs). Aqui está um [exemplo completo](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/tree/pagejs) usando Page.js.
+Se há uma biblioteca de terceiros para rotas que você prefira usar, como [Page.js](https://github.com/visionmedia/page.js) ou [Director](https://github.com/flatiron/director), a integração é [igualmente fácil](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/compare/master...pagejs). Aqui está um [exemplo completo](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/tree/pagejs) usando Page.js.

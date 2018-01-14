@@ -94,7 +94,7 @@ methods: {
 }
 ```
 
-Ao invés de um dado computado, podemos definir a mesma funcionalidade como um método. Como resultado final, ambas abordagens têm o mesmo efeito. No entanto, a diferença é que **dados computados são cacheados de acordo com suas dependências**. Um dado computado somente será reavaliado quando alguma de suas dependências for alterada. Isso significa que enquanto `message` não sofrer alterações, múltiplos acessos ao `reversedMessage` retornarão o último valor calculado sem precisar executar a função novamente.
+Em vez de um dado computado, podemos definir a mesma funcionalidade como um método. Como resultado final, ambas abordagens têm o mesmo efeito. No entanto, a diferença é que **dados computados são cacheados de acordo com suas dependências**. Um dado computado somente será reavaliado quando alguma de suas dependências for alterada. Isso significa que enquanto `message` não sofrer alterações, múltiplos acessos ao `reversedMessage` retornarão o último valor calculado sem precisar executar a função novamente.
 
 Isto inclusive significa que o seguinte dado computado nunca se alterará, pois `Date.now()` não é uma dependência reativa por natureza:
 
@@ -221,7 +221,7 @@ var watchExampleVM = new Vue({
   methods: {
     // _.debounce é uma função fornecida pelo lodash para limitar
     // a frequência que uma operação complexa pode ser executada.
-    // Neste caso, queremos limitar a frequencia com que acessamos
+    // Neste caso, queremos limitar a frequência com que acessamos
     // a yesno.wtf/api, esperando que o usuário termine completamente
     // a digitação antes de realizar a chamada Ajax. Para aprender
     // mais sobre a função _.debounce (e sua prima _.throttle),

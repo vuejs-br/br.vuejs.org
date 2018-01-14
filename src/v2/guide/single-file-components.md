@@ -8,12 +8,12 @@ order: 402
 
 Em muitos projetos Vue, componentes globais serão definidos com `Vue.component`, seguidos por `new Vue({ el: '#container '})` para atingir um *container* no corpo de cada página.
 
-Isto pode funcionar bem em projetos pequenos e médios, onde o JavaScript só é utilizado para incrementar certas interfaces. No entanto, em projetos mais complexos ou quando o *frontend* é totalmente dirijido pelo JavaScript, tais desvantagens se tornam aparentes:
+Isto pode funcionar bem em projetos pequenos e médios, onde o JavaScript só é utilizado para incrementar certas interfaces. No entanto, em projetos mais complexos ou quando o *frontend* é totalmente dirigido pelo JavaScript, tais desvantagens se tornam aparentes:
 
 - **Definições globais** forçam nomes únicos para cada componente
 - **Templates com Strings** não têm *syntax highlighting* e são difíceis de ler em múltiplas linhas
 - **Sem suporte ao CSS**, enquanto HTML e JavaScript são modularizados em componentes, CSS é notavelmente deixado de fora
-- **Sem processamento no build**, ou seja, nos restringindo a HTML e JavaScript ES5, ao invés de preprocessadores como Pug (anteriormente Jade) e Babel
+- **Sem processamento no build**, ou seja, nos restringindo a HTML e JavaScript ES5, em vez de preprocessadores como Pug (anteriormente Jade) e Babel
 
 Tudo isso é resolvido através dos **Componentes Single-File** com a extensão `.vue`, possibilitados graças a ferramentas de *build* como Webpack ou Browserify.
 
@@ -35,7 +35,7 @@ Estas linguagens específicas são meros exemplos. Poderíamos tão facilmente u
 
 ### E a Separação de Responsabilidades?
 
-Uma coisa importante a observar é que **separação de responsabilidades não é igual a separação de tipos de arquivo**. No desenvolvimento moderno de interfaces, chegamos à conclusão de que, ao invés de dividir a base de código em três grandes camadas que se entrelaçam umas com as outras, faz muito mais sentido dividí-las em componentes fracamente acoplados e utilizá-los para composição. Dentro de um componente, seu _template_, sua lógica e seus estilos são inerentemente acoplados, e encará-los dessa forma os torna componentes mais coesos e manuteníveis.
+Uma coisa importante a observar é que **separação de responsabilidades não é igual a separação de tipos de arquivo**. No desenvolvimento moderno de interfaces, chegamos à conclusão de que, ao invés de dividir a base de código em três grandes camadas que se entrelaçam umas com as outras, faz muito mais sentido dividi-las em componentes fracamente acoplados e utilizá-los para composição. Dentro de um componente, seu _template_, sua lógica e seus estilos são inerentemente acoplados, e encará-los dessa forma os torna componentes mais coesos e manuteníveis.
 
 Se mesmo assim não gostar da ideia de Componentes _Single-File_, você ainda pode tirar vantagem de seus recursos de _hot-reloading_ (recompilação e atualização em tempo real ao salvar o código) e de pré-compilação, separando JavaScript e CSS em arquivos distintos:
 
@@ -68,4 +68,4 @@ Para aprender mais sobre o próprio Webpack, dê uma olhada na [documentação o
 
 ### Para Usuários Avançados
 
-Independetemente de sua preferência por Webpack ou por Browserify, temos modelos de projeto documentados para ambos, tanto para projetos simples quanto para mais complexos. Recomendados que vasculhe o repositório [github.com/vuejs-templates](https://github.com/vuejs-templates), escolhendo o *template* que considerar mais adequado para o seu caso, seguindo as instruções de cada README para gerar um novo projeto com ajuda da ferramenta [vue-cli](https://github.com/vuejs/vue-cli).
+Independentemente de sua preferência por Webpack ou por Browserify, temos modelos de projeto documentados para ambos, tanto para projetos simples quanto para mais complexos. Recomendados que vasculhe o repositório [github.com/vuejs-templates](https://github.com/vuejs-templates), escolhendo o *template* que considerar mais adequado para o seu caso, seguindo as instruções de cada README para gerar um novo projeto com ajuda da ferramenta [vue-cli](https://github.com/vuejs/vue-cli).

@@ -104,7 +104,7 @@ var example2 = new Vue({
 </script>
 {% endraw %}
 
-Também é possível utilizar `of` como delimitador, ao invés de `in`, de forma que fique mais próximo da sintaxe de iteradores do JavaScript:
+Também é possível utilizar `of` como delimitador, em vez de `in`, de forma que fique mais próximo da sintaxe de iteradores do JavaScript:
 
 ``` html
 <div v-for="item of items"></div>
@@ -217,7 +217,7 @@ new Vue({
 
 ## `key`
 
-Quando Vue está atualizando uma lista de elementos renderizados com `v-for`, por padrão se utiliza de uma estratégia de "remendo local". Se a ordem dos itens de dados tiver mudado, ao invés de mover os elementos DOM para combinar com a nova ordem, Vue remendará o conteúdo de cada elemento em seu local atual, garantindo que o resultado reflita o que precisa ser renderizado em cada índice em particular. Isto é similar ao comportamento oferecido por `track-by="$index"` no Vue 1.x.
+Quando Vue está atualizando uma lista de elementos renderizados com `v-for`, por padrão se utiliza de uma estratégia de "remendo local". Se a ordem dos itens de dados tiver mudado, em vez de mover os elementos DOM para combinar com a nova ordem, Vue remendará o conteúdo de cada elemento em seu local atual, garantindo que o resultado reflita o que precisa ser renderizado em cada índice em particular. Isto é similar ao comportamento oferecido por `track-by="$index"` no Vue 1.x.
 
 Este modo padrão é eficiente, mas adequado apenas **quando seu resultado de renderização não se apoiar em estado de componentes filhos ou estado de DOM temporário (como valores de campos de formulário)**.
 
@@ -325,7 +325,7 @@ Também é possível usar o método de instância `vm.$set`, um atalho para o gl
 vm.$set(this.userProfile, 'age', 27)
 ```
 
-Às vezes, você pode querer adicionar várias novas propriedades a um objeto existente, utilizando por exemplo `Object.assign()` ou `_.extend()`. Nestes casos, você pode criar um objeto novo com propriedades mescladas de ambos os objetos. Então, ao invés de:
+Às vezes, você pode querer adicionar várias novas propriedades a um objeto existente, utilizando por exemplo `Object.assign()` ou `_.extend()`. Nestes casos, você pode criar um objeto novo com propriedades mescladas de ambos os objetos. Então, em vez de:
 
 ``` js
 Object.assign(this.userProfile, {
@@ -345,7 +345,7 @@ this.userProfile = Object.assign({}, this.userProfile, {
 
 ## Mostrando Resultados Filtrados/Ordenados
 
-Às vezes, queremos exibir uma versão filtrada ou ordenada de um Array sem efetivamente mutar ou reiniciar seus dados originais. Neste caso, você pode criar um [dado computado](computed.html#Dados-Computados) que retorna um Array filtrado ou ordenado.
+Às vezes, queremos exibir uma versão filtrada ou ordenada de um Array sem efetivamente mudar ou reiniciar seus dados originais. Neste caso, você pode criar um [dado computado](computed.html#Dados-Computados) que retorna um Array filtrado ou ordenado.
 
 Por exemplo:
 
@@ -431,7 +431,7 @@ Quando existentes em um mesmo nó, `v-for` tem maior prioridade que `v-if`. Isto
 
 Este exemplo renderizaria apenas as tarefas não marcadas como completas.
 
-Se, ao invés disso, sua intenção for condicionalmente pular toda a execução da repetição, você pode colocar o `v-if` em um elemento envolvendo o bloco (ou [`<template>`](conditional.html#Grupos-Condicionais-com-lt-template-gt)). Por exemplo:
+Se, em vez disso, sua intenção for condicionalmente pular toda a execução da repetição, você pode colocar o `v-if` em um elemento envolvendo o bloco (ou [`<template>`](conditional.html#Grupos-Condicionais-com-lt-template-gt)). Por exemplo:
 
 ``` html
 <ul v-if="todos.length">

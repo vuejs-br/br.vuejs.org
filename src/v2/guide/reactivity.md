@@ -12,7 +12,7 @@ Quando passamos um objeto JavaScript puro à instância Vue através da opção 
 
 Os _getter_/_setters_ são invisíveis para o usuário, mas internamente habilitam o Vue a executar o rastreamento de dependências e notificações de alteração quando propriedades são acessadas ou modificadas. Note que o _console_ dos navegadores formata _getter_/_setters_ de forma diferente quando registram alterações em objetos de dados, então é provável que você prefira instalar o [vue-devtools](https://github.com/vuejs/vue-devtools) para uma interface de inspeção mais amigável.
 
-Cada instância de componente tem um **observador** de instância correspondente (em inglês, um _instance watcher_), o qual registra qualquer propriedade "tocada" durante a renderização do componente e suas depedências. Mais tarde, quando o _setter_ de uma dependência é acionado, este notifica o observador, o qual causa a re-renderização do componente.
+Cada instância de componente tem um **observador** de instância correspondente (em inglês, um _instance watcher_), o qual registra qualquer propriedade "tocada" durante a renderização do componente e suas dependências. Mais tarde, quando o _setter_ de uma dependência é acionado, este notifica o observador, o qual causa a re-renderização do componente.
 
 ![Ciclo de Reatividade](/images/data.png)
 
@@ -47,7 +47,7 @@ this.$set(this.someObject, 'b', 2)
 Às vezes, você pode querer adicionar várias novas propriedades a um objeto existente, utilizando por exemplo `Object.assign()` ou `_.extend()`. No entanto, novas propriedades adicionadas posteriormente não vão disparar mudanças. Nestes casos, você pode criar um objeto novo com propriedades mescladas do objeto original e das novidades:
 
 ``` js
-// ao invés de `Object.assign(this.someObject, { a: 1, b: 2 })`
+// em vez de `Object.assign(this.someObject, { a: 1, b: 2 })`
 this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })
 ```
 

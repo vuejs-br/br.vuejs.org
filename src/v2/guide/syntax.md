@@ -8,7 +8,7 @@ O Vue.js utiliza uma sintaxe de _templates_ baseada em HTML, permitindo que voc�
 
 Internamente, Vue compila os _templates_ dentro de funções de renderização de Virtual DOM. Combinado com o sistema de reatividade, Vue é capaz de identificar de forma inteligente a menor quantidade possível de componentes a serem "re-renderizados" e aplica o mínimo possível de manipulações DOM quando o estado da aplicação muda.
 
-Se você é familiarizado com os conceitos de Virtual DOM e prefere o poder do JavaScript puro, também é possível [escrever diretamente funções de renderização](/guide/render-function.html) ao invés de utilizar _templates_, inclusive podendo contar com o suporte opcional para JSX nestas funções.
+Se você é familiarizado com os conceitos de Virtual DOM e prefere o poder do JavaScript puro, também é possível [escrever diretamente funções de renderização](/guide/render-function.html) em vez de utilizar _templates_, inclusive podendo contar com o suporte opcional para JSX nestas funções.
 
 ## Interpolações
 
@@ -54,7 +54,7 @@ new Vue({
 </script>
 {% endraw %}
 
-Os conteúdos do `span` serão substituídos com o valor da propriedade `rawHtml`, interpretada como HTML puro - _data bindings_ são ignorados. Note que você não pode utilizar a diretiva `v-html` para compor _templates_ parciais, porque o Vue não é uma _engine_ baseada em _templates_ através de String. Ao invés disso, componentes são a maneira indicada como peça fundamental de composição e reutilização de elementos de interface.
+Os conteúdos do `span` serão substituídos com o valor da propriedade `rawHtml`, interpretada como HTML puro - _data bindings_ são ignorados. Note que você não pode utilizar a diretiva `v-html` para compor _templates_ parciais, porque o Vue não é uma _engine_ baseada em _templates_ através de String. Em vez disso, componentes são a maneira indicada como peça fundamental de composição e reutilização de elementos de interface.
 
 <p class="tip">Dinamicamente renderizar HTML sem precauções pode ser muito perigoso, pois pode levar a [ataques XSS](https://pt.wikipedia.org/wiki/Cross-site_scripting). Utilize a interpolação de HTML apenas em conteúdos que você confia e **nunca** em conteúdos enviados por seus usuários.</p>
 

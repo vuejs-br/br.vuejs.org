@@ -40,7 +40,7 @@ Também disponível no [unpkg](https://unpkg.com/vue) e no [cdnjs](https://cdnjs
 
 ## NPM
 
-NPM é o método de instalação recomendado para construção de aplicações em larga escala com o Vue. Ele combina perfeitamente com _module bundlers_, tais como [Webpack](https://webpack.js.org/) ou [Browserify](http://browserify.org/). Vue também oferece ferramentas para a criação de [Componentes Single-File](single-file-components.html).
+NPM é o método de instalação recomendado para construção de aplicações em larga escala com o Vue. Ele combina perfeitamente com empacotadores de módulos, tais como [Webpack](https://webpack.js.org/) ou [Browserify](http://browserify.org/). Vue também oferece ferramentas para a criação de [Componentes Single-File](single-file-components.html).
 
 ``` bash
 # última versão estável
@@ -77,7 +77,7 @@ No [diretório `dist/`do pacote NPM](https://cdn.jsdelivr.net/npm/vue/dist/) voc
 
 ### Termos
 
-- **Completa**: pacotes completos, os quais contêem tanto o compilador quanto o motor de tempo de execução (em inglês, _runtime_).
+- **Completa**: pacotes completos, os quais contêm tanto o compilador quanto o motor de tempo de execução (em inglês, _runtime_).
 
 - **Compilador**: código responsável por compilar Strings com _templates_ para funções de renderização em JavaScript.
 
@@ -152,7 +152,7 @@ Adicione no `package.json` de seu projeto:
 
 ### Desenvolvimento vs. Produção
 
-Modos de desenvolvimento/produção estão fixos no código das distribuições UMD: os arquivos não minificados são para desenvolvimento, os arquivos minificados são para produção. 
+Modos de desenvolvimento/produção estão fixos no código das distribuições UMD: os arquivos não minificados são para desenvolvimento, os arquivos minificados são para produção.
 
 Distribuições CommonJS e ES Module são destinadas a empacotadores, desta forma não oferecemos versões minificadas. Você será responsável por minificar todo seu pacote final.
 

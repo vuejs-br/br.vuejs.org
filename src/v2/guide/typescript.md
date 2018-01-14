@@ -8,7 +8,7 @@ order: 404
 
 ## Declaração Oficial em Pacotes NPM
 
-Um sistema de tipagem estática pode ajudar a previnir muitos erros de _runtime_ potenciais, especialmente conforme as aplicações crescem. Por isso temos [declaração de tipos oficial](https://github.com/vuejs/vue/tree/dev/types) para o [TypeScript](https://www.typescriptlang.org/) - não apenas no núcleo do Vue, mas para [Vue Router](https://github.com/vuejs/vue-router/tree/dev/types) e [Vuex](https://github.com/vuejs/vuex/tree/dev/types) também.
+Um sistema de tipagem estática pode ajudar a prevenir muitos erros de _runtime_ potenciais, especialmente conforme as aplicações crescem. Por isso temos [declaração de tipos oficial](https://github.com/vuejs/vue/tree/dev/types) para o [TypeScript](https://www.typescriptlang.org/) - não apenas no núcleo do Vue, mas para [Vue Router](https://github.com/vuejs/vue-router/tree/dev/types) e [Vuex](https://github.com/vuejs/vuex/tree/dev/types) também.
 
 Já que estão [publicadas no NPM](https://cdn.jsdelivr.net/npm/vue/types/) e o TypeScript mais recente sabe como resolver declarações de tipo em pacotes NPM, isto significa que você não precisa de nenhuma ferramenta adicional para utilizar TypeScript com Vue quando instalado via NPM.
 

@@ -62,7 +62,7 @@ Abaixo está um exemplo de nosso filtro `capitalize` sendo utilizado:
 </script>
 {% endraw %}
 
-A função de filtro sempre recebe o valor da expressão (o resultado da cadeia de execução até aquele momento) como seu primeiro argumento. No exemplo acima, a função de filtro `capitalize` irá receber o valor de `message` como seu argumento. 
+A função de filtro sempre recebe o valor da expressão (o resultado da cadeia de execução até aquele momento) como seu primeiro argumento. No exemplo acima, a função de filtro `capitalize` irá receber o valor de `message` como seu argumento.
 
 Filtros podem ser encadeados:
 

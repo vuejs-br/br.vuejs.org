@@ -8,7 +8,7 @@ order: 703
 
 Tanto Vuex 1.0 quanto 2.0:
 
-- suportanto totalmente tanto Vue 1.0 quanto 2.0
+- suportando totalmente tanto Vue 1.0 quanto 2.0
 - serão mantidos por um futuro próximo
 
 Entretanto, eles tem públicos-alvo significativamente diferentes:
@@ -47,11 +47,11 @@ Isto oferece controle mais completo sobre propriedades reativas que você quer d
 </div>
 {% endraw %}
 
-## Emição de Eventos no Store <sup>removido</sup>
+## Emissão de Eventos no Store <sup>removido</sup>
 
-A instância do _store_ não expõe mais a interface de emição de eventos (`on`, `off`, `emit`). Se você esteve usando o _store_ como um *global event bus*, [veja esta seção](migration.html#dispatch-and-broadcast-obsoleto) para instruções de migração.
+A instância do _store_ não expõe mais a interface de emissão de eventos (`on`, `off`, `emit`). Se você esteve usando o _store_ como um *global event bus*, [veja esta seção](migration.html#dispatch-and-broadcast-obsoleto) para instruções de migração.
 
-Ao invés de usar esta interface para observar eventos emitidos pelo próprio _store_ (por exemplo, `store.on('mutation', callback)`), um novo método `store.subscribe` foi introduzido. O cenário de uso típico dentro de um _plugin_ seria:
+Em vez de usar esta interface para observar eventos emitidos pelo próprio _store_ (por exemplo, `store.on('mutation', callback)`), um novo método `store.subscribe` foi introduzido. O cenário de uso típico dentro de um _plugin_ seria:
 
 ``` js
 const myPlugin = store => {
@@ -70,7 +70,7 @@ Veja o exemplo na [documentação de plugins](https://github.com/vuejs/vuex/blob
 </div>
 {% endraw %}
 
-## Middlewares <sup>substituído</sup>
+## Middlewares <sup>substituídos</sup>
 
 Middlewares foram substituídos por _plugins_. Um _plugin_ é uma função que recebe o _store_ como seu único argumento, podendo então se subscrever ao evento de mutação ocorrida nele:
 

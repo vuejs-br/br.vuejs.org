@@ -106,7 +106,7 @@ rollup({
 
 Quando estiver usando _templates_ **in-DOM** ou _template strings_ **in-JavaScript**, a transformação para funções `render` ocorre em tempo real. Isto é geralmente rápido o bastante na maioria dos casos, mas é melhor evitar se a aplicação for muito sensível a variações de desempenho.
 
-A forma mais simples de pré-compilar _templates_ é utilizar [Componentes Single-File](single-file-components.html) - os processos de _build_ associados automaticamente realizam a pré-compilação para você, desta forma o código final já contém as funções `render` ao invés de _template strings_ puras.
+A forma mais simples de pré-compilar _templates_ é utilizar [Componentes Single-File](single-file-components.html) - os processos de _build_ associados automaticamente realizam a pré-compilação para você, desta forma o código final já contém as funções `render` em vez de _template strings_ puras.
 
 Se você estiver utilizando Webpack e preferir separar seu JavaScript dos arquivos de _template_, você pode utilizar [vue-template-loader](https://github.com/ktsn/vue-template-loader), o qual transforma os arquivos de _template_ independentes em funções `render` durante o processo de _build_.
 
