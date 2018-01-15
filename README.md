@@ -11,16 +11,9 @@ $ npm start # servidor executando em http://localhost:4000
 
 ## Publicando
 
-O site é publicado usando GitHub Pages, então é preciso ter acesso a _push_ no repositório _vuejs.org_ para executar o _script_ de publicação:
+O site é automaticamente publicado quando _commits_ chegam em `master`, via [Netlify](https://www.netlify.com/)
 
-``` bash
-$ npm run deploy
-```
-
-Se estiver trabalhando em um _fork_ e quiser publicar em uma URL diferente, precisa atualizar adequadamente o seguinte:
-
-- `url` e `deploy` no arquivo `_config.yml`
-- arquivo `src/CNAME`
+Neste repositório, o processo só é disparado por um grupo seleto de contribuidores, para manter a organização. As contribuições são recebidas na forma de _pull requests_ e, quando aceitos, o _deploy_ automático ocorre.
 
 ## Como colaborar?
 

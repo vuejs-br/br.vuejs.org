@@ -213,7 +213,7 @@ var watchExampleVM = new Vue({
   },
   watch: {
     // sempre que a pergunta mudar, essa função será executada
-    question: function (newQuestion) {
+    question: function (newQuestion, oldQuestion) {
       this.answer = 'Esperando você parar de escrever...'
       this.getAnswer()
     }
@@ -272,7 +272,7 @@ var watchExampleVM = new Vue({
     answer: 'Eu não posso responder até que você faça uma pergunta!'
   },
   watch: {
-    question: function (newQuestion) {
+    question: function (newQuestion, oldQuestion) {
       this.answer = 'Esperando você parar de escrever...'
       this.getAnswer()
     }
