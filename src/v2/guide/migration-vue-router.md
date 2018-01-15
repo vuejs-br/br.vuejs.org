@@ -10,7 +10,7 @@ order: 702
 
 ### `router.start` <sup>obsoleto</sup>
 
-Não há mais uma API especial para inicializar um aplicativo com Vue Router. Ao invés de:
+Não há mais uma API especial para inicializar um aplicativo com Vue Router. Em vez de:
 
 ``` js
 router.start({
@@ -262,7 +262,7 @@ if (route.meta.requiresAuth) {
 
 ### Sintaxe para Arrays em Queries <sup>removed</sup>
 
-Ao passar Arrays como parâmetros de queries, a sintaxe da _query string_ não é mais `/foo?users[]=Tom&users[]=Jerry`. Ao invés disto, a nova sintaxe é `/foo?users=Tom&users=Jerry`. Internamente, `$route.query.users` ainda será um Array, mas se houver somente um parâmetro na _query_: `/foo?users=Tom`, ao acessar diretamente esta rota, não haverá uma maneira do roteador saber se estamos esperando que `users` seja um Array. Por este motivo, considere adicionar um dado computado, substituindo qualquer acesso a `$route.query.users` por ele:
+Ao passar Arrays como parâmetros de queries, a sintaxe da _query string_ não é mais `/foo?users[]=Tom&users[]=Jerry`. Em vez disto, a nova sintaxe é `/foo?users=Tom&users=Jerry`. Internamente, `$route.query.users` ainda será um Array, mas se houver somente um parâmetro na _query_: `/foo?users=Tom`, ao acessar diretamente esta rota, não haverá uma maneira do roteador saber se estamos esperando que `users` seja um Array. Por este motivo, considere adicionar um dado computado, substituindo qualquer acesso a `$route.query.users` por ele:
 
 ```javascript
 export default {
@@ -395,7 +395,7 @@ var router = new VueRouter({
 </div>
 {% endraw %}
 
-### `abstract: true` <sup>subsituído</sup>
+### `abstract: true` <sup>substituído</sup>
 
 Todos os modos de roteamento foram condensados em uma simples [opção `mode`](https://router.vuejs.org/en/api/options.html#mode). Atualize:
 
@@ -422,7 +422,7 @@ var router = new VueRouter({
 
 ## Opções do Roteador: Diversos
 
-### `saveScrollPosition` <sup>subsituído</sup>
+### `saveScrollPosition` <sup>substituído</sup>
 
 Foi substituído com uma [opção `scrollBehavior`](https://router.vuejs.org/en/advanced/scroll-behavior.html) que aceita uma função, de forma que o comportamento de rolagem possa ser completamente personalizado - inclusive para cada rota. Abre-se muitas novas possibilidades, mas para simplesmente replicar o antigo comportamento de:
 
@@ -491,7 +491,7 @@ Em seu lugar, use [`beforeRouteEnter`](https://router.vuejs.org/en/advanced/navi
 </div>
 {% endraw %}
 
-### `canActivate` <sup>subsituído</sup>
+### `canActivate` <sup>substituído</sup>
 
 Em seu lugar, use [`beforeEnter`](https://router.vuejs.org/en/advanced/navigation-guards.html#perroute-guard) no roteador.
 
@@ -513,7 +513,7 @@ Em seu lugar, use os gatilhos em componentes [`beforeDestroy`](../api/#beforeDes
 </div>
 {% endraw %}
 
-### `canDeactivate` <sup>subsituído</sup>
+### `canDeactivate` <sup>substituído</sup>
 
 Em seu lugar, use [`beforeRouteLeave`](https://router.vuejs.org/en/advanced/navigation-guards.html#incomponent-guards) no componente.
 
@@ -535,7 +535,7 @@ Não existem mais casos de uso para isso no novo Vue Router.
 </div>
 {% endraw %}
 
-### `data` <sup>subsituído</sup>
+### `data` <sup>substituído</sup>
 
 A propriedade `$route` agora é reativa, desta forma utilize um observador para reagir a mudanças de rota, como neste exemplo:
 

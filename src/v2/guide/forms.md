@@ -10,7 +10,7 @@ Você pode usar a diretiva `v-model` para criar interligações de mão dupla (_
 
 <p class="tip">A diretiva `v-model` irá ignorar o estado inicial de `value`, `checked` ou `selected` encontrado em qualquer elemento de formulário. Sempre se tratará a instância Vue como a fonte dos dados verdadeiros. Ou seja, declare os valores iniciais no lado JavaScript, dentro da opção `data` de seu componente.</p>
 
-<p class="tip" id="vmodel-ime-tip">Para linguagens que requerem um [IME](https://en.wikipedia.org/wiki/Input_method) (Chinês, Japonês, Coreano etc.), você notará que `v-model` não é atualizado durante a atualização da composição IME. Se você quiser atender a estas atualizações, use o evento `input` ao invés do `v-model`.</p>
+<p class="tip" id="vmodel-ime-tip">Para linguagens que requerem um [IME](https://en.wikipedia.org/wiki/Input_method) (Chinês, Japonês, Coreano etc.), você notará que `v-model` não é atualizado durante a atualização da composição IME. Se você quiser atender a estas atualizações, use o evento `input` em vez do `v-model`.</p>
 
 ### Input
 
@@ -66,7 +66,7 @@ new Vue({
 
 ### Checkbox
 
-_Checkbox_ simples com valor boleano:
+_Checkbox_ simples com valor booleano:
 
 ``` html
 <input type="checkbox" id="checkbox" v-model="checked">
@@ -290,7 +290,7 @@ new Vue({
 
 ## Vinculando aos Valores
 
-Para _radio_, _checkbox_ e _options_ de _select_, os valores de vinculação do `v-model` são normalmente Strings estáticas (ou boleano no caso do _checkbox_):
+Para _radio_, _checkbox_ e _options_ de _select_, os valores de vinculação do `v-model` são normalmente Strings estáticas (ou booleano no caso do _checkbox_):
 
 ``` html
 <!-- `picked` é uma string "a" quando assinalado -->

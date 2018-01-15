@@ -60,7 +60,7 @@ describe('MyComponent', () => {
     expect(vm.message).toBe('bye!')
   })
 
-  // Monta uma instância e inpeciona a saída de renderização
+  // Monta uma instância e inspeciona a saída de renderização
   it('renders the correct message', () => {
     const Constructor = Vue.extend(MyComponent)
     const vm = new Constructor().$mount()

@@ -96,7 +96,7 @@ Antes de nos aprofundarmos nas funções de renderização, é importante saber 
 </div>
 ```
 
-Quando um navegador lê esse código, ele compila uma [árvore de "nós DOM"](https://javascript.info/dom-nodes) para ajudar a manter o controle sobre todas as coisas, assim como você poderia querer construir uma árvore genealógica para manter o controle sobre a estensão de sua família.
+Quando um navegador lê esse código, ele compila uma [árvore de "nós DOM"](https://javascript.info/dom-nodes) para ajudar a manter o controle sobre todas as coisas, assim como você poderia querer construir uma árvore genealógica para manter o controle sobre a extensão de sua família.
 
 A árvore de nós DOM para o HTML acima aparentaria isso:
 
@@ -104,7 +104,7 @@ A árvore de nós DOM para o HTML acima aparentaria isso:
 
 Cada elemento é um nó. Cada pedaço de texto é um nó. Até mesmo comentários são nós! Um nó é apenas um pedaço da página. E assim como na árvore genealógica, cada nó tem filhos (ou seja, cada pedaço pode conter outros pedaços dentro).
 
-Atualizar todos esses nós eficientemente pode ser difícil, mas por sorte você nunca precisará fazer isso manualmente. Ao invés disso, você diz ao Vue qual HTML quer na página, através de um _template_:
+Atualizar todos esses nós eficientemente pode ser difícil, mas por sorte você nunca precisará fazer isso manualmente. Em vez disso, você diz ao Vue qual HTML quer na página, através de um _template_:
 
 ```html
 <h1>{{ blogTitle }}</h1>
@@ -355,7 +355,7 @@ Este é o custo de ir para um nível mais baixo, mas também oferece muito mais 
 
 ### Eventos e Modificadores
 
-Para modificadores de eventos `.passive`, `.capture` e `.once`, Vue oferece prefixos que podem ser usandos em conjunto com `on`:
+Para modificadores de eventos `.passive`, `.capture` e `.once`, Vue oferece prefixos que podem ser usados em conjunto com `on`:
 
 | Modificador | Prefixo |
 | ------ | ------ |
@@ -631,7 +631,7 @@ new Vue({
   computed: {
     result: function () {
       if (!this.templateText) {
-        return 'Infome um template válido acima'
+        return 'Informe um template válido acima'
       }
       try {
         var result = Vue.compile(this.templateText.replace(/\s{2,}/g, ''))

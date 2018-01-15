@@ -332,7 +332,7 @@ new Vue({
 </script>
 {% endraw %}
 
-Se você quiser passar todas as propriedades em um objeto como `props`, pode usar `v-bind` sem informar um argumento (`v-bind` ao invés de `v-bind:prop-name`). Por exemplo, dado o objeto `todo` a seguir:
+Se você quiser passar todas as propriedades em um objeto como `props`, pode usar `v-bind` sem informar um argumento (`v-bind` em vez de `v-bind:prop-name`). Por exemplo, dado o objeto `todo` a seguir:
 
 ``` js
 todo: {
@@ -406,7 +406,7 @@ A resposta apropriada para esses casos de uso são:
   }
   ```
 
-<p class="tip">Observe que objetos e Arrays em JavaScript são passados como referência, ou seja, se uma propriedade é um Array ou um objeto, alterá-la dentro do próprio filho **irá** afetar inadivertidamente o estado do pai.</p>
+<p class="tip">Observe que objetos e Arrays em JavaScript são passados como referência, ou seja, se uma propriedade é um Array ou um objeto, alterá-la dentro do próprio filho **irá** afetar inadvertidamente o estado do pai.</p>
 
 ### Validação de Propriedades
 
@@ -499,7 +499,7 @@ Neste caso, dois valores diferentes para `class` estão definidos:
 - `form-control`, configurado pelo próprio componente em seu _template_
 - `date-picker-theme-dark`, passado ao componente através de seu _parent_
 
-Para mais atributos, o valor provido ao componente irá substituir o valor previamente definido no componente. Por exemplo, passar `type="large"` irá sobreescrever `type="date"` e provavelmente quebrar a funcionalidade! Por sorte, os atributos `class` e `style` são um pouco mais inteligentes e seus valores são mesclados automaticamente, tornando o valor final: `form-control date-picker-theme-dark`.
+Para mais atributos, o valor provido ao componente irá substituir o valor previamente definido no componente. Por exemplo, passar `type="large"` irá sobrescrever `type="date"` e provavelmente quebrar a funcionalidade! Por sorte, os atributos `class` e `style` são um pouco mais inteligentes e seus valores são mesclados automaticamente, tornando o valor final: `form-control date-picker-theme-dark`.
 
 ## Eventos Personalizados
 
@@ -824,7 +824,7 @@ Há duas coisas para observar aqui:
 
 2. O componente `<app>` provavelmente possui seu próprio _template_.
 
-Para que a composição funcione, precisamos de um jeito de entreleçar o "conteúdo" do pai e o _template_ do próprio componente. Este é um processo chamado de **distribuição de conteúdo** (ou "transclusão" se você estiver familiarizado com Angular). Vue.js implementa uma API de distribuição de conteúdo que é modelada a partir do atual [rascunho de especificação de Web Components](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), usando o elemento especial `<slot>` para servir como ponto de distribuição para o conteúdo original.
+Para que a composição funcione, precisamos de um jeito de entrelaçar o "conteúdo" do pai e o _template_ do próprio componente. Este é um processo chamado de **distribuição de conteúdo** (ou "transclusão" se você estiver familiarizado com Angular). Vue.js implementa uma API de distribuição de conteúdo que é modelada a partir do atual [rascunho de especificação de Web Components](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), usando o elemento especial `<slot>` para servir como ponto de distribuição para o conteúdo original.
 
 ### Escopo de Compilação
 
@@ -1319,7 +1319,7 @@ Então um componente `tree-folder-contents` com este _template_:
 
 Ao olhar mais de perto, você verá que esses componentes serão na verdade tanto seus descendentes _quanto_ seus antepassados na árvore de renderização - um paradoxo! Ao registrar globalmente um componente com `Vue.component`, este paradoxo é resolvido para você automaticamente. Se é este o seu caso, pode parar de ler aqui.
 
-Entretanto, se você está pegando/importando componentes usando um __sistem de módulos__, por exemplo, via Webpack ou Browserify, você terá um erro:
+Entretanto, se você está pegando/importando componentes usando um __sistema de módulos__, por exemplo, via Webpack ou Browserify, você terá um erro:
 
 ```
 Failed to mount component: template or render function not defined.

@@ -543,7 +543,7 @@ Dentro de componentes filho nós podemos usar qualquer combinação das estraté
 
 ## Trazendo Desenhos à Vida
 
-Animar, por definição, signifca trazer à vida. Infelizmente, quando _designers_ criam ícones, logos e mascotes, eles geralmente os entregam como imagens ou SVGs estáticos. Embora o gato-polvo do GitHub, o pássaro do Twitter e muitos outros logos se assemelhem a criaturas vivas, eles não parecem estar realmente vivos.
+Animar, por definição, significa trazer à vida. Infelizmente, quando _designers_ criam ícones, logos e mascotes, eles geralmente os entregam como imagens ou SVGs estáticos. Embora o gato-polvo do GitHub, o pássaro do Twitter e muitos outros logos se assemelhem a criaturas vivas, eles não parecem estar realmente vivos.
 
 Vue pode ajudar. Como SVGs são apenas dados, nós só precisamos de exemplos do que essas criaturas se parecem quando estão animadas, pensativas ou alertas. Então Vue pode ajudar na transição entre estes estados, tornando suas páginas de bem-vindo, indicadores de carregamento e notificações mais emocionalmente atraentes.
 

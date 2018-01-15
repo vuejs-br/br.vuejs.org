@@ -104,7 +104,7 @@ var example2 = new Vue({
 
 ## Chamada Direta de Métodos
 
-Ao invés de fazer uma ligação apenas ao nome de um método, também podemos chamar métodos com uma instrução JavaScript diretamente no `v-on`:
+Em vez de fazer uma ligação apenas ao nome de um método, também podemos chamar métodos com uma instrução JavaScript diretamente no `v-on`:
 
 ``` html
 <div id="example-3">
@@ -162,7 +162,7 @@ methods: {
 
 ## Modificadores de Evento
 
-É muito comum precisar chamar `event.preventDefault()` ou `event.stopPropagation()` em manipuladores de eventos. Embora possamos fazer isto facilmente dentro de métodos, seria melhor se os métodos pudessem lidar apenas com a lógica dos dados, ao invés de ter que lidar com detalhes de eventos DOM.
+É muito comum precisar chamar `event.preventDefault()` ou `event.stopPropagation()` em manipuladores de eventos. Embora possamos fazer isto facilmente dentro de métodos, seria melhor se os métodos pudessem lidar apenas com a lógica dos dados, em vez de ter que lidar com detalhes de eventos DOM.
 
 Para resolver esse problema, o Vue fornece **modificadores de evento** para `v-on`. É só se lembrar que modificadores são sufixos da diretiva, indicados após um ponto.
 
@@ -186,7 +186,7 @@ Para resolver esse problema, o Vue fornece **modificadores de evento** para `v-o
 <form v-on:submit.prevent></form>
 
 <!-- usar modo de captura ao adicionar o evento -->
-<!-- ou seja, um evento em um elemento interno é tratato aqui após ser tratado por aquele elemento -->
+<!-- ou seja, um evento em um elemento interno é tratado aqui após ser tratado por aquele elemento -->
 <div v-on:click.capture="doThis">...</div>
 
 <!-- só aciona o manipulador se event.target é o próprio elemento -->
@@ -194,7 +194,7 @@ Para resolver esse problema, o Vue fornece **modificadores de evento** para `v-o
 <div v-on:click.self="doThat">...</div>
 ```
 
-<p class="tip">A ordem importa quando utilizar modificadores, pois o código é gerado na mesma ordem. Desta forma, `@click.prevent.self` irá previnir **todos os cliques**, enquanto `@click.self.prevent` irá previnir apenas cliques no próprio elemento.</p>
+<p class="tip">A ordem importa quando utilizar modificadores, pois o código é gerado na mesma ordem. Desta forma, `@click.prevent.self` irá prevenir **todos os cliques**, enquanto `@click.self.prevent` irá prevenir apenas cliques no próprio elemento.</p>
 
 > Novo em 2.1.4+
 
@@ -214,7 +214,7 @@ Diferente dos outros modificadores, exclusivos para eventos nativos, o `.once` t
 
 Em adição a estes modificadores, Vue oferece o modificador `.passive` para melhorar o desempenho, especialmente em dispositivos móveis. Por exemplo, ao utilizar a rolagem, o navegador irá rolar após o processo ser completado, pois não sabe se o manipulador do evento pretende chamar `event.preventDefault()`. O modificador `.passive` pode ser usado para avisar ao navegador que este evento não irá cancelar o comportamento padrão.
 
-<p class="tip">Não utilize `.passive` e `.prevent` juntos. Um manipulador passivo não pode previnir o evento padrão.</p>
+<p class="tip">Não utilize `.passive` e `.prevent` juntos. Um manipulador passivo não pode prevenir o evento padrão.</p>
 
 ## Modificadores de Teclado
 
@@ -318,7 +318,7 @@ O modificador `.exact` permite controlar a exata combinação de modificadores d
 - `.right`
 - `.middle`
 
-Estes modificadores restrigem o manipulador a eventos disparados por um botão específico do _mouse_, respectivamente o botão da esqueda, o da direita e o central (quando existente).
+Estes modificadores restringem o manipulador a eventos disparados por um botão específico do _mouse_, respectivamente o botão da esquerda, o da direita e o central (quando existente).
 
 ## Por Que Escutas no HTML?
 

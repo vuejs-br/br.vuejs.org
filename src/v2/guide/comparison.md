@@ -178,7 +178,7 @@ Ambos os _frameworks_ são excepcionalmente rápidos, com métricas muito simila
 
 ### Tamanho
 
-Versões recentes do Angular, com [compilação AOT](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) (_Ahead-Of-Time_) e [tree-shaking](https://en.wikipedia.org/wiki/Tree_shaking), tem sido capazes de derrubar o tamanho do pacote consideravelmente. Todavia, um projeto Vue 2 cheio de recursos com Vuex + Vue Router incluídos (~30KB gzipped) ainda é significativamente mais leve do que uma aplicação padrão, compilada AOT, gerada pelo `angular-cli` (~130KB gzipped).
+Versões recentes do Angular, com [compilação AOT](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) (_Ahead-Of-Time_) e [tree-shaking](https://en.wikipedia.org/wiki/Tree_shaking), tem sido capazes de derrubar o tamanho do pacote consideravelmente. Todavia, um projeto Vue 2 cheio de recursos com Vuex + Vue Router incluídos (~30KB depois de gzip) ainda é significativamente mais leve do que uma aplicação padrão, compilada AOT, gerada pelo `angular-cli` (~130KB após gzip).
 
 ### Flexibilidade
 
@@ -216,7 +216,7 @@ Polymer é outro projeto patrocinado por Google e, de fato, também foi uma font
 
 No Polymer 1.0, a equipe fez também um sistema de _data-binding_ muito limitado, a fim de compensar o desempenho. Por exemplo, as únicas expressões suportados em _templates_ Polymer são de negação booleana e chamadas simples de métodos. Sua implementação de propriedades computadas também não é muito flexível.
 
-Elementos customizados do Polymer são autorados em arquivos HTML, o que limita a JavaScript/CSS puro (e a recursos suportados pelos navegadores atuais). Em comparação, _single-file components_ Vue permitem facilmente usar ES2015+ e pré-processadores HTML/CSS.
+Elementos customizados do Polymer são produzidos em arquivos HTML, o que limita a JavaScript/CSS puro (e a recursos suportados pelos navegadores atuais). Em comparação, _single-file components_ Vue permitem facilmente usar ES2015+ e pré-processadores HTML/CSS.
 
 Ao publicar em produção, Polymer recomenda o carregamento de tudo sob demanda com HTML Imports, o que assume navegadores adequados a esta especificação e suporte HTTP/2 tanto no servidor quanto no cliente. Isto pode ou não ser viável, dependendo de seu público-alvo e ambiente de implantação. Nos casos em que não é desejável, você terá que usar uma ferramenta especial chamada Vulcanizer para agrupar seus elementos Polymer. Nesta frente, Vue pode combinar sua característica de componentes assíncronos com o recurso de _code-splitting_ do webpack para dividir facilmente a aplicação em partes, com pacotes carregados somente quando requeridos. Isso garante compatibilidade com navegadores mais antigos, mantendo excelente desempenho no carregamento.
 
