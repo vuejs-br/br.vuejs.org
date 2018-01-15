@@ -42,7 +42,7 @@ type: api
 
   Define opções de mesclagem personalizadas.
 
-  A estratégia de mesclagem recebe o valor da opção definida no pai e nas instâncias filhas como o primeiro e segundo argumento repectivamente. O contexto da instância Vue é passado como o terceiro argumento.
+  A estratégia de mesclagem recebe o valor da opção definida no pai e nas instâncias filhas como o primeiro e segundo argumento respectivamente. O contexto da instância Vue é passado como o terceiro argumento.
 
 - **Ver também:** [Estratégias de Mesclagem de Opções Personalizadas](../guide/mixins.html#Estrategias-de-Mesclagem-de-Opcoes-Personalizadas)
 
@@ -171,7 +171,7 @@ type: api
 
 - **Uso:**
 
-  Defina `false` para previnir a exibição da dica sobre o modo de produção ao iniciar o Vue.
+  Defina `false` para prevenir a exibição da dica sobre o modo de produção ao iniciar o Vue.
 
 ## Métodos Globais
 
@@ -335,7 +335,7 @@ type: api
 
 - **Uso:**
 
-  Registra ou recupera um componente global. O registro também atribui, automaticametne, o objeto `name` do componente com o `id` passado.
+  Registra ou recupera um componente global. O registro também atribui, automaticamente, o objeto `name` do componente com o `id` passado.
 
   ``` js
   // registra um construtor extendido
@@ -399,7 +399,7 @@ type: api
 
 ### Vue.version
 
-- **Detalhes**: Disponibiliza a versão do Vue instalado como string. Isto é especialmente util para plugins e componentes da comunidade, onde você pode usar diferentes estratégias para diferentes versões.
+- **Detalhes**: Disponibiliza a versão do Vue instalado como string. Isto é especialmente útil para plugins e componentes da comunidade, onde você pode usar diferentes estratégias para diferentes versões.
 
 - **Uso:**
 
@@ -421,13 +421,13 @@ type: api
 
 - **Tipo:** `Object | Function`
 
-- **Restriçao:** Somente aceita `Function` quando usado na definição de um componente.
+- **Restrição:** Somente aceita `Function` quando usado na definição de um componente.
 
 - **Detalhes:**
 
   O objeto `data` para a instância do Vue. Vue irá recursivamente converter esta propriedade em _getter_/_setters_ para tornar "reativo". **O objeto deve ser simples**: objetos nativos como API do navegador e propriedades _prototype_ são ignoradas. A regra geral é: `data` deverá ser somente dados - não é recomendável observar objetos que têm seu próprio comportamento _stateful_.
 
-  Como observado, você não pode adicionar propriedades reativas ao objeto data raiz. É recomendado declarar todas as propriedades 'nível raiz' reativas com antecedencia, antes da criação da instância.
+  Como observado, você não pode adicionar propriedades reativas ao objeto data raiz. É recomendado declarar todas as propriedades 'nível raiz' reativas com antecedência, antes da criação da instância.
 
   Depois que a instância é criada, o objeto data original pode ser acessado como `vm.$data`. A instância Vue também faz proxy de todas as propriedade achadas no objeto data, então `vm.a` será equivalente a `vm.$data.a`.
 
@@ -500,7 +500,7 @@ type: api
 
 - **Tipo:** `{ [key: string]: any }`
 
-- **Restriçao:** somente respeitado em criação de instâncias via `new`.
+- **Restrição:** somente respeitado em criação de instâncias via `new`.
 
 - **Detalhes:**
 
@@ -531,7 +531,7 @@ type: api
 
   <p class="tip">Note que __você não deve usar arrow function para definir um dado computado__ (ex.: `aDouble: () => this.a * 2`). A razão é que arrow functions fazem bind do contexto pai, então `this` não será a instância Vue como você está esperando e `this.a` será undefined.</p>
 
-  Dados Computados são cacheadas, e somente re-computados quando dependencias reativas mudam. Note que se uma certa dependência está fora do escopo da instância (ex.: não reativa), o dado computado __não__ será atualizado.
+  Dados Computados são cacheadas, e somente re-computados quando dependências reativas mudam. Note que se uma certa dependência está fora do escopo da instância (ex.: não reativa), o dado computado __não__ será atualizado.
 
 - **Exemplo:**
 
@@ -673,7 +673,7 @@ type: api
 
 - **Detalhes:**
 
-  Um _template_ dentro de uma String para ser usado como marcação para a instância Vue. O _template_ irá **substituir** o elemento montado. Qualquer marcação existente dentro do elemento montado será ignorada, a menos que _slots_ de destribuição de conteúdo estejam presentes no _template_.
+  Um _template_ dentro de uma String para ser usado como marcação para a instância Vue. O _template_ irá **substituir** o elemento montado. Qualquer marcação existente dentro do elemento montado será ignorada, a menos que _slots_ de distribuição de conteúdo estejam presentes no _template_.
 
   Se a String começa com `#`, ela será usada como um `querySelector` e utilizará o `innerHTML` do elemento selecionado como _template_ String. Isto permite o uso do truque comum com `<script type="x-template">` para incluir _templates_.
 
@@ -746,7 +746,7 @@ type: api
 
 - **Detalhes:**
 
-  Invocado sincronicamente após a instância ser criada. Neste ponto, a instância finalizou o processamento das opções, o que significa que  foi configurado:  observação de dados, propriedades computadas, metodos, watch/event _callbacks_. Entretanto, a fase de montagem não foi iniciada, e a propriedade `$el` não estará disponível ainda.
+  Invocado sincronicamente após a instância ser criada. Neste ponto, a instância finalizou o processamento das opções, o que significa que  foi configurado:  observação de dados, propriedades computadas, métodos, watch/event _callbacks_. Entretanto, a fase de montagem não foi iniciada, e a propriedade `$el` não estará disponível ainda.
 
 - **Ver também:** [Diagrama do Ciclo de Vida](../guide/instance.html#Diagrama-do-Ciclo-de-Vida)
 
@@ -886,19 +886,19 @@ type: api
 
 - **Detalhes:**
 
-  Invocado quando um erro emitido por qualquer componente descendente é capturado. O gatilho recebe três argumentos: o erro, a instância do componente que disparou o erro, e uma String contendo informações sobre onde o erro foi caputado. O gatilho pode retornar `false` para impedir o erro de continuar se propagando.
+  Invocado quando um erro emitido por qualquer componente descendente é capturado. O gatilho recebe três argumentos: o erro, a instância do componente que disparou o erro, e uma String contendo informações sobre onde o erro foi capturado. O gatilho pode retornar `false` para impedir o erro de continuar se propagando.
 
-  <p class="tip">Você pode modificar o estado do componente neste gatilho. Entretanto, é importante possuir condicionais em seu _template_ ou função de renderização que alterne para outro conteúdo quando um erro tiver sido caputarado; caso contrário, o componente cairá em um _loop_ infinito de renderização.</p>
+  <p class="tip">Você pode modificar o estado do componente neste gatilho. Entretanto, é importante possuir condicionais em seu _template_ ou função de renderização que alterne para outro conteúdo quando um erro tiver sido capturado; caso contrário, o componente cairá em um _loop_ infinito de renderização.</p>
 
   **Regras de Propagação de Erros**
 
   - Por padrão, todos os erros ainda são enviados para o global `config.errorHandler` se estiver definido, desta forma estes erros ainda podem ser reportados a algum serviço de análise em um local único.
 
-  - Se múltiplos gatilhos `errorCaptured` exitirem em uma cadeia de heranças ou em uma cadeia de componentes pai, todos serão invocados pelo mesmo erro.
+  - Se múltiplos gatilhos `errorCaptured` existirem em uma cadeia de heranças ou em uma cadeia de componentes pai, todos serão invocados pelo mesmo erro.
 
   - Se o próprio gatilho `errorCaptured` dispara um erro, tanto este erro quanto o original são capturados e enviados ao gatilho global `config.errorHandler`.
 
-  - Um gatilho `errorCaptured` pode retornar `false` para previnir o erro de continuar se propagando. Isto essencialmente diria "este erro já foi interceptado e deve ser ignorado." Irá previnir quaisquer gatilhos `errorCaptured` adicionais e o global `config.errorHandler` de serem invocados por este erro.
+  - Um gatilho `errorCaptured` pode retornar `false` para prevenir o erro de continuar se propagando. Isto essencialmente diria "este erro já foi interceptado e deve ser ignorado." Irá prevenir quaisquer gatilhos `errorCaptured` adicionais e o global `config.errorHandler` de serem invocados por este erro.
 
 ## Opções / Recursos
 
@@ -1230,7 +1230,7 @@ type: api
 
 - **Detalhes:**
 
-  Quando especificada para `true`, esta opção irá preservar e renderizar comentários HTML encontrados nos _templates_. O comportamento padrão é discartá-los.
+  Quando especificada para `true`, esta opção irá preservar e renderizar comentários HTML encontrados nos _templates_. O comportamento padrão é descartá-los.
 
 ## Propriedades de Instância
 
@@ -1595,7 +1595,7 @@ type: api
 
   Se a instância do Vue não recebeu a opção `el` durante a instanciação, ela estará em um estado "não montado" sem um elemento DOM associado. `vm.$mount()` pode ser usada para começar a montagem de uma instância não montada do Vue.
 
-  Se o argumento `elementOrSelector` não for passado, o *template* será renderizado como um elemento "fora do documento" e você terá que usar a API nativa do DOM para inserí-lo no documento.
+  Se o argumento `elementOrSelector` não for passado, o *template* será renderizado como um elemento "fora do documento" e você terá que usar a API nativa do DOM para inseri-lo no documento.
 
   O método retorna a própria instância para que você possa encadear outros métodos de instâncias depois dele.
 
@@ -1705,7 +1705,7 @@ type: api
 
   <p class="tip">Renderizar dinamicamente HTML arbitrário em seu website pode ser muito perigoso porque isso pode facilmente levar a [ataques XSS](https://pt.wikipedia.org/wiki/Cross-site_scripting). Use `v-html` somente em conteúdo confiável e **nunca** em conteúdo fornecido por usuário.</p>
 
-  <p class="tip">Em [Componentes Single-File](../guide/single-file-components.html), estilos `scoped` não serão aplicados a conteúdos `v-html`, pois tal HTML não é processado pelo compilador de _templates_ do Vue. Se você quer atingir conteúdo `v-html` com CSS com escopo, é possível utilizar [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html) ou um elemento global adicional `<style>`, com uma estratégia manual de scopo como BEM.</p>
+  <p class="tip">Em [Componentes Single-File](../guide/single-file-components.html), estilos `scoped` não serão aplicados a conteúdos `v-html`, pois tal HTML não é processado pelo compilador de _templates_ do Vue. Se você quer atingir conteúdo `v-html` com CSS com escopo, é possível utilizar [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html) ou um elemento global adicional `<style>`, com uma estratégia manual de escopo como BEM.</p>
 
 - **Exemplo:**
 
@@ -1917,7 +1917,7 @@ type: api
 
 - **Forma abreviada:** `:`
 
-- **Espera:** `any (sem argumento) | Object (sem argumeto)`
+- **Espera:** `any (sem argumento) | Object (sem argumento)`
 
 - **Argumento:** `attrOrProp (opcional)`
 
@@ -1966,7 +1966,7 @@ type: api
   <!-- interligando propriedade. "prop" deve existir em my-component -->
   <my-component :prop="someThing"></my-component>
 
-  <!-- tramsmite todas as props do pai em comum com o componente-filho -->
+  <!-- transmite todas as props do pai em comum com o componente-filho -->
   <child-component v-bind="$props"></child-component>
 
   <!-- XLink -->
@@ -2134,7 +2134,7 @@ type: api
 
   Usado dentro de conteúdos inseridos no componente filho para indicar a qual *named slot* o conteúdo pertence.
 
-  Para maiores detalhes de uso, veja a sessão no guia linkado abaixo:
+  Para maiores detalhes de uso, veja a sessão no guia do link abaixo:
 
 - **Ver também:** [Slots Nomeados](../guide/components.html#Slots-Nomeados)
 
@@ -2289,11 +2289,11 @@ Usado para denotar um elemento `<template>` como um slot de escopo que foi subst
 
 - **Uso:**
 
-  `<transition-group>` serve como efeito de transição para **multiplos** elementos/componentes. O `<transition-group>` renderiza um elemento DOM real. Por padrão ele renderiza um `<span>`, e você pode configurar que elemento deverá ser renderizado através do atributo `tag` attribute.
+  `<transition-group>` serve como efeito de transição para **múltiplos** elementos/componentes. O `<transition-group>` renderiza um elemento DOM real. Por padrão ele renderiza um `<span>`, e você pode configurar que elemento deverá ser renderizado através do atributo `tag` attribute.
 
-  Note que cada filho em um `<transition-group>` deve ser **identificado unicamente** para as animações funcionarem corretametne.
+  Note que cada filho em um `<transition-group>` deve ser **identificado unicamente** para as animações funcionarem corretamente.
 
-  `<transition-group>` suporta transições em movimento via transformação CSS. Quando a posição de um filho na tela muda após uma atualização, ele aplicará uma classe CSS de movimento (gerada automaticamente a partir do atributo `name` ou configurada com o atributo` move-class`).  Se a propriedade CSS `transform` é passível de transiçã, quando a classe de movimento for aplicada, o elemento será animado de forma suave para seu destino usando a [técnica FLIP](https://aerotwist.com/blog/flip-your-animations/).
+  `<transition-group>` suporta transições em movimento via transformação CSS. Quando a posição de um filho na tela muda após uma atualização, ele aplicará uma classe CSS de movimento (gerada automaticamente a partir do atributo `name` ou configurada com o atributo` move-class`).  Se a propriedade CSS `transform` é passível de transição, quando a classe de movimento for aplicada, o elemento será animado de forma suave para seu destino usando a [técnica FLIP](https://aerotwist.com/blog/flip-your-animations/).
 
   ```html
   <transition-group tag="ul" name="slide">
