@@ -207,14 +207,18 @@ Diferente dos outros modificadores, exclusivos para eventos nativos, o `.once` t
 
 > Novo em 2.3.0+
 
+Vue also offers the `.passive` modifier, corresponding to [`addEventListener`'s `passive` option](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Parameters).
+
 ``` html
-<!-- o evento scroll não cancelará o comportamento padrão da rolagem -->
+<!-- o comportamento padrão do evento scroll (rolar) acontecerá -->
+<!-- imediatamente, ao invés de aguardar `onScroll` completar   -->
+<!-- para descobrir se ele chama `event.preventDefault()`       -->
 <div v-on:scroll.passive="onScroll">...</div>
 ```
 
-Em adição a estes modificadores, Vue oferece o modificador `.passive` para melhorar o desempenho, especialmente em dispositivos móveis. Por exemplo, ao utilizar a rolagem, o navegador irá rolar após o processo ser completado, pois não sabe se o manipulador do evento pretende chamar `event.preventDefault()`. O modificador `.passive` pode ser usado para avisar ao navegador que este evento não irá cancelar o comportamento padrão.
+O modificador `.passive` é especialmente útil para otimizar desempenho em dispositivos móveis.
 
-<p class="tip">Não utilize `.passive` e `.prevent` juntos. Um manipulador passivo não pode prevenir o evento padrão.</p>
+<p class="tip">Não use `.passive` e `.prevent` juntos, pois `.prevent` será ignorado e seu navegador provavelmente exibirá um aviso. Lembre-se, `.passive` comunica ao navegador que você _não_ quer previnir o comportamento padrão do evento.</p>
 
 ## Modificadores de Teclado
 
