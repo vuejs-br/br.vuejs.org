@@ -322,14 +322,14 @@ Vue.set(vm.userProfile, 'age', 30)
 Também é possível usar o método de instância `vm.$set`, um atalho para o global `Vue.set`:
 
 ``` js
-vm.$set(this.userProfile, 'age', 27)
+vm.$set(vm.userProfile, 'age', 27)
 ```
 
 Às vezes, você pode querer adicionar várias novas propriedades a um objeto existente, utilizando por exemplo `Object.assign()` ou `_.extend()`. Nestes casos, você pode criar um objeto novo com propriedades mescladas de ambos os objetos. Então, em vez de:
 
 ``` js
-Object.assign(this.userProfile, {
-  age: 30,
+Object.assign(vm.userProfile, {
+  age: 31,
   favoriteColor: 'Verde Vue'
 })
 ```
@@ -337,8 +337,8 @@ Object.assign(this.userProfile, {
 Você poderia adicionar novas propriedades reativas com:
 
 ``` js
-this.userProfile = Object.assign({}, this.userProfile, {
-  age: 30,
+vm.userProfile = Object.assign({}, vm.userProfile, {
+  age: 31,
   favoriteColor: 'Verde Vue'
 })
 ```

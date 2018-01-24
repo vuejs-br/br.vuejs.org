@@ -33,7 +33,36 @@ var component = new Component() // => "Bem-vindo ao mixin!"
 
 ## Mesclagem de Opções
 
-Quando um _mixin_ e o próprio componente contêm opções que se sobrepõem, eles serão mesclados usando estratégias apropriadas. Por exemplo, funções de gatilho com nome equivalente serão mescladas em um Array de modo que ambas as funções sejam executadas. As funções de gatilho declaradas no _mixin_ serão executadas **antes** dos gatilhos declarados no próprio componente:
+Quando um _mixin_ e o próprio componente contêm opções que se sobrepõem, elas serão mescladas usando estratégias apropriadas.
+
+Por exemplo, objetos de dados passam por uma mesclagem rasa (profundidade de uma propriedade), com os dados do componente tomando prioridade em caso de conflitos. 
+
+``` js
+var mixin = {
+  data: function () {
+    return {
+      message: 'olá',
+      foo: 'abc'
+    }
+  }
+}
+
+new Vue({
+  mixins: [mixin],
+  data: function () {
+    return {
+      message: 'adeus',
+      bar: 'def'
+    }
+  },
+  created: function () {
+    console.log(this.$data)
+    // => { message: "adeus", foo: "abc", bar: "def" }
+  }
+})
+```
+
+Funções de gatilho com o mesmo nome são mescladas em um Array, de forma que todas possam ser chamadas. Gatilhos do _mixin_ serão chamados **antes** dos gatilhos do próprios componente.
 
 ``` js
 var mixin = {

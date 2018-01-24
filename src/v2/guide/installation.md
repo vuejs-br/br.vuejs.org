@@ -34,9 +34,17 @@ Simplesmente faça o _download_ e inclua a _tag_ `<script>` com o caminho corret
 
 ### CDN
 
-Recomendado: [https://cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue), reflete a última versão assim que ela é disponibilizada no `npm`. Você também pode navegar pelo código-fonte do pacote em [https://cdn.jsdelivr.net/npm/vue/](https://cdn.jsdelivr.net/npm/vue/).
+Nós recomendados vincular a um número de versão específico que você possa atualizar manualmente:
 
-Também disponível no [unpkg](https://unpkg.com/vue) e no [cdnjs](https://cdnjs.cloudflare.com/ajax/libs/vue/{{vue_version}}/vue.js) (cdnjs leva algum tempo para sincronizar com a última versão logo que é lançada).
+``` html
+<script src="https://cdn.jsdelivr.net/npm/vue@{{vue_version}}/dist/vue.js"></script>
+```
+
+Você pode navegar pelos códigos-fonte do pacote NPM em [cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue/).
+
+Vue também está disponível no [unpkg](https://unpkg.com/vue@{{vue_version}}/dist/vue.js) e no [cdnjs](https://cdnjs.cloudflare.com/ajax/libs/vue/{{vue_version}}/vue.js) (cdnjs leva algum tempo para sincronizar, então a última versão lançada pode não estar disponível ainda).
+
+Tenha certeza de ler sobre [as diferentes distribuições do Vue](#Explicacao-das-Distribuicoes) e usar a **versão para produção** em seu projeto publicado, alterando `vue.js` por `vue.min.js`. Este é um pacote menor otimizado para desempenho ao invés de experiência de desenvolvimento.
 
 ## NPM
 

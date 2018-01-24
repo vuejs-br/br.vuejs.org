@@ -327,6 +327,8 @@ type: api
   var myFilter = Vue.filter('my-filter')
   ```
 
+- **See also:** [Filters](../guide/filters.html)
+
 ### Vue.component( id, [definition] )
 
 - **Argumentos:**
@@ -791,11 +793,9 @@ type: api
 
 - **Detalhes:**
 
-  Invocado quando os dados mudam, antes do virtual DOM ser re-renderizado e atualizado.
+  Invocado quando os dados mudam, antes do virtual DOM ser re-renderizado e atualizado. Este é um bom local para acessar DOM existente antes de uma atualização, por exemplo, para remover escutas de eventos adicionadas manualmente.
 
-  Você pode realizar mais mudanças de estado neste gatilho e elas não irão disparar re-renders adicionais.
-
-  **Este gatilho não é invocado em Renderização no Lado do Servidor.**
+  **Este gatilho não é invocado em Renderização no Lado do Servidor, pois apenas a renderização inicial é realizada no servidor.**
 
 - **Ver também:** [Diagrama do Ciclo de Vida](../guide/instance.html#Diagrama-do-Ciclo-de-Vida)
 
