@@ -13,6 +13,8 @@ Agora iremos responder tanto o que a comunidade pode fazer por você, quanto o q
 ### Obtendo Suporte
 
 - [Fórum](http://forum.vuejs.org/) (_inglês_): O melhor lugar para fazer perguntas e obter respostas sobre Vue e seu ecossistema.
+- [Fórum](https://github.com/vuejs-br/forum) (_português_): O melhor lugar para fazer perguntas e obter respostas sobre Vue e seu ecossistema, em português.
+
 - [Chat](https://chat.vuejs.org/) (_inglês_): Um local para desenvolvedores se encontrarem e conversarem em tempo real.
 - [GitHub](https://github.com/vuejs) (_inglês_): Se encontrar um _bug_ ou quiser solicitar algum recurso, é para isso que _issues_ do GitHub estão lá. Também agradecemos _pull requests_!
 - [Comunidade Brasileira](https://github.com/vuejs-br/comunidades) (_português_): Se a conversa em inglês não é muito sua praia, a comunidade brasileira criou uma lista com todos locais oficialmente reconhecidos, para que você possa se envolver sem abandonar a última flor do Lácio.
