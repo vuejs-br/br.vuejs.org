@@ -91,3 +91,8 @@ Atualmente recomenda-se que estes termos sejam mantidos em inglês:
 ## Como se envolver com a comunidade?
 
 Se você não chegou até aqui para colaborar, mas sim para pedir ajuda sobre alguma coisa da documentação oficial do Vue, a Comunidade Brasileira criou [uma lista](https://github.com/vuejs-br/comunidades) com todos locais oficialmente reconhecidos. Saiba que a comunidade Vue é muito receptiva (no Brasil e no mundo), então não se acanhe para se envolver mais.
+
+## Estou com dúvidas sobre o Vue, onde posso perguntar
+
+Nós temos o nosso fórum em pt-br sobre o Vue, basta [clicar aqui](https://github.com/vuejs-br/forum/). Este fórum está no próprio GitHub, e usamos o gerenciamento de Issues como um fórum.
+
