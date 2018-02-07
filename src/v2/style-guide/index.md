@@ -145,7 +145,7 @@ Vue.component('some-comp', {
 ```
 
 ``` js
-// In a .vue file
+// No arquivo .vue
 export default {
   data () {
     return {
@@ -157,8 +157,8 @@ export default {
 
 ``` js
 // Tudo bem usar um objeto diretamente na raiz
-// da instância Vue, já que existe uma simples
-// instância única existente
+// da instância Vue, já que existe uma única
+// instância na app toda
 new Vue({
   data: {
     foo: 'bar'
@@ -168,37 +168,37 @@ new Vue({
 {% raw %}</div>{% endraw %}
 
 
-### Prop definitions <sup data-p="a">essential</sup>
+### Definido Prop <sup data-p="a">essential</sup>
 
-**Prop definitions should be as detailed as possible.**
+**A definição de Prop deve ser a mais detalhada possível.**
 
-In committed code, prop definitions should always be as detailed as possible, specifying at least type(s).
+No código, a definição de propriedades deve ser a mais detalhada possível, especificando pelo menos o seu tipo(s).
 
 {% raw %}
 <details>
 <summary>
-  <h4>Detailed Explanation</h4>
+  <h4>Explicação Detalhada</h4>
 </summary>
 {% endraw %}
 
-Detailed [prop definitions](https://vuejs.org/v2/guide/components.html#Prop-Validation) have two advantages:
+Detalhando as [definições prop](https://vuejs.org/v2/guide/components.html#Prop-Validation) tem-se duas vantagens:
 
-- They document the API of the component, so that it's easy to see how the component is meant to be used.
-- In development, Vue will warn you if a component is ever provided incorrectly formatted props, helping you catch potential sources of error.
+- Eles documentam a API do componente, então fica mais fácil ver como o componente pode ser ser usado.
+- Em desenvolvimento, Vue irá notificar se o componente possui um formato inválido no props, ajudando-o a encontrar possíveis erros no seu código. 
 
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ``` js
-// This is only OK when prototyping
+//  Isto está OK enquanto prototipa
 props: ['status']
 ```
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exempllo Bom
 
 ``` js
 props: {
@@ -207,7 +207,7 @@ props: {
 ```
 
 ``` js
-// Even better!
+// Muito melhor
 props: {
   status: {
     type: String,
@@ -225,22 +225,21 @@ props: {
 ```
 {% raw %}</div>{% endraw %}
 
+### Uso do key no `v-for` <sup data-p="a">essencial</sup>
 
+**Sempre use o atributo `key` com `v-for`.**
 
-### Keyed `v-for` <sup data-p="a">essential</sup>
+`key` com `v-for` deve ser sempre usado nos componentes, para manter o estado interno do componente em ordem. Mesmo para elementos, é uma boa prática manter este comportamento, tal como [a constância de um objeto](https://bost.ocks.org/mike/constancy/) em animações.
 
-**Always use `key` with `v-for`.**
-
-`key` with `v-for` is _always_ required on components, in order to maintain internal component state down the subtree. Even for elements though, it's a good practice to maintain predictable behavior, such as [object constancy](https://bost.ocks.org/mike/constancy/) in animations.
 
 {% raw %}
 <details>
 <summary>
-  <h4>Detailed Explanation</h4>
+  <h4>Explicação Detalhada</h4>
 </summary>
 {% endraw %}
 
-Let's say you have a list of todos:
+Vamos dizer que você tem uma lista de tarefas:
 
 ``` js
 data: function () {
@@ -248,27 +247,27 @@ data: function () {
     todos: [
       {
         id: 1,
-        text: 'Learn to use v-for'
+        text: 'Aprender a usar v-for'
       },
       {
         id: 2,
-        text: 'Learn to use key'
+        text: 'Aprender a usar key'
       }
     ]
   }
 }
 ```
 
-Then you sort them alphabetically. When updating the DOM, Vue will optimize rendering to perform the cheapest DOM mutations possible. That might mean deleting the first todo element, then adding it again at the end of the list.
+Então você a classifica em ordem alfabética. Ao atualizar a DOM, o Vue otimizará a renderização para realizar o mínimo de mudança possível na DOM. Isso pode significar a exclusão do primeiro elemento da lista de tarefas, então adicioná-lo novamente no fim da lista. 
 
-The problem is, there are cases where it's important not to delete elements that will remain in the DOM. For example, you may want to use `<transition-group>` to animate list sorting, or maintain focus if the rendered element is an `<input>`. In these cases, adding a unique key for each item (e.g. `:key="todo.id"`) will tell Vue how to behave more predictably.
+O problema é que existem casos em que é importante não remover elementos que permanecem na DOM. Por exemplo, talvez você use `<transition-group>` para animar o ordenação da lista, ou queira manter o foco em cada elemento renderizado como um `<input>`. Nestes casos, adicionar uma chave esclusiva para cada item (ex: `:key="todo.id"`) irá dizer ao Vue como se comportar de forma mais previsível.
 
-In our experience, it's better to _always_ add a unique key, so that you and your team simply never have to worry about these edge cases. Then in the rare, performance-critical scenarios where object constancy isn't necessary, you can make a conscious exception.
+Em nossa experiência, é melhor _sempre_ adicionar uma chave única, para que você e sua equipe nunca tenham que se preocupar com esses casos isolados. Então, às vezes, em cenários raros que envolvem problemas críticos de performance, você pode fazer uma exceção de forma consciente.  
 
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ``` html
 <ul>
@@ -280,7 +279,7 @@ In our experience, it's better to _always_ add a unique key, so that you and you
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ``` html
 <ul>
@@ -294,11 +293,9 @@ In our experience, it's better to _always_ add a unique key, so that you and you
 ```
 {% raw %}</div>{% endraw %}
 
+### Evite `v-if` com `v-for` <sup data-p="a">essencial</sup>
 
-
-### Avoid `v-if` with `v-for` <sup data-p="a">essential</sup>
-
-**Never use `v-if` on the same element as `v-for`.**
+**Nunca use `v-if` no mesmo elemento `v-for`.**
 
 There are two common cases where this can be tempting:
 
