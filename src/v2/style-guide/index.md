@@ -22,35 +22,28 @@ Estas regras ajudam a prevenir erros, então aprenda e respeite-as a todo custo.
 
 Estas regras são usadas para melhorar a leitura e/ou experiência do desenvolvedor nos seus projetos. Seu código será executado caso viole alguma regra, mas estas costumam ser raras e bem justificadas.
 
-### Priority C: Recomendado
+### Prioridade C: Recomendado
 
 Onde múltiplas, igualmente boas opções coexistem,  uma escolha arbitrária pode ser feita para garantir consistência. Nestas regras, descrevemos cada opção aceitável e sugerimos uma opção padrão. Isso significa que você está livre para escolher uma opção diferente no seu código, caso tenha uma boa razão para isso. Mas tenha um bom motivo! Ao se adaptar ao padrão sugerido, você irá: 
 
 1. Tornar o entendimento mais fácil já que o código é o mais usado pela comunidade.
-2. Ser capaz de copiar e colar os exemplos mais comuns da comunidade sem a necessidade de modificação.
+2. Ser capaz de copiar e colar os exemplos mais comuns da comunidade sem a necessidade de modificação. 
+3. Encontrar com mais frequência um estilo de código que já está se acostumado, pelo menos em relação ao Vue.
 
-1. train your brain to more easily parse most of the community code you encounter
-2. be able to copy and paste most community code examples without modification
-3. often find new hires are already accustomed to your preferred coding style, at least in regards to Vue
+### Prioridade D: Use com cautela
 
-### Priority D: Use with Caution
+Existem algumas recursos do Vue usados para lidar com casos isolados ou migrações mais suaves de um código legado. No entanto, quando algo está complexo demais, seu código pode ficar mais difícil de manter ou até mesmo se tornar uma fonte de erros. Esta prioridade ilustram características potencialmente arriscadas, descrevendo quando e porque elas devem ser evitadas.
 
-Some features of Vue exist to accommodate rare edge cases or smoother migrations from a legacy code base. When overused however, they can make your code more difficult to maintain or even become a source of bugs. These rules shine a light on potentially risky features, describing when and why they should be avoided.
+## Regras da Prioridade A: Essencial (Prevenindo Erros)
 
+### Nomes de componentes com multi-palavras <sup data-p="a">Essencial</sup>
 
+**Nomes de componentes devem ser sempre multi-palavras, exceto o componente raiz `App`.**
 
-## Priority A Rules: Essential (Error Prevention)
-
-
-
-### Multi-word component names <sup data-p="a">essential</sup>
-
-**Component names should always be multi-word, except for root `App` components.**
-
-This [prevents conflicts](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name) with existing and future HTML elements, since all HTML elements are a single word.
+Isto [previne conflitos](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name) com elementos HTML existentes e futuros, desque que todos os elementos HTML são formados por apenas uma única palavra.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ``` js
 Vue.component('todo', {
@@ -67,7 +60,7 @@ export default {
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ``` js
 Vue.component('todo-item', {
@@ -83,22 +76,20 @@ export default {
 ```
 {% raw %}</div>{% endraw %}
 
+### Propriedade data no componente <sup data-p="a">Essencial</sup>
 
+**A propriedade `data` do componente deve ser uma funcao**
 
-### Component data <sup data-p="a">essential</sup>
-
-**Component `data` must be a function.**
-
-When using the `data` property on a component (i.e. anywhere except on `new Vue`), the value must be a function that returns an object.
+Quando usamos a propriedade `data` em um componente (ex: qualquer um exceto no `new Vue`), o valor desta propriedade deve ser uma função que retorna um objeto.
 
 {% raw %}
 <details>
 <summary>
-  <h4>Detailed Explanation</h4>
+  <h4>Explicação detalhada</h4>
 </summary>
 {% endraw %}
 
-When the value of `data` is an object, it's shared across all instances of a component. Imagine, for example, a `TodoList` component with this data:
+Quando usamos o valor da propriedade `data` como um objeto, ele é compartilhado em todas as instâncias de um componente. Imagine, por exemplo, o componente `TodoList` com este data:
 
 ``` js
 data: {
@@ -107,9 +98,9 @@ data: {
 }
 ```
 
-We might want to reuse this component, allowing users to maintain multiple lists (e.g. for shopping, wishlists, daily chores, etc). There's a problem though. Since every instance of the component references the same data object, changing the title of one list will also change the title of every other list. The same is true for adding/editing/deleting a todo.
+Podemos querer reutilizar este componente, permitindo que usuários possuam múltiplas listas. (ex: para uma lista de compras, tarefas do dia a dia etc). Ainda existe outro problema. Como cada instância de um componente referencia o mesmo objeto `data`, alterar o título de uma destas listas iria também alterar o título de todas as outras listas. O mesmo aconteceria ao adicionar/editar/deletar uma tarefa.
 
-Instead, we want each component instance to only manage its own data. For that to happen, each instance must generate a unique data object. In JavaScript, this can be accomplished by returning the object in a function:
+Em vez disso, queremos que cada instância gerencie os seus próprios dados. Para que isso aconteça, cada instância deve gerar um objeto data único. No Javascript, isso pode ser feito através do retorno de um objeto em uma função:
 
 ``` js
 data: function () {
@@ -122,7 +113,7 @@ data: function () {
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ``` js
 Vue.component('some-comp', {
@@ -142,7 +133,7 @@ export default {
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 ``` js
 Vue.component('some-comp', {
   data: function () {
@@ -165,9 +156,9 @@ export default {
 ```
 
 ``` js
-// It's OK to use an object directly in a root
-// Vue instance, since only a single instance
-// will ever exist.
+// Tudo bem usar um objeto diretamente na raiz
+// da instância Vue, já que existe uma simples
+// instância única existente
 new Vue({
   data: {
     foo: 'bar'
@@ -175,7 +166,6 @@ new Vue({
 })
 ```
 {% raw %}</div>{% endraw %}
-
 
 
 ### Prop definitions <sup data-p="a">essential</sup>
