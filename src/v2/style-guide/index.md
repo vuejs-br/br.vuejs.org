@@ -297,20 +297,22 @@ Em nossa experiência, é melhor _sempre_ adicionar uma chave única, para que v
 
 **Nunca use `v-if` no mesmo elemento `v-for`.**
 
-There are two common cases where this can be tempting:
+Existem dois casos em comum que você possa querer fazer isso:
 
-- To filter items in a list (e.g. `v-for="user in users" v-if="user.isActive"`). In these cases, replace `users` with a new computed property that returns your filtered list (e.g. `activeUsers`).
+- Para filtar itens em uma lista (ex: `v-for="user in users" v-if="user.isActive"`). neste caso, troque `users` para uma propriedade calculada (computed) que retorne a lista filtrada (ex: `activeUsers`).
 
-- To avoid rendering a list if it should be hidden (e.g. `v-for="user in users" v-if="shouldShowUsers"`). In these cases, move the `v-if` to a container element (e.g. `ul`, `ol`).
+- Evite usar uma lista que deveria estar oculta (ex: `v-for="user in users" v-if="shouldShowUsers"`)
+
+- To avoid rendering a list if it should be hidden (e.g. `v-for="user in users" v-if="shouldShowUsers"`, com `shouldShowUsers` sendo `false`). Nestes casos, mova o `v-if` para um container acima do `v-for` (ex: `ul`, `ol`)
 
 {% raw %}
 <details>
 <summary>
-  <h4>Detailed Explanation</h4>
+  <h4>Explicação Detalhada</h4>
 </summary>
 {% endraw %}
 
-When Vue processes directives, `v-for` has a higher priority than `v-if`, so that this template:
+Quando o Vue processa ditetivas, `v-for` tem uma maior prioridade que `v-if`, então neste template:
 
 ``` html
 <ul>
@@ -324,7 +326,7 @@ When Vue processes directives, `v-for` has a higher priority than `v-if`, so tha
 </ul>
 ```
 
-Will be evaluated similar to:
+Seria traduzido para algo como:
 
 ``` js
 this.users.map(function (user) {
@@ -334,9 +336,9 @@ this.users.map(function (user) {
 })
 ```
 
-So even if we only render elements for a small fraction of users, we have to iterate over the entire list every time we re-render, whether or not the set of active users has changed.
+Portanto, mesmo se renderizarmos estes elementos com uma quantidade pequena de usuarios, teremos que iterar cada item da lista toda vez que ela for renderizada, independente se o conjunto de usuários mudou ou não.
 
-By iterating over a computed property instead, like this:
+Iterado através de uma propriedade computada, teremos algo como:
 
 ``` js
 computed: {
@@ -359,13 +361,13 @@ computed: {
 </ul>
 ```
 
-We get the following benefits:
+Temos agora os seguintes benefícios:
 
-- The filtered list will _only_ be re-evaluated if there are relevant changes to the `users` array, making filtering much more efficient.
-- Using `v-for="user in activeUsers"`, we _only_ iterate over active users during render, making rendering much more efficient.
-- Logic is now decoupled from the presentation layer, making maintenance (change/extension of logic) much easier.
+- A lista filtrada _somente_ será recalculada se houver mudanças relevantes no array `users`, tornando a filtragem muito mais eficiente.
+- Usando `v-for="user in activeUsers"`, _somente_ há a iteração sobre os usuários ativos durante a renderização, o que a torna muito mais eficiente.
+- A lógica agora está desacoplada da camada de apresentação, tornando a sua manutenção (alteração/extensão da lógica) muito mais fácil.
 
-We get similar benefits from updating:
+Temos benefícios semelhantes ao alterar:
 
 ``` html
 <ul>
@@ -379,7 +381,7 @@ We get similar benefits from updating:
 </ul>
 ```
 
-to:
+para:
 
 ``` html
 <ul v-if="shouldShowUsers">
@@ -392,12 +394,14 @@ to:
 </ul>
 ```
 
-By moving the `v-if` to a container element, we're no longer checking `shouldShowUsers` for _every_ user in the list. Instead, we check it once and don't even evaluate the `v-for` if `shouldShowUsers` is false.
+Movendo o `v-if` para o elemento de container, não estamos mais verificando `shouldShowUsers` para _cada_ usuário na lista. 
+
+Em vez disso, verificamos uma vez e nem avaliamos o `v-for` se `shouldShowUsers` for falso.
 
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo ruim
 
 ``` html
 <ul>
@@ -425,7 +429,7 @@ By moving the `v-if` to a container element, we're no longer checking `shouldSho
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ``` html
 <ul>
@@ -449,8 +453,6 @@ By moving the `v-if` to a container element, we're no longer checking `shouldSho
 </ul>
 ```
 {% raw %}</div>{% endraw %}
-
-
 
 ### Component style scoping <sup data-p="a">essential</sup>
 
