@@ -454,31 +454,32 @@ Em vez disso, verificamos uma vez e nem avaliamos o `v-for` se `shouldShowUsers`
 ```
 {% raw %}</div>{% endraw %}
 
-### Component style scoping <sup data-p="a">essential</sup>
+### Estilos com escopo em componentes <sup data-p="a">essencial</sup>
 
-**For applications, styles in a top-level `App` component and in layout components may be global, but all other components should always be scoped.**
+**Para aplicações, estilos css no componente mais alto nível `App` e componentes de layout global, mas todos os outros componentes devem ser sempre com a diretiva `scope`**
 
-This is only relevant for [single-file components](../guide/single-file-components.html). It does _not_ require that the [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html) be used. Scoping could be through [CSS modules](https://vue-loader.vuejs.org/en/features/css-modules.html), a class-based strategy such as [BEM](http://getbem.com/), or another library/convention.
+Isto é apenas relevante para [componentes de aquivo úncio .vue](../guide/single-file-components.html). Ele _não_ requer que o [atributo `scope`](https://vue-loader.vuejs.org/en/features/scoped-css.html) seja usado. Escopo pode ser através de [Módulos CSS](https://vue-loader.vuejs.org/en/features/css-modules.html), uma estratégia baseada em classes tais como o [BEM](http://getbem.com/), ou outra biblioeca/convenção.
 
-**Component libraries, however, should prefer a class-based strategy instead of using the `scoped` attribute.**
+**As bibliotecas de componentes, no entanto, devem usar uma estratégia baseada em classes, ao invés de usar o atributo `scoped`**
 
-This makes overriding internal styles easier, with human-readable class names that don't have too high specificity, but are still very unlikely to result in a conflict.
+Isso torna os estilos internos mais fáceis, com nomes de classes legíveis, sem muita  especificidade, e ainda improváveis ​​que resultem em um conflito.
 
 {% raw %}
 <details>
 <summary>
-  <h4>Detailed Explanation</h4>
+  <h4>Explicação detalhada</h4>
 </summary>
 {% endraw %}
 
-If you are developing a large project, working with other developers, or sometimes include 3rd-party HTML/CSS (e.g. from Auth0), consistent scoping will ensure that your styles only apply to the components they are meant for.
+Se você está desenvolvendo um projeto maior, trabalhando com outros desenvolvedores, ou as vezes incluindo algum elemento de terceiro (ex: do Auth0), usar o scopo irá garantir que o seu estilo se aplica somente aos componentes destinados a ele.
 
-Beyond the `scoped` attribute, using unique class names can help ensure that 3rd-party CSS does not apply to your own HTML. For example, many projects use the `button`, `btn`, or `icon` class names, so even if not using a strategy such as BEM, adding an app-specific and/or component-specific prefix (e.g. `ButtonClose-icon`) can provide some protection.
+Além do atributo `scoped`, usando nomes de classes únicas, garanta que CSS de terceiros não irão se aplicar ao seu HTML. Por exemplo, muitos projetos usam as classes `button`, `btn` ou `icon`, então mesmo que não use uma estratégia como a BEM, adicione um prefixo específico da aplicação ou do componente (ex: `ButtonClose-icon`) para proteger o seu componente de outras alterações.
+
 
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ``` html
 <template>
@@ -494,14 +495,14 @@ Beyond the `scoped` attribute, using unique class names can help ensure that 3rd
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo bom
 
 ``` html
 <template>
   <button class="button button-close">X</button>
 </template>
 
-<!-- Using the `scoped` attribute -->
+<!-- Usando o atributo `scoped` -->
 <style scoped>
 .button {
   border: none;
@@ -519,7 +520,7 @@ Beyond the `scoped` attribute, using unique class names can help ensure that 3rd
   <button :class="[$style.button, $style.buttonClose]">X</button>
 </template>
 
-<!-- Using CSS modules -->
+<!-- usando modulos css -->
 <style module>
 .button {
   border: none;
@@ -537,7 +538,7 @@ Beyond the `scoped` attribute, using unique class names can help ensure that 3rd
   <button class="c-Button c-Button--close">X</button>
 </template>
 
-<!-- Using the BEM convention -->
+<!-- Usando a convenção BEM -->
 <style>
 .c-Button {
   border: none;
