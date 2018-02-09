@@ -370,7 +370,7 @@ Por exemplo:
 on: {
   '!click': this.doThisInCapturingMode,
   '~keyup': this.doThisOnce,
-  `~!mouseover`: this.doThisOnceInCapturingMode
+  '~!mouseover': this.doThisOnceInCapturingMode
 }
 ```
 
@@ -578,7 +578,25 @@ Vue.component('smart-list', {
 })
 ```
 
-### `slots()` vs. `children`
+### Passing Attributes and Events to Child Elements/Components
+
+On normal components, attributes not defined as props are automatically added to the root element of the component, replacing or [intelligently merging with](class-and-style.html) any existing attributes of the same name. 
+
+Functional components, however, require you to explicitly define this behavior:
+
+```js
+Vue.component('my-functional-button', {
+  functional: true,
+  render: function (createElement, context) {
+    // Transparently pass any attributes, event listeners, children, etc.
+    return createElement('button', context.data, context.children)
+  }
+})
+```
+
+By passing `context.data` as the second argument to `createElement`, we are passing down any attributes or event listeners used on `my-functional-button`. It's so transparent, in fact, that events don't even require the `.native` modifier.
+
+### `slots()` vs `children`
 
 Você pode ser perguntar por que nós precisamos de ambos - `slots()` e `children`. Não seria `slots().default` o mesmo que `children`? Em alguns casos, sim - mas o que aconteceria se você tivesse um componente funcional contendo os seguintes elementos filhos?
 

@@ -256,7 +256,7 @@ type: api
 
   Atribui uma propriedade em um objeto. Se o objeto é reativo, certifique-se que a propriedade será criada como uma propriedade reativa e disparará atualizações na view. Isto é usado primariamente para contornar a limitação do Vue em não conseguir detectar adições de propriedades.
 
-  **Note que o objeto não pode ser uma instância do Vue ou o dado de um objeto root de uma instância do Vue.**
+  <p class="tip">O objeto alvo não pode ser uma instância Vue, ou um objeto de dados raiz de uma instância Vue.</p>
 
 - **Ver também:** [Reatividade em Profundidade](../guide/reactivity.html)
 
