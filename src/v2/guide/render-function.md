@@ -578,23 +578,23 @@ Vue.component('smart-list', {
 })
 ```
 
-### Passing Attributes and Events to Child Elements/Components
+### Passando Atributos e Eventos para Elementos/Componentes Filhos
 
-On normal components, attributes not defined as props are automatically added to the root element of the component, replacing or [intelligently merging with](class-and-style.html) any existing attributes of the same name. 
+Em componentes normais, atributos não definidos como propriedades são automaticamente adicionados ao elemento raiz do componente, substituindo ou [mesclando de forma inteligente](class-and-style.html) qualquer atributo existente com o mesmo nome.
 
-Functional components, however, require you to explicitly define this behavior:
+Componentes funcionais, todavia, requerem que você defina explicitamente esse comportamento:
 
 ```js
 Vue.component('my-functional-button', {
   functional: true,
   render: function (createElement, context) {
-    // Transparently pass any attributes, event listeners, children, etc.
+    // Passe, de forma transparente, qualquer atributo, escutas de evento, filhos, etc.
     return createElement('button', context.data, context.children)
   }
 })
 ```
 
-By passing `context.data` as the second argument to `createElement`, we are passing down any attributes or event listeners used on `my-functional-button`. It's so transparent, in fact, that events don't even require the `.native` modifier.
+Passando `context.data` como segundo argumento para `createElement`, nós passamos adiante quaisquer atributos ou escutas de eventos usando no `my-functional-button`. É tão transparente, de fato, que os eventos não precisam sequer o modificar `.native`.
 
 ### `slots()` vs `children`
 
