@@ -22,7 +22,7 @@ O mais básico _data binding_, interpolando texto com a sintaxe _Mustache_ (chav
 
 A _tag mustache_ vai ser trocada pelo valor da propriedade `msg` do objeto de dados correspondente. Esse texto também reagirá sempre que a propriedade `msg` for modificada.
 
-Você também pode realizar interpolações únicas (não são atualizadas se o objeto é modificado no futuro) através da [diretiva v-once](/api/#v-once), mas lembre-se que esse comportamento afetará qualquer _binding_ realizado no mesmo nó:
+Você também pode realizar interpolações únicas que não são atualizada quando os dados mudam através da [diretiva v-once](/api/#v-once), mas lembre-se que isso afetará qualquer _binding_ realizado no mesmo nó:
 
 ``` html
 <span v-once>Esse valor nunca será modificado: {{ msg }}</span>

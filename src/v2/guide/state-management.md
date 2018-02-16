@@ -10,7 +10,7 @@ Aplicações grandes podem também crescer em complexidade, principalmente devid
 
 ### Informação para Desenvolvedores React
 
-Se você vem do React, é possível que esteja se perguntando como vuex se compara ao [redux](https://github.com/reactjs/redux), a mais popular implementação Flux daquele ecossistema. Redux é agnóstico em relação à camada _view_, podendo ser facilmente utilizado com Vue através de alguns [bindings simples](https://github.com/egoist/revue). Vuex é diferente, uma vez que ele **sabe** que está em uma aplicação Vue. Isto permite melhor integração com o Vue, oferecendo uma API mais intuitiva e uma experiência de desenvolvimento otimizada.
+Se você vem do React, é possível que esteja se perguntando como vuex se compara ao [redux](https://github.com/reactjs/redux), a mais popular implementação Flux daquele ecossistema. Redux é agnóstico em relação à camada _view_, podendo ser facilmente utilizado com Vue através de alguns [bindings simples](https://yarnpkg.com/en/packages?q=redux%20vue&p=1). Vuex é diferente, uma vez que ele **sabe** que está em uma aplicação Vue. Isto permite melhor integração com o Vue, oferecendo uma API mais intuitiva e uma experiência de desenvolvimento otimizada.
 
 ## Gerenciamento de Estado do Zero
 
