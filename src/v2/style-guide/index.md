@@ -566,14 +566,14 @@ Além do atributo `scoped`, usando nomes de classes únicas, garanta que CSS de 
 
 O Vue usa o prefixo `_` para definir suas próprias propriedades privadas, então, usando o mesmo prefixo (por exemplo,`_update`), uma propriedade de instância pode ser sobrescrita. Mesmo se você verificar e o Vue não estiver usando um nome de propriedade específico, não há garantia de que um conflito não surgirá em uma versão posterior.
 
-As for the `$` prefix, it's purpose within the Vue ecosystem is special instance properties that are exposed to the user, so using it for _private_ properties would not be appropriate.
+Quanto ao prefixo `$`, o propósito dentro do ecosistema Vue são as propriedades especiais da instância que estão expostas ao usuário, portanto, usá-lo como propriedades _private_ não seria apropriado.
 
-Instead, we recommend combining the two prefixes into `$_`, as a convention for user-defined private properties that guarantee no conflicts with Vue.
+Em vez disso, recomendamos combinar os dois prefixos em `$_`, como uma convenção para propriedades privadas, definidas pelo usuário que para não haver conflitos com o Vue.
 
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ``` js
 var myGreatMixin = {
@@ -622,7 +622,7 @@ var myGreatMixin = {
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ``` js
 var myGreatMixin = {
@@ -638,18 +638,18 @@ var myGreatMixin = {
 
 
 
-## Priority B Rules: Strongly Recommended (Improving Readability)
+## Prioridade B: Altamente recomendadas (Melhora a legibilidade)
 
 
 
-### Component files <sup data-p="b">strongly recommended</sup>
+### Cada componente é um arquivo <sup data-p="b">Altamente recomendado</sup>
 
-**Whenever a build system is available to concatenate files, each component should be in its own file.**
+**Sempre que houver um sistema de compilação para concatenar arquivos, cada componente deve estar em seu próprio arquivo.**
 
-This helps you to more quickly find a component when you need to edit it or review how to use it.
+Isso ajuda você a encontrar mais rapidamente um componente quando precisar editá-lo ou verificar como usá-lo.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ``` js
 Vue.component('TodoList', {
@@ -663,7 +663,7 @@ Vue.component('TodoItem', {
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ```
 components/
