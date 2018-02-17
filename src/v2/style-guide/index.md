@@ -678,16 +678,14 @@ components/
 ```
 {% raw %}</div>{% endraw %}
 
+### Casing dos Componentes de arquivo único (Single-File Components) <sup data-p="b">Fortemente recomendado</sup>
 
+**Nomes de arquivos [componentes de arquivo único](../guide/single-file-components.html) devem ser sempres *PascalCase* ou *kebab-case*.
 
-### Single-file component filename casing <sup data-p="b">strongly recommended</sup>
-
-**Filenames of [single-file components](../guide/single-file-components.html) should either be always PascalCase or always kebab-case.**
-
-PascalCase works best with autocompletion in code editors, as it's consistent with how we reference components in JS(X) and templates, wherever possible. However, mixed case filenames can sometimes create issues on case-insensitive filesystems, which is why kebab-case is also perfectly acceptable.
+PascalCase funciona melhor com autocomplete nos editores, pois é consistente com a forma de como os componentes JavaScript são referenciados, sempre que possível. No entanto, nomes de arquivos mistos podem às vezes criar problemas em sistemas *case-insensitive*, no qual o *kebal-case* é melhor aceitável.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ```
 components/
@@ -701,7 +699,7 @@ components/
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ```
 components/
@@ -714,36 +712,38 @@ components/
 ```
 {% raw %}</div>{% endraw %}
 
+### Nome de componentes base <sup data-p="b">Fortemente recomendado</sup>
 
-
-### Base component names <sup data-p="b">strongly recommended</sup>
-
-**Base components (a.k.a. presentational, dumb, or pure components) that apply app-specific styling and conventions should all begin with a specific prefix, such as `Base`, `App`, or `V`.**
+**Componentes base (ex: de apresentação, componentes puros ) que se aplicam a estilos e convenções específicos da aplicação, tais como `Base`, `App`, ou `V`.** 
 
 {% raw %}
 <details>
 <summary>
-  <h4>Detailed Explanation</h4>
+  <h4>Explicação Detalhada</h4>
 </summary>
 {% endraw %}
 
-These components lay the foundation for consistent styling and behavior in your application. They may **only** contain:
+Estes componentes são a base para a definição de um estilo e comportamente consistente na aplicação. Eles **somente** devem conter:
 
-- HTML elements,
-- other `Base`-prefixed components, and
-- 3rd-party UI components.
+- Elementos HTML,
+- Outros componntes prefixados com `Base` , e
+- Elementos de UI de terceiros.
 
-But they'll **never** contain global state (e.g. from a Vuex store).
+Mas todos eles **nunca** devem conter um um estado global (um Vuex store por exemplo)
 
-Their names often include the name of an element they wrap (e.g. `BaseButton`, `BaseTable`), unless no element exists for their specific purpose (e.g. `BaseIcon`). If you build similar components for a more specific context, they will almost always consume these components (e.g. `BaseButton` may be used in `ButtonSubmit`).
+Os nomes deles geralmente incluem o nome de um elemento que eles envolvem (por exemplo, "BaseButton", "BaseTable"), a menos que nenhum elemento exista para o propósito específico (por exemplo, 'BaseIcon'). Se você construir componentes semelhantes para um contexto mais específico, eles quase sempre consomem esses componentes (por exemplo, o `BaseButton` pode ser usado em` ButtonSubmit`).
 
-Some advantages of this convention:
+Estes nomes incluem o nome dos elementos em que se relacionam (ex `BaseButton`, `BaseTable`), a menos que nenhum elemento exista para um propósito específico (por exemplo, `BaseIcone`). Se você criar elementos similares para um contexto mais específico, eles na maioria das vezes usam estes componentes (ex `BaseButton` pode ser usado por `ButtonSubmit`).
 
-- When organized alphabetically in editors, your app's base components are all listed together, making them easier to identify.
+Algumas vantagens desta convenção:
 
-- Since component names should always be multi-word, this convention prevents you from having to choose an arbitrary prefix for simple component wrappers (e.g. `MyButton`, `VueButton`).
 
-- Since these components are so frequently used, you may want to simply make them global instead of importing them everywhere. A prefix makes this possible with Webpack:
+- Quando organizados em ordem alfabética nos editores, os componentes de base do seu aplicativo estão listados em conjunto, tornando-os mais fáceis de identificar.
+
+
+- Como os nomes dos componentes sempre devem ter multi palavras, esta convenção evita que você deva escolher um prefixo arbitrário para wrappers de componentes simples (por exemplo, `MyButton`, `VueButton`).
+
+- Como esses componentes são freqüentemente usados, você pode simplesmente torná-los globais em vez de importá-los em todos os lugares. Um prefixo torna isso possível com o Webpack:
 
   ``` js
   var requireComponent = require.context("./src", true, /^Base[A-Z]/)
@@ -762,7 +762,7 @@ Some advantages of this convention:
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ```
 components/
@@ -773,7 +773,7 @@ components/
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ```
 components/
