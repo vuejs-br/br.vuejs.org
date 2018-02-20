@@ -797,16 +797,14 @@ components/
 ```
 {% raw %}</div>{% endraw %}
 
+### Nomes de componentes de instância única <sup data-p="b">Fortmente recomendado</sup>
 
+**Componentes que devem ter somente uma única instância ativa devem começar com o prefixo `The`, para determinar que eles podem ser somente um**
 
-### Single-instance component names <sup data-p="b">strongly recommended</sup>
-
-**Components that should only ever have a single active instance should begin with the `The` prefix, to denote that there can be only one.**
-
-This does not mean the component is only used in a single page, but it will only be used once _per page_. These components never accept any props, since they are specific to your app, not their context within your app. If you find the need to add props, it's a good indication that this is actually a reusable component that is only used once per page _for now_.
+Isto não quer dizer que o componente é somente utilizado em uma única página, mas somente utilizado uma vez a _cada página_. Este tipo de componente não aceita qualquer propriedade, desde que seja específica da sua aplicação, não do contexto da aplicação. Se você achar que precisa adicionar propriedades (props), pode ser uma boa indicativa que este é um componente reusável que somente é usado uma vez por página, _por enquanto_.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ```
 components/
@@ -816,7 +814,7 @@ components/
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ```
 components/
@@ -826,8 +824,7 @@ components/
 {% raw %}</div>{% endraw %}
 
 
-
-### Tightly coupled component names <sup data-p="b">strongly recommended</sup>
+### Nomes de componentes Tightly coupled <sup data-p="b">Fortemente recomendado</sup>
 
 **Child components that are tightly coupled with their parent should include the parent component name as a prefix.**
 
