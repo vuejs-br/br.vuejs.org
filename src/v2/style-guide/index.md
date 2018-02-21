@@ -824,20 +824,20 @@ components/
 {% raw %}</div>{% endraw %}
 
 
-### Nomes de componentes Tightly coupled <sup data-p="b">Fortemente recomendado</sup>
+### Nomes de componentes fortemente acoplados <sup data-p="b">Fortemente recomendado</sup>
 
-**Child components that are tightly coupled with their parent should include the parent component name as a prefix.**
+**Componentes filho que são fortemente acoplados com o componente pai devem incluir como prefixo o nome do componente pai**
 
-If a component only makes sense in the context of a single parent component, that relationship should be evident in its name. Since editors typically organize files alphabetically, this also keeps these related files next to each other.
+Se um componente somente faz sentido de existir no contexto de um componente pai, o relacionamento entre eles deve ser evidente através do seu nome. Desde que os editores tipicamente organizam  os arquivos alfabeticamente, isso  torna próximos um do outro. 
 
 {% raw %}
 <details>
 <summary>
-  <h4>Detailed Explanation</h4>
+  <h4>Explicação Detalhada</h4>
 </summary>
 {% endraw %}
 
-You might be tempted to solve this problem by nesting child components in directories named after their parent. For example:
+Você pode tentar resolver este problema através do alinhamento dos componentes filhos em diretórios nomeados abaixo do componente pai. Por exemplo:
 
 ```
 components/
@@ -848,7 +848,7 @@ components/
    |- index.vue
 ```
 
-or:
+ou:
 
 ```
 components/
@@ -859,15 +859,15 @@ components/
 |- TodoList.vue
 ```
 
-This isn't recommended, as it results in:
+Isto não é recomendado, e como resultado temos:
 
-- Many files with similar names, making rapid file switching in code editors more difficult.
-- Many nested sub-directories, which increases the time it takes to browse components in an editor's sidebar.
+- Muitos arquivos com nomes parecidos, tornando a troca de arquivos no editor um pouco mais difícil.
+- Muitos sub diretórios aninhados, no qual aumenta o tempo que o editor leva para exibir os arquivos em sua referente área de sidebar
 
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ```
 components/
@@ -884,7 +884,7 @@ components/
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ```
 components/
@@ -901,31 +901,30 @@ components/
 {% raw %}</div>{% endraw %}
 
 
+### Ordem das palavras no nome de componentes <sup data-p="b">Fortemente recomendado</sup>
 
-### Order of words in component names <sup data-p="b">strongly recommended</sup>
-
-**Component names should start with the highest-level (often most general) words and end with descriptive modifying words.**
+**Nomes de componentes devem começar com a palavra de mais alto nível (geralmente a maioria dos casos) e terminar com palavras que descrevem modificações.** 
 
 {% raw %}
 <details>
 <summary>
-  <h4>Detailed Explanation</h4>
+  <h4>Explicação Detalhada</h4>
 </summary>
 {% endraw %}
 
-You may be wondering:
+Você deve estar perguntando:
 
-> "Why would we force component names to use less natural language?"
+> "Porque deve-se forçar o nome dos componentes para usar uma linaguagem menos natural"
 
-In natural English, adjectives and other descriptors do typically appear before the nouns, while exceptions require connector words. For example:
+Em inglês, adjetivos e outros descritores tipicamente aparecem antes de nomes, enquanto exceções requerem uma palavra para conexão. Por exemplo:
 
-- Coffee _with_ milk
-- Soup _of the_ day
-- Visitor _to the_ museum
+- Café _com_ leite
+- Sopa _do_ dia
+- Visita _para o_ museu
 
-You can definitely include these connector words in component names if you'd like, but the order is still important.
+Você pode definitivamente incluir estes conectores no nome dos componentes se quiser, mas a sua ordem deve ser mais importante.
 
-Also note that **what's considered "highest-level" will be contextual to your app**. For example, imagine an app with a search form. It may include components like this one:
+Também observe que **o que se deve considerar "alto nível" contextualmente na sua aplicação.** Por exemplo, imagine uma aplicação com um formulaŕio de busca. Ele pode possuir componentes como por exemplo: 
 
 ```
 components/
@@ -937,7 +936,7 @@ components/
 |- TermsCheckbox.vue
 ```
 
-As you might notice, it's quite difficult to see which components are specific to the search. Now let's rename the components according to the rule:
+Como você pode ver, é um pouco difícil ver qual componentes são específicos para o formulário de busca. Agora, vamos renomear os componentes de acordo com as regras:
 
 ```
 components/
