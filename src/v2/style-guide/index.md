@@ -948,18 +948,20 @@ components/
 |- SettingsCheckboxTerms.vue
 ```
 
-Since editors typically organize files alphabetically, all the important relationships between components are now evident at a glance.
+Já que os editores organizam alfabeticamente os arquivos, todos as componentes que de certa forma se relacionam ficam evidentes pelo seu nome. 
 
-You might be tempted to solve this problem differently, nesting all the search components under a "search" directory, then all the settings components under a "settings" directory. We only recommend considering this approach in very large apps (e.g. 100+ components), for these reasons:
+Você pode querer resolver este problema de forma diferente, alinhando todos os componentes de busca sob um diretório chamado "search", e um outro chamado "settings". Somente recomendamos esta abordagem em aplicações maiores (ex: mais de 100 componentes), pelas seguintes razões:
 
-- It generally takes more time to navigate through nested sub-directories, than scrolling through a single `components` directory.
-- Name conflicts (e.g. multiple `ButtonDelete.vue` components) make it more difficult to quickly navigate to a specific component in a code editor.
-- Refactoring becomes more difficult, because find-and-replace often isn't sufficient to update relative references to a moved component.
+- Geralmente leva-se mais tempo para navegar através de sub diretórios, em relação a navegação através de vários componentes em um mesmo diretório.
+
+- Conflitos em nomes (ex: múltiplos componentes `ButtonDelete.vue`) podem ser mais difíceis de navegar através do editor.
+
+- Refatoração pode ser mais difícil, já que buscar-e-substituir nem sempre é suficiente para alterar as referências relativas aos componentes.
 
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ```
 components/
@@ -973,7 +975,7 @@ components/
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ```
 components/
@@ -986,18 +988,18 @@ components/
 ```
 {% raw %}</div>{% endraw %}
 
+### Componentes self-closing <sup data-p="b">Fortemente recomendado</sup>
 
+**Componentes sem conteúdo devem possuir seu próprio fechamento em [single-file components](../guide/single-file-components.html), templates de string, e [JSX](../guide/render-function.html#JSX) - mas nunca em tenplates da DOM**
 
-### Self-closing components <sup data-p="b">strongly recommended</sup>
+Componentes com auto fechamento dizem que eles não somente tem conteúdo, mas **significam** que eles não devem ter conteúdo para exibir. É a diferença entre uma página em branco no livro e uma única expressão dizendo "Esta página intencionamento foi deixada em branco". Seu código inclusive deve ser o mais limpo possível exitando tags desnecessárias. 
 
-**Components with no content should be self-closing in [single-file components](../guide/single-file-components.html), string templates, and [JSX](../guide/render-function.html#JSX) - but never in DOM templates.**
+Infelizmente, HTML não permite que elementos customizados  tenham um fechamento próprio, somente [para os elementos void](https://www.w3.org/TR/html/syntax.html#void-elements). 
 
-Components that self-close communicate that they not only have no content, but are **meant** to have no content. It's the difference between a blank page in a book and one labeled "This page intentionally left blank." Your code is also cleaner without the unnecessary closing tag.
-
-Unfortunately, HTML doesn't allow custom elements to be self-closing - only [official "void" elements](https://www.w3.org/TR/html/syntax.html#void-elements). That's why the strategy is only possible when Vue's template compiler can reach the template before the DOM, then serve the DOM spec-compliant HTML.
+É por isso que esta estratégia somente é possível quando os templates Vue são compilados antes da DOM, então servem a uma específica compilação de spec do HTML. 
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ``` html
 <!-- In single-file components, string templates, and JSX -->
@@ -1011,7 +1013,7 @@ Unfortunately, HTML doesn't allow custom elements to be self-closing - only [off
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ``` html
 <!-- In single-file components, string templates, and JSX -->
@@ -1024,24 +1026,24 @@ Unfortunately, HTML doesn't allow custom elements to be self-closing - only [off
 ```
 {% raw %}</div>{% endraw %}
 
+### Case no nome dos componentes <sup data-p="b">Fortemente recomendada</sup>
 
+**Na maioria dos componentes, o nome deles deve ser sempre PascalCase nos [single-file components](../guide/single-file-components.html) e nos templates de string - mas kebab-case nos templates DOM.** 
 
-### Component name casing in templates <sup data-p="b">strongly recommended</sup>
+PascalCase tem poucas vantagens sobre kebab-case:
 
-**In most projects, component names should always be PascalCase in [single-file components](../guide/single-file-components.html) and string templates - but kebab-case in DOM templates.**
+- Editores podem auto completar nomes de componentes nos templates, já que no Javascript também usa-se PascalCase.
 
-PascalCase has a few advantages over kebab-case:
+- `<MyComponent>` é mais distinto visualmente do que um simples elemento HTML como `<my-component>`, porque há dois caracteres distintos (as duas maiúsculas), ao invés de apenas uma (hífem). 
 
-- Editors can autocomplete component names in templates, because PascalCase is also used in JavaScript.
-- `<MyComponent>` is more visually distinct from a single-word HTML element than `<my-component>`, because there are two character differences (the two capitals), rather than just one (a hyphen).
-- If you use any non-Vue custom elements in your templates, such as a web component, PascalCase ensures that your Vue components remain distinctly visible.
+- Se você usar qualquer elemento visual sem ser Vue nos seus templates, como por exemplo um componente web, PascalCase reforça que os seus componentes Vue são mais visíveis.
 
-Unfortunately, due to HTML's case insensitivity, DOM templates must still use kebab-case.
+Infelizmente, devido ao HTML ser case insensitivo, os templates DOM continuam a ser kebab-case.
 
-Also note that if you've already invested heavily in kebab-case, consistency with HTML conventions and being able to use the same casing across all your projects may be more important than the advantages listed above. In those cases, **using kebab-case everywhere is also acceptable.**
+Além disso note que se você já investiu bem no kebab-case, mantendo a consistência com as convenções HTML e usando essa mesma abordagem para outros projetos pode ser mais importante que as vantagens listadas acima. Nestes casos, **use kebab-case sempre que for aceitável**.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ``` html
 <!-- In single-file components and string templates -->
@@ -1060,7 +1062,7 @@ Also note that if you've already invested heavily in kebab-case, consistency wit
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ``` html
 <!-- In single-file components and string templates -->
