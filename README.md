@@ -11,9 +11,9 @@ $ npm start # servidor executando em http://localhost:4000
 
 ## Publicando
 
-O site é automaticamente publicado quando _commits_ chegam em `master`, via [Netlify](https://www.netlify.com/)
+O site é automaticamente publicado quando _commits_ chegam em `master`, via [Netlify](https://www.netlify.com/).
 
-Neste repositório, o processo só é disparado por um grupo seleto de contribuidores, para manter a organização. As contribuições são recebidas na forma de _pull requests_ e, quando aceitos, o _deploy_ automático ocorre.
+Este processo é disparado somente por um grupo seleto de contribuidores que podem atualizar o _branch_ `master`, a fim de manter a organização. As contribuições são recebidas na forma de _pull requests_ e, quando aceitas, o _deploy_ automático ocorre.
 
 ## Como colaborar?
 
@@ -21,8 +21,9 @@ Problemas pontuais nas traduções já realizadas, como erros de grafia ou frase
 
 Se você se sente à vontade para traduzir/revisar conteúdos por conta, os passos são:
 
+- Verifique o que está em aberto nas _issues_, ou sugira algo que encontrar;
 - Faça um _fork_ deste _repo_ para sua própria conta;
-- Crie um _issue_ neste _repo_, do tipo `work-in-progress`, para informar o que está fazendo;
+- Crie um _issue_ neste _repo_ para informar o que está fazendo;
 - Faça as traduções/revisões nos arquivos que se propôs, usando o editor que quiser;
 - Ao finalizar, faça um _pull request_ **com a descrição do _commit_ em inglês**;
 - Não se esqueça de obter as alterações mais recentes antes de recomeçar o processo.

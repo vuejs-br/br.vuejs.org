@@ -517,7 +517,7 @@ Vue.component('meu-componente', {
 
 No 2.5.0+, se você está usando [Componentes Single-File](single-file-components.html), componentes funcionais baseados em _templates_ podem ser declarados com:
 
-```html
+``` html
 <template functional>
 </template>
 ```
