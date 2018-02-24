@@ -219,6 +219,7 @@ order: 803
     'Pequim, China': [39.9042, 116.4074],
     'Seul, Coreia do Sul': [37.566535, 126.977969],
     'Taquaritinga, Brasil': [-21.430094, -48.515285],
+    'Campo Grande, Brasil': [-20.2634, -54.3847'],
     'Teerã, Irã': [35.689197, 51.388974],
     'Tessalônica, Grécia': [40.640063, 22.944419],
     'Tóquio, Japão': [35.689487, 139.691706],
@@ -495,7 +496,7 @@ order: 803
       reposOfficial: [
         'vue-devtools',
         'vue-curated'
-      ],
+      ],    
       reposPersonal: [
         'vue-apollo', 'vue-meteor', 'vue-virtual-scroller'
       ]
@@ -754,6 +755,22 @@ order: 803
       },
       reposPersonal: [
         'vuejs-br/br.vuejs.org', 'ErickPetru/vue-feathers-chat'
+      ]
+    },
+    {
+      name: 'Mário Carvalho',
+      title: 'Tradutor para Português',
+      city: 'Campo Grande, Brasil',
+      languages: ['pt', 'en'],
+      github: 'MarioDeAraujoCarvalho',
+      twitter: 'mariocarvalho22',
+      work: {
+        role: 'Programador e Estudante',
+        org: 'UFMS/Embrapa',
+        orgUrl: 'http://www.ufms.br/'
+      },
+      reposPersonal: [
+        'vuejs-br/br.vuejs.org'
       ]
     },
     {
