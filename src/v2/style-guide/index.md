@@ -1082,30 +1082,29 @@ OR
 ```
 {% raw %}</div>{% endraw %}
 
+### Case de nome de componentes do tipo JS/JSX <sup data-p="b">fortemente recomendado</sup>
 
-
-### Component name casing in JS/JSX <sup data-p="b">strongly recommended</sup>
-
-**Component names in JS/[JSX](../guide/render-function.html#JSX) should always be PascalCase, though they may be kebab-case inside strings for simpler applications that only use global component registration through `Vue.component`.**
+**Nomes de componentes em in JS/[JSX](../guide/render-function.html#JSX) devem ser sempre PascalCase, embora eles possam ser kebab-case dentro de strings em aplicações mais simples, que somente usam o registro global de componentes através do `Vue.component`.**
 
 {% raw %}
 <details>
 <summary>
-  <h4>Detailed Explanation</h4>
+  <h4>Explicação detalhada</h4>
 </summary>
 {% endraw %}
 
-In JavaScript, PascalCase is the convention for classes and prototype constructors - essentially, anything that can have distinct instances. Vue components also have instances, so it makes sense to also use PascalCase. As an added benefit, using PascalCase within JSX (and templates) allows readers of the code to more easily distinguish between components and HTML elements.
+Em Javascript, PascarCase é usado como convenção para classes e construtores prototype - essencialmente, qualquer coisa que possa ter instâncias distintas. Os componentes Vue também possuem instâncias, então faz todo o sentido usar PascalCase. Como um benefício extra, usando PascalCase no JSX (e templates) permite a nós distinguirem mais facilmente entre componentes e os elementos HTML
 
-However, for applications that use **only** global component definitions via `Vue.component`, we recommend kebab-case instead. The reasons are:
+No entanto, aplicações que usam **apenas** a definição global de componentes pelo `Vue.componente`, recomendamos usar kebab-case. As razões são:
 
-- It's rare that global components are ever referenced in JavaScript, so following a convention for JavaScript makes less sense.
-- These applications always include many in-DOM templates, where [kebab-case **must** be used](#Component-name-casing-in-templates-strongly-recommended).
+- É raro que os componentes globais sejam referenciados no JavaScript,  então seguir a convenção adotada pelo JavaScript faz menos sentido.
+
+- Estas aplicações sempre incluem muitos templates DOM, onde [kebab-case **deve** ser usado](#Component-name-casing-in-templates-strongly-recommended).
 
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ``` js
 Vue.component('myComponent', {
@@ -1133,7 +1132,7 @@ export default {
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ``` js
 Vue.component('MyComponent', {
@@ -1159,16 +1158,14 @@ export default {
 ```
 {% raw %}</div>{% endraw %}
 
+### Componentes com nomes completos <sup data-p="b">Fortemente recomendado</sup>
 
+**Nome de componentes devem ter nomes completos ao invés de abreviações**
 
-### Full-word component names <sup data-p="b">strongly recommended</sup>
-
-**Component names should prefer full words over abbreviations.**
-
-The autocompletion in editors make the cost of writing longer names very low, while the clarity they provide is invaluable. Uncommon abbreviations, in particular, should always be avoided.
+O preenchimento automático nos editores torna o custo de escrever nomes mais longos muito baixos, enquanto a clareza que eles fornecem é inestimável. As abreviaturas incomuns, em particular, devem ser sempre evitadas.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ```
 components/
@@ -1178,7 +1175,7 @@ components/
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ```
 components/
@@ -1188,15 +1185,14 @@ components/
 {% raw %}</div>{% endraw %}
 
 
+### Case no nome de propriedades <sup data-p="b">Fortemente recomendado</sup>
 
-### Prop name casing <sup data-p="b">strongly recommended</sup>
+**Nome de propriedades devem sempre usar camelCase na sua declaração, mas kebab-case nos templates e [JSX](../guide/render-function.html#JSX).** 
 
-**Prop names should always use camelCase during declaration, but kebab-case in templates and [JSX](../guide/render-function.html#JSX).**
-
-We're simply following the conventions of each language. Within JavaScript, camelCase is more natural. Within HTML, kebab-case is.
+Estamos apenas seguindo as convensẽs para cada linguagem. No Javascript, camelCase é mais natural. Com HTML, usa-se mais kebab-case. 
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ``` js
 props: {
@@ -1210,7 +1206,7 @@ props: {
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ``` js
 props: {
@@ -1222,8 +1218,6 @@ props: {
 <WelcomeMessage greeting-text="hi"/>
 ```
 {% raw %}</div>{% endraw %}
-
-
 
 ### Multi-attribute elements <sup data-p="b">strongly recommended</sup>
 
