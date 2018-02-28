@@ -150,7 +150,7 @@ AngularJS adota a abordagem de _two-way binding_ entre escopos, enquanto Vue for
 
 ### Diretivas vs. Componentes
 
-Vue possui clara separação entre diretivas e componentes. Diretivas são feitas exclusivamente para encapsular lógica de manipulação do DOM, enquanto componentes são unidades auto-contidas que possuem sua própria lógica de dados e de apresentação. Com AngularJS, existe uma confusão considerável entre os dois.
+Vue possui uma clara separação entre diretivas e componentes. Diretivas existem somente para encapsular lógica de manipulação do DOM, enquanto componentes são unidades auto-contidas que possuem sua própria lógica de dados e de apresentação. No AngularJS, diretivas fazem de tudo e componentes são apenas um tipo específico de diretiva.
 
 ### Desempenho em Execução
 

@@ -293,13 +293,13 @@ new Vue({
 Para _radio_, _checkbox_ e _options_ de _select_, os valores de vinculação do `v-model` são normalmente Strings estáticas (ou booleano no caso do _checkbox_):
 
 ``` html
-<!-- `picked` é uma string "a" quando assinalado -->
+<!-- `picked` é uma String "a" quando assinalado -->
 <input type="radio" v-model="picked" value="a">
 
 <!-- `toggle` é verdadeiro ou falso -->
 <input type="checkbox" v-model="toggle">
 
-<!-- `selected` é uma string "abc" quando assinalado -->
+<!-- `selected` é uma String "abc" quando a primeira opção está selecionada -->
 <select v-model="selected">
   <option value="abc">ABC</option>
 </select>

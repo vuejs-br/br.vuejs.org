@@ -509,8 +509,8 @@ Nós aprendemos que o pai pode passar dados para o filho usando propriedades, ma
 
 Toda instância Vue implementa uma [interface de eventos](../api/#Metodos-da-Instancia-Eventos), o que significa que ela pode:
 
-- Ouvir um evento usando `$on(eventName)`
-- Disparar um evento usando `$emit(eventName)`
+- Escutar um evento usando `$on(eventName)`
+- Disparar um evento usando `$emit(eventName, optionalPayload)`
 
 <p class="tip">Observe que o sistema de eventos do Vue é separado da [EventTarget API](https://developer.mozilla.org/pt-BR/docs/Web/API/EventTarget) do navegador. Embora eles funcionem de maneira semelhante, o `$on` e o `$emit` __não__ são apelidos para o `addEventListener` e o `dispatchEvent`.</p>
 
@@ -594,6 +594,85 @@ new Vue({
 
 Neste exemplo, é importante notar que o componente filho ainda é completamente desacoplado do que acontece fora dele. Tudo o que ele faz é reportar informações sobre sua própria atividade, no caso de um componente pai se importar.
 
+Agora um exemplo utilizando uma carga de dados (_payload_):
+
+``` html
+<div id="message-event-example" class="demo">
+  <p v-for="msg in messages">{{ msg }}</p>
+  <button-message v-on:message="handleMessage"></button-message>
+</div>
+```
+
+``` js
+Vue.component('button-message', {
+  template: `<div>
+    <input type="text" v-model="message" />
+    <button v-on:click="handleSendMessage">Send</button>
+  </div>`,
+  data: function () {
+    return {
+      message: 'mensagem teste'
+    }
+  },
+  methods: {
+    handleSendMessage: function () {
+      this.$emit('message', { message: this.message })
+    }
+  }
+})
+
+new Vue({
+  el: '#message-event-example',
+  data: {
+    messages: []
+  },
+  methods: {
+    handleMessage: function (payload) {
+      this.messages.push(payload.message)
+    }
+  }
+})
+```
+
+{% raw %}
+<div id="message-event-example" class="demo">
+  <p v-for="msg in messages">{{ msg }}</p>
+  <button-message v-on:message="handleMessage"></button-message>
+</div>
+<script>
+Vue.component('button-message', {
+  template: `<div>
+    <input type="text" v-model="message" />
+    <button v-on:click="handleSendMessage">Send</button>
+  </div>`,
+  data: function () {
+    return {
+      message: 'mensagem teste'
+    }
+  },
+  methods: {
+    handleSendMessage: function () {
+      this.$emit('message', { message: this.message })
+    }
+  }
+})
+new Vue({
+  el: '#message-event-example',
+  data: {
+    messages: []
+  },
+  methods: {
+    handleMessage: function (payload) {
+      this.messages.push(payload.message)
+    }
+  }
+})
+</script>
+{% endraw %}
+
+Neste segundo exemplo, é importante observar que o componente filho ainda é completamente desacoplado do que acontece fora de si.
+Tudo o que ele faz é reportar informação sobre sua própria atividade, inclusive o _payload_ ao emissor do evento, apenas para o caso de algum componente pai se interessar por isso.
+
 ### Ligando Eventos Nativos a Componentes
 
 Pode haver momentos em que você deseja escutar um evento nativo ocorrido no elemento raiz de um componente. Nesses casos, use o modificador `.native` para o `v-on`:
@@ -630,7 +709,15 @@ Para o componente filho atualizar o valor de `foo`, ele precisa explicitamente e
 this.$emit('update:foo', newValue)
 ```
 
-### Componentes Suportando v-model
+O modificador `.sync` também pode ser usado junto com `v-bind` ao utilizar um objeto para definir múltiplas propriedades de uma vez:
+
+```html
+<comp v-bind.sync="{ foo: 1, bar: 2 }"></comp>
+```
+
+Isto tem o efeito de adicionar escutas de atualização `v-on` tanto para `foo` quanto para `bar`.
+
+### Componentes Suportando `v-model`
 
 Eventos personalizados também podem ser usados para criar _inputs_ personalizados que funcionam com `v-model`. Lembre-se:
 
