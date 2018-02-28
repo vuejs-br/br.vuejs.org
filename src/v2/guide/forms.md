@@ -157,7 +157,7 @@ new Vue({
 new Vue({
   el: '#example-4',
   data: {
-    picked: ''
+    picked: this.picked
   }
 })
 </script>
@@ -168,20 +168,22 @@ new Vue({
 Seleção de um único item:
 
 ``` html
-<select v-model="selected">
-  <option disabled value="">Escolha um item</option>
-  <option>A</option>
-  <option>B</option>
-  <option>C</option>
-</select>
-<br>
-<span>Selecionado: {{ selected }}</span>
+<div id="example5">
+  <select v-model="selected">
+    <option disabled value="">Escolha um item</option>
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+  </select>
+  <br>
+  <span>Selecionado: {{ selected }}</span>
+</div>
 ```
 ``` js
-new Vue({
-  el: '...',
+var example5 =new Vue({
+  el: 'example5',
   data: {
-    selected: ''
+    selected: this.selected
   }
 })
 ```
