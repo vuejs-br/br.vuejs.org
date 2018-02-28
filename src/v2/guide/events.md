@@ -304,7 +304,7 @@ Por exemplo:
 O modificador `.exact` permite controlar a exata combinação de modificadores de sistema que deve ser pressionada para que o gatilho dispare.
 
 ``` html
-<!-- dispara mesmo se Alt ou Shift também estiverem pressionados -->
+<!-- dispara mesmo se Ctrl ou Shift também estiverem pressionados -->
 <button @click.ctrl="onClick">A</button>
 
 <!-- dispara quando somente Ctrl estiver pressionado -->
