@@ -299,7 +299,7 @@ Para _radio_, _checkbox_ e _options_ de _select_, os valores de vinculação do 
 <!-- `toggle` é verdadeiro ou falso -->
 <input type="checkbox" v-model="toggle">
 
-<!-- `selected` é uma String "abc" quando a primeira opção está selecionada -->
+<!-- `selected` é uma String "abc" se a primeira opção está selecionada -->
 <select v-model="selected">
   <option value="abc">ABC</option>
 </select>
