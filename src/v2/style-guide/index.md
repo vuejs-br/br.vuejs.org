@@ -1219,14 +1219,14 @@ props: {
 ```
 {% raw %}</div>{% endraw %}
 
-### Multi-attribute elements <sup data-p="b">strongly recommended</sup>
+### Elementos com multi atributos <sup data-p="b">fortemente recomendado</sup>
 
-**Elements with multiple attributes should span multiple lines, with one attribute per line.**
+**Elementos com vários atributos devem abranger várias linhas, com um atributo por linha.**
 
-In JavaScript, splitting objects with multiple properties over multiple lines is widely considered a good convention, because it's much easier to read. Our templates and [JSX](../guide/render-function.html#JSX) deserve the same consideration.
+No JavaScript, dividir objetos que possui várias propriedades em várias linhas, é considerado uma boa convenção, porque é muito mais fácil de ler. Nossos modelos e [JSX](.../guia/render-function.html#JSX) possuem a mesma consideração.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo ruim
 
 ``` html
 <img src="https://vuejs.org/images/logo.png" alt="Vue Logo">
@@ -1238,7 +1238,7 @@ In JavaScript, splitting objects with multiple properties over multiple lines is
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ``` html
 <img
@@ -1256,16 +1256,14 @@ In JavaScript, splitting objects with multiple properties over multiple lines is
 ```
 {% raw %}</div>{% endraw %}
 
+### Expressões simples em templates <sup data-p="b">fortemente recomendado</sup>
 
+**Os modelos de componentes devem incluir apenas expressões simples, com expressões mais complexas refatoradas em propriedades ou métodos calculados.**
 
-### Simple expressions in templates <sup data-p="b">strongly recommended</sup>
-
-**Component templates should only include simple expressions, with more complex expressions refactored into computed properties or methods.**
-
-Complex expressions in your templates make them less declarative. We should strive to describe _what_ should appear, not _how_ we're computing that value. Computed properties and methods also allow the code to be reused.
+Expressões complexas nos templates passam a se tornar menos declarativos. Devemos nos esforçar em exibir _o que_ está acontecendo, não _como_ o valor está sendo computado. Propriedades computadas e métodos também permitem que o código seja reutilizado.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ``` html
 {{
@@ -1277,7 +1275,7 @@ Complex expressions in your templates make them less declarative. We should stri
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Boms
 
 ``` html
 <!-- In a template -->
@@ -1297,38 +1295,37 @@ computed: {
 {% raw %}</div>{% endraw %}
 
 
+### Propriedades computadas mais simples<sup data-p="b">fortemente recomendadas</sup>
 
-### Simple computed properties <sup data-p="b">strongly recommended</sup>
-
-**Complex computed properties should be split into as many simpler properties as possible.**
+**Propriedades computadas complexas devem ser quebradas em várias propriedades mais simples, sempre que possível**
 
 {% raw %}
 <details>
 <summary>
-  <h4>Detailed Explanation</h4>
+  <h4>Explicação Detalhada</h4>
 </summary>
 {% endraw %}
 
-Simpler, well-named computed properties are:
+Boas e simples propriedades computadas são:
 
-- __Easier to test__
+- __Fácil de testar__
 
-  When each computed property contains only a very simple expression, with very few dependencies, it's much easier to write tests confirming that it works correctly.
+  Quando cada propriedade calculada contém apenas uma expressão muito simples, com poucas dependências, é muito mais fácil escrever testes confirmando que ele funciona corretamente.
 
-- __Easier to read__
+- __Fácil de ler__
 
-  Simplifying computed properties forces you to give each value a descriptive name, even if it's not reused. This makes it much easier for other developers (and future you) to focus in on the code they care about and figure out what's going on.
+  Simplificar as propriedades calculadas lhe obriga a determinar cada valor um nome descritivo, mesmo que não seja reutilizado. Isso facilita a leitura para outros desenvolvedores (e no futuro, você) em se concentrar no código que lhe importam e no que está acontecendo. 
 
-- __More adaptable to changing requirements__
+- __Mais fácil para possíveis mudanças__
 
-  Any value that can be named might be useful to the view. For example, we might decide to display a message telling the user how much money they saved. We might also decide to calculate sales tax, but perhaps display it separately, rather than as part of the final price.
+  Qualquer valor que possui um nome pode ser útil para a view. Por exemplo, podemos decidir exibir uma mensagem informando o usuário quanto dinheiro economizaram. Podemos também decidir calcular o imposto sobre as vendas, mas talvez exibi-lo separadamente, e não como parte do preço final.
 
-  Small, focused computed properties make fewer assumptions about how information will be used, so require less refactoring as requirements change.
+  Quando as propriedades calculadas são pequenas e focadas, se faz menos suposições sobre como as informações serão usadas, portanto, exigem menos refatoração à medida que os requisitos mudam.
 
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ``` js
 computed: {
@@ -1344,7 +1341,7 @@ computed: {
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo Bom
 
 ``` js
 computed: {
@@ -1363,14 +1360,14 @@ computed: {
 
 
 
-### Quoted attribute values <sup data-p="b">strongly recommended</sup>
+### Aspas em valores de atributos <sup data-p="b">fortemente recomendado</sup>
 
-**Non-empty HTML attribute values should always be inside quotes (single or double, whichever is not used in JS).**
+**Os valores de atributos HTML não vazios devem sempre estar dentro de aspas (simples ou duplas, o que não seja usado em JS).**
 
-While attribute values without any spaces are not required to have quotes in HTML, this practice often leads to _avoiding_ spaces, making attribute values less readable.
+Enquanto os valores de atributos sem espaços não são necessários para ter aspas no HTML, esta prática geralmente leva a 'evitar' espaços, tornando os valores de atributos menos legíveis.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ``` html
 <input type=text>
@@ -1382,7 +1379,7 @@ While attribute values without any spaces are not required to have quotes in HTM
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo bom
 
 ``` html
 <input type="text">
@@ -1393,14 +1390,12 @@ While attribute values without any spaces are not required to have quotes in HTM
 ```
 {% raw %}</div>{% endraw %}
 
+### Abreviação de diretivas <sup data-p="b">fortemente recomendado</sup>
 
-
-### Directive shorthands <sup data-p="b">strongly recommended</sup>
-
-**Directive shorthands (`:` for `v-bind:` and `@` for `v-on:`) should be used always or never.**
+**Abreviações de diretiva (`:` for `v-bind:` and `@` for `v-on:`) devem ser sempre usadas, ou nunca usadas.**
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Bad
+#### Exemplo Ruim
 
 ``` html
 <input
@@ -1418,7 +1413,7 @@ While attribute values without any spaces are not required to have quotes in HTM
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
-#### Good
+#### Exemplo bom
 
 ``` html
 <input
@@ -1452,9 +1447,7 @@ While attribute values without any spaces are not required to have quotes in HTM
 
 
 
-## Priority C Rules: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
-
-
+## Prioridade C : Recomendadas (Minimizando opções arbitrárias)
 
 ### Component/instance options order <sup data-p="c">recommended</sup>
 
