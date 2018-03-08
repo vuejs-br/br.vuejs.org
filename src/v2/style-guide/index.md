@@ -1449,52 +1449,52 @@ Enquanto os valores de atributos sem espaços não são necessários para ter as
 
 ## Prioridade C : Recomendadas (Minimizando opções arbitrárias)
 
-### Component/instance options order <sup data-p="c">recommended</sup>
+### Ordem das propriedades de um Componente/Instância <sup data-p="c">recomendado</sup>
 
-**Component/instance options should be ordered consistently.**
+**As propriedades de componente/instância devem ser ordenadas consistentemente.**
 
-This is the default order we recommend for component options. They're split into categories, so you'll know where to add new properties from plugins.
+Esta é a ordem padrão que recomendamos para as propriedades dos componentes. Eles são divididos em categorias, então você saberá onde adicionar novas propriedades a partir de plugins.
 
-1. **Side Effects** (triggers effects outside the component)
+1. **Efeitos externos** (Gatilho para efeitos fora do componente)
   - `el`
 
-2. **Global Awareness** (requires knowledge beyond the component)
+2. **Nível Global** (Requer conhecimento além do componente)
   - `name`
   - `parent`
 
-3. **Component Type** (changes the type of the component)
+3. **Tipo de componente** (altera o tipo de componente)
   - `functional`
 
-4. **Template Modifiers** (changes the way templates are compiled)
+4. **Modificadores de template** (muda a forma como o template é compilado)
   - `delimiters`
   - `comments`
 
-5. **Template Dependencies** (assets used in the template)
+5. **Dependência de template** (assets usados no templae)
   - `components`
   - `directives`
   - `filters`
 
-6. **Composition** (merges properties into the options)
+6. **Composição** (faz o merge das propridades nas opções)
   - `extends`
   - `mixins`
 
-7. **Interface** (the interface to the component)
+7. **Interface** (A interface do componente)
   - `inheritAttrs`
   - `model`
   - `props`/`propsData`
 
-8. **Local State** (local reactive properties)
+8. **Estado Local** (propriedades reativas locais)
   - `data`
   - `computed`
 
-9. **Events** (callbacks triggered by reactive events)
+9. **Eventos** (Callbacks disparados através de eventos reativos)
   - `watch`
-  - Lifecycle Events (in the order they are called)
+  - Eventos do ciclo de vida (Na ordem que foram chamados)
 
-10. **Non-Reactive Properties** (instance properties independent of the reactivity system)
+10. **Propriedades não reativas** (Propriedades independentes instanciadas do sistema reativo)
   - `methods`
 
-11. **Rendering** (the declarative description of the component output)
+11. **Renderização** (A descrição declarativa da saída do componente)
   - `template`/`render`
   - `renderError`
 
