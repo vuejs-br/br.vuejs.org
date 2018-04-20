@@ -1,41 +1,35 @@
 ---
-title: Introduction
+title: Introdução
 type: cookbook
 order: 0
 ---
 
-## WORK IN PROGRESS
+## TRABALHO EM PROGRESSO
 
-<p class="tip">This cookbook is still in its very early stages. At this point, we will not be linking to it from anywhere else. Pages may be removed or reorganized at any time. Even the goals and overall format are still in flux.</p>
+<p class="tip">Este cookbook ainda está em sua fase inicial. Neste ponto, não estamos ligando esta página à nenhuma outra. As páginas podem ser removidas ou reorganizadas a qualquer momento. Até as metas e o formato geral ainda estão em curso.</p>
 
-## The Cookbook vs the Guide
+## O Cookbook vs o Guia
 
-How is the cookbook different from the guide? Why is this necessary?
+Como o cookbook é diferente do guia? Por que isto é necessário?
 
-* **Greater Focus**: In the guide, we're essentially telling a story. Each section builds on and assumes knowledge from each previous section. In the cookbook, each recipe can and should stand on its own. This means recipes can focus on one specific aspect of Vue, rather than having to give a general overview.
+* **Ênfase no Foco**: No guia, estamos essencialmente contando uma história. Cada seção baseia-se e assume o conhecimento de cada seção anterior. No cookbook, cada exemplo pode e deve funcionar sozinho. Isso significa que os exemplos podem se concentrar em um aspecto específico do Vue, em vez de fornecer uma visão geral.
 
-* **Greater Depth**: To avoid making the guide too long, we try to include only the simplest possible examples to help you understand each feature. Then we move on. In the cookbook, we can include more complex examples, combining features in interesting ways. Each recipe can also be as long and detailed as it needs to be, in order to fully explore its niche.
+* **Ênfase na Complexidade**: Para evitar fazer um guia longo demais, tentamos incluir apenas os exemplos mais simples possíveis para te ajudar a entender cada recurso. Então vamos prosseguir. No cookbook, podemos incluir exemplos mais complexos, combinando recursos de formas interessantes. Cada exemplo pode também ser tão longo e detalhado quanto necessário, a fim de explorar completamente todas as possibilidades.
 
-* **Teaching JavaScript**: In the guide, we assume at least intermediate familiarity with ES5 JavaScript. For example, we won't explain how `Array.prototype.filter` works in a computed property that filters a list. In the cookbook however, essential JavaScript features (including ES6/2015+) can be explored and explained in the context of how they help us build better Vue applications.
+* **Ensinando JavaScript**: No guia, assumimos pelo menos um conhecimento intermediário com o JavaScript ES5. Por exemplo, não iremos explicar como o `Array.prototype.filter` funciona em uma propriedade computada que filtra uma lista. No cookbook, entretanto, os recursos essenciais do JavaScript (incluindo ES6/2015+) podem ser explorados e explicados no contexto de como eles nos ajudam a criar melhores aplicações Vue.
 
-* **Exploring the Ecosystem**: For advanced features, we assume some ecosystem knowledge. For example, if you want to use single-file components in Webpack, we don't explain how to configure the non-Vue parts of the Webpack config. In the cookbook, we have the space to explore these ecosystem libraries in more depth - at least to the extent that is universally useful for Vue developers.
+ * **Explorando o Ecossistema**: Para recursos avançados, assumimos algum conhecimento do ecossistema. Por exemplo, se você quer usar componentes single-file no Webpack, não explicamos como configurar as partes "non-Vue" da configuração do Webpack. No cookbook, temos espaço para explorar estas bibliotecas do ecossistema com mais profundidade - pelo menos na proporção que seja universalmente útil para desenvolvedores Vue.
 
-## Guidelines for Recipes
+## Orientações para Exemplos
 
-Recipes should generally:
+Exemplos devem geralmente:
 
-> 1. Solve a specific, common problem
+1. Resolver um problema comum e específico
+2. Começar com o exemplo mais simples possível
+3. Introduzir complexidades, uma de cada vez
+4. Ter link para outros documentos, em vez de reexplicar conceitos
+5. Descrever o problema, em vez de assumir a familiaridade
+6. Explicar o processo, em vez de explicar só o resultado final
+7. Explicar os prós e contras de sua estratégia, inclusive quando ela é ou não é apropriada
+8. Mencionar soluções alternativas, se relevantes, mas deixar explorações aprofundadas para um exemplo em separado.
 
-> 2. Start with the simplest possible example
-
-> 3. Introduce complexities one at a time
-
-> 4. Link to other docs, rather than re-explaining concepts
-
-> 5. Describe the problem, rather than assuming familiarity
-
-> 6. Explain the process, rather than just the end result
-
-> 7. Explain the pros and cons of your strategy, including when it is and isn't appropriate
-
-> 8. Mention alternative solutions, if relevant, but leave in-depth explorations to a separate recipe
