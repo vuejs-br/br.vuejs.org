@@ -6,7 +6,7 @@ order: 502
 
 ## Implementação Oficial Estilo Flux
 
-Aplicações grandes podem também crescer em complexidade, principalmente devido a múltiplos dados de estado da aplicação espalhados entre diversos componentes e interações entre eles. Para resolver este problema, Vue oferece [vuex](https://github.com/vuejs/vuex): nossa própria biblioteca de gerenciamento de estado inspirada em Elm. Além disso, ela se integra ao [vue-devtools](https://github.com/vuejs/vue-devtools), permitindo viajar pelo histórico de mudanças de estado (*time travel*) sem precisar de nenhuma configuração adicional.
+Aplicações grandes podem também crescer em complexidade, principalmente devido a múltiplos dados de estado da aplicação espalhados entre diversos componentes e interações entre eles. Para resolver este problema, Vue oferece [vuex](https://github.com/vuejs/vuex): nossa própria biblioteca de gerenciamento de estado inspirada em Elm. Além disso, ela se integra ao [vue-devtools](https://github.com/vuejs/vue-devtools), permitindo viajar pelo histórico de [mudanças de estado (*time travel*)]((https://raw.githubusercontent.com/vuejs/vue-devtools/master/media/demo.gif)) sem precisar de nenhuma configuração adicional.
 
 ### Informação para Desenvolvedores React
 

@@ -88,19 +88,15 @@ Object.freeze(obj)
 
 new Vue({
   el: '#app',
-  data () {
-    return {
-      obj
-    }
-  }
+  data: obj
 })
 ```
 
 ```html
 <div id="app">
-  <p>{{ obj.foo }}</p>
-  <!-- não vai mais atualizar obj.foo! -->
-  <button @click="obj.foo = 'baz'">Mudá-lo</button>
+  <p>{{ foo }}</p>
+  <!-- this will no longer update `foo`! -->
+  <button v-on:click="foo = 'baz'">Change it</button>
 </div>
 ```
 

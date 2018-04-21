@@ -727,7 +727,7 @@ components/
 Estes componentes são a base para a definição de um estilo e comportamente consistente na aplicação. Eles **somente** devem conter:
 
 - Elementos HTML,
-- Outros componntes prefixados com `Base` , e
+- Outros componntes prefixados com `base` , e
 - Elementos de UI de terceiros.
 
 Mas todos eles **nunca** devem conter um um estado global (um Vuex store por exemplo)

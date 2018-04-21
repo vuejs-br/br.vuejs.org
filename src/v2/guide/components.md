@@ -4,6 +4,10 @@ type: guide
 order: 11
 ---
 
+<p class="tip">**Nota da Equipe de Tradução**
+A versão original deste texto foi completamente reescrita. Você está lendo uma versão antiga. Necessitamos de ajuda para traduzir novamente esta página. Mais detalhes nesta [issue](https://github.com/vuejs-br/br.vuejs.org/issues/169) 
+</p>
+
 ## Entendendo Componentes
 
 Os componentes são um dos recursos mais poderosos do Vue. Eles ajudam a estender os elementos HTML para encapsular código de forma reusável. Em um alto nível, componentes são elementos personalizados que o Vue compila e anexa à sua instância. Em alguns casos, eles podem aparecer como um HTML nativo estendido com o atributo especial `is`.

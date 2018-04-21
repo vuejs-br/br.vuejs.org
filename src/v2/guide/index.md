@@ -11,7 +11,7 @@ Esta tradução é um projeto _open-source_ mantido por um grupo de desenvolvedo
 
 Vue (pronuncia-se /vjuː/, como **view**, em inglês) é um **framework progressivo** para a construção de interfaces de usuário. Ao contrário de outros _frameworks_ monolíticos, Vue foi projetado desde sua concepção para ser adotável incrementalmente. A biblioteca principal é focada exclusivamente na camada visual (_view layer_), sendo fácil adotar e integrar com outras bibliotecas ou projetos existentes. Por outro lado, Vue também é perfeitamente capaz de dar poder a sofisticadas _Single-Page Applications_ quando usado em conjunto com [ferramentas modernas](single-file-components.html) e [bibliotecas de apoio](https://github.com/vuejs/awesome-vue#components--libraries).
 
-Se você gostaria de saber mais sobre Vue antes de mergulhar nele, nós <a id="modal-player"  href="javascript:;">criamos um vídeo</a> passeando pelos princípios básicos com um exemplo de projeto.
+Se você gostaria de saber mais sobre Vue antes de mergulhar nele, nós <a id="modal-player"  href="#">criamos um vídeo</a> passeando pelos princípios básicos com um exemplo de projeto.
 
 Se você é um desenvolvedor _frontend_ experiente e quer saber como Vue se compara a outras bibliotecas/_frameworks_, confira a [Comparação com Outros Frameworks](comparison.html).
 
@@ -22,6 +22,14 @@ Se você é um desenvolvedor _frontend_ experiente e quer saber como Vue se comp
 A forma mais simples de testar Vue.js é usando o [exemplo de Olá Mundo no JSFiddle](https://jsfiddle.net/ErickPetru/39ocp6er/). Sinta-se à vontade para abrí-lo em outra aba e acompanhar conosco durante alguns exemplos básicos. Ou, você pode <a href="https://gist.githubusercontent.com/ErickPetru/dcc4f4f27034a7bb6e5f91023659b7c7/raw/afd3e563112897dba2d84e181a54f32eb862fc47/index.html" target="_blank" download="index.html">criar um arquivo `.html`</a> e incluir Vue com:
 
 ``` html
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+```
+
+or:
+
+``` html
+<!-- production version, optimized for size and speed -->
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 ```
 

@@ -460,7 +460,11 @@ type: api
   })
   ```
 
-  <p class="tip">Note que __você não deve usar arrow function com a propriedade `data`__ (ex.: `data: () => { return { a: this.myProp }}`). A razão é que arrow functions fazem bind do contexto pai, então `this` não será a instância Vue como você está esperando e `this.myProp` será undefined.</p>
+  Note que se você usar *arrow function* com a propriedade `data`, `this` não será a instância do componente, mas você poderá continuar tendo acesso a instância através do argumento:
+
+  ```js
+  data: vm => ({ a: vm.myProp })
+  ```
 
 - **Ver também:** [Reatividade em Profundidade](../guide/reactivity.html)
 
@@ -532,7 +536,13 @@ type: api
 
   Dados Computados para serem misturadas na instância Vue. Todos os getters e setters tem o seu contexto `this` automaticamente feito bind a instância Vue.
 
-  <p class="tip">Note que __você não deve usar arrow function para definir um dado computado__ (ex.: `aDouble: () => this.a * 2`). A razão é que arrow functions fazem bind do contexto pai, então `this` não será a instância Vue como você está esperando e `this.a` será undefined.</p>
+  Note que se você usar *arrow function* com uma propriedade computada, `this` não será a instância do componente, mas você poderá ter acesso a instância através do seguinte argumento:
+
+  ```js
+  computed: {
+    aDouble: vm => vm.a * 2
+  }
+  ```
 
   Dados Computados são cacheadas, e somente re-computados quando dependências reativas mudam. Note que se uma certa dependência está fora do escopo da instância (ex.: não reativa), o dado computado __não__ será atualizado.
 
@@ -979,7 +989,7 @@ type: api
 
   Possibilita estender outro componente declarativamente (pode ser tanto um objeto plano com opções ou um construtor) sem ter que usar `Vue.extend`. Isso visa primeiramente tornar mais fácil extensão entre componentes _single_ _file_.
 
-  Isso é parecido com `mixins`, a diferença é que as opções do componente tem maior prioridade sobre a fonte do componente que ele está estendendo.
+  Isso é parecido com `mixins`. 
 
 - **Exemplo:**
 
@@ -1009,7 +1019,15 @@ type: api
 
   A opção `provide` deve ser um objeto ou uma função que retorna um objeto. Esse objeto contém as propriedades que estão disponíveis para serem injetadas em seus descendentes. Você pode usar ES2015 _Symbols_ como chaves nesse objeto, mas só em ambientes que suportam nativamente `Symbol` e `Reflect.ownKeys`.
 
-  A opção `inject` deve ser tanto um vetor de _Strings_ ou um objeto onde as chaves referenciam os nomes de _bind_ local, e os valores sendo as chaves (_String_ ou _Symbol_) para buscar nas inserções disponíveis.
+  A opção `inject` deve ser:
+  
+  - um array de _Strings_ ou,
+  - um objeto onde as chaves referenciam os nomes de _bind_ local, e os valores sendo:
+    - Uma chave (_String_ ou _Symbol_) para buscar nas inserções disponíveis
+    ou
+    - Um objeto onde:
+      - a propriedade `name` é a chave para buscar possíveis inserções, e
+      - a propriedade `default` que é usada como valor padrão
 
   > Nota: os binds `provide` e `inject` não são reativos. Isso é intencional. Porém, se você passar um objeto observed, a propriedades desse objeto se mantém reativas.
 
@@ -1391,7 +1409,7 @@ type: api
 
 - **Detalhes:**
 
-  Um objeto que mantém componentes filhos que têm `ref` registrados.
+  Um objeto do elemento DOM que mantém componentes filhos que têm [ atributos `ref`](#ref) registrados.
 
 - **Ver também:**
   - [Referências a Componentes Filhos](../guide/components.html#Referencias-a-Componentes-Filhos)
@@ -1429,6 +1447,8 @@ type: api
 
   Contém ouvintes de eventos (*event listeners*) advindos de `v-on` do escopo do componente pai. Esta propriedade pode ser para os componentes internos via `v-on="$listeners"` - útil quando se quer criar componentes de ordem superior.
 
+
+  Contém listeners de eventos `v-on` (sem os modificadores`.native`). Isso pode ser passado para um componente interno via `v-on="$ listeners"` - útil ao criar wrapper transparentes de componentes.
 
 ## Métodos da Instância / Dados
 
@@ -1855,13 +1875,13 @@ type: api
 
   Atribui uma escuta de evento ao elemento. O tipo de evento é denotado pelo argumento. A expressão pode ser um nome de método, uma declaração em linha ou omitida quando há modificadores presentes.
 
-  Começando na 2.4.0+, `v-on` também suporta interligação a um objeto de pares evento/escutador sem argumentos. Note que, quando se usa a sintaxe de objeto, não há suporte para quaisquer modificadores.
-
-  Quando usada em um elemento normal, escuta somente **eventos nativos de DOM**. Quando usada em um componente de elemento personalizado, também escuta a **eventos personalizados** emitidos naquele componente-filho.
+  Quando usada em um elemento normal, escuta somente [**eventos nativos de DOM**](https://developer.mozilla.org/en-US/docs/Web/Events). Quando usada em um componente de elemento personalizado, também escuta a **eventos personalizados** emitidos naquele componente-filho.
 
   Quando escutando a eventos nativos de DOM, o método recebe o evento nativo como argumento único. Se usando declaração em linha, a declaração tem acesso à propriedade especial `$event`: `v-on:click="handle('ok', $event)"`.
 
-- **Exemplo:**
+  A partir do 2.4.0+, `v-on` também suporte bind para um objeto de um event/listener sem argumentos. Note que quando usar a sintaxe de objetos, este não suporta nenhum modificador.
+
+- **Examplo:**
 
   ```html
   <!-- manipulador de método -->
@@ -1896,6 +1916,9 @@ type: api
 
   <!-- o evento de clique será acionado somente uma vez -->
   <button v-on:click.once="doThis"></button>
+
+  <!-- object syntax (2.4.0+) -->
+  <button v-on="{ mousedown: doThis, mouseup: doThat }"></button>
   ```
 
   Escutando a eventos personalizados em um componente-filho (o manipulador é chamado quando "my-event" é emitido no filho):
@@ -2120,7 +2143,7 @@ type: api
   <p ref="p">Olá</p>
 
   <!-- vm.$refs.child será a instância do componente filho -->
-  <child-comp ref="child"></child-comp>
+  <child-component ref="child"></child-component>
   ```
 
   Quando usada em elementos/componentes com `v-for`, a referência registrada será um Array contendo nós do DOM ou instâncias de componentes.
