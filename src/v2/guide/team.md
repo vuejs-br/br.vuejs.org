@@ -207,25 +207,24 @@ order: 803
     'Hancheu, China': [30.274084, 120.155070],
     'Jersey City, Estados Unidos': [40.728157, -74.558716],
     'Kingston, Jamaica': [18.017874, -76.809904],
-    'Krasnodar, Rússia': [45.039267, 38.987221],
-    'Lansing, Estados Unidos': [42.732535, -84.555535],
-    'Londres, Reino Unido': [51.507351, -0.127758],
-    'Lyon, França': [45.764043, 4.835659],
-    'Mannheim, Alemanha': [49.487459, 8.466039],
-    'Moscou, Rússia': [55.755826, 37.617300],
-    'Munique, Alemanha': [48.137154, 11.576124],
-    'Orlando, Estados Unidos': [28.538335, -81.379236],
-    'Paris, França': [48.856614, 2.352222],
-    'Pequim, China': [39.9042, 116.4074],
-    'Seul, Coreia do Sul': [37.566535, 126.977969],
-    'Taquaritinga, Brasil': [-21.430094, -48.515285],
-    'Teerã, Irã': [35.689197, 51.388974],
-    'Tessalônica, Grécia': [40.640063, 22.944419],
-    'Tóquio, Japão': [35.689487, 139.691706],
-    'Toronto, Canadá': [43.653226, -79.383184],
-    'Wroclaw, Polônia': [51.107885, 17.038538],
-    'Xangai, China': [31.230390, 121.473702],
-    'Xunquim, China': [29.431586, 106.912251]
+    'Krasnodar, Russia': [45.039267, 38.987221],
+    'Lansing, MI, USA': [42.732535, -84.555535],
+    'London, UK': [51.507351, -0.127758],
+    'Lyon, France': [45.764043, 4.835659],
+    'Mannheim, Germany': [49.487459, 8.466039],
+    'Moscow, Russia': [55.755826, 37.617300],
+    'Munich, Germany': [48.137154, 11.576124],
+    'Orlando, FL, USA': [28.538335, -81.379236],
+    'Paris, France': [48.856614, 2.352222],
+    'Poznań, Poland': [52.4006553, 16.761583],
+    'Seoul, South Korea': [37.566535, 126.977969],
+    'Shanghai, China': [31.230390, 121.473702],
+    'Taquaritinga, Brazil': [-21.430094, -48.515285],
+    'Tehran, Iran': [35.689197, 51.388974],
+    'Thessaloniki, Greece': [40.640063, 22.944419],
+    'Tokyo, Japan': [35.689487, 139.691706],
+    'Toronto, Canada': [43.653226, -79.383184],
+    'Wrocław, Poland': [51.107885, 17.038538]
   }
   var languageNameFor = {
     en: 'Inglês',
@@ -280,6 +279,9 @@ order: 803
       ],
       reposPersonal: [
         'vue-2.0-simple-routing-example', 'vue-ssr-demo-simple'
+      ],
+      links: [
+        'https://www.patreon.com/chrisvuefritz'
       ]
     },
     {
@@ -494,10 +496,11 @@ order: 803
       },
       reposOfficial: [
         'vue-devtools',
+        'vue-cli',
         'vue-curated'
       ],
       reposPersonal: [
-        'vue-apollo', 'vue-meteor', 'vue-virtual-scroller'
+        'vue-apollo', 'vue-meteor', 'vue-virtual-scroller', 'v-tooltip'
       ]
     },
     {
@@ -629,6 +632,25 @@ order: 803
       ],
       links: [
         'https://vuejsfeed.com/', 'https://vueschool.io/'
+      ]
+    },
+    {
+      name: 'Michał Sajnóg',
+      city: 'Poznań, Poland',
+      languages: ['pl', 'en'],
+      github: 'michalsnik',
+      twitter: 'michalsnik',
+      work: {
+        role: 'Senior Frontend Developer / Team Leader',
+        org: 'Netguru',
+        orgUrl: 'https://netguru.co/'
+      },
+      reposOfficial: [
+        'eslint-plugin-vue',
+        'vue-devtools'
+      ],
+      reposPersonal: [
+        'vue-computed-helpers', 'vue-content-placeholders'
       ]
     }
   ]))

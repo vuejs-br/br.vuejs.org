@@ -15,10 +15,10 @@ Todos estes já estão armazenados como números brutos ou podem ser convertidos
 
 ## Animando Estado com Observadores
 
-Observadores nos permitem animar mudanças de qualquer propriedade numérica para outra propriedade. Isso pode parecer complicado no começo, por isso vamos mergulhar em um exemplo usando [Tween.js](https://github.com/tweenjs/tween.js):
+Observadores nos permitem animar mudanças de qualquer propriedade numérica para outra propriedade. Isso pode parecer complicado no começo, por isso vamos mergulhar em um exemplo usando [GreenSock](https://greensock.com/):
 
 ``` html
-<script src="https://cdn.jsdelivr.net/npm/tween.js@16.3.4"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 
 <div id="animated-number-demo">
   <input v-model.number="number" type="number" step="20">
@@ -31,33 +31,23 @@ new Vue({
   el: '#animated-number-demo',
   data: {
     number: 0,
-    animatedNumber: 0
+    tweenedNumber: 0
+  },
+  computed: {
+    animatedNumber: function() {
+      return this.tweenedNumber.toFixed(0);
+    }
   },
   watch: {
-    number: function(newValue, oldValue) {
-      var vm = this
-      function animate () {
-        if (TWEEN.update()) {
-          requestAnimationFrame(animate)
-        }
-      }
-
-      new TWEEN.Tween({ tweeningNumber: oldValue })
-        .easing(TWEEN.Easing.Quadratic.Out)
-        .to({ tweeningNumber: newValue }, 500)
-        .onUpdate(function () {
-          vm.animatedNumber = this.tweeningNumber.toFixed(0)
-        })
-        .start()
-
-      animate()
+    number: function(newValue) {
+      TweenLite.to(this.$data, 0.5, { tweenedNumber: newValue });
     }
   }
 })
 ```
 
 {% raw %}
-<script src="https://cdn.jsdelivr.net/npm/tween.js@16.3.4"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 <div id="animated-number-demo" class="demo">
   <input v-model.number="number" type="number" step="20">
   <p>{{ animatedNumber }}</p>
@@ -67,33 +57,23 @@ new Vue({
   el: '#animated-number-demo',
   data: {
     number: 0,
-    animatedNumber: 0
+    tweenedNumber: 0
+  },
+  computed: {
+    animatedNumber: function() {
+      return this.tweenedNumber.toFixed(0);
+    }
   },
   watch: {
-    number: function(newValue, oldValue) {
-      var vm = this
-      function animate () {
-        if (TWEEN.update()) {
-          requestAnimationFrame(animate)
-        }
-      }
-
-      new TWEEN.Tween({ tweeningNumber: oldValue })
-        .easing(TWEEN.Easing.Quadratic.Out)
-        .to({ tweeningNumber: newValue }, 500)
-        .onUpdate(function () {
-          vm.animatedNumber = this.tweeningNumber.toFixed(0)
-        })
-        .start()
-
-      animate()
+    number: function(newValue) {
+      TweenLite.to(this.$data, 0.5, { tweenedNumber: newValue });
     }
   }
 })
 </script>
 {% endraw %}
 
-Quando você atualiza o número, a mudança é animada abaixo do _input_. Isto produz uma demonstração agradável, mas o que acontece com o que não é diretamente gravado como um número, como qualquer cor CSS válida por exemplo? Veja como podemos conseguir isso com a adição de [Color.js](https://github.com/brehaut/color-js):
+Quando você atualiza o número, a mudança é animada abaixo do _input_. Isto produz uma demonstração agradável, mas o que acontece com o que não é diretamente gravado como um número, como qualquer cor CSS válida por exemplo? Veja como podemos conseguir isso com [Tween.js](https://github.com/tweenjs/tween.js) e [Color.js](https://github.com/brehaut/color-js):
 
 ``` html
 <script src="https://cdn.jsdelivr.net/npm/tween.js@16.3.4"></script>

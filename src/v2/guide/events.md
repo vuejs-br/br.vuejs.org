@@ -171,6 +171,7 @@ Para resolver esse problema, o Vue fornece **modificadores de evento** para `v-o
 - `.capture`
 - `.self`
 - `.once`
+- `.passive`
 
 ``` html
 <!-- a propagação do evento click será interrompida -->

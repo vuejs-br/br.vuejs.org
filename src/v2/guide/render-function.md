@@ -138,7 +138,7 @@ A próxima coisa com a qual você precisa se familiarizar é como utilizar os re
 // @returns {VNode}
 createElement(
   // {String | Object | Function}
-  // Um nome de elemento (tag) HTML, um objeto com opções de componente,
+  // Um nome de elemento (tag) HTML, um objeto com opções de componente, ou async
   // ou uma função retornando um dentre os anteriores. Requerido.
   'div',
 
@@ -498,7 +498,7 @@ Para mais informações sobre como JSX é mapeado para JavaScript, veja a [docum
 
 O componente de cabeçalho com âncoras que criamos anteriormente é relativamente simples. Ele não gerencia nenhum estado próprio, não observa nenhum estado passado para si, e não tem nenhum método ligado ao ciclo de vida da instância. Realmente, é apenas uma função com algumas propriedades.
 
-Em casos como este, nós podemos marcar componentes como `functional`, o que significa que eles são _stateless_ (sem estado, ou seja, sem `data`) e são _instanceless_ (sem instância, ou seja, sem o contexto `this`). Um **componente funcional** tem este formato:
+Em casos como este, nós podemos marcar componentes como `functional`, o que significa que eles são _stateless_ (sem [estado]((../api/#Options-Data)), ou seja, sem `data`) e são _instanceless_ (sem instância, ou seja, sem o contexto `this`). Um **componente funcional** tem este formato:
 
 ``` js
 Vue.component('meu-componente', {
@@ -529,7 +529,7 @@ Tudo que o componente funcional necessita é passado através de `context`, o qu
 - `props`: Um objeto com as propriedades
 - `children`: Um Array de elementos VNode filhos
 - `slots`: Uma função retornando um objeto _slots_
-- `data`: Todo o objeto `data` passado ao componente
+- `data`: Todo o [objeto `data]((#The-Data-Object-In-Depth)) passado ao componente
 - `parent`: Uma referência ao componente pai
 - `listeners`: (2.3.0+) Um objeto contendo escutas a eventos registradas pelo pai. É um atalho para `data.on`
 - `injections`: (2.3.0+) Se estiver usando a opção [`inject`](../api/#provide-inject), aqui estarão as injeções resolvidas
@@ -553,6 +553,13 @@ var UnorderedList = { /* ... */ }
 
 Vue.component('smart-list', {
   functional: true,
+  props: {
+    items: {
+      type: Array,
+      required: true
+    },
+    isOrdered: Boolean
+  },
   render: function (createElement, context) {
     function appropriateListComponent () {
       var items = context.props.items
@@ -569,13 +576,6 @@ Vue.component('smart-list', {
       context.data,
       context.children
     )
-  },
-  props: {
-    items: {
-      type: Array,
-      required: true
-    },
-    isOrdered: Boolean
   }
 })
 ```
@@ -604,7 +604,7 @@ If you are using template-based functional components, you will also have to man
 <template functional>
   <button
     class="btn btn-primary"
-    v-bind="data.attrs" 
+    v-bind="data.attrs"
     v-on="listeners"
   >
     <slot/>
