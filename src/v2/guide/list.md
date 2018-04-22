@@ -268,21 +268,40 @@ Por limitações no JavaScript, Vue **não pode** detectar as seguintes mudança
 1. Quando se define diretamente um item em um índice: `vm.items[indexOfItem] = newValue`
 2. Quando se modifica diretamente o tamanho do Array: `vm.items.length = newLength`
 
+Por examplo:
+
+``` js
+var vm = new Vue({
+  data: {
+    items: ['a', 'b', 'c']
+  }
+})
+vm.items[1] = 'x' // is NOT reactive
+vm.items.length = 2 // is NOT reactive
+```
+
 Para contornar a limitação 1, há duas alternativas ao `vm.items[indexOfItem] = newValue` que causam atualização de estado no sistema de reatividade:
+
 
 ``` js
 // Vue.set
-Vue.set(example1.items, indexOfItem, newValue)
+Vue.set(vm.items, indexOfItem, newValue)
 ```
 ``` js
 // Array.prototype.splice
-example1.items.splice(indexOfItem, 1, newValue)
+vm.items.splice(indexOfItem, 1, newValue)
+```
+
+You can also use the [`vm.$set`](https://vuejs.org/v2/api/#vm-set) instance method, which is an alias for the global `Vue.set`:
+
+``` js
+vm.$set(vm.items, indexOfItem, newValue)
 ```
 
 Para lidar com a limitação 2, é possível usar `splice`:
 
 ``` js
-example1.items.splice(newLength)
+vm.items.splice(newLength)
 ```
 
 ## Detectando Mudanças em Objetos

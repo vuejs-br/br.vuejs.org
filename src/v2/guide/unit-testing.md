@@ -129,3 +129,6 @@ it('updates the rendered message when vm.message updates', done => {
 ```
 
 Estamos planejando trabalhar em um conjunto com uma coleção de _helpers_ de teste para tornar mais fácil renderizar componentes com diferentes restrições (por exemplo, processamento superficial que ignora componentes filhos) e garantir os valores de suas saídas.
+
+Para maiores informações sobre testes unitários no Vue, veja [vue-test-utils](https://vue-test-utils.vuejs.org/en/) e nosso cookbook sobre [testes unitários em componentes vue](https://vuejs.org/v2/cookbook/unit-testing-vue-components.html).
+

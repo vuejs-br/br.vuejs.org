@@ -171,6 +171,7 @@ Para resolver esse problema, o Vue fornece **modificadores de evento** para `v-o
 - `.capture`
 - `.self`
 - `.once`
+- `.passive`
 
 ``` html
 <!-- a propagação do evento click será interrompida -->
@@ -295,11 +296,7 @@ Por exemplo:
 <div @click.ctrl="doSomething">Do something</div>
 ```
 
-<<<<<<< HEAD
-<p class="tip">Teclas modificadoras são diferentes de teclas comuns, e quando utilizadas com eventos `keyup`, precisam estar pressionadas quando o evento é emitido. Em outras palavras, `keyup.ctrl` só vai disparar se você soltar alguma tecla enquanto ainda estiver segurando `ctrl`. E não irá disparar se você soltar a tecla `ctrl` sozinha.</p>
-=======
-<p class="tip">Note that modifier keys are different from regular keys and when used with `keyup` events, they have to be pressed when the event is emitted. In other words, `keyup.ctrl` will only trigger if you release a key while holding down `ctrl`. It won't trigger if you release the `ctrl` key alone. If you do want such behaviour, use the `keyCode` for `ctrl` instead: `keyup.17`.</p>
->>>>>>> 5e1b2b3df9506c9a86b759b14af4e314f8b48aa1
+<p class="tip">Teclas modificadoras são diferentes de teclas comuns, e quando utilizadas com eventos `keyup`, precisam estar pressionadas quando o evento é emitido. Em outras palavras, `keyup.ctrl` só vai disparar se você soltar alguma tecla enquanto ainda estiver segurando `ctrl`. E não irá disparar se você soltar a tecla `ctrl` sozinha. Se você deseja tal comportamento, use o `keyCode` para `ctrl`: `keyup.17`.</p>
 
 ### Modificar `.exact`
 
