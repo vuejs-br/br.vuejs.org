@@ -302,9 +302,7 @@ Existem dois casos em comum que você possa querer fazer isso:
 
 - Para filtar itens em uma lista (ex: `v-for="user in users" v-if="user.isActive"`). neste caso, troque `users` para uma propriedade calculada (computed) que retorne a lista filtrada (ex: `activeUsers`).
 
-- Evite usar uma lista que deveria estar oculta (ex: `v-for="user in users" v-if="shouldShowUsers"`)
-
-- To avoid rendering a list if it should be hidden (e.g. `v-for="user in users" v-if="shouldShowUsers"`, com `shouldShowUsers` sendo `false`). Nestes casos, mova o `v-if` para um container acima do `v-for` (ex: `ul`, `ol`)
+- Evite usar uma lista que deveria estar oculta (ex: `v-for="user in users" v-if="shouldShowUsers"`), com `shouldShowUsers` sendo `false`). Nestes casos, mova o `v-if` para um container acima do `v-for` (ex: `ul`, `ol`)
 
 {% raw %}
 <details>
@@ -1505,8 +1503,6 @@ Esta é a ordem padrão que recomendamos para as propriedades dos componentes. E
 
 **Os atributos dos elementos (incluindo componentes) devem ser ordenados de forma consistente.**
 
-This is the default order we recommend for component options. They're split into categories, so you'll know where to add custom attributes and directives.
-
 Esta é a ordem padrão que recomendamos para os atributos de componentes. Eles são divididos em categorias, para que você saiba onde adicionar atributos e diretivas personalizadas.
 
 
@@ -1727,9 +1723,6 @@ Prefira seletores de classe ao invés de seletores de elemento, em estilos com `
 </summary>
 {% endraw %}
 
-To scope styles, Vue adds a unique attribute to component elements, such as `data-v-f3f3eg9`. Then selectors are modified so that only matching elements with this attribute are selected (e.g. `button[data-v-f3f3eg9]`).
-
-
 Para estilos com `scope`, o Vue adiciona um atributo exclusivo aos elementos do componente, como `data-v-f3f3eg9`. Em seguida, os seletores são modificados para que apenas os elementos correspondentes com esse atributo sejam selecionados (por exemplo, `button [data-v-f3f3eg9]`).
 
 O problema é que uma grande quantidade de [seletores de elemento](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=a%5Bhref%5D&body=background%3A+%23CFD&ne=1000) (e.g. `button[data-v-f3f3eg9]`) irá consideravelmente deixá-lo mais lento que  [seletores de classe](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=.class%5Bhref%5D&body=background%3A+%23CFD&ne=1000) (e.g. `.btn-close[data-v-f3f3eg9]`), então os seletores de classe devem ser usados sempre que possível.
@@ -1770,14 +1763,9 @@ button {
 
 ### Comunicação implícita entre componentes pai-filho <sup data-p="d">use com cuidado</sup>
 
-**Props and events should be preferred for parent-child component communication, instead of `this.$parent` or mutating props.**
-
-
 **Props e eventos devem ser usados preferencialmente para a comunicação do componente pai-filho, em vez de `this.$Parent`.**
 
 Uma aplicação ideal do Vue é usada com props para baixo e eventos para acima. Aderindo a esta convenção torna seus componentes muito mais fáceis de entender. No entanto, há casos extremos em que a pops *mutation* ou `this.$Parent` pode simplificar dois componentes que já estão profundamente acoplados.
-
-The problem is, there are also many _simple_ cases where these patterns may offer convenience. Beware: do not be seduced into trading simplicity (being able to understand the flow of your state) for short-term convenience (writing less code).
 
 O problema é também existem muitos casos simples em que esses padrões podem oferecer conveniência. Cuidado: não se deixe seduzir pela simplicidade de negociação (poder entender o fluxo do seu estado) para conveniência de curto prazo (escrever menos código).
 
@@ -1866,8 +1854,6 @@ Vue.component('TodoItem', {
 
 
 ### Gerenciamento de estado sem fluxo <sup data-p="d">use com cuidado</sup>
-
-**[Vuex](https://github.com/vuejs/vuex) should be preferred for global state management, instead of `this.$root` or a global event bus.**
 
 ** [Vuex](https://github.com/vuejs/vuex) deve ser preferido para o gerenciamento de estado global, em vez de `this.$root` ou um o uso de event bus.**
 
