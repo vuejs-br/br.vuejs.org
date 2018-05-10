@@ -17,7 +17,7 @@ Finalmente, vamos dividir as regras de estilos em quatro categorias:
 
 ### Prioridade A: Essencial
 
-Estas regras ajudam a prevenir erros, então aprenda e respeite-as a todo custo. Exceções podem existir, mas devem ser raras e somente realizadas por quer possuir um conhecimento avançado tanto em Javascript quanto Vue.
+Estas regras ajudam a prevenir erros, então aprenda e respeite-as a todo custo. Exceções podem existir, mas devem ser raras e somente realizadas por quem possuir um conhecimento avançado tanto em Javascript quanto no Vue.
 
 ### Prioridade B: Altamente Recomendado
 
