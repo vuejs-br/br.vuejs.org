@@ -1505,8 +1505,6 @@ Esta é a ordem padrão que recomendamos para as propriedades dos componentes. E
 
 **Os atributos dos elementos (incluindo componentes) devem ser ordenados de forma consistente.**
 
-This is the default order we recommend for component options. They're split into categories, so you'll know where to add custom attributes and directives.
-
 Esta é a ordem padrão que recomendamos para os atributos de componentes. Eles são divididos em categorias, para que você saiba onde adicionar atributos e diretivas personalizadas.
 
 
