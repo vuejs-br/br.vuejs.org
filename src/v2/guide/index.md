@@ -22,14 +22,14 @@ Se você é um desenvolvedor _frontend_ experiente e quer saber como Vue se comp
 A forma mais simples de testar Vue.js é usando o [exemplo de Olá Mundo no JSFiddle](https://jsfiddle.net/ErickPetru/39ocp6er/). Sinta-se à vontade para abrí-lo em outra aba e acompanhar conosco durante alguns exemplos básicos. Ou, você pode <a href="https://gist.githubusercontent.com/ErickPetru/dcc4f4f27034a7bb6e5f91023659b7c7/raw/afd3e563112897dba2d84e181a54f32eb862fc47/index.html" target="_blank" download="index.html">criar um arquivo `.html`</a> e incluir Vue com:
 
 ``` html
-<!-- development version, includes helpful console warnings -->
+<!-- versão de desenvolvimento, inclui aviso úteis no console  -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 ```
 
 or:
 
 ``` html
-<!-- production version, optimized for size and speed -->
+<!-- versão de produção, otimizada para tamanho e velocidade -->
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 ```
 
