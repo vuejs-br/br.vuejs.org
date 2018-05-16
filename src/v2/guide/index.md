@@ -26,7 +26,7 @@ A forma mais simples de testar Vue.js é usando o [exemplo de Olá Mundo no JSFi
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 ```
 
-or:
+ou:
 
 ``` html
 <!-- versão de produção, otimizada para tamanho e velocidade -->
