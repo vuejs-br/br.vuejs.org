@@ -293,7 +293,7 @@ Por exemplo:
 <input @keyup.alt.67="clear">
 
 <!-- Ctrl + Click -->
-<div @click.ctrl="doSomething">Do something</div>
+<div @click.ctrl="doSomething">Faça alguma coisa</div>
 ```
 
 <p class="tip">Teclas modificadoras são diferentes de teclas comuns, e quando utilizadas com eventos `keyup`, precisam estar pressionadas quando o evento é emitido. Em outras palavras, `keyup.ctrl` só vai disparar se você soltar alguma tecla enquanto ainda estiver segurando `ctrl`. E não irá disparar se você soltar a tecla `ctrl` sozinha. Se você deseja tal comportamento, use o `keyCode` para `ctrl`: `keyup.17`.</p>

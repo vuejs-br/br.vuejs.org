@@ -276,8 +276,8 @@ var vm = new Vue({
     items: ['a', 'b', 'c']
   }
 })
-vm.items[1] = 'x' // is NOT reactive
-vm.items.length = 2 // is NOT reactive
+vm.items[1] = 'x' // NÃO é reativo
+vm.items.length = 2 // NÃO é reativo
 ```
 
 Para contornar a limitação 1, há duas alternativas ao `vm.items[indexOfItem] = newValue` que causam atualização de estado no sistema de reatividade:
@@ -507,7 +507,7 @@ Aqui temos um exemplo de uma lista de tarefas simples usando componentes:
 </div>
 ```
 
-<p class="tip">Note the `is="todo-item"` attribute. This is necessary in DOM templates, because only an `<li>` element is valid inside a `<ul>`. It does the same thing as `<todo-item>`, but works around a potential browser parsing error. See [DOM Template Parsing Caveats](components.html#DOM-Template-Parsing-Caveats) to learn more.</p>
+<p class="tip">Observe o atributo `is="todo-item"`. Ele é necessario em templates DOM, porque somente o elemento `<li>` é valido dentro de um `<ul>`. Ele faz o mesmo que `<todo-item>`, mas funciona em torno de um potencial erro do navegador. Veja [DOM Template Parsing Caveats](components.html#DOM-Template-Parsing-Caveats) para saber mais.</p>
 
 ``` js
 Vue.component('todo-item', {
