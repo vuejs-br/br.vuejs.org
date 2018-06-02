@@ -614,7 +614,7 @@ If you are using template-based functional components, you will also have to man
 
 ### `slots()` vs `children`
 
-Você pode ser perguntar por que nós precisamos de ambos - `slots()` e `children`. Não seria `slots().default` o mesmo que `children`? Em alguns casos, sim - mas o que aconteceria se você tivesse um componente funcional contendo os seguintes elementos filhos?
+Você pode se perguntar por que nós precisamos de ambos - `slots()` e `children`. Não seria `slots().default` o mesmo que `children`? Em alguns casos, sim - mas o que aconteceria se você tivesse um componente funcional contendo os seguintes elementos filhos?
 
 ``` html
 <meu-componente-funcional>
