@@ -291,8 +291,7 @@ Vue.set(vm.items, indexOfItem, newValue)
 // Array.prototype.splice
 vm.items.splice(indexOfItem, 1, newValue)
 ```
-
-You can also use the [`vm.$set`](https://vuejs.org/v2/api/#vm-set) instance method, which is an alias for the global `Vue.set`:
+Também é possível usar o método de instância [`vm.$set`](https://vuejs.org/v2/api/#vm-set), um atalho para o global `Vue.set`:
 
 ``` js
 vm.$set(vm.items, indexOfItem, newValue)
@@ -338,7 +337,7 @@ Você poderia adicionar uma nova propriedade `age` ao objeto interno `userProfil
 Vue.set(vm.userProfile, 'age', 30)
 ```
 
-Também é possível usar o método de instância `vm.$set`, um atalho para o global `Vue.set`:
+Também é possível usar o método de instância [`vm.$set`](https://vuejs.org/v2/api/#vm-set), um atalho para o global `Vue.set`:
 
 ``` js
 vm.$set(vm.userProfile, 'age', 27)
