@@ -159,7 +159,7 @@ Recriar componentes dinâmicos normalmente é um comportamento útil, mas, nesse
 </keep-alive>
 ```
 
-Check out the result below:
+Confira o resultado abaixo:
 
 {% raw %}
 <div id="dynamic-component-keep-alive-demo" class="demo">
