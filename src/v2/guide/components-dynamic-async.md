@@ -6,7 +6,7 @@ order: 105
 
 > Esta página assume que você já leu a página de [Components Basics] (components.html). Leia primeiro se você é novo em componentes.
 
-## `keep-alive` with Dynamic Components
+## `keep-alive` com componentes dinâmicos
 
 Anteriormente, usamos o atributo `is` para alternar entre componentes em uma interface com guias:
 
@@ -244,7 +244,7 @@ new Vue({
 })
 ```
 
-<p class = "tip"> Se você é um usuário do <strong> Browserify </ strong> que gostaria de usar componentes assíncronos, seu criador infelizmente [deixou claro] (https://github.com/substack/ node-browserify / issues / 58 # issuecomment-21978224) que o carregamento assíncrono "não é algo que o Browserify irá suportar". Oficialmente, pelo menos. A comunidade Browserify encontrou [algumas soluções alternativas] (https://github.com/vuejs/vuejs.org/issues/620), que podem ser úteis para aplicativos existentes e complexos. Para todos os outros cenários, recomendamos o uso do Webpack para suporte async integrado de primeira classe. </p>
+<p class = "tip"> Se você é um usuário do <strong> Browserify </strong> que gostaria de usar componentes assíncronos, seu criador infelizmente [deixou claro] (https://github.com/substack/ node-browserify / issues / 58 # issuecomment-21978224) que o carregamento assíncrono "não é algo que o Browserify irá suportar". Oficialmente, pelo menos. A comunidade Browserify encontrou [algumas soluções alternativas] (https://github.com/vuejs/vuejs.org/issues/620), que podem ser úteis para aplicativos existentes e complexos. Para todos os outros cenários, recomendamos o uso do Webpack para suporte async integrado de primeira classe. </p>
 
 ### Manipulando o Estado de Carregamento
 
