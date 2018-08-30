@@ -255,7 +255,7 @@ type: api
 
 - **Uso:**
 
-  Atribui uma propriedade em um objeto. Se o objeto é reativo, certifique-se que a propriedade será criada como uma propriedade reativa e disparará atualizações na view. Isto é usado primariamente para contornar a limitação do Vue em não conseguir detectar adições de propriedades.
+  Adiciona uma propriedade em um objeto reativo, garantindo que a nova propriedade também seja reativa, disparando atualizações na interface. Deve ser utilizado para adicionar novas propriedades em objetos reativos, já que o Vue não pode detectar adição de propriedades direta (ex.: `this.myObject.newProperty = 'hi'`).
 
   <p class="tip">O objeto alvo não pode ser uma instância Vue, ou um objeto de dados raiz de uma instância Vue.</p>
 
@@ -1019,21 +1019,20 @@ type: api
 
   A opção `provide` deve ser um objeto ou uma função que retorna um objeto. Esse objeto contém as propriedades que estão disponíveis para serem injetadas em seus descendentes. Você pode usar ES2015 _Symbols_ como chaves nesse objeto, mas só em ambientes que suportam nativamente `Symbol` e `Reflect.ownKeys`.
 
-  A opção `inject` deve ser:
-  
-  - um array de _Strings_ ou,
+  A opção `inject` deve ser uma das opções:
+  - um array de _Strings_, ou
   - um objeto onde as chaves referenciam os nomes de _bind_ local, e os valores sendo:
-    - Uma chave (_String_ ou _Symbol_) para buscar nas inserções disponíveis
-    ou
-    - Um objeto onde:
-      - a propriedade `name` é a chave para buscar possíveis inserções, e
-      - a propriedade `default` que é usada como valor padrão
+    - uma chave (_String_ ou _Symbol_) para buscar nas inserções disponíveis, ou
+    - um objeto onde:
+      - a propriedade `from` é a chave (_String_ ou _Symbol_) para buscar possíveis inserções, e
+      - a propriedade `default` é usada como valor padrão
 
   > Nota: os binds `provide` e `inject` não são reativos. Isso é intencional. Porém, se você passar um objeto observed, a propriedades desse objeto se mantém reativas.
 
 - **Exemplo:**
 
   ``` js
+  // parent component providing 'foo'
   var Provider = {
     provide: {
       foo: 'bar'
@@ -1041,6 +1040,7 @@ type: api
     // ...
   }
 
+  // child component injecting 'foo'
   var Child = {
     inject: ['foo'],
     created () {
@@ -1594,13 +1594,138 @@ type: api
 
   - Se tanto o evento quanto o _callback_ forem passados, esta função somente irá remover a escuta para este _callback_ específico.
 
-### vm.$emit( event, [...args] )
+### vm.$emit( eventName, [...args] )
 
 - **Argumentos:**
-  - `{string} event`
+  - `{string} eventName`
   - `[...args]`
 
   Lança um evento na instância atual. Qualquer argumento adicional será passado para a função de _callback_ da escuta.
+
+- **Exemplos:**
+
+  Usando `$emit` com apenas um nome de evento:
+
+  ```js
+  Vue.component('welcome-button', {
+    template: `
+      <button v-on:click="$emit('welcome')">
+        Me clique para receber um olá
+      </button>
+    `
+  })
+  ```
+  ```html
+  <div id="emit-example-simple">
+    <welcome-button v-on:welcome="sayHi"></welcome-button>
+  </div>
+  ```
+  ```js
+  new Vue({
+    el: '#emit-example-simple',
+    methods: {
+      sayHi: function () {
+        alert('Olá!')
+      }
+    }
+  })
+  ```
+  {% raw %}
+  <div id="emit-example-simple" class="demo">
+    <welcome-button v-on:welcome="sayHi"></welcome-button>
+  </div>
+  <script>
+    Vue.component('welcome-button', {
+      template: `
+        <button v-on:click="$emit('welcome')">
+          Me clique para receber um olá
+        </button>
+      `
+    })
+    new Vue({
+      el: '#emit-example-simple',
+      methods: {
+        sayHi: function () {
+          alert('Olá!')
+        }
+      }
+    })
+  </script>
+  {% endraw %}
+
+  Usando `$emit` com argumentos adicionais:
+
+  ```js
+  Vue.component('magic-eight-ball', {
+    data: function () {
+      return {
+        possibleAdvice: ['Sim', 'Não', 'Talvez']
+      }
+    },
+    methods: {
+      giveAdvice: function () {
+        var randomAdviceIndex = Math.floor(Math.random() * this.possibleAdvice.length)
+        this.$emit('give-advice', this.possibleAdvice[randomAdviceIndex])
+      }
+    },
+    template: `
+      <button v-on:click="giveAdvice">
+        Me clique para aconselhamento
+      </button>
+    `
+  })
+  ```
+
+  ```html
+  <div id="emit-example-argument">
+    <magic-eight-ball v-on:give-advice="showAdvice"></magic-eight-ball>
+  </div>
+  ```
+
+  ```js
+  new Vue({
+    el: '#emit-example-argument',
+    methods: {
+      showAdvice: function (advice) {
+        alert(advice)
+      }
+    }
+  })
+  ```
+
+  {% raw %}
+  <div id="emit-example-argument" class="demo">
+    <magic-eight-ball v-on:give-advice="showAdvice"></magic-eight-ball>
+  </div>
+  <script>
+    Vue.component('magic-eight-ball', {
+      data: function () {
+        return {
+          possibleAdvice: ['Sim', 'Não', 'Talvez']
+        }
+      },
+      methods: {
+        giveAdvice: function () {
+          var randomAdviceIndex = Math.floor(Math.random() * this.possibleAdvice.length)
+          this.$emit('give-advice', this.possibleAdvice[randomAdviceIndex])
+        }
+      },
+      template: `
+        <button v-on:click="giveAdvice">
+          Me clique para aconselhamento
+        </button>
+      `
+    })
+    new Vue({
+      el: '#emit-example-argument',
+      methods: {
+        showAdvice: function (advice) {
+          alert(advice)
+        }
+      }
+    })
+  </script>
+  {% endraw %}
 
 ## Métodos da Instância / Ciclo-de-Vida
 
@@ -2022,8 +2147,8 @@ type: api
 
 - **Modificadores:**
   - [`.lazy`](../guide/forms.html#lazy) - escuta por eventos `change` ao invés de `input`
-  - [`.number`](../guide/forms.html#number) - faz o cast da string informada para números
-  - [`.trim`](../guide/forms.html#trim) - faz trim da entrada
+  - [`.number`](../guide/forms.html#number) - faz a conversão da String informada para números
+  - [`.trim`](../guide/forms.html#trim) - faz _trim_ dos dados informados
 
 - **Uso:**
 
@@ -2186,7 +2311,7 @@ Usado para denotar um elemento `<template>` como um slot de escopo que foi subst
 
 ### is
 
-- **Espera:** `string`
+- **Espera:** `string | Object (de opções do componente)`
 
   Usado para [Componentes Dinâmicos](../guide/components.html#Componentes-Dinamicos) e para trabalhar [limitações dos templates do DOM](../guide/components.html#Cuidados-com-o-Uso-no-DOM).
 

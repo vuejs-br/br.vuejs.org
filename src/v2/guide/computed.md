@@ -215,10 +215,10 @@ var watchExampleVM = new Vue({
     // sempre que a pergunta mudar, essa função será executada
     question: function (newQuestion, oldQuestion) {
       this.answer = 'Esperando você parar de escrever...'
-      this.getAnswer()
+      this.debouncedGetAnswer()
     }
   },
-  methods: {
+  created: function () {
     // _.debounce é uma função fornecida pelo lodash para limitar
     // a frequência que uma operação complexa pode ser executada.
     // Neste caso, queremos limitar a frequência com que acessamos
@@ -226,27 +226,25 @@ var watchExampleVM = new Vue({
     // a digitação antes de realizar a chamada Ajax. Para aprender
     // mais sobre a função _.debounce (e sua prima _.throttle),
     // visite: https://lodash.com/docs#debounce
-    getAnswer: _.debounce(
-      function () {
-        var vm = this
-        if (vm.question.indexOf('?') === -1) {
-          vm.answer = 'Perguntas geralmente têm uma interrogação. ;-)'
-          return
-        }
-        vm.answer = 'Pensando...'
-        axios.get('https://yesno.wtf/api')
-          .then(function (response) {
-            vm.answer = response.data.answer === 'yes' ? 'Sim.' :
-              response.data.answer === 'no' ? 'Não.' : 'Talvez!'
-          })
-          .catch(function (error) {
-            vm.answer = 'Erro! Não pode executar a API. ' + error
-          })
-      },
-      // Este é o número de milissegundos que aguardamos para
-      // que o usuário pare de digitar
-      500
-    )
+    this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+  },
+  methods: {
+    getAnswer:  function () {
+      if (this.question.indexOf('?') === -1) {
+        this.answer = 'Perguntas geralmente têm uma interrogação. ;-)'
+        return
+      }
+      this.answer = 'Pensando...'
+      var vm = this
+      axios.get('https://yesno.wtf/api')
+        .then(function (response) {
+          vm.answer = response.data.answer === 'yes' ? 'Sim.' :
+            response.data.answer === 'no' ? 'Não.' : 'Talvez!'
+        })
+        .catch(function (error) {
+          vm.answer = 'Erro! Não pode executar a API. ' + error
+        })
+    }
   }
 })
 </script>
@@ -274,29 +272,29 @@ var watchExampleVM = new Vue({
   watch: {
     question: function (newQuestion, oldQuestion) {
       this.answer = 'Esperando você parar de escrever...'
-      this.getAnswer()
+      this.debouncedGetAnswer()
     }
   },
+  created: function () {
+    this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+  },
   methods: {
-    getAnswer: _.debounce(
-      function () {
-        var vm = this
-        if (vm.question.indexOf('?') === -1) {
-          vm.answer = 'Perguntas geralmente têm uma interrogação. ;-)'
-          return
-        }
-        vm.answer = 'Pensando...'
-        axios.get('https://yesno.wtf/api')
-          .then(function (response) {
-            vm.answer = response.data.answer === 'yes' ? 'Sim.' :
-              response.data.answer === 'no' ? 'Não.' : 'Talvez!'
-          })
-          .catch(function (error) {
-            vm.answer = 'Erro! Não pode executar a API. ' + error
-          })
-      },
-      500
-    )
+    getAnswer:  function () {
+      if (this.question.indexOf('?') === -1) {
+        this.answer = 'Perguntas geralmente têm uma interrogação. ;-)'
+        return
+      }
+      this.answer = 'Pensando...'
+      var vm = this
+      axios.get('https://yesno.wtf/api')
+        .then(function (response) {
+          vm.answer = response.data.answer === 'yes' ? 'Sim.' :
+            response.data.answer === 'no' ? 'Não.' : 'Talvez!'
+        })
+        .catch(function (error) {
+          vm.answer = 'Erro! Não pode executar a API. ' + error
+        })
+    }
   }
 })
 </script>

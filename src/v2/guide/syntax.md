@@ -102,7 +102,7 @@ Essas expressões serão compiladas como JavaScript no escopo de dados da instâ
 
 ## Diretivas
 
-Diretivas são atributos especiais com o prefixo `v-`. Espera-se que os valores atribuídos às diretivas sejam **uma simples expressão Javascript** (com a excessão do `v-for`, que será discutido posteriormente). O trabalho de uma diretiva é aplicar reativamente efeitos colaterais ao DOM, ou seja, realizar algum efeito quando o valor da expressão é modificado. Vamos revisar o simples exemplo que vimos na introdução:
+Diretivas são atributos especiais com o prefixo `v-`. Espera-se que os valores atribuídos às diretivas sejam **uma simples expressão Javascript** (com a excessão do `v-for`, que será discutido posteriormente). O trabalho de uma diretiva é aplicar reativamente efeitos colaterais ao DOM, ou seja, realizar algum efeito quando o valor da expressão é modificado. Vamos revisar o exemplo que vimos na introdução:
 
 ``` html
 <p v-if="seen">Agora você me viu</p>

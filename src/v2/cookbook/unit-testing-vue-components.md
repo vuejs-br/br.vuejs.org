@@ -44,11 +44,11 @@ export default {
 ```
 
 ```js
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 
 test('Foo', () => {
   // render the component
-  const wrapper = shallow(Hello)
+  const wrapper = shallowMount(Hello)
 
   // should not allow for `username` less than 7 characters, excludes whitespace
   wrapper.setData({ username: ' '.repeat(7) })
@@ -82,7 +82,7 @@ Automated testing allows large teams of developers to maintain complex codebases
 
 #### Getting started
 
-[Vue Test Utils](https://github.com/vuejs/vue-test-utils) is the official library for unit testing Vue components. The [vue-cli](https://github.com/vuejs/vue-cli) `webpack` template comes with either Karma or Jest, both well supported test runners, and there are some [guides](https://vue-test-utils.vuejs.org/en/guides/) in the Vue Test Utils documentation.
+[Vue Test Utils](https://github.com/vuejs/vue-test-utils) is the official library for unit testing Vue components. The [vue-cli](https://github.com/vuejs/vue-cli) `webpack` template comes with either Karma or Jest, both well supported test runners, and there are some [guides](https://vue-test-utils.vuejs.org/guides/) in the Vue Test Utils documentation.
 
 ## Real-World Example
 
@@ -145,26 +145,26 @@ The things that we should test are:
 And our first attempt at test:
 
 ```js
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 
 describe('Foo', () => {
   it('renders a message and responds correctly to user input', () => {
-      const wrapper = shallow(Foo, {
-    data: {
-      message: 'Hello World',
-      username: ''
-    }
-  })
+    const wrapper = shallowMount(Foo, {
+      data: {
+        message: 'Hello World',
+        username: ''
+      }
+    })
 
-  // see if the message renders
-  expect(wrapper.find('.message').text()).toEqual('Hello World')
+    // see if the message renders
+    expect(wrapper.find('.message').text()).toEqual('Hello World')
 
-  // assert the error is rendered
-  expect(wrapper.find('.error').exists()).toBeTruthy()
+    // assert the error is rendered
+    expect(wrapper.find('.error').exists()).toBeTruthy()
 
-  // update the `username` and assert error is no longer rendered
-  wrapper.setData({ username: 'Lachlan' })
-  expect(wrapper.find('.error').exists()).toBeFalsy()
+    // update the `username` and assert error is no longer rendered
+    wrapper.setData({ username: 'Lachlan' })
+    expect(wrapper.find('.error').exists()).toBeFalsy()
   })
 })
 ```
@@ -183,11 +183,11 @@ The below example improves the test by:
 
 *Updated test*:
 ```js
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Foo from './Foo'
 
 const factory = (values = {}) => {
-  return shallow(Foo, {
+  return shallowMount(Foo, {
     data: { ...values  }
   })
 }
@@ -221,7 +221,7 @@ describe('Foo', () => {
 
 Points to note:
 
-At the top, we declare the factory function which merges the `values` object into `data` and returns a new `wrapper` instance. This way, we don't need to duplicate `const wrapper = shallow(Foo)` in every test. Another great benefit to this is when more complex components with a method or computed property you might want to mock or stub in every test, you only need to declare it once.
+At the top, we declare the factory function which merges the `values` object into `data` and returns a new `wrapper` instance. This way, we don't need to duplicate `const wrapper = shallowMount(Foo)` in every test. Another great benefit to this is when more complex components with a method or computed property you might want to mock or stub in every test, you only need to declare it once.
 
 ## Additional Context
 
@@ -231,7 +231,7 @@ The above test is fairly simple, but in practice Vue components often have other
 - committing or dispatching mutations or actions with a `Vuex` store
 - testing interaction
 
-There are more complete examples showing such tests in the Vue Test Utils [guides](https://vue-test-utils.vuejs.org/en/guides/).
+There are more complete examples showing such tests in the Vue Test Utils [guides](https://vue-test-utils.vuejs.org/guides/).
 
 Vue Test Utils and the enormous JavaScript ecosystem provides plenty of tooling to facilitate almost 100% test coverage. Unit tests are only one part of the testing pyramid, though. Some other types of tests include e2e (end to end) tests, and snapshot tests. Unit tests are the smallest and most simple of tests - they make assertions on the smallest units of work, isolating each part of a single component.
 

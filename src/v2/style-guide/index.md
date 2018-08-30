@@ -567,7 +567,7 @@ Além do atributo `scoped`, usando nomes de classes únicas, garanta que CSS de 
 
 O Vue usa o prefixo `_` para definir suas próprias propriedades privadas, então, usando o mesmo prefixo (por exemplo,`_update`), uma propriedade de instância pode ser sobrescrita. Mesmo se você verificar e o Vue não estiver usando um nome de propriedade específico, não há garantia de que um conflito não surgirá em uma versão posterior.
 
-Quanto ao prefixo `$`, o propósito dentro do ecosistema Vue são as propriedades especiais da instância que estão expostas ao usuário, portanto, usá-lo como propriedades _private_ não seria apropriado.
+Quanto ao prefixo `$`, o propósito dentro do ecosistema Vue e identificar as propriedades especiais da instância que estão expostas ao usuário, portanto, usá-lo em propriedades privadas não seria apropriado.
 
 Em vez disso, recomendamos combinar os dois prefixos em `$_`, como uma convenção para propriedades privadas, definidas pelo usuário que para não haver conflitos com o Vue.
 
@@ -1479,7 +1479,7 @@ Esta é a ordem padrão que recomendamos para as propriedades dos componentes. E
   - `extends`
   - `mixins`
 
-7. **Interface** (A interface do componente)
+7. **Interface** (a interface do componente)
   - `inheritAttrs`
   - `model`
   - `props`/`propsData`
@@ -1488,9 +1488,19 @@ Esta é a ordem padrão que recomendamos para as propriedades dos componentes. E
   - `data`
   - `computed`
 
-9. **Eventos** (Callbacks disparados através de eventos reativos)
+9. **Eventos** (_callbacks_ disparados através de eventos reativos)
   - `watch`
-  - Eventos do ciclo de vida (Na ordem que foram chamados)
+  - Eventos do Ciclo de Vida (na ordem em que são chamados)
+    - `beforeCreate`
+    - `created`
+    - `beforeMount`
+    - `mounted`
+    - `beforeUpdate`
+    - `updated`
+    - `activated`
+    - `deactivated`
+    - `beforeDestroy`
+    - `destroyed`
 
 10. **Propriedades não reativas** (Propriedades independentes instanciadas do sistema reativo)
   - `methods`

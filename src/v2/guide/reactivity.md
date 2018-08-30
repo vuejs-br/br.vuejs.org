@@ -8,7 +8,7 @@ Agora é hora de um mergulho mais profundo! Uma das características mais distin
 
 ## Como as Alterações são Monitoradas
 
-Quando passamos um objeto JavaScript puro à instância Vue através da opção `data`, Vue itera através de todas as suas propriedades e as converte em funções _getter_/_setter_ através do método [Object.defineProperty](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty). Este é um recurso exclusivo do ES5 e impossível de simular em versões anteriores, sendo este o motivo do Vue não suportar IE8 e anteriores.
+Quando passamos um objeto JavaScript puro à instância Vue através da opção `data`, Vue itera através de todas as suas propriedades e as converte em [getter/setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Defining_getters_and_setters) através do método [Object.defineProperty](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Defining_getters_and_setters). Este é um recurso exclusivo do ES5 e impossível de simular em versões anteriores, sendo este o motivo do Vue não suportar IE8 e anteriores.
 
 Os _getter_/_setters_ são invisíveis para o usuário, mas internamente habilitam o Vue a executar o rastreamento de dependências e notificações de alteração quando propriedades são acessadas ou modificadas. Note que o _console_ dos navegadores formata _getter_/_setters_ de forma diferente quando registram alterações em objetos de dados, então é provável que você prefira instalar o [vue-devtools](https://github.com/vuejs/vue-devtools) para uma interface de inspeção mais amigável.
 

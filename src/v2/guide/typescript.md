@@ -12,8 +12,6 @@ Um sistema de tipagem estática pode ajudar a prevenir muitos erros de _runtime_
 
 Já que estão [publicadas no NPM](https://cdn.jsdelivr.net/npm/vue/types/) e o TypeScript mais recente sabe como resolver declarações de tipo em pacotes NPM, isto significa que você não precisa de nenhuma ferramenta adicional para utilizar TypeScript com Vue quando instalado via NPM.
 
-Estamos também planejando oferecer uma opção para gerar um projeto Vue + TypeScript pronto para uso através do `vue-cli` em um futuro próximo.
-
 ## Configuração Recomendada
 
 ``` js
@@ -37,9 +35,21 @@ Veja as [opções de compilação do TypeScript](https://www.typescriptlang.org/
 
 ## Ferramentas para Desenvolvimento
 
-Para desenvolver aplicações Vue com TypeScript, nós recomendamos fortemente utilizar o [Visual Studio Code](https://code.visualstudio.com/), o qual oferece ótimo suporte por padrão ao TypeScript.
+### Criação do Projeto
 
-Se você está usando [Componentes Single-File](./single-file-components.html), obtenha a ótima [extensão Vetur](https://github.com/vuejs/vetur) que oferece inferência TypeScript dentro dos componentes `.vue` e muitos outros ótimos recursos.
+[Vue CLI 3](https://github.com/vuejs/vue-cli) pode gerar novos projetos que utilizam TypeScript. Para começar:
+
+```bash
+# 1. Instale o Vue CLI globalmente, se ainda não estiver instalado
+npm install --global @vue/cli
+
+# 2. Crie um novo projeto, então escolha a opção "Manually select features"
+vue create my-project-name
+```
+
+### Suporte a Editores
+
+Para desenvolver aplicações Vue com TypeScript, nós recomendamos fortemente utilizar o [Visual Studio Code](https://code.visualstudio.com/), o qual oferece ótimo suporte por padrão ao TypeScript. Se você está usando [Componentes Single-File](./single-file-components.html), obtenha a ótima [extensão Vetur](https://github.com/vuejs/vetur), que oferece inferência TypeScript dentro dos componentes `.vue` e muitos outros ótimos recursos.
 
 [WebStorm](https://www.jetbrains.com/webstorm/) também oferece suporte por padrão tanto a TypeScript quanto ao Vue.
 

@@ -18,7 +18,15 @@ Utilizando uma ferramenta de _build_ como Webpack ou Browserify, o modo de produ
 
 #### Webpack
 
-Utilize o [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) do Webpack para indicar o ambiente de produção, de forma que blocos de aviso possam ser imediatamente removidos pelo UglifyJS durante a minificação. Exemplo:
+No Webpack 4+, você pode usar a opção `mode`:
+
+``` js
+module.exports = {
+  mode: 'production'
+}
+```
+
+No Webpack 3 e anteriores é necessário utilizar o [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
 
 ``` js
 var webpack = require('webpack')
@@ -28,14 +36,11 @@ module.exports = {
   plugins: [
     // ...
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
+      'process.env.NODE_ENV': JSON.stringify('production')
     })
   ]
 }
 ```
-
 #### Browserify
 
 - Execute o comando de _build_ com a variável `NODE_ENV` definida para `"production"`. Isto avisará o `vueify` para evitar incluir _hot-reload_ e códigos de desenvolvimento.
@@ -61,13 +66,13 @@ module.exports = {
     )
     .bundle()
   ```
-  
+
 - Ou, usando [envify](https://github.com/hughsk/envify) com Grunt e [grunt-browserify](https://github.com/jmreidy/grunt-browserify):
 
   ``` js
   // Use o módulo `custom` do envify para especificar variáveis de ambiente
   var envify = require('envify/custom')
-  
+
   browserify: {
     dist: {
       options: {

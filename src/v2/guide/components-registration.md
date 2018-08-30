@@ -86,7 +86,7 @@ Then define the components you'd like to use in a `components` option:
 
 ```js
 new Vue({
-  el: '#app'
+  el: '#app',
   components: {
     'component-a': ComponentA,
     'component-b': ComponentB
@@ -207,7 +207,7 @@ requireComponent.keys().forEach(fileName => {
   // Get PascalCase name of component
   const componentName = upperFirst(
     camelCase(
-      // Strip the leading `'./` and extension from the filename
+      // Strip the leading `./` and extension from the filename
       fileName.replace(/^\.\/(.*)\.\w+$/, '$1')
     )
   )

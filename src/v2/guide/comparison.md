@@ -22,7 +22,7 @@ Sendo tão similares em escopo, desprendemos mais tempo para refinar esta compar
 
 Com isso dito, é inevitável que a comparação pareça tendenciosa ao Vue para alguns usuários do React, pois muitos dos assuntos explorados são de certo modo subjetivos. Reconhecemos a existência de variadas preferências técnicas, e esta comparação tem como objetivo principal delinear as razões pelas quais Vue poderia ser uma escolha melhor se suas preferências coincidirem com as nossas.
 
-A comunidade React [tem sido fundamental](https://github.com/vuejs/vuejs.org/issues/364) para nos ajudar a alcançar esse equilíbrio, com agradecimentos especiais a Dan Abramov da equipe React. Ele foi extremamente generoso com seu tempo e considerável experiência para nos ajudar a refinar este documento até que [ambos ficassem felizes](https://github.com/vuejs/vuejs.org/issues/364#issuecomment-244575740) com o resultado final.
+Alguma das seções abaixo podem estar levemente desatualizadas por causa de recentes atualizações no React 16+, então estamos planejando trabalhar com a comunidade React para renovar esta seção em um futuro próximo.
 
 ### Desempenho em Execução
 
@@ -92,7 +92,7 @@ Por fim, a estilização em Componentes Single-File no Vue é muito flexível. A
 
 #### Ampliando a Escala
 
-Para aplicações grandes, tanto Vue quanto React oferecem soluções de roteamento robustas. A comunidade React também tem sido muito inovadora em termos de soluções de gerenciamento de estado (com Flux/Redux). Esses padrões de gerenciamento de estado e até [o próprio Redux](https://github.com/egoist/revue) podem ser integrados facilmente em aplicações Vue. Na verdade, neste modelo, Vue até deu um passo adiante com o [Vuex](https://github.com/vuejs/vuex), uma solução de gerenciamento de estado ispirada em Elm, que se integra profundamente com o Vue, a qual nós acreditamos que oferece uma experiência de desenvolvimento superior.
+Para aplicações grandes, tanto Vue quanto React oferecem soluções de roteamento robustas. A comunidade React também tem sido muito inovadora em termos de soluções de gerenciamento de estado (como Flux/Redux). Esses padrões de gerenciamento de estado e até [o próprio Redux](https://yarnpkg.com/en/packages?q=redux%20vue&p=1) podem ser integrados facilmente em aplicações Vue. Na verdade, neste modelo, Vue até deu um passo adiante com o [Vuex](https://github.com/vuejs/vuex), uma solução de gerenciamento de estado ispirada em Elm, que se integra profundamente com o Vue, a qual nós acreditamos que oferece uma experiência de desenvolvimento superior.
 
 Outra importante diferença entre os dois ecossistemas é que as bibliotecas companheiras do Vue para gerenciamento de estado e roteamento (dentre [outras preocupações](https://github.com/vuejs)) são oficialmente suportadas e mantidas sempre atualizadas em relação à biblioteca principal. Ao contrário disso, React escolhe deixar tais preocupações para a comunidade, criando um ecossistema mais fragmentado. Por outro lado, por ser mais popular, o ecossistema React é consideravelmente mais rico do que o do Vue.
 
@@ -108,7 +108,7 @@ Por fim, Vue oferece um [CLI gerador de projetos](https://github.com/vuejs/vue-c
 
 React é conhecido por sua curva de aprendizado. Antes que você possa realmente começar, você precisa saber sobre JSX e provavelmente ES2015+, uma vez que muitos exemplos React usam sintaxe de classes. Você também precisa aprender sobre processos de transpilação, pois embora você possa tecnicamente usar Babel para compilar código em tempo real diretamente no navegador, não é algo recomendado para a produção.
 
-Enquanto Vue escala ascendentemente tão bem quanto, se não até melhor que o React, ele também é capaz de reduzir a escala tão bem quanto jQuery. É isso mesmo - tudo que você precisa fazer é colocar uma única _tag_ `<script>` na página:
+Enquanto Vue escala ascendentemente tão bem quanto o React, ele também é capaz de reduzir a escala tão bem quanto jQuery. É isso mesmo - tudo que você precisa fazer é colocar uma única _tag_ `<script>` na página:
 
 ``` html
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -129,6 +129,10 @@ Outra opção que desenvolvedores Vue terão em breve é utilizar o [NativeScrip
 ### Utilizando MobX
 
 MobX se tornou bem popular na comunidade React e, de fato, utiliza um sistema de reatividade quase idêntico ao Vue. De forma simplista, o fluxo de trabalho React + MobX pode ser pensado como um Vue com código mais prolixo. Por isso, se você estiver usando essa combinação e estiver gostando, saltar para o Vue é, provavelmente, o próximo passo lógico.
+
+### Preact and Other React-Like Libraries
+
+React-like libraries usually try to share as much of their API and ecosystem with React as is feasible. For that reason, the vast majority of comparisons above will also apply to them. The main difference will typically be a reduced ecosystem, often significantly, compared to React. Since these libraries cannot be 100% compatible with everything in the React ecosystem, some tooling and companion libraries may not be usable. Or, even if they appear to work, they could break at any time unless your specific React-like library is officially supported on par with React.
 
 ## AngularJS (Angular 1)
 
@@ -178,7 +182,7 @@ Ambos os _frameworks_ são excepcionalmente rápidos, com métricas muito simila
 
 ### Tamanho
 
-Versões recentes do Angular, com [compilação AOT](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) (_Ahead-Of-Time_) e [tree-shaking](https://en.wikipedia.org/wiki/Tree_shaking), tem sido capazes de derrubar o tamanho do pacote consideravelmente. Todavia, um projeto Vue 2 cheio de recursos com Vuex + Vue Router incluídos (~30KB depois de gzip) ainda é significativamente mais leve do que uma aplicação padrão, compilada AOT, gerada pelo `angular-cli` (~130KB após gzip).
+Versões recentes do Angular, com [compilação AOT](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) (_Ahead-Of-Time_) e [tree-shaking](https://en.wikipedia.org/wiki/Tree_shaking), tem sido capazes de derrubar o tamanho do pacote consideravelmente. Todavia, um projeto Vue 2 cheio de recursos com Vuex + Vue Router incluídos (~30KB depois de gzip) ainda é significativamente mais leve do que uma aplicação padrão, compilada AOT, gerada pelo `angular-cli` (~65KB após gzip).
 
 ### Flexibilidade
 
@@ -214,13 +218,7 @@ Nos parece que existem também diferenças filosóficas na concepção da API qu
 
 Polymer é outro projeto patrocinado por Google e, de fato, também foi uma fonte de inspiração para o Vue. Componentes Vue podem ser vagamente comparados com elementos customizados Polymer, e ambos fornecem um estilo de desenvolvimento semelhante. A maior diferença é que o Polymer é construído sobre os mais recentes recursos de Web Components e, portanto, requer _polyfills_ não triviais para funcionar (com um desempenho degradado) em navegadores que não suportam esses recursos de forma nativa. Em contraste, Vue funciona sem qualquer dependência externa ou _polyfills_ até o IE9.
 
-No Polymer 1.0, a equipe fez também um sistema de _data-binding_ muito limitado, a fim de compensar o desempenho. Por exemplo, as únicas expressões suportados em _templates_ Polymer são de negação booleana e chamadas simples de métodos. Sua implementação de propriedades computadas também não é muito flexível.
-
-Elementos customizados do Polymer são produzidos em arquivos HTML, o que limita a JavaScript/CSS puro (e a recursos suportados pelos navegadores atuais). Em comparação, _single-file components_ Vue permitem facilmente usar ES2015+ e pré-processadores HTML/CSS.
-
-Ao publicar em produção, Polymer recomenda o carregamento de tudo sob demanda com HTML Imports, o que assume navegadores adequados a esta especificação e suporte HTTP/2 tanto no servidor quanto no cliente. Isto pode ou não ser viável, dependendo de seu público-alvo e ambiente de implantação. Nos casos em que não é desejável, você terá que usar uma ferramenta especial chamada Vulcanizer para agrupar seus elementos Polymer. Nesta frente, Vue pode combinar sua característica de componentes assíncronos com o recurso de _code-splitting_ do webpack para dividir facilmente a aplicação em partes, com pacotes carregados somente quando requeridos. Isso garante compatibilidade com navegadores mais antigos, mantendo excelente desempenho no carregamento.
-
-Também é totalmente viável oferecermos integração mais profunda entre o Vue e as especificações de Web Componentes, como elementos customizados e encapsulamento de estilos com Shadow DOM - no entanto, neste momento, estamos esperando as especificações amadurecerem e se tornarem amplamente implementadas em todos os navegadores convencionais antes de nos comprometermos a fundo com isso.
+No Polymer, a equipe fez também um sistema de _data-binding_ muito limitado, a fim de compensar o desempenho. Por exemplo, as únicas expressões suportados em _templates_ Polymer são de negação booleana e chamadas simples de métodos. Sua implementação de propriedades computadas também não é muito flexível.
 
 ## Riot
 

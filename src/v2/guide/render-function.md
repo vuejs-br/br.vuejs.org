@@ -170,12 +170,14 @@ Importante observar: assim como `v-bind:class` e `v-bind:style` têm tratamento 
 
 ``` js
 {
-  // Mesma API que `v-bind:class`
+  // Mesma API que `v-bind:class`, aceitando tanto
+  // uma String, Object, ou Array de Strings e Objects.
   class: {
     foo: true,
     bar: false
   },
-  // Mesma API que `v-bind:style`
+  // Mesma API que `v-bind:style`, aceitando tanto
+  // uma String, Object, ou Array de Strings e Objects.
   style: {
     color: 'red',
     fontSize: '14px'
@@ -248,7 +250,7 @@ var getChildrenTextContent = function (children) {
 
 Vue.component('anchored-heading', {
   render: function (createElement) {
-    // criar id em kebabCase
+    // criar id em kebab-case
     var headingId = getChildrenTextContent(this.$slots.default)
       .toLowerCase()
       .replace(/\W+/g, '-')

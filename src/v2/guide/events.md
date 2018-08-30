@@ -204,7 +204,7 @@ Para resolver esse problema, o Vue fornece **modificadores de evento** para `v-o
 <a v-on:click.once="doThis"></a>
 ```
 
-Diferente dos outros modificadores, exclusivos para eventos nativos, o `.once` também pode ser usado em [eventos de componentes](components.html#Usando-v-on-com-Eventos-Personalizados). Se você ainda não leu sobre componentes, não se preocupe com isso neste momento.
+Diferente dos outros modificadores, exclusivos para eventos nativos, o `.once` também pode ser usado em [eventos de componentes](components-custom-events.html). Se você ainda não leu sobre componentes, não se preocupe com isso neste momento.
 
 > Novo em 2.3.0+
 

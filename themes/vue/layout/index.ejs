@@ -9,7 +9,7 @@
 <div id="hero">
   <div class="inner">
     <div class="left">
-      <img class="hero-logo" src="<%- url_for("/images/logo.png") %>">
+      <img class="hero-logo" src="<%- url_for("/images/logo.png") %>" alt="vue logo">
     </div><div class="right">
       <h2 class="vue">Vue.js</h2>
       <h1>
@@ -29,16 +29,12 @@
 </div>
 
 <div id="special-sponsor">
-  <h3>Patrocinadores Especiais</h3>
-  <br>
-  <a href="https://stdlib.com/" target="_blank">
-    <img src="/images/stdlib.png" style="width:140px">
-    <span>Plataforma e biblioteca de Funções como Serviço</span>
-  </a>
-  <br>
-  <a href="https://www.bitsrc.io/?utm_source=vue&utm_medium=vue&utm_campaign=vue&utm_term=vue&utm_content=vue" target="_blank">
-    <img src="/images/bit.png" style="width:60px;height:60px">
-    <span>A forma mais rápida de compartilhar código</span>
+  <h3>Patrocinador Especial</h3>
+  <% var specialSponsor = theme.special_sponsors[0]; %>
+  <a href="<%- specialSponsor.url %>" target="_blank">
+    <img src="<%- url_for(`/images/${specialSponsor.img}`) %>" style="width:160px" alt="Code.xyz Logo">
+    <br>
+    <span><%- specialSponsor.description %></span>
   </a>
 </div>
 

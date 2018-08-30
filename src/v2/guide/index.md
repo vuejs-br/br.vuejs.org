@@ -35,7 +35,11 @@ ou:
 
 No tópico [Instalação](installation.html) se encontram mais opções para instalar o Vue. Nota: **não recomendamos** a iniciantes começar com `vue-cli`, especialmente se você ainda não está familiarizado com ferramentas de _build_ baseadas em Node.js.
 
+Se você preferir algo mais interativo, pode dar uma olhada [nesta série de tutoriais no Scrimba](https://scrimba.com/playlist/pXKqta), onde você encontra um misto de _screencast_ e _playground_ de código que pode pausar e executar como quiser.
+
 ## Renderização Declarativa
+
+<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/cQ3QVcr" target="_blank">Tente esta lição no Scrimba</a></div>
 
 No núcleo do Vue.js está um sistema que nos permite declarativamente renderizar dados no DOM (Document Object Model) usando uma sintaxe de _template_ simples:
 
@@ -106,6 +110,8 @@ Aqui nos deparamos com algo novo. O atributo `v-bind` que você está vendo é c
 Se você abrir seu _console_ JavaScript novamente e informar `app2.message = 'alguma nova mensagem'`, novamente poderá ver que o HTML vinculado - neste caso, o atributo `title` - foi atualizado imediatamente.
 
 ## Condicionais e Laços
+
+<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/cEQe4SJ" target="_blank">Tente esta lição no Scrimba</a></div>
 
 Também é fácil alternar a presença de um elemento:
 
@@ -190,6 +196,8 @@ No _console_, informe `app4.todos.push({ text: 'Novo item' })`. Você verá um n
 
 ## Tratando Interação do Usuário
 
+<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/czPNaUr" target="_blank">Tente esta lição no Scrimba</a></div>
+
 Para permitir aos usuários interagir com o aplicativo, podemos usar a diretiva `v-on` para anexar escutas a eventos (_event listeners_) que invocam métodos em nossas instâncias Vue:
 
 ``` html
@@ -265,6 +273,8 @@ var app6 = new Vue({
 {% endraw %}
 
 ## Composição com Componentes
+
+<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/cEQVkA3" target="_blank">Tente esta lição no Scrimba</a></div>
 
 O sistema de componentes também é outro importante conceito no Vue, por ser uma abstração que proporciona a construção de aplicações de larga escala compostas por pequenos componentes, auto-contidos e frequentemente reutilizáveis. Se nós pensarmos sobre isso, quase qualquer tipo de interface de uma aplicação pode ser abstraída em uma árvore de componentes:
 

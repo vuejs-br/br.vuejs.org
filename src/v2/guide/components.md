@@ -1,5 +1,5 @@
 ---
-title: Componentes
+title: Básico em Componentes
 type: guide
 order: 11
 ---
@@ -190,10 +190,22 @@ new Vue({
 
 Uma vez que todas as três instâncias do componente compartilham o mesmo objeto `data`, incrementar o contador no objeto reflete em todos eles! Ah não... Vamos corrigir isso, retornando um novo objeto de dados para cada instância do componente:
 
+<<<<<<< HEAD
 ``` js
 data: function () {
   return {
     counter: 0
+=======
+```js
+new Vue({
+  el: '#blog-post-demo',
+  data: {
+    posts: [
+      { id: 1, title: 'My journey with Vue' },
+      { id: 2, title: 'Blogging with Vue' },
+      { id: 3, title: 'Why Vue is so fun' }
+    ]
+>>>>>>> a9af183c91fee41ba4ebcbbf36c011f01dfa24f2
   }
 }
 ```
@@ -231,14 +243,28 @@ No Vue, o relacionamento pai-filho pode ser resumido como **propriedades para ba
   <img style="width: 300px;" src="/images/props-events.png" alt="propriedades para baixo, eventos para cima">
 </p>
 
+<<<<<<< HEAD
 ## Propriedades
+=======
+```html
+<h3>{{ title }}</h3>
+```
+>>>>>>> a9af183c91fee41ba4ebcbbf36c011f01dfa24f2
 
 ### Passando Dados com Propriedades
 
+<<<<<<< HEAD
 Toda instância de componente tem seu próprio **escopo isolado**. Isso significa que você não pode (e não deveria) referenciar diretamente dados do pai no _template_ de um componente filho. Dados podem ser passados para componentes filhos usando **propriedades**.
+=======
+```html
+<h3>{{ title }}</h3>
+<div v-html="content"></div>
+```
+>>>>>>> a9af183c91fee41ba4ebcbbf36c011f01dfa24f2
 
 Uma propriedade é um atributo personalizado para passar informação a partir do pai. Um filho deve declarar explicitamente o que ele espera receber usando a [opção `props`](../api/#props):
 
+<<<<<<< HEAD
 ``` js
 Vue.component('child', {
   // declara as propriedades
@@ -250,6 +276,55 @@ Vue.component('child', {
 ```
 
 Então nós podemos passar uma _string_ simples para ela como:
+=======
+```html
+<div class="blog-post">
+  <h3>{{ title }}</h3>
+  <div v-html="content"></div>
+</div>
+```
+
+As our component grows, it's likely we'll not only need the title and content of a post, but also the published date, comments, and more. Defining a prop for each related piece of information could become very annoying:
+
+```html
+<blog-post
+  v-for="post in posts"
+  v-bind:key="post.id"
+  v-bind:title="post.title"
+  v-bind:content="post.content"
+  v-bind:publishedAt="post.publishedAt"
+  v-bind:comments="post.comments"
+></blog-post>
+```
+
+So this might be a good time to refactor the `<blog-post>` component to accept a single `post` prop instead:
+
+```html
+<blog-post
+  v-for="post in posts"
+  v-bind:key="post.id"
+  v-bind:post="post"
+></blog-post>
+```
+
+```js
+Vue.component('blog-post', {
+  props: ['post'],
+  template: `
+    <div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <div v-html="post.content"></div>
+    </div>
+  `
+})
+```
+
+<p class="tip">The above example and some future ones use JavaScript's [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) to make multi-line templates more readable. These are not supported by Internet Explorer (IE), so if you must support IE and are not transpiling (e.g. with Babel or TypeScript), use [newline escapes](https://css-tricks.com/snippets/javascript/multiline-string-variables-in-javascript/) instead.</p>
+
+Now, whenever a new property is added to `post` objects, it will automatically be available inside `<blog-post>`.
+
+## Sending Messages to Parents with Events
+>>>>>>> a9af183c91fee41ba4ebcbbf36c011f01dfa24f2
 
 ``` html
 <child message="Olá!"></child>
@@ -287,16 +362,24 @@ Vue.component('child', {
 })
 ```
 
+<<<<<<< HEAD
 ``` html
 <!-- kebab-case em HTML -->
 <child my-message="olá!"></child>
 ```
 
 De novo, se você estiver usando _string templates_, essa limitação não se aplica.
+=======
+The problem is, this button doesn't do anything:
+>>>>>>> a9af183c91fee41ba4ebcbbf36c011f01dfa24f2
 
 ### Propriedades Dinâmicas
 
+<<<<<<< HEAD
 Semelhante à ligação de um atributo normal a uma expressão, nós podemos também usar o `v-bind` para dinamicamente ligar propriedades a dados no pai. Sempre que os dados forem atualizados no pai, isso fluirá também para o filho:
+=======
+When we click on the button, we need to communicate to the parent that it should enlarge the text of all posts. Fortunately, Vue instances provide a custom events system to solve this problem. To emit an event to the parent, we can call the built-in [**`$emit`** method](../api/#vm-emit), passing the name of the event:
+>>>>>>> a9af183c91fee41ba4ebcbbf36c011f01dfa24f2
 
 ``` html
 <div>

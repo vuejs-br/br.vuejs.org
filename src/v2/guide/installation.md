@@ -2,8 +2,8 @@
 title: Instalação
 type: guide
 order: 1
-vue_version: 2.5.13
-gz_size: "30.67"
+vue_version: 2.5.16
+gz_size: "30.90"
 ---
 
 ### Sobre a Compatibilidade
@@ -37,7 +37,7 @@ Simplesmente faça o _download_ e inclua a _tag_ `<script>` com o caminho corret
 Nós recomendados vincular a um número de versão específico que você possa atualizar manualmente:
 
 ``` html
-<script src="https://cdn.jsdelivr.net/npm/vue@{{vue_version}}/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 ```
 
 Você pode navegar pelos códigos-fonte do pacote NPM em [cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue/).
@@ -57,17 +57,7 @@ $ npm install vue
 
 ## CLI
 
-Vue.js oferece um [CLI oficial](https://github.com/vuejs/vue-cli) para rapidamente construir ambiciosas _Single Page Applications_. Ele possui uma série de funcionalidades e configurações prontas para uso, para o desenvolvimento de aplicações _frontend_ modernas. Leva apenas alguns minutos para estar executando com _hot-reload_, _lint_ ao salvar, e compilações prontas para produção:
-
-``` bash
-# instala o vue-cli globalmente
-$ npm install --global vue-cli
-# cria um novo projeto com o template "webpack"
-$ vue init webpack my-project
-# instala as dependências e executa!
-$ cd my-project
-$ npm run dev
-```
+Vue.js oferece um [CLI oficial](https://github.com/vuejs/vue-cli) para rapidamente construir ambiciosas _Single Page Applications_. Ele possui um conjunto de configurações de _build_ prontas para um processo de trabalho de _front-end_ moderno. Leva apenas alguns minutos para estar pronto e executando com _hot-reload_, _lint_ ao salvar e empacotamento pronto para distribuição em produção. Dê uma olhada na [documentação do Vue CLI](https://cli.vuejs.org) para mais detalhes.
 
 <p class="tip">Este assunto pressupõe conhecimento prévio em Node.js e ferramentas de _build_ associadas. Se você é novo no Vue ou neste tipo de ferramenta, recomendamos fortemente que passe por todo <a href="./">o guia</a> antes de tentar usar o CLI.</p>
 
@@ -84,7 +74,7 @@ No [diretório `dist/`do pacote NPM](https://cdn.jsdelivr.net/npm/vue/dist/) voc
 
 ### Termos
 
-- **Completa**: pacotes completos, os quais contêm tanto o compilador quanto o motor de tempo de execução (em inglês, _runtime_).
+- **Completa**: pacotes que contêm tanto o compilador quanto o motor de tempo de execução (em inglês, _runtime_).
 
 - **Compilador**: código responsável por compilar Strings com _templates_ para funções de renderização em JavaScript.
 
@@ -157,6 +147,19 @@ Adicione no `package.json` de seu projeto:
 }
 ```
 
+#### Parcel
+
+Adicione no `package.json` de seu projeto:
+
+``` js
+{
+  // ...
+  "alias": {
+    "vue" : "./node_modules/vue/dist/vue.common.js"
+  }
+}
+```
+
 ### Desenvolvimento vs. Produção
 
 Modos de desenvolvimento/produção estão fixos no código das distribuições UMD: os arquivos não minificados são para desenvolvimento, os arquivos minificados são para produção.
@@ -167,7 +170,15 @@ Tais distribuições também preservam checagens à variável `process.env.NODE_
 
 #### Webpack
 
-Utilize o [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) do Webpack:
+No Webpack 4+, você pode usar a opção `mode`:
+
+``` js
+module.exports = {
+  mode: 'production'
+}
+```
+
+No Webpack 3 e anteriores é necessário utilizar o [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
 
 ``` js
 var webpack = require('webpack')

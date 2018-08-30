@@ -6,7 +6,7 @@ order: 10
 
 ## Uso Básico
 
-Você pode usar a diretiva `v-model` para criar interligações de mão dupla (_two-way binding_) entre os dados e elementos como _input_ e _textarea_ de formulários. A diretiva automaticamente busca a maneira correta de atualizar o elemento com base no tipo de entrada. Embora um pouco mágico, `v-model` é essencialmente açúcar sintático para atualização de dados através de eventos de entrada do usuário, além de cuidados especiais para alguns casos extremos.
+Você pode usar a diretiva `v-model` para criar interligações de mão dupla (_two-way binding_) entre os dados e elementos _input_, _textarea_ e _select_ de formulários. A diretiva automaticamente busca a maneira correta de atualizar o elemento com base no tipo de entrada. Embora um pouco mágico, `v-model` é essencialmente açúcar sintático para atualização de dados através de eventos de entrada do usuário, além de cuidados especiais para alguns casos extremos.
 
 <p class="tip">A diretiva `v-model` irá ignorar o estado inicial de `value`, `checked` ou `selected` encontrado em qualquer elemento de formulário. Sempre se tratará a instância Vue como a fonte dos dados verdadeiros. Ou seja, declare os valores iniciais no lado JavaScript, dentro da opção `data` de seu componente.</p>
 
@@ -372,7 +372,7 @@ Se você quiser que a entrada do usuário seja automaticamente convertida para u
 <input v-model.number="age" type="number">
 ```
 
-Isso é bastante útil, porque mesmo no caso de `type="number"`, o valor retornado pelo HTML é sempre uma String.
+Isso é bastante útil, porque mesmo no caso de `type="number"`, o valor retornado pelo HTML é sempre uma String. Se o valor não puder ser convertido através de `parseFloat()`, o valor original é retornado.
 
 ### `.trim`
 
@@ -386,4 +386,4 @@ Se você quiser que a entrada do usuário seja automaticamente isenta de espaço
 
 > Se você não está familiarizado com componentes Vue, pode pular isto por enquanto.
 
-Os tipo de _input_ nativos do HTML nem sempre atendem todas as necessidades. Por sorte, componentes Vue permitem construir _inputs_ reutilizáveis com comportamento completamente personalizado. Estes componentes também funcionam com `v-model`! Para saber mais, leia sobre [componentes de formulário personalizados](components.html#Componentes-de-Formularios-usando-Eventos-Personalizados) no guia de Componentes.
+Os tipo de _input_ nativos do HTML nem sempre atendem todas as necessidades. Por sorte, componentes Vue permitem construir _inputs_ reutilizáveis com comportamento completamente personalizado. Estes componentes também funcionam com `v-model`! Para saber mais, leia sobre [componentes de formulário personalizados](components.html#Componentes-Suportando-v-model) no guia de Componentes.

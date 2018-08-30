@@ -19,7 +19,7 @@ Tudo isso é resolvido através dos **Componentes Single-File** com a extensão 
 
 Aqui está um exemplo de um arquivo que chamaremos de `Hello.vue`:
 
-<img src="/images/vue-component.png" style="display: block; margin: 30px auto;">
+<a href="https://gist.github.com/chrisvfritz/e2b6a6110e0829d78fa4aedf7cf6b235" target="_blank"><img src="/images/vue-component.png" alt="Single-file component example (click for code as text)" style="display: block; margin: 30px auto;"></a>
 
 Agora nós obtivemos:
 
@@ -29,7 +29,7 @@ Agora nós obtivemos:
 
 Como prometido, podemos também utilizar pré-processadores como Pug (Jade), Babel (com módulos ES2015+) e Stylus para componentes mais limpos e mais ricos em recursos.
 
-<img src="/images/vue-component-with-preprocessors.png" style="display: block; margin: 30px auto;">
+<a href="https://gist.github.com/chrisvfritz/1c9f2daea9bc078dcb47e9a82e5f7587" target="_blank"><img src="/images/vue-component-with-preprocessors.png" alt="Single-file component example with preprocessors (click for code as text)" style="display: block; margin: 30px auto;"></a>
 
 Estas linguagens específicas são meros exemplos. Poderíamos tão facilmente usar Bublé, TypeScript, SCSS, PostCSS - ou qualquer outro que acreditarmos nos tornar mais produtivos. Se usar Webpack com `vue-loader`, também há suporte de primeira classe a CSS Modules.
 

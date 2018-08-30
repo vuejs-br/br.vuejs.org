@@ -954,7 +954,8 @@ Até agora, temos transições para:
 Então, que tal ter uma lista de itens e renderizá-los simultaneamente com o `v-for`, por exemplo? Neste caso, utilizaremos o componente `<transition-group>`. Antes de entrarmos em um exemplo, existem algumas coisas que é importante saber sobre este componente:
 
 - Diferentemente do `<transition>`, ele renderiza um elemento por padrão: o `<span>`. Você pode mudar o elemento que é renderizado com o atributo `tag`.
-- Elementos dentro são **sempre necessários** que tenham um atributo `key` único.
+- [Modos de Transição](#Modos-de-Transição) não estão disponíveis, pois não estamos mais alternando entre elementos mutuamente exclusivos.
+- Elementos dentro **sempre requerem** um atributo `key` único.
 
 ### Transição de Entrada/Saída de Lista
 
