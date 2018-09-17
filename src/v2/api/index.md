@@ -360,7 +360,9 @@ type: api
 
 - **Uso:**
 
-  Instala um plugin do Vue.js. Se o plugin é um Objeto, ele deve expor um método `install`. Se for uma função, ela será tratada como o método install. O método install será chamado com Vue como argumento.
+  Instala um _plugin_ do Vue.js. Se o _plugin_ é um Objeto, ele deve expor um método `install`. Se for uma função, ela será tratada como o próprio método de instalação. O método será chamado com Vue como argumento.
+
+  Este método deve ser chamado antes da execução de `new Vue()`.
 
   Quando este método é chamado no mesmo plugin múltiplas vezes, o plugin só será instalado uma única vez.
 
