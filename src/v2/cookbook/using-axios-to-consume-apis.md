@@ -8,7 +8,11 @@ order: 9
 
 There are many times when building application for the web that you may want to consume and display data from an API. There are several ways to do so, but a very popular approach is to use [axios](https://github.com/axios/axios), a promise-based HTTP client.
 
+Em diversos momentos quando voce esta desenvolvendo uma aplicacao web que voce deseja consumir e exibir dados de uma API. Há várias maneiras de fazer isso, mas a maneira mais popular é usando axios, um client HTTP baseado em promise.
+
 In this exercise, we'll use the [CoinDesk API](https://www.coindesk.com/api/) to walk through displaying Bitcoin prices, updated every minute. First, we'd install axios with either npm/yarn or through a CDN link.
+
+Neate exercício, nos usaremos o CoinDesk API para exibir os preços do Bitcoin, atualizado a cada minuto. Primeiros precisamos Oi nstalar o axios com npm/yarn ou através do link CDN
 
 There are a number of ways we can request information from the API, but it's nice to first find out what the shape of the data looks like, in order to know what to display. In order to do so, we'll make a call to the API endpoint and output it so we can see it. We can see in the CoinDesk API documentation, that this call will be made to `https://api.coindesk.com/v1/bpi/currentprice.json`. So first, we'll create a data property that will eventually house our information, and we'll retrieve the data and assign it using the `mounted` lifecycle hook:
 
