@@ -1,5 +1,5 @@
 ---
-title: Handling Edge Cases
+title: Lidando com Casos Extremos
 type: guide
 order: 106
 ---

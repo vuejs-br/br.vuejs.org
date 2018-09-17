@@ -1,10 +1,10 @@
 ---
-title: Custom Events
+title: Eventos Customizados
 type: guide
 order: 103
 ---
 
-> This page assumes you've already read the [Components Basics](components.html). Read that first if you are new to components.
+> Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
 
 ## Event Names
 

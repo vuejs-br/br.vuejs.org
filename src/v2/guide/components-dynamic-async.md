@@ -1,12 +1,12 @@
 ---
-title: Componentes dinâmicos e assíncronos
-type: Guia
+title: Dinâmicos & Assíncronos
+type: guide
 order: 105
 ---
 
-> Esta página assume que você já leu a página de [Components Basics] (components.html). Leia primeiro se você é novo em componentes.
+> Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
 
-## `keep-alive` com componentes dinâmicos
+## Componentes Dinâmicos com `keep-alive`
 
 Anteriormente, usamos o atributo `is` para alternar entre componentes em uma interface com guias:
 
@@ -14,7 +14,7 @@ Anteriormente, usamos o atributo `is` para alternar entre componentes em uma int
 <component v-bind:is="currentTabComponent"></component>
 ```
 
-Ao alternar entre esses componentes, às vezes, você desejará manter seu estado ou evitar a nova renderização por motivos de desempenho. Por exemplo, ao expandir nossa interface com guias um pouco:
+Ao alternar entre esses componentes, às vezes, você desejará manter seu estado ou evitar a nova renderização, por motivos de desempenho. Por exemplo, ao expandir nossa interface com guias um pouco:
 
 {% raw %}
 <div id="dynamic-component-demo" class="demo">
@@ -30,7 +30,7 @@ Ao alternar entre esses componentes, às vezes, você desejará manter seu estad
   ></component>
 </div>
 <script>
-Vue.component('tab-posts', {
+Vue.component('tab-postagens', {
   data: function () {
     return {
       posts: [
@@ -74,20 +74,20 @@ Vue.component('tab-posts', {
           <div v-html="selectedPost.content"></div>\
         </div>\
         <strong v-else>\
-          Clique no título de um blog à esquerda para visualizá-lo.\
+          Clique no título de uma postagem do blog, à esquerda, para visualizá-la.\
         </strong>\
       </div>\
     </div>\
   '
 })
-Vue.component('tab-archive', {
-  template: '<div>Archive component</div>'
+Vue.component('tab-arquivo', {
+  template: '<div>Componente de postagens arquivadas</div>'
 })
 new Vue({
   el: '#dynamic-component-demo',
   data: {
-    currentTab: 'Posts',
-    tabs: ['Posts', 'Archive']
+    currentTab: 'Postagens',
+    tabs: ['Postagens', 'Arquivo']
   },
   computed: {
     currentTabComponent: function () {
@@ -149,8 +149,9 @@ new Vue({
 </style>
 {% endraw %}
 
-Você notará que, se selecionar uma postagem, alterne para a guia _Archive_ e, em seguida, volte para _Posts_, ela não estará mais mostrando a postagem selecionada. Isso porque, cada vez que você muda para uma nova guia, o Vue cria uma nova instância do `currentTabComponent`.
-Recriar componentes dinâmicos normalmente é um comportamento útil, mas, nesse caso, gostaríamos que essas instâncias de componentes de guias fossem armazenadas em cache assim que fossem criadas pela primeira vez. Para resolver este problema, podemos envolver nosso componente dinâmico com um elemento `<keep-alive>`:
+Você notará que, se selecionar uma postagem, alternar para a guia _Arquivo_ e, em seguida, voltar para _Postagens_, ela não estará mais mostrando a postagem selecionada. Isso acontece pois, cada vez que você muda para uma nova guia, o Vue cria uma nova instância do componente `currentTabComponent`.
+
+Recriar componentes dinâmicos normalmente é um comportamento útil, mas, nesse caso, gostaríamos que essas instâncias de componentes de guias fossem armazenadas em _cache_ assim que fossem criadas pela primeira vez. Para resolver este problema, podemos envolver nosso componente dinâmico com um elemento `<keep-alive>`:
 
 ``` html
 <!-- Componentes inativos serão armazenados em cache -->
@@ -180,8 +181,8 @@ Confira o resultado abaixo:
 new Vue({
   el: '#dynamic-component-keep-alive-demo',
   data: {
-    currentTab: 'Posts',
-    tabs: ['Posts', 'Archive']
+    currentTab: 'Postagens',
+    tabs: ['Postagens', 'Arquivo']
   },
   computed: {
     currentTabComponent: function () {
@@ -192,19 +193,20 @@ new Vue({
 </script>
 {% endraw %}
 
-Agora a guia _Posts_ mantém seu estado (a postagem selecionada) mesmo quando não é renderizada. Veja [este fiddle] (https://jsfiddle.net/chrisvfritz/Lp20op9o/) para o código completo.
-<p class="tip">Perceba que o `<keep-alive>` requer que os componentes sejam trocados entre todos com nomes, usando a opção `name` em um componente ou através de registro local / global.</p>
+Agora, a guia _Postagens_ mantém seu estado (a postagem selecionada) mesmo quando não é renderizada. Veja [este exemplo](https://jsfiddle.net/chrisvfritz/Lp20op9o/) para o código completo.
 
-Confira mais detalhes em `<keep-alive>` em [Referências de API] (../ api / # keep-alive).
+<p class="tip">Perceba que o `<keep-alive>` requer que todos os componentes que estejam sendo trocados tenham nomes, seja usando a opção `name` do componente, seja através de registro local/global.</p>
 
-## Componentes assíncronos
+Confira mais detalhes sobre o `<keep-alive>` em [Referências de API](../api/#keep-alive).
 
-Em aplicativos grandes, talvez seja necessário dividir o aplicativo em partes menores e carregar apenas um componente do servidor quando necessário. Para tornar isso mais fácil, o Vue permite que você defina seu componente como uma função factory que resolve de forma assíncrona sua definição de componente. O Vue só acionará a função factory quando o componente precisar ser renderizado e armazenará em cache o resultado para re-renderizações futuras. Por exemplo:
+## Componentes Assíncronos
+
+Em aplicativos grandes, talvez seja necessário dividí-lo em partes menores e carregar apenas um componente do servidor quando necessário. Para tornar isto mais fácil, o Vue permite que você defina seu componente como uma função de fabricação (_factory function_), que resolve de forma assíncrona sua definição de componente. O Vue só acionará a função quando o componente precisar ser renderizado, e armazenará em _cache_ o resultado para novas renderizações futuras. Por exemplo:
 
 ``` js
 Vue.component('async-example', function (resolve, reject) {
   setTimeout(function () {
-    // Pass the component definition to the resolve callback
+    // Passa a definição do componente para resolver o callback
     resolve({
       template: '<div>I am async!</div>'
     })
@@ -212,28 +214,28 @@ Vue.component('async-example', function (resolve, reject) {
 })
 ```
 
-Como você pode ver, a função factory recebe um retorno de chamada `resolve`, que deve ser chamado quando você recuperar sua definição de componente do servidor. Você também pode chamar `reject (reason)` para indicar que a carga falhou. O `setTimeout` aqui é para demonstração; como recuperar o componente é com você. Uma abordagem recomendada é usar componentes assíncronos junto com o recurso de divisão de código do Webpack (https://webpack.js.org/guides/code-splitting/):
+Como você pode ver, a função de fabricação recebe um retorno de chamada `resolve`, que deve ser chamado quando você recuperar sua definição de componente do servidor. Você também pode chamar `reject(reason)` para indicar que o carregamento falhou. O `setTimeout` aqui é meramente para demonstração; como recuperar o componente é com você. Uma abordagem recomendada é usar componentes assíncronos junto com o recurso de [divisão de código do Webpack](https://webpack.js.org/guides/code-splitting/):
 
 ``` js
 Vue.component('async-webpack-example', function (resolve) {
-  // This special require syntax will instruct Webpack to
-  // automatically split your built code into bundles which
-  // are loaded over Ajax requests.
+  // Esta sintaxe especial com `require` irá instruir o Webpack
+  // a automaticamente dividir seu pacote em pedaços, os quais
+  // serão carregados através de requisições Ajax.
   require(['./my-async-component'], resolve)
 })
 ```
 
-Você também pode retornar um Promise na função de factory, portanto, com a sintaxe do Webpack 2 e ES2015 você pode fazer:
+Você também pode retornar uma `Promise` na função de fabricação. Portanto, com a sintaxe do Webpack 2+ e ES2015, você pode fazer:
 
 ``` js
 Vue.component(
   'async-webpack-example',
-  // The `import` function returns a Promise.
+  // A função `import` retorna uma Promise.
   () => import('./my-async-component')
 )
 ```
 
-Ao usar o [registro local] (components.html # Local-Registration), você também pode fornecer diretamente uma função que retorna um `Promise`:
+Ao usar o [registro local](components-registration.html#Registro-Local) de componentes, você também pode fornecer diretamente uma função que retorna uma `Promise`:
 
 ``` js
 new Vue({
@@ -244,28 +246,28 @@ new Vue({
 })
 ```
 
-<p class = "tip"> Se você é um usuário do <strong> Browserify </strong> que gostaria de usar componentes assíncronos, seu criador infelizmente [deixou claro] (https://github.com/substack/ node-browserify / issues / 58 # issuecomment-21978224) que o carregamento assíncrono "não é algo que o Browserify irá suportar". Oficialmente, pelo menos. A comunidade Browserify encontrou [algumas soluções alternativas] (https://github.com/vuejs/vuejs.org/issues/620), que podem ser úteis para aplicativos existentes e complexos. Para todos os outros cenários, recomendamos o uso do Webpack para suporte async integrado de primeira classe. </p>
+<p class = "tip">Se você é um usuário do <strong>Browserify</strong> e gostaria de usar componentes assíncronos, seu criador infelizmente [deixou claro](https://github.com/substack/node-browserify/issues/58#issuecomment-21978224) que o carregamento assíncrono "não é algo que o Browserify irá suportar". Oficialmente, pelo menos. A comunidade Browserify encontrou [algumas soluções alternativas](https://github.com/vuejs/vuejs.org/issues/620), que podem ser úteis para aplicativos existentes e complexos. Para todos os outros cenários, recomendamos o uso do Webpack para suporte assíncrono integrado de primeira classe. </p>
 
-### Manipulando o Estado de Carregamento
+### Manipulando Estado de Carregamento
 
 > Novidade na versão 2.3.0+
 
-A factory de componentes assíncronos também pode retornar um objeto do seguinte formato:
+A função de fábrica de componentes assíncronos também pode retornar um objeto no seguinte formato:
 
 ``` js
 const AsyncComponent = () => ({
-  // The component to load (should be a Promise)
+  // O componente a carregar (deve ser uma Promise)
   component: import('./MyComponent.vue'),
-  // A component to use while the async component is loading
+  // Um componente para usar enquanto o assíncrono é carregado
   loading: LoadingComponent,
-  // A component to use if the load fails
+  // Um componente para usar se o carregamento falhar
   error: ErrorComponent,
-  // Delay before showing the loading component. Default: 200ms.
+  // Espera antes de exibir o componente de loading. Padrão: 200ms
   delay: 200,
-  // The error component will be displayed if a timeout is
-  // provided and exceeded. Default: Infinity.
+  // O componente de erro será exibido se um timemout for
+  // fornecido e excedido. Padrão: Infinity
   timeout: 3000
 })
 ```
 
->Note que você deve usar o [Vue Rotas] (https://github.com/vuejs/vue-router) 2.4.0+ se você quiser usar a sintaxe acima para componentes de rota.
+> Note que você precisa utilizar o [vue-router](https://github.com/vuejs/vue-router) 2.4.0+ se você quiser usar a sintaxe acima para componentes de rota.
