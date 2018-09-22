@@ -1,10 +1,13 @@
 ---
-title: Creating Custom Scroll Directives
+title: Criando Diretivas de Rolagem
 type: cookbook
 order: 7
 ---
 
-## Base Example
+<p class="tip">**Nota da Equipe de Tradução**
+Este arquivo ainda não foi traduzido! Leia a versão original em inglês a seguir e, se puder, colabore com sua tradução: acesse [nosso projeto no GitHub](https://github.com/vuejs-br/br.vuejs.org/issues), avise que irá contribuir e inicie a tradução. Sua participação é muito importante!</p>
+
+## Exemplo Base
 
 There are many times that we might want to add a bit of behavior, especially animation, to a scroll event on a site. There are many ways to do so, but the path with the least amount of code and dependencies is perhaps to use a [custom directive](https://vuejs.org/v2/guide/custom-directive.html) to create a hook for anything that fires off a particular scroll event.
 

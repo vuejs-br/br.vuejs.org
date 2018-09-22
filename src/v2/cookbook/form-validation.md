@@ -1,10 +1,13 @@
 ---
-title: Form Validation
+title: Validação de Formulários
 type: cookbook
 order: 3
 ---
 
-## Base Example
+<p class="tip">**Nota da Equipe de Tradução**
+Este arquivo ainda não foi traduzido! Leia a versão original em inglês a seguir e, se puder, colabore com sua tradução: acesse [nosso projeto no GitHub](https://github.com/vuejs-br/br.vuejs.org/issues), avise que irá contribuir e inicie a tradução. Sua participação é muito importante!</p>
+
+## Exemplo Base
 
 Form validation is natively supported by the browser, but sometimes different browsers will handle things in a manner which makes relying on it a bit tricky. Even when validation is supported perfectly, there may be times when custom validations are needed and a more manual, Vue-based solution may be more appropriate. Let's begin with a simple example.
 

@@ -1,10 +1,13 @@
 ---
-title: Packaging Vue Components for npm
+title: Publicando Componentes no npm
 type: cookbook
 order: 12
 ---
 
-## Base Example
+<p class="tip">**Nota da Equipe de Tradução**
+Este arquivo ainda não foi traduzido! Leia a versão original em inglês a seguir e, se puder, colabore com sua tradução: acesse [nosso projeto no GitHub](https://github.com/vuejs-br/br.vuejs.org/issues), avise que irá contribuir e inicie a tradução. Sua participação é muito importante!</p>
+
+## Exemplo Base
 
 Vue components by nature are meant to be re-used. This is easy when the component is only used within a single application. But how can you write a component once and use it in multiple sites/applications? Perhaps the easiest solution is via npm.
 

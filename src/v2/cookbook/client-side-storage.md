@@ -1,10 +1,13 @@
 ---
-title: Client-Side Storage
+title: Armazenamento no Lado do Cliente
 type: cookbook
 order: 11
 ---
 
-## Base Example
+<p class="tip">**Nota da Equipe de Tradução**
+Este arquivo ainda não foi traduzido! Leia a versão original em inglês a seguir e, se puder, colabore com sua tradução: acesse [nosso projeto no GitHub](https://github.com/vuejs-br/br.vuejs.org/issues), avise que irá contribuir e inicie a tradução. Sua participação é muito importante!</p>
+
+## Exemplo Base
 
 Client-side storage is an excellent way to quickly add performance gains to an application. By storing data on the browser itself, you can skip fetching information from the server every time the user needs it. While especially useful when offline, even online users will benefit from using data locally versus a remote server. Client-side storage can be done with [cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies), [Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) (technically "Web Storage"), [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API), and [WebSQL](https://www.w3.org/TR/webdatabase/) (a deprecated method that should not be used in new projects).
 

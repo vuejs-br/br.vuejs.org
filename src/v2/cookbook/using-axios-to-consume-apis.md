@@ -1,10 +1,13 @@
 ---
-title: Using Axios to Consume APIs
+title: Usando Axios para Consumir APIs
 type: cookbook
 order: 9
 ---
 
-## Base Example
+<p class="tip">**Nota da Equipe de Tradução**
+Este arquivo ainda não foi traduzido! Leia a versão original em inglês a seguir e, se puder, colabore com sua tradução: acesse [nosso projeto no GitHub](https://github.com/vuejs-br/br.vuejs.org/issues), avise que irá contribuir e inicie a tradução. Sua participação é muito importante!</p>
+
+## Exemplo Base
 
 There are many times when building application for the web that you may want to consume and display data from an API. There are several ways to do so, but a very popular approach is to use [axios](https://github.com/axios/axios), a promise-based HTTP client.
 
