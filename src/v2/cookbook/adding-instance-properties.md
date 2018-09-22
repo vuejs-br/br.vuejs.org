@@ -1,5 +1,5 @@
 ---
-title: Adicionando Propriedades de Instância
+title: Adicionando Propriedades à Instância
 type: cookbook
 order: 2
 ---
