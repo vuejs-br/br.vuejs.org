@@ -120,7 +120,7 @@ new Vue({ el: '#components-demo3' })
 
 ## Organizando Componentes
 
-É comum que um app seja organizado em uma árvore de componentes aninhados:
+É comum que um aplicativo seja organizado em uma árvore de componentes aninhados:
 
 ![Component Tree](/images/components.png)
 
