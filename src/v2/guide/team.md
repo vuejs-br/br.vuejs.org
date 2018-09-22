@@ -216,15 +216,17 @@ order: 803
     'Munich, Germany': [48.137154, 11.576124],
     'Orlando, FL, USA': [28.538335, -81.379236],
     'Paris, France': [48.856614, 2.352222],
-    'Poznań, Poland': [52.4006553, 16.761583],
+    'Posnânia, Polônia': [52.4006553, 16.761583],
     'Seoul, South Korea': [37.566535, 126.977969],
-    'Shanghai, China': [31.230390, 121.473702],
+    'Xangai, China': [31.230390, 121.473702],
     'Taquaritinga, Brazil': [-21.430094, -48.515285],
     'Tehran, Iran': [35.689197, 51.388974],
     'Thessaloniki, Greece': [40.640063, 22.944419],
     'Tokyo, Japan': [35.689487, 139.691706],
     'Toronto, Canada': [43.653226, -79.383184],
-    'Wrocław, Poland': [51.107885, 17.038538]
+    'Wroclaw, Polônia': [51.107885, 17.038538],
+    'Boston, Estados Unidos': [42.360081, -71.058884],
+    'Quieve, Ucrânia': [50.450100, 30.523399]
   }
   var languageNameFor = {
     en: 'Inglês',
@@ -241,7 +243,8 @@ order: 803
     hi: 'Hindi',
     fa: 'Persa',
     ko: 'Coreano',
-    ro: 'Romeno'
+    ro: 'Romeno',
+    uk: 'Ucraniano'
   }
 
   var team = [{
@@ -642,12 +645,12 @@ order: 803
     },
     {
       name: 'Michał Sajnóg',
-      city: 'Poznań, Poland',
+      city: 'Posnânia, Polônia',
       languages: ['pl', 'en'],
       github: 'michalsnik',
       twitter: 'michalsnik',
       work: {
-        role: 'Senior Frontend Developer / Team Leader',
+        role: 'Desenvolvedor Frontend Senior',
         org: 'Netguru',
         orgUrl: 'https://netguru.co/'
       },
@@ -661,10 +664,10 @@ order: 803
     },
     {
       name: 'GU Yiling',
-      city: 'Shanghai, China',
+      city: 'Xangai, China',
       languages: ['zh', 'en'],
       work: {
-        role: 'Senior web developer',
+        role: 'Desenvolvedor Web Senior',
         org: 'Baidu, inc.',
         orgUrl: 'https://www.baidu.com/'
       },
@@ -679,10 +682,10 @@ order: 803
     },
     {
       name: 'ULIVZ',
-      city: 'Hangzhou, China',
+      city: 'Hancheu, China',
       languages: ['zh', 'en'],
       work: {
-        role: 'Senior Frontend Developer',
+        role: 'Desenvolvedor Frontend Senior',
         org: 'AntFinancial',
         orgUrl: 'https://www.antfin.com'
       },
@@ -696,12 +699,43 @@ order: 803
 
   var partners = [
     {
+      name: 'Jen Looper',
+      title: 'Raposa Rainha',
+      city: 'Boston, Estados Unidos',
+      languages: ['en', 'fr'],
+      work: {
+        role: 'CEO',
+        org: 'Vue Vixens'
+      },
+      github: 'jlooper',
+      twitter: 'jenlooper',
+      links: [
+        'https://vuevixens.org/',
+        'https://nativescript-vue.org/'
+      ]
+    },
+    {
+      name: 'Natalia Tepluhina',
+      title: 'Raposa Guru da Tecnologia',
+      city: 'Quieve, Ucrânia',
+      languages: ['uk', 'ru', 'en'],
+      work: {
+        role: 'CTO',
+        org: 'Vue Vixens',
+      },
+      github: 'NataliaTepluhina',
+      twitter: 'N_Tepluhina',
+      links: [
+        'https://vuevixens.org/'
+      ]
+    },
+    {
       name: 'Alex Jover',
-      title: 'Vue Components Squeezer',
-      city: 'Alicante, Spain',
+      title: 'Espremedor de Componentes Vue',
+      city: 'Alicante, Espanha',
       languages: ['es', 'en'],
       work: {
-        role: 'Web, PWA and Performance Consultant',
+        role: 'Consultor Web, PWA e de Performance',
         org: 'Freelance'
       },
       github: 'alexjoverm',
@@ -831,8 +865,11 @@ order: 803
         org: 'Fatec Taquaritinga',
         orgUrl: 'http://www.fatectq.edu.br/'
       },
+      reposOfficial: [
+        'vuejs-br/br.vuejs.org'
+      ],
       reposPersonal: [
-        'vuejs-br/br.vuejs.org', 'ErickPetru/vue-feathers-chat'
+        'ErickPetru/vue-feathers-chat', 'ErickPetru/vue-feathers-chat'
       ]
     },
     {
