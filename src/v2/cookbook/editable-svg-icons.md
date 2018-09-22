@@ -1,7 +1,7 @@
 ---
-Título: Sistemas de Ícones SVG Editáveis 
-Tipo: cookbook
-ordem: 4
+title: Sistemas de Ícones SVG Editáveis
+type: cookbook
+order: 4
 ---
 
 ## Exemplo Base
