@@ -1,5 +1,5 @@
 ---
-title: Guia de Estilo
+title: Introdução
 type: style-guide
 ---
 
