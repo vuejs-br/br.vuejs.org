@@ -1,14 +1,14 @@
 ---
-title: Validação de Formulário
+title: Validação de Formulários
 type: cookbook
 order: 3
 ---
 
 ## Exemplo Base
 
-Validação de formulário é suportado nativamente pelo navegador, porém navegadores diferentes irão lidar com as coisas de um jeito que seja um pouco complicada. Mesmo quando uma validação é suportada perfeitamente, haverá algumas vezes a necessidade de se personalizar a validação e uma solução baseada em Vue poderá ser mais apropriada. Vamos começar com um simples exemplo.
+Validação de formulários é algo suportado nativamente pelo navegadore. Porém, navegadores diferentes irão lidar com as coisas de um jeito que pode ser um pouco complicado. Mesmo quando uma validação é suportada perfeitamente, haverá, algumas vezes, a necessidade de se personalizar e, portanto, uma solução baseada em Vue poderá ser mais apropriada. Vamos começar com um exemplo simples.
 
-Dado um formulário com três campos, faça dois obrigatórios. Vamos ver o HTML primeiro
+Dado um formulário com três campos, faça dois obrigatórios. Vamos ver o HTML primeiro:
 
 ``` html
 <form
@@ -17,7 +17,6 @@ Dado um formulário com três campos, faça dois obrigatórios. Vamos ver o HTML
   action="https://vuejs.org/"
   method="post"
 >
-
   <p v-if="errors.length">
     <b>Por favor, corrija o(s) seguinte(s) erro(s):</b>
     <ul>
@@ -64,11 +63,10 @@ Dado um formulário com três campos, faça dois obrigatórios. Vamos ver o HTML
       value="Submit"
     >
   </p>
-
 </form>
 ```
 
-Vamos avaliar do início. A tag `<form>` tem um ID que nos usaremos para o componente Vue. Há um botão de envio que você verá em um momento, e o `action` é uma URL temporária que aponta para algo real em algum lugar (onde haverá um backup do lado do servidor, claro).
+Vamos avaliar do início. A tag `<form>` tem um ID que nós usaremos para o componente Vue. Há um botão de envio que você verá em um momento, e o `action` é uma URL temporária que aponta para algo real em algum lugar (onde haverá um backup do lado do servidor, claro).
 
 Abaixo disso, há um parágrafo que irá mostrar ou esconder por si mesmo baseando-se em um estado do erro. isso fará renderizar uma lista de erros no topo do formulário. Além disso, note que colocamos uma validação que será disparada no envio a cada vez que o campo for modificado
 
@@ -104,12 +102,12 @@ const app = new Vue({
 })
 ```
 
-Bastante curto e simples. Definimos um array para manter erros e fixar valores nulos para os três campos do formulário. A lógica do `checkForm` (lembrando que é executado no envio) valida apenas nome e idade, embora filme seja opcional. Caso esteja vazio, checamos cada um e definimos um erro específico para cada um. E é apenas isso. Você pode testar abaixo. Não se esqueça que em um envio bem-sucedido, isso será _COLOCADO_ em um URL temporária.
+Bastante curto e simples. Definimos um Array para manter erros e fixar valores nulos para os três campos do formulário. A lógica do `checkForm` (lembrando que é executado no envio) valida apenas nome e idade, embora filme seja opcional. Caso esteja vazio, checamos cada um e definimos um erro específico para cada um. E é apenas isso. Você pode testar abaixo. Não se esqueça que em um envio bem-sucedido, isso será _COLOCADO_ em um URL temporária.
 
 <p data-height="265" data-theme-id="0" data-slug-hash="GObpZM" data-default-tab="html,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="form validation 1" class="codepen">See the Pen <a href="https://codepen.io/cfjedimaster/pen/GObpZM/">form validation 1</a> by Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-## Usando Validação personalizada
+## Usando Validação Personalizada
 
 Para o segundo exemplo, o segundo campo de texto (age), estava alterado para email que será validado com um pequena lógica personalizada. O código é retirado de uma pergunta do StackOverflow, [How to validate email address in JavaScript?](https://stackoverflow.com/questions/46155/how-to-validate-email-address-in-javascript). Essa é uma ótima questão pois faz que que seu argumento político / religioso mais intenso no Facebook pareça um delicado desentendimento sobre quem faz a melhor cerveja. 
 
@@ -329,7 +327,7 @@ Definimos o valor total como um valor calculado, e fora daquele erro que eu rode
 <p data-height="265" data-theme-id="0" data-slug-hash="vWqGoy" data-default-tab="html,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="form validation 3" class="codepen">See the Pen <a href="https://codepen.io/cfjedimaster/pen/vWqGoy/">form validation 3</a> by Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-## Validação no lado do servidor
+## Validação no Lado do Servidor
 
 No meu último exemplo, construiremos algo que faz uso do Ajax para validar no servidor. O formulário irá pedir para nomear um novo produto então irá checar para ter certeza, que o nome é único. Escrevemos uma rápida ação no *serverless* [OpenWhisk](http://openwhisk.apache.org/) para fazer a validação. Embora não seja muito importante, aqui está a lógica:
 
@@ -384,7 +382,7 @@ Basicamente qualquer nome mas "vista", "empire", e"mbp" são aceitáveis. Vamos 
 </form>
 ```
 
-Não há nada especial aqui. Então vamos para o Javascript.
+Não há nada especial aqui. Então vamos para o JavaScript.
 
 ``` js
 const apiUrl = 'https://openwhisk.ng.bluemix.net/api/v1/web/rcamden%40us.ibm.com_My%20Space/safeToDelete/productName.json?name=';
@@ -426,7 +424,7 @@ Começamos com uma variável representando a URL da API que está rodando no Ope
 <p data-height="265" data-theme-id="0" data-slug-hash="BmgzeM" data-default-tab="js,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="form validation 4" class="codepen">See the Pen <a href="https://codepen.io/cfjedimaster/pen/BmgzeM/">form validation 4</a> by Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-## Padrões alternativos
+## Padrões Alternativos
 
 Embora esse verbete do livro de receitas é focado em fazer um formulário de validação "à mão", existe, é claro, algumas ótimas bibliotecas Vue que vão lidar com muitas dessas coisas para você. Trocando para uma biblioteca pré-empacotada, pode-se impactar o tamanho final da sua aplicação, mas o benefício pode ser tremendo. Você terá código que é (muito provavelmente) testado e também atualizado regularmente. Alguns exemplos de bibliotecas de validação de formulários para o Vue incluem:
 

@@ -1,5 +1,5 @@
 ---
-title: Guia de Estilo
+title: Introdução
 type: style-guide
 ---
 
@@ -1673,13 +1673,13 @@ computed: {
 ```
 {% raw %}</div>{% endraw %}
 
-## Regras com prioridade D: use com cautela (Padrões potencialmente perigosos
+## Regras com prioridade D: use com cautela (Padrões potencialmente perigosos)
 
 ### `v-if`/`v-if-else`/`v-else` sem `key` <sup data-p="d">use com cuidado</sup>
 
 **É usualmente melhor usar `key` com `v-if` + `v-else`, se eles são do mesmo tipo de elemento (ex. dois elementos `<div>`).**
 
-Por padrão, o Vue atualiza o DOM da forma mais eficiente possível. Isso significa que, ao alternar entre elementos do mesmo tipo, ele simplesmente corrige o elemento existente, em vez de removê-lo e adicionar um novo em seu lugar. Isso pode ter [efeitos colaterais não intencionais](https://jsfiddle.net/chrisvfritz/bh8fLeds/) se esses elementos não forem realmente considerados os mesmos.
+Por padrão, o Vue atualiza o DOM da forma mais eficiente possível. Isso significa que, ao alternar entre elementos do mesmo tipo, ele simplesmente atualiza o elemento existente, em vez de removê-lo e adicionar um novo em seu lugar. Isso pode ter [efeitos colaterais não intencionais](https://jsfiddle.net/chrisvfritz/bh8fLeds/) se esses elementos não devessem realmente ser considerados os mesmos.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Exemplo Ruim

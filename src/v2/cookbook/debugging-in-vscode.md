@@ -1,8 +1,13 @@
 ---
-title: Debugging in VS Code and Chrome
+title: Depuração no VS Code e no Chrome
 type: cookbook
 order: 8
 ---
+
+<p class="tip">**Nota da Equipe de Tradução**
+Este arquivo ainda não foi traduzido! Leia a versão original em inglês a seguir e, se puder, colabore com sua tradução: acesse [nosso projeto no GitHub](https://github.com/vuejs-br/br.vuejs.org/issues), avise que irá contribuir e inicie a tradução. Sua participação é muito importante!</p>
+
+## Introdução
 
 Every application reaches a point where it's necessary to understand failures, small to large. In this recipe, we explore a few workflows for VS Code users, who are using Chrome to test.
 
