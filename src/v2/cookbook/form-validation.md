@@ -6,17 +6,16 @@ order: 3
 
 ## Exemplo Base
 
-Validação de formulários é algo suportado nativamente pelo navegadore. Porém, navegadores diferentes irão lidar com as coisas de um jeito que pode ser um pouco complicado. Mesmo quando uma validação é suportada perfeitamente, haverá, algumas vezes, a necessidade de se personalizar e, portanto, uma solução baseada em Vue poderá ser mais apropriada. Vamos começar com um exemplo simples.
+Validação de formulários é algo suportado nativamente pelo navegador. Porém, navegadores diferentes irão lidar com as coisas de um jeito que pode ser um pouco complicado. Mesmo quando uma validação é suportada perfeitamente, haverá, algumas vezes, a necessidade de a personalizar e, portanto, uma solução baseada em Vue poderá ser mais apropriada. Vamos começar com um exemplo simples.
 
-Dado um formulário com três campos, faça dois obrigatórios. Vamos ver o HTML primeiro:
+Dado um formulário com três campos, faremos dois obrigatórios. Vamos ver o HTML primeiro:
 
 ``` html
 <form
   id="app"
   @submit="checkForm"
   action="https://vuejs.org/"
-  method="post"
->
+  method="post">
   <p v-if="errors.length">
     <b>Por favor, corrija o(s) seguinte(s) erro(s):</b>
     <ul>
@@ -30,8 +29,7 @@ Dado um formulário com três campos, faça dois obrigatórios. Vamos ver o HTML
       id="name"
       v-model="name"
       type="text"
-      name="name"
-    >
+      name="name">
   </p>
 
   <p>
@@ -49,8 +47,7 @@ Dado um formulário com três campos, faça dois obrigatórios. Vamos ver o HTML
     <select
       id="movie"
       v-model="movie"
-      name="movie"
-    >
+      name="movie">
       <option>Star Wars</option>
       <option>Vanilla Sky</option>
       <option>Atomic Blonde</option>
@@ -60,17 +57,16 @@ Dado um formulário com três campos, faça dois obrigatórios. Vamos ver o HTML
   <p>
     <input
       type="submit"
-      value="Submit"
-    >
+      value="Enviar">
   </p>
 </form>
 ```
 
-Vamos avaliar do início. A tag `<form>` tem um ID que nós usaremos para o componente Vue. Há um botão de envio que você verá em um momento, e o `action` é uma URL temporária que aponta para algo real em algum lugar (onde haverá um backup do lado do servidor, claro).
+Vamos avaliar do início. A _tag_ `<form>` tem um ID que nós usaremos para o componente Vue. Há um botão de envio, que falaremos sobre em um momento, e o `action` do formulário, uma URL temporária que aponta para algum caminho real em algum lugar (onde haverá uma réplica da validação no lado do servidor, claro).
 
-Abaixo disso, há um parágrafo que irá mostrar ou esconder por si mesmo baseando-se em um estado do erro. isso fará renderizar uma lista de erros no topo do formulário. Além disso, note que colocamos uma validação que será disparada no envio a cada vez que o campo for modificado
+Abaixo do formulário, há um parágrafo que irá se mostrar ou se esconder baseando-se em um estado de erro. Isso renderizará uma lista de erros no topo do formulário. Além disso, note que colocamos a validação para ser disparada no evento de envio do formulário.
 
-A última coisa a se notar é que cada um dos três campos tem um `v-model` correspondente para conecta-lo com um valores que iremos trabalhar com JavaScript. Agora, vamos o exemplo.
+A última coisa a se observar é que cada um dos três campos tem um `v-model` correspondente para conecta-lo com valores que iremos trabalhar no JavaScript. Agora, vamos ao exemplo.
 
 ``` js
 const app = new Vue({
@@ -90,10 +86,10 @@ const app = new Vue({
       this.errors = [];
 
       if (!this.name) {
-        this.errors.push('Necessário o nome.');
+        this.errors.push('O nome é obrigatório.');
       }
       if (!this.age) {
-        this.errors.push('Necessário a idade.');
+        this.errors.push('A idade é obrigatória.');
       }
 
       e.preventDefault();
@@ -102,14 +98,14 @@ const app = new Vue({
 })
 ```
 
-Bastante curto e simples. Definimos um Array para manter erros e fixar valores nulos para os três campos do formulário. A lógica do `checkForm` (lembrando que é executado no envio) valida apenas nome e idade, embora filme seja opcional. Caso esteja vazio, checamos cada um e definimos um erro específico para cada um. E é apenas isso. Você pode testar abaixo. Não se esqueça que em um envio bem-sucedido, isso será _COLOCADO_ em um URL temporária.
+Bastante curto e simples. Definimos um Array para manter erros e fixamos valores iniciais nulos para os três campos do formulário. A lógica do `checkForm` (lembrando que é executado no envio do formulário) valida apenas nome e idade, uma vez que o filme é opcional. Caso esteja vazio, checamos cada um e definimos um erro específico. E é apenas isso. Você pode testar abaixo. Não se esqueça que, em um envio bem-sucedido, você será direcionado a uma URL temporária vazia.
 
-<p data-height="265" data-theme-id="0" data-slug-hash="GObpZM" data-default-tab="html,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="form validation 1" class="codepen">See the Pen <a href="https://codepen.io/cfjedimaster/pen/GObpZM/">form validation 1</a> by Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="GObpZM" data-default-tab="html,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="Validação de Formulários 1" class="codepen">Veja o Pen <a href="https://codepen.io/cfjedimaster/pen/GObpZM/">Validação de Formulários 1</a> por Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) no <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Usando Validação Personalizada
 
-Para o segundo exemplo, o segundo campo de texto (age), estava alterado para email que será validado com um pequena lógica personalizada. O código é retirado de uma pergunta do StackOverflow, [How to validate email address in JavaScript?](https://stackoverflow.com/questions/46155/how-to-validate-email-address-in-javascript). Essa é uma ótima questão pois faz que que seu argumento político / religioso mais intenso no Facebook pareça um delicado desentendimento sobre quem faz a melhor cerveja. 
+Para o segundo exemplo, o segundo campo de texto (_age_) será modificado para _email_, necessitando de uma pequena lógica de validação personalizada. O código foi retirado de uma pergunta do StackOverflow, [How to validate email address in JavaScript?](https://stackoverflow.com/questions/46155/how-to-validate-email-address-in-javascript). Esse é um ótimo exemplo de questão, pois faz com que seu maior embate político/religioso no Facebook pareça um leve desentendimento sobre quem faz a melhor cerveja.
 
 ``` html
 <form
@@ -117,9 +113,7 @@ Para o segundo exemplo, o segundo campo de texto (age), estava alterado para ema
   @submit="checkForm"
   action="https://vuejs.org/"
   method="post"
-  novalidate="true"
->
-
+  novalidate="true">
   <p v-if="errors.length">
     <b>Por favor, corrija o(s) seguinte(s) erro(s):</b>
     <ul>
@@ -133,8 +127,7 @@ Para o segundo exemplo, o segundo campo de texto (age), estava alterado para ema
       id="name"
       v-model="name"
       type="text"
-      name="name"
-    >
+      name="name">
   </p>
 
   <p>
@@ -143,8 +136,7 @@ Para o segundo exemplo, o segundo campo de texto (age), estava alterado para ema
       id="email"
       v-model="email"
       type="email"
-      name="email"
-    >
+      name="email">
   </p>
 
   <p>
@@ -152,8 +144,7 @@ Para o segundo exemplo, o segundo campo de texto (age), estava alterado para ema
     <select
       id="movie"
       v-model="movie"
-      name="movie"
-    >
+      name="movie">
       <option>Star Wars</option>
       <option>Vanilla Sky</option>
       <option>Atomic Blonde</option>
@@ -163,14 +154,12 @@ Para o segundo exemplo, o segundo campo de texto (age), estava alterado para ema
   <p>
     <input
       type="submit"
-      value="Submit"
-    >
+      value="Enviar">
   </p>
-
 </form>
 ```
 
-Embora a mudança seja pequena, perceba o `novalidate="true"` no início. Isso é importante pois o navegador irá se atentar para a validação do endereço de email quando o campo `type="email"`. Francamente, fará mais sentido confiar no navegador nesse caso, mas como queremos um exemplo com personalização customizada, iremos desabilitá-la. Aqui está o JavaScript atualizado. 
+Embora a mudança no _template_ seja pequena, perceba o `novalidate="true"` no início. Isso é muito importante, pois o navegador irá se atentar para a validação do endereço de email quando o campo for do tipo `type="email"`. Francamente, faria mais sentido confiar na validação do navegador nesse caso, mas como queremos um exemplo de validação com personalização, iremos desabilitá-la. Aqui está o JavaScript atualizado:
 
 ``` js
 const app = new Vue({
@@ -186,12 +175,12 @@ const app = new Vue({
       this.errors = [];
 
       if (!this.name) {
-        this.errors.push("Necessário o nome.");
+        this.errors.push('O nome é obrigatório.');
       }
       if (!this.email) {
-        this.errors.push('Necessário o email.');
+        this.errors.push('O e-mail é obrigatório.');
       } else if (!this.validEmail(this.email)) {
-        this.errors.push('Preencha com um email valido');
+        this.errors.push('Utilize um e-mail válido.');
       }
 
       if (!this.errors.length) {
@@ -208,14 +197,14 @@ const app = new Vue({
 })
 ```
 
-Como pode-se ver, nos adicionamos `validEmail` como um novo método, e uma simples chamada através do `checkForm`. Você pode testar esse exemplo aqui:
+Como se pode ver, adicionamos `validEmail` como um novo método, sendo chamado através do `checkForm`. Você pode testar este novo exemplo aqui:
 
-<p data-height="265" data-theme-id="0" data-slug-hash="vWqNXZ" data-default-tab="html,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="form validation 2" class="codepen">See the Pen <a href="https://codepen.io/cfjedimaster/pen/vWqNXZ/">form validation 2</a> by Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="vWqNXZ" data-default-tab="html,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="Validação de Formulários 2" class="codepen">Veja o Pen <a href="https://codepen.io/cfjedimaster/pen/vWqNXZ/">Validação de Formulários 2</a> por Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) no <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Outro Exemplo de Validação Personalizada
 
-Para o terceiro exemplo, construiremos algo que provavelmente você já viu em questionários de aplicativos. O usuário é questionado a gastar o “orçamento” para um conjunto de recursos para um novo modelo de Estrela da morte. O total deve ser igual a 100. Veja primeiro o HTML.
+Para um terceiro exemplo, construiremos algo que provavelmente você já viu em aplicativos de questionários. O usuário é orientado a gastar o "orçamento" para um conjunto de recursos, digamos, para um novo modelo de Estrela da Morte. O total precisa ser igual a 100. Veja primeiro o HTML:
 
 ``` html
 <form
@@ -223,9 +212,7 @@ Para o terceiro exemplo, construiremos algo que provavelmente você já viu em q
   @submit="checkForm"
   action="https://vuejs.org/"
   method="post"
-  novalidate="true"
->
-
+  novalidate="true">
   <p v-if="errors.length">
     <b>Por favor, corrija o(s) seguinte(s) erro(s):</b>
     <ul>
@@ -234,38 +221,33 @@ Para o terceiro exemplo, construiremos algo que provavelmente você já viu em q
   </p>
 
   <p>
-    Dado um orçamento de 100 dolares, indique 
+    Dado um orçamento de 100 dolares, indique
     quanto você gastaria nos seguintes recursos
-    para a próxima geração da estrela da morte. 
-    Seu total deve totalizar 100 
+    para uma próxima geração da Estrela da Morte. 
+    O valor total deve ser 100.
   </p>
 
   <p>
     <input
       v-model.number="weapons"
       type="number"
-      name="weapons"
-    > Armas <br/>
+      name="weapons"> Armas <br/>
     <input
       v-model.number="shields"
       type="number"
-      name="shields"
-    > Escudos <br/>
+      name="shields"> Escudos <br/>
     <input
       v-model.number="coffee"
       type="number"
-      name="coffee"
-    > Café <br/>
+      name="coffee"> Café <br/>
     <input
       v-model.number="ac"
       type="number"
-      name="ac"
-    > Ar condicionado <br/>
+      name="ac"> Ar condicionado <br/>
     <input
       v-model.number="mousedroids"
       type="number"
-      name="mousedroids"
-    > Droids rato <br/>
+      name="mousedroids"> Droides rato <br/>
   </p>
 
   <p>
@@ -275,14 +257,12 @@ Para o terceiro exemplo, construiremos algo que provavelmente você já viu em q
   <p>
     <input
       type="submit"
-      value="Submit"
-    >
+      value="Enviar">
   </p>
-
 </form>
 ```
 
-Note que os conjuntos de entrada cobrem os cinco diferentes recursos. Perceba a adição do `.number` para o atributo `v-model`. Isso diz ao Vue para transformar o valor para um número quando você usá-lo. No entanto existe um erro com esse recurso, semelhante quando o valor é vazio, que o transforma para string. Você verá a solução abaixo. Para tornar isso um pouco mais fácil para o usuário, adicionamos um total próximo a direita para eles verem em tempo real, qual é o seu total. Agora vamos ver o JavaScript.
+Note que os conjuntos de entrada cobrem os cinco diferentes recursos possíveis. Observe a adição do modificador `.number` para o atributo `v-model`. Isso diz ao Vue que deve converter automaticamente o valor informado para um Number quando for preenchido. No entanto, existe um problema com este recurso, pois quando o valor é vazio, ele se mantém como String. Você verá a solução abaixo. Para tornar a utilização um pouco mais fácil para o usuário, adicionamos uma exibição do total atual em tempo real. Agora vamos ver o JavaScript:
 
 ``` js
 const app = new Vue({
@@ -297,11 +277,12 @@ const app = new Vue({
   },
   computed: {
      total: function () {
-       // Deve-se analisar pois o Vue transforma em String valores vazios 
+       // Deve-se converter, pois o Vue mantém como String os valores vazios 
        return Number(this.weapons) +
          Number(this.shields) +
          Number(this.coffee) +
-         Number(this.ac+this.mousedroids);
+         Number(this.ac) +
+         Number(this.mousedroids);
      }
   },
   methods:{
@@ -309,7 +290,7 @@ const app = new Vue({
       this.errors = [];
 
       if (this.total != 100) {
-        this.errors.push('Total deve ser 100!');
+        this.errors.push('O total deve ser 100!');
       }
 
       if (!this.errors.length) {
@@ -322,14 +303,14 @@ const app = new Vue({
 })
 ```
 
-Definimos o valor total como um valor calculado, e fora daquele erro que eu rodei dentro, e isso foi simples o suficiente de se configurar. Meu método checkForm, agora, apenas precisa ver, se o total é 100 e apenas isso. Você pode testar isso aqui:
+Definimos o valor total como um dado computado, fora do trecho que faz a validação, algo muito simples de se configurar. O método `checkForm`, agora, apenas precisa observar se o total é 100, só isso. Você pode testar isso aqui:
 
-<p data-height="265" data-theme-id="0" data-slug-hash="vWqGoy" data-default-tab="html,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="form validation 3" class="codepen">See the Pen <a href="https://codepen.io/cfjedimaster/pen/vWqGoy/">form validation 3</a> by Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="vWqGoy" data-default-tab="html,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="Validação de Formulários 3" class="codepen">Veja o Pen <a href="https://codepen.io/cfjedimaster/pen/vWqGoy/">Validação de Formulários 3</a> por Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) no <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Validação no Lado do Servidor
 
-No meu último exemplo, construiremos algo que faz uso do Ajax para validar no servidor. O formulário irá pedir para nomear um novo produto então irá checar para ter certeza, que o nome é único. Escrevemos uma rápida ação no *serverless* [OpenWhisk](http://openwhisk.apache.org/) para fazer a validação. Embora não seja muito importante, aqui está a lógica:
+No último exemplo, construiremos algo que faz uso de Ajax para validar no servidor. O formulário pedirá para nomear um novo produto e, então, checará se o nome é único. Escrevemos uma rápida ação no _serverless_ [OpenWhisk](http://openwhisk.apache.org/) para fazer a validação desejada. Embora não seja muito importante, aqui está a lógica utilizada para fins de exemplo:
 
 ``` js
 function main(args) {
@@ -338,7 +319,7 @@ function main(args) {
         const badNames = ['vista', 'empire', 'mbp'];
 
         if (badNames.includes(args.name)) {
-          reject({error: 'Produto existente'});
+          reject({error: 'Produto já existente.'});
         }
 
         resolve({status: 'ok'});
@@ -346,15 +327,13 @@ function main(args) {
 }
 ```
 
-Basicamente qualquer nome mas "vista", "empire", e"mbp" são aceitáveis. Vamos continuar olhando o formulário.
+Basicamente, qualquer nome exceto "vista", "empire" e "mbp" são aceitáveis. Vamos ver o formulário:
 
 ``` html
 <form
   id="app"
   @submit="checkForm"
-  method="post"
->
-
+  method="post">
   <p v-if="errors.length">
     <b>Por favor, corrija o(s) seguinte(s) erro(s):</b>
     <ul>
@@ -368,21 +347,18 @@ Basicamente qualquer nome mas "vista", "empire", e"mbp" são aceitáveis. Vamos 
       id="name"
       v-model="name"
       type="text"
-      name="name"
-    >
+      name="name">
   </p>
 
   <p>
     <input
       type="submit"
-      value="Submit"
-    >
+      value="Enviar">
   </p>
-
 </form>
 ```
 
-Não há nada especial aqui. Então vamos para o JavaScript.
+Não há nada especial aqui. Então vamos para o JavaScript:
 
 ``` js
 const apiUrl = 'https://openwhisk.ng.bluemix.net/api/v1/web/rcamden%40us.ibm.com_My%20Space/safeToDelete/productName.json?name=';
@@ -400,7 +376,7 @@ const app = new Vue({
       this.errors = [];
 
       if (this.name === '') {
-        this.errors.push('Nome do produto é requisitado.');
+        this.errors.push('O nome do produto é obrigatório.');
       } else {
         fetch(apiUrl + encodeURIComponent(this.name))
         .then(res => res.json())
@@ -408,8 +384,8 @@ const app = new Vue({
           if (res.error) {
             this.errors.push(res.error);
           } else {
-            // redirecione para uma nova URL ou faça algo em caso de sucesso
-            alert('ok!');
+            // Poderia redirecionar a uma nova URL ou faça qualquer outra coisa
+            alert('Ok!');
           }
         });
       }
@@ -418,15 +394,14 @@ const app = new Vue({
 })
 ```
 
-Começamos com uma variável representando a URL da API que está rodando no OpenWhisk. Agora veja o `checkForm`. Nessa versão, nós sempre impedimos que o formulário envie (o que, a propósito, pode ser feito no HTML com Vue também). Você pode ver uma verificação básica no `this.name` vazia, e então nos disparamos a API. Se algo der errado, nós adicionamos um erro como antes. Se estiver certo, até o momento não fazemos nada (apenas um alerta), mas você pode encaminhar o usuário para uma nova página com o nome do produto na URL, ou fazer outras ações por exemplo. Você pode testar esse exemplo abaixo.
+Começamos com uma variável representando a URL da API que está executando no OpenWhisk. Veja que o `checkForm`. Nessa versão, nós sempre impedimos que o formulário envie (o que, a propósito, poderia ser feito no HTML com Vue também). Você pode ver uma verificação básica para identificar se `this.name` está vazio e, então, disparamos a API. Se algo der errado, adicionamos um erro como feito antes. Se estiver certo, não estamos fazendo nada especial (apenas um alerta), mas você pode encaminhar o usuário para uma nova página com o nome do produto na URL, ou fazer outras ações conforme desejar. Você pode testar esse exemplo abaixo:
 
-
-<p data-height="265" data-theme-id="0" data-slug-hash="BmgzeM" data-default-tab="js,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="form validation 4" class="codepen">See the Pen <a href="https://codepen.io/cfjedimaster/pen/BmgzeM/">form validation 4</a> by Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="BmgzeM" data-default-tab="js,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="Validação de Formulários 4" class="codepen">Veja o Pen <a href="https://codepen.io/cfjedimaster/pen/BmgzeM/">Validação de Formulários  4</a> por Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) no <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Padrões Alternativos
 
-Embora esse verbete do livro de receitas é focado em fazer um formulário de validação "à mão", existe, é claro, algumas ótimas bibliotecas Vue que vão lidar com muitas dessas coisas para você. Trocando para uma biblioteca pré-empacotada, pode-se impactar o tamanho final da sua aplicação, mas o benefício pode ser tremendo. Você terá código que é (muito provavelmente) testado e também atualizado regularmente. Alguns exemplos de bibliotecas de validação de formulários para o Vue incluem:
+Embora esse tópico do Livro de Receitas tenha se focado em fazer validação de formulários "à mão", existe, claro, algumas ótimas bibliotecas Vue que vão lidar com muitos destes detalhes para você. Trocando para uma biblioteca pré-empacotada, você pode sentir um impacto no tamanho final de sua aplicação, mas o benefício pode ser enorme. Você terá código (muito provavelmente) testado e também atualizado regularmente. Alguns exemplos de bibliotecas de validação de formulários para o Vue incluem:
 
 * [vuelidate](https://github.com/monterail/vuelidate)
 * [VeeValidate](http://vee-validate.logaretm.com/)
