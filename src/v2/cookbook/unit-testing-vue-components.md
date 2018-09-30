@@ -9,9 +9,9 @@ Este arquivo ainda não foi traduzido! Leia a versão original em inglês a segu
 
 ## Exemplo Base
 
-Unit testing is a fundamental part of software development. Unit tests execute the smallest units of code in isolation, in order to increase ease of adding new features and track down bugs. Vue's [single-file components](../guide/single-file-components.html) make it straight forward to write unit tests for components in isolation. This lets you develop new features with confidence you are not breaking existing ones, and helps other developers understand what your component does.
+O teste unitário é uma parte fundamental do desenvolvimento de software. Eles executam as menores unidades de código isoladamente, a fim de aumentar a facilidade de adicionar novos recursos e rastrear erros. O uso dos [Componentes Single-File](../guide/single-file-components.html) do Vue simplifica a tarefa de escrever testes unitários para componentes isolados. Isso permite desenvolver novos recursos com a confiança de que você não está quebrando os já existentes e ajuda outros desenvolvedores a entender o que seu componente faz.
 
-This simple example tests whether some text is rendered:
+Este exemplo simples testa se algum texto é renderizado:
 
 ```html
 <template>
@@ -38,7 +38,7 @@ export default {
   computed: {
     error () {
       return this.username.trim().length < 7
-        ? 'Please enter a longer username'
+        ? 'Por favor insira um nome de usuário mais longo'
         : ''
     }
   }
@@ -50,42 +50,41 @@ export default {
 import { shallowMount } from '@vue/test-utils'
 
 test('Foo', () => {
-  // render the component
+  // renderiza o componente
   const wrapper = shallowMount(Hello)
 
-  // should not allow for `username` less than 7 characters, excludes whitespace
+  // não deve permitir `username` menor que 7 caracteres, exclui espaço em branco
   wrapper.setData({ username: ' '.repeat(7) })
 
-  // assert the error is rendered
+  // afirma se a mensagem de erro está renderizada
   expect(wrapper.find('.error').exists()).toBe(true)
 
-  // update the name to be long enough
+  // atualiza o nome para ser longo o suficiente
   wrapper.setData({
     username: 'Lachlan'
   })
 
-  // assert the error has gone away
+  // afirma se a mensagem de erro se foi
   expect(wrapper.find('.error').exists()).toBe(false)
 })
 ```
+O trecho de código acima mostra como testar se uma mensagem de erro é exibida com base no comprimento do nome de usuário. Ele demonstra a ideia geral dos componentes Vue de teste unitário: renderizar o componente e afirmar que o código corresponde ao estado do componente.
 
-The above code snippet shows how to test whether an error message is rendered based on the length of the username. It demonstrates the general idea of unit testing Vue components: render the component, and assert that the markup matches the state of the component.
+## Por que testar?
 
-## Why test?
+Testes unitários em componentes têm muitos benefícios:
 
-Component unit tests have lots of benefits:
+- Fornecer documentação sobre como o componente deve se comportar
+- Economize mais tempo que testando manualmente
+- Reduza erros em novos recursos
+- Aprimorar arquitetura do código
+- Facilitar refatoração
 
-- Provide documentation on how the component should behave
-- Save time over testing manually
-- Reduce bugs in new features
-- Improve design
-- Facilitate refactoring
+Testes automatizados permitem que grandes equipes de desenvolvedores mantenham bases de código complexas.
 
-Automated testing allows large teams of developers to maintain complex codebases.
+#### Começando
 
-#### Getting started
-
-[Vue Test Utils](https://github.com/vuejs/vue-test-utils) is the official library for unit testing Vue components. The [vue-cli](https://github.com/vuejs/vue-cli) `webpack` template comes with either Karma or Jest, both well supported test runners, and there are some [guides](https://vue-test-utils.vuejs.org/guides/) in the Vue Test Utils documentation.
+[Vue Test Utils](https://github.com/vuejs/vue-test-utils) é a biblioteca oficial para testes unitários em componentes Vue. O template `webpack` que pode ser criado via [vue-cli](https://github.com/vuejs/vue-cli) vem com Karma ou Jest, ambos executadores de teste bem suportados, e há alguns [guias](https://vue-test-utils.vuejs.org/guides/) na documentação do Vue Test Utils.
 
 ## Real-World Example
 
