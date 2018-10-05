@@ -4,34 +4,31 @@ type: guide
 order: 103
 ---
 
-<p class="tip">**Nota da Equipe de Tradução**
-Este arquivo ainda não foi traduzido! Leia a versão original em inglês a seguir e, se puder, colabore com sua tradução: acesse [nosso projeto no GitHub](https://github.com/vuejs-br/br.vuejs.org/issues), avise que irá contribuir e inicie a tradução. Sua participação é muito importante!</p>
-
 > Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
 
-## Event Names
+## Nomes dos Eventos
 
-Unlike components and props, event names don't provide any automatic case transformation. Instead, the name of an emitted event must exactly match the name used to listen to that event. For example, if emitting a camelCased event name:
+Diferente dos componentes e propriedades, os nomes dos eventos não possuem nenhuma transformação. Sendo assim, o nome de um evento emitido deve corresponder exatamente ao nome usado para chamar esse evento. Por exemplo, caso for emitir um nome de evento em _camelCased_:
 
 ```js
 this.$emit('myEvent')
 ```
 
-Listening to the kebab-cased version will have no effect:
+Criando um nome de evento em _kebab-cased_:
 
 ```html
 <my-component v-on:my-event="doSomething"></my-component>
 ```
 
-Unlike components and props, event names will never be used as variable or property names in JavaScript, so there's no reason to use camelCase or PascalCase. Additionally, `v-on` event listeners inside DOM templates will be automatically transformed to lowercase (due to HTML's case-insensitivity), so `v-on:myEvent` would become `v-on:myevent` -- making `myEvent` impossible to listen to.
+Diferente dos componentes e propriedades, os nomes de eventos nunca serão usados como variáveis ou nomes de propriedades JavaScript, então não há motivos para usar _camelCase_ ou _PascalCase_. Além disso, `v-on` é uma escuta de eventos contida dentro do DOM que transforma automaticamente o nome em letras minúsculas (devido o HTML não diferenciar letras maiúsculas e minúsculas), então `v-on:myEvent` se tornaria `v-on:myevent`, sendo assim `myEvent` não seria possível de se escutar.
 
-For these reasons, we recommend you **always use kebab-case for event names**.
+Por esses motivos, nós recomendamos que voces **sempre use _kebab-case_ nos nomes dos eventos**.
 
-## Customizing Component `v-model`
+## Customizando Componente `v-model`
 
-> New in 2.2.0+
+> Novo na versão 2.2.0+
 
-By default, `v-model` on a component uses `value` as the prop and `input` as the event, but some input types such as checkboxes and radio buttons may want to use the `value` attribute for a [different purpose](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#Value). Using the `model` option can avoid a conflict in such cases:
+Por padrão, `v-model` é um componente que possui `value` como uma propriedade e `input` como um evento, mas alguns tipos de _inputs_ como por exemplo _checkboxes_ e _radio buttons_ pode usar o atributo `value` para [diferentes propósitos](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/Input/checkbox#Valor). Usando a opção `model` podemos evitar conflitos em alguns casos:
 
 ```js
 Vue.component('base-checkbox', {
@@ -52,25 +49,25 @@ Vue.component('base-checkbox', {
 })
 ```
 
-Now when using `v-model` on this component:
+Quando usamos o `v-model` neste componente:
 
 ```html
 <base-checkbox v-model="lovingVue"></base-checkbox>
 ```
 
-the value of `lovingVue` will be passed to the `checked` prop. The `lovingVue` property will then be updated when `<base-checkbox>` emits a `change` event with a new value.
+o valor `lovingVue` será passado para a propriedade `checked`. A propriedade `lovingVue` será atualizada quando o `<base-checkbox>` emitir o evento `change` com o novo valor.
 
-<p class="tip">Note that you still have to declare the <code>checked</code> prop in component's <code>props</code> option.</p>
+<p class="tip">Observe que você ainda precisa declarar a propriedade <code>checked</code> que está contida nas opções dos <code>props</code>.</p>
 
-## Binding Native Events to Components
+## Vínculo de Eventos Nativos aos Componentes
 
-There may be times when you want to listen directly to a native event on the root element of a component. In these cases, you can use the `.native` modifier for `v-on`:
+Pode acontecer de você querer ouvir diretamente um evento nativo no elemento raiz de um componente. Nestes casos, você pode usar o modificador `.native` no `v-on`:
 
 ```html
 <base-input v-on:focus.native="onFocus"></base-input>
 ```
 
-This can be useful sometimes, but it's not a good idea when you're trying to listen on a very specific element, like an `<input>`. For example, the `<base-input>` component above might refactor so that the root element is actually a `<label>` element:
+Isso pode ser útil algumas vezes, mas não é uma boa ideia quando você está tentando escutar um elemento em específico, como um `<input>`. Por exemplo, o componente `<base-input>` acima pode ser refatorado para que o elemento raiz seja um elemento `<lab
 
 ```html
 <label>
@@ -83,18 +80,18 @@ This can be useful sometimes, but it's not a good idea when you're trying to lis
 </label>
 ```
 
-In that case, the `.native` listener in the parent would silently break. There would be no errors, but the `onFocus` handler wouldn't be called when we expected it to.
+Nesse caso, a escuta `.native` no parente deveria ocorrer uma quebra silenciosa. Não apareceria erros, porém o manipulador `onFocus` não seria chamado.
 
-To solve this problem, Vue provides a `$listeners` property containing an object of listeners being used on the component. For example:
+Par resolver esse problema, Vue fornece a propriedade `$listeners` contendo um objeto de escutas sendo usado no componente. Por exemplo:
 
 ```js
 {
-  focus: function (event) { /* ... */ }
-  input: function (value) { /* ... */ },
+  focus: function (event) { /* ... */ },
+  input: function (value) { /* ... */ }
 }
 ```
 
-Using the `$listeners` property, you can forward all event listeners on the component to a specific child element with `v-on="$listeners"`. For elements like `<input>`, that you also want to work with `v-model`, it's often useful to create a new computed property for listeners, like `inputListeners` below:
+Usando a propriedade `$listeners`, você pode encaminhar todas as escutas de eventos no componente para um elemento filho específico com o `v-on="$listeners"`. Para os elementos como o `<input>`, você também irá utilizar o `v-model`, normalmente é útil criar uma nova propriedade computada para as escutas, como o `inputListeners` abaixo:
 
 ```js
 Vue.component('base-input', {
@@ -103,14 +100,14 @@ Vue.component('base-input', {
   computed: {
     inputListeners: function () {
       var vm = this
-      // `Object.assign` merges objects together to form a new object
+      // `Object.assign` mescla objetos para formar um novo objeto
       return Object.assign({},
-        // We add all the listeners from the parent
+        // Nós adicionamos todas as escutas do pai
         this.$listeners,
-        // Then we can add custom listeners or override the
-        // behavior of some listeners.
+        // Então podemos adicionar escutas personalizadas ou substituir
+        // comportamento de algumas escutas.
         {
-          // This ensures that the component works with v-model
+          // Isso garante que o componente funcione com o v-model
           input: function (event) {
             vm.$emit('input', event.target.value)
           }
@@ -131,7 +128,7 @@ Vue.component('base-input', {
 })
 ```
 
-Now the `<base-input>` component is a **fully transparent wrapper**, meaning it can be used exactly like a normal `<input>` element: all the same attributes and listeners will work, without the `.native` modifier.
+Agora o componente `<base-input>` é um **empacotador totalmente transparente**, isso significa que ele pode ser usado exatamente como um elemento `<input>`: todos os atributos e escutas funcionarão, sem o modificador `.native`.
 
 ## `.sync` Modifier
 
