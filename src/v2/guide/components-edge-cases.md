@@ -4,9 +4,6 @@ type: guide
 order: 106
 ---
 
-<p class="tip">**Nota da Equipe de Tradução**
-Este arquivo ainda não foi traduzido! Leia a versão original em inglês a seguir e, se puder, colabore com sua tradução: acesse [nosso projeto no GitHub](https://github.com/vuejs-br/br.vuejs.org/issues), avise que irá contribuir e inicie a tradução. Sua participação é muito importante!</p>
-
 > Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
 
 <p class="tip">Todas os recursos desta página documentam o tratamento de casos extremos, ou seja, situações incomuns que algumas vezes requerem que as regras do Vue sejam um pouco contornadas. Entretanto, note que todas elas possuem desvantagens ou podem ser perigosas. Isso é observado em casa caso, portanto, lembre-se delas ao decidir usar cada recurso.</p>
@@ -83,7 +80,7 @@ Então dentro de `<google-map-markers>` você poderá se encontrar buscando por 
 var map = this.$parent.map || this.$parent.$parent.map
 ```
 
-Isso rapidamente ficou fora de controle. É por isso que para fornecer informação de contexto para os componentes descendentes arbitráriamente profundos, nós recomendamos a [injeção de dependência](#Injeção-de-Dependência).
+Isso rapidamente ficou fora de controle. É por isso que para fornecer informação de contexto para os componentes descendentes arbitráriamente profundos, nós recomendamos a [injeção de dependência](#Injecao-de-Dependencia).
 
 ### Acessando Instâncias de Componentes Filhos & Elementos Filhos
 
@@ -122,13 +119,13 @@ Permitindo assim que o componente pai foque o *input* dentro de `<base-input>` c
 this.$refs.usernameInput.focus()
 ```
 
-Quando o `ref` é usado junto com `v-for`, a referências que você obtém será um *array* contendo os componentes filhos espelhando a fonte de dados.
+Quando o `ref` é usado junto com `v-for`, a referência que você obtém será um *array* contendo os componentes filhos espelhando a fonte de dados.
 
 <p class="tip"><code>$refs</code> são populados somente depois que o componente foi renderizado, e não são reativos. É somente uma escotilha para manipulação direta dos filhos - você deve evitar usar <code>$refs</code> de dentro dos *templates* ou dos dados computados.</p>
 
 ### Injeção de Dependência
 
-Earlier, when we described [Accessing the Parent Component Instance](#Accessing-the-Parent-Component-Instance), we showed an example like this:
+Anteriormente, quando descrevemos [Acessando a Instância do Componente Pai](#Acessando-a-Instancia-do-Componente-Pai), mostramos um exemplo como esse:
 
 ```html
 <google-map>
@@ -138,9 +135,9 @@ Earlier, when we described [Accessing the Parent Component Instance](#Accessing-
 </google-map>
 ```
 
-In this component, all descendants of `<google-map>` needed access to a `getMap` method, in order to know which map to interact with. Unfortunately, using the `$parent` property didn't scale well to more deeply nested components. That's where dependency injection can be useful, using two new instance options: `provide` and `inject`.
+Neste componente, todos os descendentes de `<google-map>` necessitam do acesso ao método `getMap`, para saberem com qual mapa estão interagindo. Infelizmente, usando a propriedade `$parent` não escalaremos muito bem para muitos componentes profundamente aninhados. É aí que a injeção de dependência pode ser útil, usando duas novas opções da instância: `provide` e `inject`.
 
-The `provide` options allows us to specify the data/methods we want to **provide** to descendent components. In this case, that's the `getMap` method inside `<google-map>`:
+A opção `provide` nos permite especificar quais dados/métodos nós queremos **prover** para os componentes descendentes. Neste caso, é o método `getMap` dentro de `<google-map>`:
 
 ```js
 provide: function () {
@@ -150,22 +147,22 @@ provide: function () {
 }
 ```
 
-Then in any descendants, we can use the `inject` option to receive specific properties we'd like to add to that instance:
+Então em qualquer descendente, nós podemos usar a opção `inject` para receber as propriedades especificas que desejamos adicionar à instância:
 
 ```js
 inject: ['getMap']
 ```
 
-You can see the [full example here](https://jsfiddle.net/chrisvfritz/tdv8dt3s/). The advantage over using `$parent` is that we can access `getMap` in _any_ descendant component, without exposing the entire instance of `<google-map>`. This allows us to more safely keep developing that component, without fear that we might change/remove something that a child component is relying on. The interface between these components remains clearly defined, just as with `props`.
+Você pode ver o [exemplo completo](https://jsfiddle.net/chrisvfritz/tdv8dt3s/). A vantagem em usar `$parent` é que podemos acessar `getMap` em *qualquer* componente descendente, sem expor a instância inteira do `<google-map>`. Isso nos permite continuar o desenvolvimento desse componente com mais segurança, sem medo de que podemos alterar/remover algo que o componente filho esteja confiando. A interface entre esses componentes permanece claramente definida, assim como usando `props`.
 
-In fact, you can think of dependency injection as sort of "long-range props", except:
+Na verdade, você porde pensar a injeção de dependência como uma espécie de "propriedade de longo alcance", exceto por:
 
-* ancestor components don't need to know which descendants use the properties it provides
-* descendant components don't need to know where injected properties are coming from
+* componentes ancestrais não precisarem saber quais descendentes usam a propriedade que ele provê
+* componentes descendentes não precisarem saber de onde as propriedades injetadas vieram
 
-<p class="tip">However, there are downsides to dependency injection. It couples components in your application to the way they're currently organized, making refactoring more difficult. Provided properties are also not reactive. This is by design, because using them to create a central data store scales just as poorly as <a href="#Accessing-the-Root-Instance">using <code>$root</code></a> for the same purpose. If the properties you want to share are specific to your app, rather than generic, or if you ever want to update provided data inside ancestors, then that's a good sign that you probably need a real state management solution like <a href="https://github.com/vuejs/vuex">Vuex</a> instead.</p>
+<p class="tip">Entretanto, existem desvantagens na injeção de dependência. Ela associa os componentes de sua aplicação da maneira que estão organizados atualmente, tornando a refatoração mais difícil. Propriedades providas pelos componentes pais também não são reativas. Isso ocorre por *design*, porque usá-las para criar um *store* de dados central fará sua aplicação escalar tão ruim quanto <a href="#Acessando-a-Instancia-Raiz"> usando <code>$root</code></a> para o mesmo propósito. Se as propriedades que você deseja compartilhar são especificas para sua aplicação, em vez de genéricas, ou se você deseja sempre atualizar os dados providos dentro do componentes ancestrais, então isso é um bom sinal que você provavelmente precisará de uma solução como <a href="https://github.com/vuejs/vuex">Vuex</a> para gerenciar o estado real.</p>
 
-Learn more about dependency injection in [the API doc](https://vuejs.org/v2/api/#provide-inject).
+Aprenda mais sobre injeção de dependência na [documentação da API](https://vuejs.org/v2/api/#provide-inject).
 
 ## Programmatic Event Listeners
 
