@@ -358,13 +358,13 @@ Vue.component('hello-world', {
 
 Graças ao sistema de Reatividade do Vue, ele sempre sabe quando atualizar (se você utilizá-lo corretamente). Há casos incomuns, porém, em que você pode querer forçar uma atualização, apesar do fato de nenhum dado reativo ter mudado. Além disso, há os casos em que você pode querer previnir atualizações desnecessárias.
 
-### Forcing an Update
+### Forçando uma Atualização
 
-<p class="tip">If you find yourself needing to force an update in Vue, in 99.99% of cases, you've made a mistake somewhere.</p>
+<p class="tip">Se você se encontrar na situação de precisar forçar uma atualiação no Vue, em 99,99% dos casos, você cometeu algum erro em algum lugar.</p>
 
-You may not have accounted for change detection caveats [with arrays](https://vuejs.org/v2/guide/list.html#Caveats) or [objects](https://vuejs.org/v2/guide/list.html#Object-Change-Detection-Caveats), or you may be relying on state that isn't tracked by Vue's reactivity system, e.g. with `data`.
+Você pode não ter levado em consideração as ressalvas na detecção de mudanças [com arrays](https://vuejs.org/v2/guide/list.html#Caveats) ou [objetos](https://vuejs.org/v2/guide/list.html#Object-Change-Detection-Caveats), ou você pode estar contando com um estado que não é monitorado pelo sistema de reatividade do Vue, p.ex. com `data`.
 
-However, if you've ruled out the above and find yourself in this extremely rare situation of having to manually force an update, you can do so with [`$forceUpdate`](../api/#vm-forceUpdate).
+Todavia, se você descartou o exposto e se encontra nessa situação extremamente rara, de ter de manualmente forçar uma atualização, você pode fazer isso com o [`$forceUpdate`](../api/#vm-forceUpdate).
 
 ### Cheap Static Components with `v-once`
 
