@@ -338,11 +338,11 @@ Quando o atributo especial `inline-template` estiver presente em um componente f
 
 ### X-Templates
 
-Another way to define templates is inside of a script element with the type `text/x-template`, then referencing the template by an id. For example:
+Uma outra forma de definir templates é dentro de elementos _script_ com tipo `text/x-template`, e então referenciando o template através de um id. Por exemplo:
 
 ``` html
 <script type="text/x-template" id="hello-world-template">
-  <p>Hello hello hello</p>
+  <p>Olá olá olá</p>
 </script>
 ```
 
@@ -352,7 +352,7 @@ Vue.component('hello-world', {
 })
 ```
 
-<p class="tip">These can be useful for demos with large templates or in extremely small applications, but should otherwise be avoided, because they separate templates from the rest of the component definition.</p>
+<p class="tip">Eles podem ser úteis para demonstrações com templates maiores ou em aplicações extremamente pequenas, porém devem, nos outros casos, ser evitados, uma vez que separam os templates do resto da definição do componente.</p>
 
 ## Controlling Updates
 
