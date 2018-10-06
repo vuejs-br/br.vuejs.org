@@ -293,7 +293,7 @@ Então, um componente `tree-folder-contents`, com este _template_:
 
 Quando você olha mais de perto, verá que tais componentes irão, na verdade, ser descendente e ancestral um do outro na árvore de renderização - um paradóxo! Quando for registrar esses componentes globalmente com o `Vue.component`, tal paradóxo será resolvido para você automaticamente. Se este é o seu caso, você pode parar sua leitura aqui.
 
-Todavia, se você está `requiring/importing` componentes usando um __sistema de módulos__, e.g. via Webpack ou Browserify, você irá se deparar com um erro: 
+Todavia, se você está `requiring/importing` componentes usando um __sistema de módulos__, p.ex. via Webpack ou Browserify, você irá se deparar com um erro: 
 
 ```
 Failed to mount component: template or render function not defined.
