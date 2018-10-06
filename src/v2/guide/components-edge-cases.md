@@ -34,7 +34,7 @@ new Vue({
 })
 ```
 
-Todo os subcomponentes agora são capazes de acessar esta instância e usá-la como *store* global:
+Todos os subcomponentes agora são capazes de acessar esta instância e usá-la como *store* global:
 
 ```js
 // Recupera dados da raiz
@@ -50,13 +50,13 @@ this.$root.bar
 this.$root.baz()
 ```
 
-<p class="tip">Isso pode ser conveniente para demonstrações ou aplicações muito pequenas com um punhado de componentes. Porém, o padrão não se adapta muito bem a aplicações de médias ou larga escala, então, nós recomendamos fortemente a utilização do <a href="https://github.com/vuejs/vuex">Vuex</a> para gerenciar o estado na maioria dos casos.</p>
+<p class="tip">Isso pode ser conveniente para demonstrações ou aplicações muito pequenas com um punhado de componentes. Porém, o padrão não se adapta muito bem a aplicações de média ou larga escala, então, nós recomendamos fortemente a utilização do <a href="https://github.com/vuejs/vuex">Vuex</a> para gerenciar o estado na maioria dos casos.</p>
 
 ### Acessando a Instância do Componente Pai
 
-Semelhantement a `$root`, a propriedade `$parent` pode ser utilizada para acessar a instância pai a partir de um filho. Isso pode alternativa, preguiçosa e tentadora, a passar os dados via propriedades.
+Semelhantemente a `$root`, a propriedade `$parent` pode ser utilizada para acessar a instância pai a partir de um filho. Isso é uma alternativa, preguiçosa e tentadora, a passar os dados via propriedades.
 
-<p class="tip">Na maioria dos casos, alcançar o interior dos componentes pais torna sua aplicação muito difícil de depurar e entender, especiamente se você modifica dados no componente pai. Ao olhar para aquele componente posteriormente, será muito difícil de compreender onde aquela mutação se originou.</p>
+<p class="tip">Na maioria dos casos, alcançar o interior dos componentes pais torna sua aplicação muito difícil de depurar e entender, especiamente se você modifica dados no componente pai. Ao olhar para o componente posteriormente, será muito difícil de compreender onde aquela mutação se originou.</p>
 
 Há casos, entretanto, particulamente em bibliotecas de componentes compartilhadas, que isso *pode* ser apropriado. Por exemplo, em componentes abstratos que interagem com com APIs JavaScript em vez de renderizarem HTML, assim como esse componente hipotético do Google Maps:
 
@@ -66,9 +66,9 @@ Há casos, entretanto, particulamente em bibliotecas de componentes compartilhad
 </google-map>
 ```
 
-O componente `<google-map>` pode definir uma propriedade `map` que todos os subcomponentes precisam acessar. Neste caso, o componente `<google-map-markers>` pode que acessar aquele mapa através de alguma coisa como `this.$parent.getMap`, para poder adicionar alguns marcadores à ela. Você pode conferir esse padrão [em ação aqui](https://jsfiddle.net/chrisvfritz/ttzutdxh/).
+O componente `<google-map>` pode definir uma propriedade `map` que todos os subcomponentes precisam acessar. Neste caso, o componente `<google-map-markers>` pode acessar aquele mapa através de algo como `this.$parent.getMap`, para poder adicionar alguns marcadores à ela. Você pode conferir esse padrão [em ação aqui](https://jsfiddle.net/chrisvfritz/ttzutdxh/).
 
-Tenha em mente, no entant, que componentes construidos com esse padrão são inerentemente frágeis. Por exemplo, imagine que nós adicionameno um novo componente `<google-map-region>` e quando `<google-map-markers>` aparecer dentro disso, ele só deve renderizar marcadores que estiverem nessa região:
+Tenha em mente, no entanto, que componentes construidos com esse padrão são inerentemente frágeis. Por exemplo, imagine que nós adicionaremos um novo componente `<google-map-region>` e quando `<google-map-markers>` aparecer dentro dele, ele só deve renderizar marcadores que estiverem nessa região:
 ```html
 <google-map>
   <google-map-region v-bind:shape="cityBoundaries">
@@ -83,7 +83,7 @@ Então dentro de `<google-map-markers>` você poderá se encontrar buscando por 
 var map = this.$parent.map || this.$parent.$parent.map
 ```
 
-Isso rapidamente ficou fora de controle. è por isso que para fornecer informação de contexto para os componentes descendentes arbitráriamente profundo, nós recomendamos a [injeção de dependência](#Injeção-de-Dependência).
+Isso rapidamente ficou fora de controle. É por isso que para fornecer informação de contexto para os componentes descendentes arbitráriamente profundos, nós recomendamos a [injeção de dependência](#Injeção-de-Dependência).
 
 ### Acessando Instâncias de Componentes Filhos & Elementos Filhos
 
@@ -99,7 +99,7 @@ Agora no componente onde você definiu o `ref`, você pode usar:
 this.$refs.usernameInput
 ```
 
-para acessar a instância `<base-input>`. Isso pode ser útil quando você quer, por exemplo, focar esse *input* programaticamente à partir de um pai. Neste caso, o componente `<base-input>` pode, similarmente, usar o `ref` para provêr acesso a elemente específicos dentro dele, como:
+para acessar a instância `<base-input>`. Isso pode ser útil quando você quer, por exemplo, "focar" esse *input* programaticamente à partir de um pai. Neste caso, o componente `<base-input>` pode, similarmente, usar o `ref` para prover acesso a elementos específicos dentro dele, como:
 
 ```html
 <input ref="input">
@@ -116,15 +116,15 @@ methods: {
 }
 ```
 
-Thus allowing the parent component to focus the input inside `<base-input>` with:
+Permitindo assim que o componente pai foque o *input* dentro de `<base-input>` com:
 
 ```js
 this.$refs.usernameInput.focus()
 ```
 
-When `ref` is used together with `v-for`, the ref you get will be an array containing the child components mirroring the data source.
+Quando o `ref` é usado junto com `v-for`, a referências que você obtém será um *array* contendo os componentes filhos espelhando a fonte de dados.
 
-<p class="tip"><code>$refs</code> are only populated after the component has been rendered, and they are not reactive. It is only meant as an escape hatch for direct child manipulation - you should avoid accessing <code>$refs</code> from within templates or computed properties.</p>
+<p class="tip"><code>$refs</code> são populados somente depois que o componente foi renderizado, e não são reativos. É somente uma escotilha para manipulação direta dos filhos - você deve evitar usar <code>$refs</code> de dentro dos *templates* ou dos dados computados.</p>
 
 ### Injeção de Dependência
 
