@@ -242,17 +242,17 @@ Para aprender mais sobre _listeners_ programáticos, dê uma conferida na API de
 
 <p class="tip">Note que o sistema de eventos do Vue é diferente do utilizado pelo navegador <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">EventTarget API</a>. Embora eles funcionem de modo semelhante, <code>$emit</code>, <code>$on</code>, e <code>$off</code>  <strong>não</strong> são aliases para <code>dispatchEvent</code>, <code>addEventListener</code>, e <code>removeEventListener</code>.</p>
 
-## Circular References
+## Referências Circulares 
 
-### Recursive Components
+### Componentes Recursivos
 
-Components can recursively invoke themselves in their own template. However, they can only do so with the `name` option:
+Componentes podem invocar a si mesmos recursivamente em seu próprio `template`. Todavia, eles só podem fazer isso com a opção `name`:
 
 ``` js
 name: 'unique-name-of-my-component'
 ```
 
-When you register a component globally using `Vue.component`, the global ID is automatically set as the component's `name` option.
+Quando se registra um componente globalmente usando `Vue.component`, o ID global é automaticamente configurado como a opção `name`.
 
 ``` js
 Vue.component('unique-name-of-my-component', {
@@ -260,14 +260,14 @@ Vue.component('unique-name-of-my-component', {
 })
 ```
 
-If you're not careful, recursive components can also lead to infinite loops:
+Se você não for cuidadoso, componentes recursivos também podem levar a _loops_ infinitos:
 
 ``` js
 name: 'stack-overflow',
 template: '<div><stack-overflow></stack-overflow></div>'
 ```
 
-A component like the above will result in a "max stack size exceeded" error, so make sure recursive invocation is conditional (i.e. uses a `v-if` that will eventually be `false`).
+Um componente como o mostrado acima resultará e um erro _"max stack size exceeded"_, então garanta que a invocação recursiva é condicional (ou seja, use um `v-if` que virá a ser, eventualmente, `false`).
 
 ### Circular References Between Components
 
