@@ -319,22 +319,22 @@ components: {
 
 Problema resolvido!
 
-## Alternate Template Definitions
+## Definições de Template Alternativas
 
-### Inline Templates
+###  Templates _inline_
 
-When the `inline-template` special attribute is present on a child component, the component will use its inner content as its template, rather than treating it as distributed content. This allows more flexible template-authoring.
+Quando o atributo especial `inline-template` estiver presente em um componente filho, o componente irá utilizar seu conteúdo interno como template, ao invés de tratá-lo como conteúdo distribuído. Isso permite _template-authoring_ mais flexível.
 
 ``` html
 <my-component inline-template>
   <div>
-    <p>These are compiled as the component's own template.</p>
-    <p>Not parent's transclusion content.</p>
+    <p>Estes são compilados como template do próprio componente.</p>
+    <p>E não transclusão de conteúdo do parent.</p>
   </div>
 </my-component>
 ```
 
-<p class="tip">However, <code>inline-template</code> makes the scope of your templates harder to reason about. As a best practice, prefer defining templates inside the component using the <code>template</code> option or in a <code>&lt;template&gt;</code> element in a <code>.vue</code> file.</p>
+<p class="tip">Todavia, a utilização do <code>inline-template</code> faz com que o escopo do seu template seja mais difícil de entender. Como uma boa prática, prefira definir templates dentro do componente, usando a opção<code>template</code> ou em um elemento <code>&lt;template&gt;</code>, em um arquivo <code>.vue</code></p>
 
 ### X-Templates
 
