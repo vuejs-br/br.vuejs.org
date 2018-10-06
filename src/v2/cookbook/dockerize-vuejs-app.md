@@ -9,29 +9,29 @@ Este arquivo ainda não foi traduzido! Leia a versão original em inglês a segu
 
 ## Exemplo Base
 
-So you built your first Vue.js app using the amazing [Vue.js webpack template](https://github.com/vuejs-templates/webpack) and now you really want to show off with your colleagues by demonstrating that you can also run it in a Docker container.
+Eis que você construiu sua primeira aplicação usando o incrível [template webpack Vue.js](https://github.com/vuejs-templates/webpack)  e agora você quer muito impressionar seus colegas demonstrando que você também pode rodá-lo em um contêiner Docker.
 
-Let's start by creating a `Dockerfile` in the root folder of our project:
+Vamos começar criando um `Dockerfile` na pasta raiz do nosso projeto:
 
 ```docker
 FROM node:9.11.1-alpine
 
-# install simple http server for serving static content
+# instala um servidor http simples para servir conteúdo estático
 RUN npm install -g http-server
 
-# make the 'app' folder the current working directory
+# faz da pasta 'app' o diretório atual de trabalho
 WORKDIR /app
 
-# copy both 'package.json' and 'package-lock.json' (if available)
+# copia os arquivos 'package.json' e 'package-lock.json' (se disponível)
 COPY package*.json ./
 
-# install project dependencies
+# instala dependências do projeto
 RUN npm install
 
-# copy project files and folders to the current working directory (i.e. 'app' folder)
+# copia os arquivos e pastas do para o diretório atual de trabalho (i.e. pasta 'app')
 COPY . .
 
-# build app for production with minification
+# compila a aplicação de produção com minificação
 RUN npm run build
 
 EXPOSE 8080
@@ -40,21 +40,23 @@ CMD [ "http-server", "dist" ]
 
 It may seem reduntant to first copy `package.json` and `package-lock.json` and then all project files and folders in two separate steps but there is actually [a very good reason for that](http://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/) (spoiler: it allows us to take advantage of cached Docker layers).
 
-Now let's build the Docker image of our Vue.js app:
+Pode parecer redundante primeiro copiar os arquivos `package.json` e `package-lock.json` e depois todos os arquivos e pastas do projeto em dois passos separados, porém existe [uma razão muito boa](http://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/) para isso (_spoiler_: nos permite tirar vantagem das camadas armazenadas em cache do Docker)
+
+Agora vamos compilar a imagem Docker da nossa aplicação Vue.js:
 
 ```bash
 docker build -t vuejs-cookbook/dockerize-vuejs-app .
 ```
 
-Finally, let's run our Vue.js app in a Docker container:
+Finalmente, vamos executar nossa aplicação Vue.js em um contêiner Docker:
 
 ```bash
 docker run -it -p 8080:8080 --rm --name dockerize-vuejs-app-1 vuejs-cookbook/dockerize-vuejs-app
 ```
 
-We should be able to access our Vue.js app on `localhost:8080`.
+Devemos conseguir acessar nossa aplicação Vue.js em `localhost:8080`.
 
-## Real-World Example
+## Exemplo do Mundo Real
 
 In the previous example, we used a simple, zero-configuration command-line [http server](https://github.com/indexzero/http-server) to serve our Vue.js app which is perfectly ok for quick prototyping and _may_ even be ok for simple production scenarios. After all, the documentation says:
 
