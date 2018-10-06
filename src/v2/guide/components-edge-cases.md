@@ -366,19 +366,19 @@ Você pode não ter levado em consideração as ressalvas na detecção de mudan
 
 Todavia, se você descartou o exposto e se encontra nessa situação extremamente rara, de ter de manualmente forçar uma atualização, você pode fazer isso com o [`$forceUpdate`](../api/#vm-forceUpdate).
 
-### Cheap Static Components with `v-once`
+### Componentes Estáticos Econômicos com `v-once`
 
-Rendering plain HTML elements is very fast in Vue, but sometimes you might have a component that contains **a lot** of static content. In these cases, you can ensure that it's only evaluated once and then cached by adding the `v-once` directive to the root element, like this:
+Renderizar elementos HTML puros é bastante rápido no Vue, mas algumas vezes você pode ter um componente que possui **uma grande quantidade** de conteúdo estático. Nesses casos, você pode assegurar que ele é avaliado somente uma vez e então colocado em cache, adicionando a diretiva `v-once` ao elemento raiz, como mostrado abaixo:
 
 ``` js
 Vue.component('terms-of-service', {
   template: `
     <div v-once>
-      <h1>Terms of Service</h1>
-      ... a lot of static content ...
+      <h1>Termos de serviço</h1>
+      ... uma enorme quantidade de conteúdo estático ...
     </div>
   `
 })
 ```
 
-<p class="tip">Once again, try not to overuse this pattern. While convenient in those rare cases when you have to render a lot of static content, it's simply not necessary unless you actually notice slow rendering -- plus, it could cause a lot of confusion later. For example, imagine another developer who's not familiar with <code>v-once</code> or simply misses it in the template. They might spend hours trying to figure out why the template isn't updating correctly.</p>
+<p class="tip">Mais uma vez, tente não abusar do uso desse padrão. Embora conveniente nos raros casos em que você tem de renderizar muito conteúdo estático, ele é simplesmente desnecessário a não ser que você tenha de fato notado uma renderização lenta -- além disso, ele poderia levar a futura confusões. Por exemplo, imagine um outro desenvolvedor que não é familiarizado com o <code>v-once</code> ou simplesmente não o nota no template. Ele pode vir a perder horas tentando entender por quê o template não está sendo atualizado da forma certa.</p>
