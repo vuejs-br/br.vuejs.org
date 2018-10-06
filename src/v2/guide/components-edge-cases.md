@@ -354,9 +354,9 @@ Vue.component('hello-world', {
 
 <p class="tip">Eles podem ser úteis para demonstrações com templates maiores ou em aplicações extremamente pequenas, porém devem, nos outros casos, ser evitados, uma vez que separam os templates do resto da definição do componente.</p>
 
-## Controlling Updates
+## Controlando atualizações
 
-Thanks to Vue's Reactivity system, it always knows when to update (if you use it correctly). There are edge cases, however, when you might want to force an update, despite the fact that no reactive data has changed. Then there are other cases when you might want to prevent unnecessary updates.
+Graças ao sistema de Reatividade do Vue, ele sempre sabe quando atualizar (se você utilizá-lo corretamente). Há casos incomuns, porém, em que você pode querer forçar uma atualização, apesar do fato de nenhum dado reativo ter mudado. Além disso, há os casos em que você pode querer previnir atualizações desnecessárias.
 
 ### Forcing an Update
 
