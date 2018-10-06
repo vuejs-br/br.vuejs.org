@@ -6,7 +6,7 @@ order: 106
 
 > Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
 
-<p class="tip">Todas os recursos desta página documentam o tratamento de casos extremos, ou seja, situações incomuns que algumas vezes requerem que as regras do Vue sejam um pouco contornadas. Entretanto, note que todas elas possuem desvantagens ou podem ser perigosas. Isso é observado em casa caso, portanto, lembre-se delas ao decidir usar cada recurso.</p>
+<p class="tip">Todos os recursos desta página documentam o tratamento de casos extremos, ou seja, situações incomuns que algumas vezes requerem que as regras do Vue sejam um pouco contornadas. Entretanto, note que todas elas possuem desvantagens ou podem ser perigosas. Isso é observado em casa caso, portanto, lembre-se delas ao decidir usar cada recurso.</p>
 
 ## Acesso a Elementos e Componentes
 
@@ -47,7 +47,7 @@ this.$root.bar
 this.$root.baz()
 ```
 
-<p class="tip">Isso pode ser conveniente para demonstrações ou aplicações muito pequenas com um punhado de componentes. Porém, o padrão não se adapta muito bem a aplicações de média ou larga escala, então, nós recomendamos fortemente a utilização do <a href="https://github.com/vuejs/vuex">Vuex</a> para gerenciar o estado na maioria dos casos.</p>
+<p class="tip">Isso pode ser conveniente para demonstrações ou aplicações muito pequenas, com apenas um punhado de componentes. Porém, o padrão não se adapta muito bem a aplicações de média ou larga escala, de modo que nós recomendamos fortemente a utilização do <a href="https://github.com/vuejs/vuex">Vuex</a> para gerenciar o estado, na maioria dos casos.</p>
 
 ### Acessando a Instância do Componente Pai
 
@@ -66,6 +66,7 @@ Há casos, entretanto, particulamente em bibliotecas de componentes compartilhad
 O componente `<google-map>` pode definir uma propriedade `map` que todos os subcomponentes precisam acessar. Neste caso, o componente `<google-map-markers>` pode acessar aquele mapa através de algo como `this.$parent.getMap`, para poder adicionar alguns marcadores à ela. Você pode conferir esse padrão [em ação aqui](https://jsfiddle.net/chrisvfritz/ttzutdxh/).
 
 Tenha em mente, no entanto, que componentes construidos com esse padrão são inerentemente frágeis. Por exemplo, imagine que nós adicionaremos um novo componente `<google-map-region>` e quando `<google-map-markers>` aparecer dentro dele, ele só deve renderizar marcadores que estiverem nessa região:
+
 ```html
 <google-map>
   <google-map-region v-bind:shape="cityBoundaries">
@@ -153,7 +154,7 @@ Então em qualquer descendente, nós podemos usar a opção `inject` para recebe
 inject: ['getMap']
 ```
 
-Você pode ver o [exemplo completo](https://jsfiddle.net/chrisvfritz/tdv8dt3s/). A vantagem em usar `$parent` é que podemos acessar `getMap` em *qualquer* componente descendente, sem expor a instância inteira do `<google-map>`. Isso nos permite continuar o desenvolvimento desse componente com mais segurança, sem medo de que podemos alterar/remover algo que o componente filho esteja confiando. A interface entre esses componentes permanece claramente definida, assim como usando `props`.
+Você pode ver o [exemplo completo](https://jsfiddle.net/chrisvfritz/tdv8dt3s/). A vantagem, nesse caso, em contraste com a utilização do `$parent`, é que podemos acessar `getMap` em *qualquer* componente descendente, sem expor a instância inteira do `<google-map>`. Isso nos permite continuar o desenvolvimento desse componente com mais segurança, sem medo de que podemos alterar/remover algo que o componente filho esteja confiando. A interface entre esses componentes permanece claramente definida, assim como usando `props`.
 
 Na verdade, você porde pensar a injeção de dependência como uma espécie de "propriedade de longo alcance", exceto por:
 
@@ -236,7 +237,7 @@ Veja [este _fiddle_](https://jsfiddle.net/chrisvfritz/1Leb7up8/) com o código c
 
 Para aprender mais sobre _listeners_ programáticos, dê uma conferida na API de [Métodos de Instância de Eventos](https://vuejs.org/v2/api/#Instance-Methods-Events).
 
-<p class="tip">Note que o sistema de eventos do Vue é diferente do utilizado pelo navegador <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">EventTarget API</a>. Embora eles funcionem de modo semelhante, <code>$emit</code>, <code>$on</code>, e <code>$off</code>  <strong>não</strong> são aliases para <code>dispatchEvent</code>, <code>addEventListener</code>, e <code>removeEventListener</code>.</p>
+<p class="tip">Note que o sistema de eventos do Vue é diferente do utilizado pelo navegador, a <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/EventTarget">API EventTarget</a>. Embora eles funcionem de modo semelhante, <code>$emit</code>, <code>$on</code>, e <code>$off</code>  <strong>não</strong> são aliases para <code>dispatchEvent</code>, <code>addEventListener</code>, e <code>removeEventListener</code>.</p>
 
 ## Referências Circulares 
 
