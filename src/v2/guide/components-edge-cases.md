@@ -9,18 +9,18 @@ Este arquivo ainda não foi traduzido! Leia a versão original em inglês a segu
 
 > Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
 
-<p class="tip">All the features on this page document the handling of edge cases, meaning unusual situations that sometimes require bending Vue's rules a little. Note however, that they all have disadvantages or situations where they could be dangerous. These are noted in each case, so keep them in mind when deciding to use each feature.</p>
+<p class="tip">Todas os recursos desta página documentam o tratamento de casos extremos, ou seja, situações incomuns que algumas vezes requerem que as regras do Vue sejam um pouco contornadas. Entretanto, note que todas elas possuem desvantagens ou podem ser perigosas. Isso é observado em casa caso, portanto, lembre-se delas ao decidir usar cada recurso.</p>
 
-## Element & Component Access
+## Acesso a Elementos e Componentes
 
-In most cases, it's best to avoid reaching into other component instances or manually manipulating DOM elements. There are cases, however, when it can be appropriate.
+Na maioria dos casos, é melhor evitar alcançar outras instâncias de componentes ou manualmente manipular elementos de DOM. Entretanto, há casos em que isso pode ser apropriado.
 
-### Accessing the Root Instance
+### Acessando a Instância Raiz
 
-In every subcomponent of a `new Vue` instance, this root instance can be accessed with the `$root` property. For example, in this root instance:
+Em cada subcomponente de uma instância `new Vue`, a instância raiz pode ser acessada com a propriedade `$root`. Por exemplo, nessa instância raiz:
 
 ```js
-// The root Vue instance
+// A instância Raiz do Vue
 new Vue({
   data: {
     foo: 1
@@ -34,31 +34,31 @@ new Vue({
 })
 ```
 
-All subcomponents will now be able to access this instance and use it as a global store:
+Todo os subcomponentes agora são capazes de acessar esta instância e usá-la como *store* global:
 
 ```js
-// Get root data
+// Recupera dados da raiz
 this.$root.foo
 
-// Set root data
+// Atribui dados na raiz
 this.$root.foo = 2
 
-// Access root computed properties
+// Acessa dados computados da raiz
 this.$root.bar
 
-// Call root methods
+// Chama métodos da raiz
 this.$root.baz()
 ```
 
-<p class="tip">This can be convenient for demos or very small apps with a handful of components. However, the pattern does not scale well to medium or large-scale applications, so we strongly recommend using <a href="https://github.com/vuejs/vuex">Vuex</a> to manage state in most cases.</p>
+<p class="tip">Isso pode ser conveniente para demonstrações ou aplicações muito pequenas com um punhado de componentes. Porém, o padrão não se adapta muito bem a aplicações de médias ou larga escala, então, nós recomendamos fortemente a utilização do <a href="https://github.com/vuejs/vuex">Vuex</a> para gerenciar o estado na maioria dos casos.</p>
 
-### Accessing the Parent Component Instance
+### Acessando a Instância do Componente Pai
 
-Similar to `$root`, the `$parent` property can be used to access the parent instance from a child. This can be tempting to reach for as a lazy alternative to passing data with a prop.
+Semelhantement a `$root`, a propriedade `$parent` pode ser utilizada para acessar a instância pai a partir de um filho. Isso pode alternativa, preguiçosa e tentadora, a passar os dados via propriedades.
 
-<p class="tip">In most cases, reaching into the parent makes your application more difficult to debug and understand, especially if you mutate data in the parent. When looking at that component later, it will be very difficult to figure out where that mutation came from.</p>
+<p class="tip">Na maioria dos casos, alcançar o interior dos componentes pais torna sua aplicação muito difícil de depurar e entender, especiamente se você modifica dados no componente pai. Ao olhar para aquele componente posteriormente, será muito difícil de compreender onde aquela mutação se originou.</p>
 
-There are cases however, particularly shared component libraries, when this _might_ be appropriate. For example, in abstract components that interact with JavaScript APIs instead of rendering HTML, like these hypothetical Google Maps components:
+Há casos, entretanto, particulamente em bibliotecas de componentes compartilhadas, que isso *pode* ser apropriado. Por exemplo, em componentes abstratos que interagem com com APIs JavaScript em vez de renderizarem HTML, assim como esse componente hipotético do Google Maps:
 
 ```html
 <google-map>
@@ -66,10 +66,9 @@ There are cases however, particularly shared component libraries, when this _mig
 </google-map>
 ```
 
-The `<google-map>` component might define a `map` property that all subcomponents need access to. In this case `<google-map-markers>` might want to access that map with something like `this.$parent.getMap`, in order to add a set of markers to it. You can see this pattern [in action here](https://jsfiddle.net/chrisvfritz/ttzutdxh/).
+O componente `<google-map>` pode definir uma propriedade `map` que todos os subcomponentes precisam acessar. Neste caso, o componente `<google-map-markers>` pode que acessar aquele mapa através de alguma coisa como `this.$parent.getMap`, para poder adicionar alguns marcadores à ela. Você pode conferir esse padrão [em ação aqui](https://jsfiddle.net/chrisvfritz/ttzutdxh/).
 
-Keep in mind, however, that components built with this pattern are still inherently fragile. For example, imagine we add a new `<google-map-region>` component and when `<google-map-markers>` appears within that, it should only render markers that fall within that region:
-
+Tenha em mente, no entant, que componentes construidos com esse padrão são inerentemente frágeis. Por exemplo, imagine que nós adicionameno um novo componente `<google-map-region>` e quando `<google-map-markers>` aparecer dentro disso, ele só deve renderizar marcadores que estiverem nessa região:
 ```html
 <google-map>
   <google-map-region v-bind:shape="cityBoundaries">
@@ -78,39 +77,39 @@ Keep in mind, however, that components built with this pattern are still inheren
 </google-map>
 ```
 
-Then inside `<google-map-markers>` you might find yourself reaching for a hack like this:
+Então dentro de `<google-map-markers>` você poderá se encontrar buscando por um *hack* como esse:
 
 ```js
 var map = this.$parent.map || this.$parent.$parent.map
 ```
 
-This has quickly gotten out of hand. That's why to provide context information to descendent components arbitrarily deep, we instead recommend [dependency injection](#Dependency-Injection).
+Isso rapidamente ficou fora de controle. è por isso que para fornecer informação de contexto para os componentes descendentes arbitráriamente profundo, nós recomendamos a [injeção de dependência](#Injeção-de-Dependência).
 
-### Accessing Child Component Instances & Child Elements
+### Acessando Instâncias de Componentes Filhos & Elementos Filhos
 
-Despite the existence of props and events, sometimes you might still need to directly access a child component in JavaScript. To achieve this you can assign a reference ID to the child component using the `ref` attribute. For example:
+Apesar da existência de propriedades e eventos, algumas vezes você ainda pode precisar acessar diretamente um componente filho em JavaScript. Para alcançar isso, você pode atribuir um ID de referência ao componente filho usando o atributo `ref`. Por exemplo:
 
 ```html
 <base-input ref="usernameInput"></base-input>
 ```
 
-Now in the component where you've defined this `ref`, you can use:
+Agora no componente onde você definiu o `ref`, você pode usar:
 
 ```js
 this.$refs.usernameInput
 ```
 
-to access the `<base-input>` instance. This may be useful when you want to, for example, programmatically focus this input from a parent. In that case, the `<base-input>` component may similarly use a `ref` to provide access to specific elements inside it, such as:
+para acessar a instância `<base-input>`. Isso pode ser útil quando você quer, por exemplo, focar esse *input* programaticamente à partir de um pai. Neste caso, o componente `<base-input>` pode, similarmente, usar o `ref` para provêr acesso a elemente específicos dentro dele, como:
 
 ```html
 <input ref="input">
 ```
 
-And even define methods for use by the parent:
+E até mesmo definir métodos para serem utilizados pelo pai:
 
 ```js
 methods: {
-  // Used to focus the input from the parent
+  // Usado pelo pai para focar o input
   focus: function () {
     this.$refs.input.focus()
   }
@@ -127,7 +126,7 @@ When `ref` is used together with `v-for`, the ref you get will be an array conta
 
 <p class="tip"><code>$refs</code> are only populated after the component has been rendered, and they are not reactive. It is only meant as an escape hatch for direct child manipulation - you should avoid accessing <code>$refs</code> from within templates or computed properties.</p>
 
-### Dependency Injection
+### Injeção de Dependência
 
 Earlier, when we described [Accessing the Parent Component Instance](#Accessing-the-Parent-Component-Instance), we showed an example like this:
 
