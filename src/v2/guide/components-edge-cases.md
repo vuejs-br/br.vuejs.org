@@ -269,9 +269,9 @@ template: '<div><stack-overflow></stack-overflow></div>'
 
 Um componente como o mostrado acima resultará e um erro _"max stack size exceeded"_, então garanta que a invocação recursiva é condicional (ou seja, use um `v-if` que virá a ser, eventualmente, `false`).
 
-### Circular References Between Components
+### Referências Circulares Entre Componentes
 
-Let's say you're building a file directory tree, like in Finder or File Explorer. You might have a `tree-folder` component with this template:
+Digamos que você está construindo uma árvore de diretórios de arquivos, como em um Buscador ou Explorador de Arquivos. Você pode ter um componente `tree-folder` com este _template_:
 
 ``` html
 <p>
@@ -280,7 +280,7 @@ Let's say you're building a file directory tree, like in Finder or File Explorer
 </p>
 ```
 
-Then a `tree-folder-contents` component with this template:
+Então, um componente `tree-folder-contents`, com este _template_:
 
 ``` html
 <ul>
@@ -291,17 +291,17 @@ Then a `tree-folder-contents` component with this template:
 </ul>
 ```
 
-When you look closely, you'll see that these components will actually be each other's descendent _and_ ancestor in the render tree - a paradox! When registering components globally with `Vue.component`, this paradox is resolved for you automatically. If that's you, you can stop reading here.
+Quando você olha mais de perto, verá que tais componentes irão, na verdade, ser descendente e ancestral um do outro na árvore de renderização - um paradóxo! Quando for registrar esses componentes globalmente com o `Vue.component`, tal paradóxo será resolvido para você automaticamente. Se este é o seu caso, você pode parar sua leitura aqui.
 
-However, if you're requiring/importing components using a __module system__, e.g. via Webpack or Browserify, you'll get an error:
+Todavia, se você está `requiring/importing` componentes usando um __sistema de módulos__, e.g. via Webpack ou Browserify, você irá se deparar com um erro: 
 
 ```
 Failed to mount component: template or render function not defined.
 ```
 
-To explain what's happening, let's call our components A and B. The module system sees that it needs A, but first A needs B, but B needs A, but A needs B, etc. It's stuck in a loop, not knowing how to fully resolve either component without first resolving the other. To fix this, we need to give the module system a point at which it can say, "A needs B _eventually_, but there's no need to resolve B first."
+Para explicar o que está acontecendo, vamos chamar nossos componentes de A e B. O sistema de módulos vê que ele precisa de A, mas primeiro precisa de B, mas B precisa de A, mas A precisa de B, etc. Ele fica preso no _loop_, sem saber como resolver nenhum componente, sem antes resolver o outro. Para que isso seja consertado, precisamos dar ao sistema de módulos um ponto no qual ele possa dizer, "A precisa de B _eventualmente_, mas não há necessidade de resolver B primeiro."
 
-In our case, let's make that point the `tree-folder` component. We know the child that creates the paradox is the `tree-folder-contents` component, so we'll wait until the `beforeCreate` lifecycle hook to register it:
+No nosso caso, vamos construir esse ponto no componente `tree-folder`. Nós sabemos que o componente filho que cria o paradóxo é o `tree-folder-contents`, então vamos esperar até que o gatilho de ciclo de vida `beforeCreate` registre-o:
 
 ``` js
 beforeCreate: function () {
@@ -309,7 +309,7 @@ beforeCreate: function () {
 }
 ```
 
-Or alternatively, you could use Webpack's asynchronous `import` when you register the component locally:
+Ou, alternativamente, você poderia utilizar o `import` assíncrono do Webpack quando você registra seu componente localmente:
 
 ``` js
 components: {
@@ -317,7 +317,7 @@ components: {
 }
 ```
 
-Problem solved!
+Problema resolvido!
 
 ## Alternate Template Definitions
 
