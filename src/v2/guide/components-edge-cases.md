@@ -168,39 +168,39 @@ In fact, you can think of dependency injection as sort of "long-range props", ex
 
 Learn more about dependency injection in [the API doc](https://vuejs.org/v2/api/#provide-inject).
 
-## Programmatic Event Listeners
+## Escuta de eventos programática
 
-So far, you've seen uses of `$emit`, listened to with `v-on`, but Vue instances also offer other methods in its events interface. We can:
+Até então, você viu usos do `$emit` e escutou eventos com o `v-on`, porém instâncias Vue também oferecem outros métodos em sua interface de eventos. Nós podemos:
 
-- Listen for an event with `$on(eventName, eventHandler)`
-- Listen for an event only once with `$once(eventName, eventHandler)`
-- Stop listening for an event with `$off(eventName, eventHandler)`
+- Escutar um evento com `$on(eventName, eventHandler)`
+- Escutar um evento, uma única vez, com `$once(eventName, eventHandler)`
+- Deixar de escutar um evento com `$off(eventName, eventHandler)`
 
-You normally won't have to use these, but they're available for cases when you need to manually listen for events on a component instance. They can also be useful as a code organization tool. For example, you may often see this pattern for integrating a 3rd-party library:
+Normalmente, você não terá que usar nenhum desses métodos, porém eles estão disponíveis para casos em que você precise escutar, manualmente, eventos na instância de um componente. Eles também podem ser úteis como uma ferramenta para organização de código. Por exemplo, você pode observar, frequentemente, esse padrão para integração com uma biblioteca de terceiros:
 
 ```js
-// Attach the datepicker to an input once
-// it's mounted to the DOM.
+// Anexe o datepicker ao input uma única vez
+// ele está montado no DOM.
 mounted: function () {
-  // Pikaday is a 3rd-party datepicker library
+  // Pikaday é uma biblioteca datepicker de terceiros
   this.picker = new Pikaday({
     field: this.$refs.input,
     format: 'YYYY-MM-DD'
   })
 },
-// Right before the component is destroyed,
-// also destroy the datepicker.
+// Imediatamente antes do componente ser destruído,
+// também destrua o datepicker.
 beforeDestroy: function () {
   this.picker.destroy()
 }
 ```
 
-This has two potential issues:
+Essa abordagem traz dois problemas em potencial:
 
-- It requires saving the `picker` to the component instance, when it's possible that only lifecycle hooks need access to it. This isn't terrible, but it could be considered clutter.
-- Our setup code is kept separate from our cleanup code, making it more difficult to programmatically clean up anything we set up.
+- Demanda que o `picker` seja salvo na instância do componente, enquanto é possível que somente os gatilhos de ciclos de vida precisem acessá-lo. Não se trata de uma abordagem terrível, mas pode ser considerada confusa.
+- Nosso código de configuração ou _setup_ é mantido separado do nosso código de limpeza, fazendo com que seja mais difícil de, programaticamente, limpar qualquer coisa que tenhamos configurado.
 
-You could resolve both issues with a programmatic listener:
+Pode-se resolver ambos os problemas com uma escuta de eventos programática:
 
 ```js
 mounted: function () {
@@ -215,7 +215,7 @@ mounted: function () {
 }
 ```
 
-Using this strategy, we could even use Pikaday with several input elements, with each new instance automatically cleaning up after itself:
+Usando essa estratégia, nós podemos até mesmo usar o Pickaday com vários elementos _input_, com cada nova instância sendo automaticamente limpa depois de si.
 
 ```js
 mounted: function () {
@@ -236,11 +236,11 @@ methods: {
 }
 ```
 
-See [this fiddle](https://jsfiddle.net/chrisvfritz/1Leb7up8/) for the full code. Note, however, that if you find yourself having to do a lot of setup and cleanup within a single component, the best solution will usually be to create more modular components. In this case, we'd recommend creating a reusable `<input-datepicker>` component.
+Veja [este _fiddle_](https://jsfiddle.net/chrisvfritz/1Leb7up8/) com o código completo. Note, entretanto, que caso esteja tendo que fazer muito _setup_ e limpeza em um único componente, a melhor solução será, usualmente, criar componentes mais modulares. Neste caso, recomendaríamos criar um componente `<input-datepicker>` reutilizável.
 
-To learn more about programmatic listeners, check out the API for [Events Instance Methods](https://vuejs.org/v2/api/#Instance-Methods-Events).
+Para aprender mais sobre _listeners_ programáticos, dê uma conferida na API de [Métodos de Instância de Eventos](https://vuejs.org/v2/api/#Instance-Methods-Events).
 
-<p class="tip">Note that Vue's event system is different from the browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">EventTarget API</a>. Though they work similarly, <code>$emit</code>, <code>$on</code>, and <code>$off</code> are <strong>not</strong> aliases for <code>dispatchEvent</code>, <code>addEventListener</code>, and <code>removeEventListener</code>.</p>
+<p class="tip">Note que o sistema de eventos do Vue é diferente do utilizado pelo navegador <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">EventTarget API</a>. Embora eles funcionem de modo semelhante, <code>$emit</code>, <code>$on</code>, e <code>$off</code>  <strong>não</strong> são aliases para <code>dispatchEvent</code>, <code>addEventListener</code>, e <code>removeEventListener</code>.</p>
 
 ## Circular References
 
