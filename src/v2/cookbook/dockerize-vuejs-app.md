@@ -56,16 +56,16 @@ Devemos conseguir acessar nossa aplicação Vue.js em `localhost:8080`.
 
 ## Exemplo do Mundo Real
 
-In the previous example, we used a simple, zero-configuration command-line [http server](https://github.com/indexzero/http-server) to serve our Vue.js app which is perfectly ok for quick prototyping and _may_ even be ok for simple production scenarios. After all, the documentation says:
+No exemplo anterior, nós usamos [servidor http](https://github.com/indexzero/http-server) simples de zero configuração para servir nossa aplicação Vue.js, o que é perfeitamente adequado para para prototipação rápida e _pode_ ser adequado para ambientes de produção simples. Até porque, a documentação diz:
 
-> It is powerful enough for production usage, but it's simple and hackable enough to be used for testing, local development, and learning.
+> É poderoso o suficiente para uso em produção, mas é simples e customizável o suficiente para ser usado em testes, desenvolvimento local, e aprendizado.
 
-Nevertheless, for realistically complex production use cases, it may be wiser to stand on the shoulders of some giant like [NGINX](https://www.nginx.com/) or [Apache](https://httpd.apache.org/) and that is exactly what we are going to do next: we are about to leverage NGINX to serve our Vue.js app because it is considered to be one of the most performant and battle-tested solutions out there.
+Apesar disso, para casos de uso reais e complexos, pode ser sensato se sustentar sobre ombros gigantes como o [NGINX](https://www.nginx.com/) ou [Apache](https://httpd.apache.org/) e é exatamente o que faremos em seguida: estamos prestes a usar o NGINX para servir nossa aplicação Vue.js pois ele é considerado como uma das soluções com melhor desempenho e mais bem tetado disponíveis.
 
-Let's refactor our `Dockerfile` to use NGINX:
+Vamos refatorar nosso `Dockerfile` para usar o NGINX:
 
  ```docker
-# build stage
+# estágio de compilação
 FROM node:9.11.1-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
@@ -73,31 +73,31 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# production stage
+# estágio de produção
 FROM nginx:1.13.12-alpine as production-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-Ok, let's see what's going on here:
-* we have split our original `Dockerfile` in multiple stages by leveraging the Docker [multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/) feature;
-* the first stage is responsible for building a production-ready artifact of our Vue.js app;
-* the second stage is responsible for serving such artifact using NGINX.
+Certo, vamos ver o que está acontecendo aqui:
+* nós dividimos nosso `Dockerfile` original em múltiplos estágios utilizando a funcionalidade de [compilação multiestágio](https://docs.docker.com/develop/develop-images/multistage-build/) do Docker;
+* o primeiro estágio é responsável por compilar um artefato pronto para produção da nossa aplicação Vue.js;
+* o segundo estágio é responsável por servir tal artefato usando NGINX.
 
-Now let's build the Docker image of our Vue.js app:
+Agora vamos compilar a imagem Docker da nossa aplicação Vue.js:
 
 ```bash
 docker build -t vuejs-cookbook/dockerize-vuejs-app .
 ```
 
-Finally, let's run our Vue.js app in a Docker container:
+Finalmente, vamos executar nossa aplicação Vue.js em um contêiner Docker:
 
 ```bash
 docker run -it -p 8080:80 --rm --name dockerize-vuejs-app-1 vuejs-cookbook/dockerize-vuejs-app
 ```
 
-We should be able to access our Vue.js app on `localhost:8080`.
+Devemos ser capazes de acessar nossa aplicação Vue.js em `localhost:8080`.
 
 ## Additional Context
 
