@@ -99,20 +99,20 @@ docker run -it -p 8080:80 --rm --name dockerize-vuejs-app-1 vuejs-cookbook/docke
 
 Devemos ser capazes de acessar nossa aplicação Vue.js em `localhost:8080`.
 
-## Additional Context
+## Conteúdo Adicional
 
-If you are reading this cookbook, chances are you already know why you decided to dockerize your Vue.js app. But if you simply landed on this page after hitting the Google's `I'm feeling lucky` button, let me share with you a couple of good reasons for doing that.
+Se você está lendo este livro de receitas, ha grandes chances que você já saiba  o motivo de "dockerizar" sua aplicação Vue.js. Mas se você aterrissou nessa página depois de apertar o botão `Estou com sorte` no Google, deixe-me compartilhar com você algumas boas razões pra fazer isso.
 
-Today's modern trend is to build applications using the [Cloud-Native](https://pivotal.io/cloud-native) approach which revolves mainly around the following buzzwords:
-* Microservices
-* DevOps
-* Continuous Delivery
+A tendencia atual é construir aplicações usando a abordagem [Cloud-Native](https://pivotal.io/cloud-native) que resume a maioria das seguintes palavras da moda:
+* Microsserviços
+* _DevOps_
+* Entrega Contínua
 
-Let's see how these concepts actually affect our decision of dockerizing our Vue.js app.
+Vamos ver como esses conceitos realmente afetam nossa decisão de “dockerizar” nossa aplicação Vue.js.
 
-### Effects of Microservices
+### Efeito dos Microsserviços
 
-By adopting the [microservices architectural style](https://martinfowler.com/microservices/), we end up building a single application as a suite of small services, each running in its own process and communicating with lightweight mechanisms. These services are built around business capabilities and independently deployable by fully automated deployment machinery.
+Adotando o [estilo arquitetural de microsserviços](https://martinfowler.com/microservices/), acabamos por construir uma única aplicação como um conjunto de pequenos serviços, cada um executando nos seus próprios processos e se comunicando com mecanismos leves. Esses serviços são construídos em torno de capacidades de negócios e implantados independentemente por maquinários totalmente automáticos de implantação.
 
 So, committing to this architectural approach most of the time implies developing and delivering our front-end as an independent service.
 
