@@ -1,12 +1,12 @@
 ---
-title: Componentes
+title: Básico sobre Componentes
 type: guide
 order: 11
 ---
 
-## Exemplo básico
+## Exemplo Base
 
-Veja um exemplo de um componente Vue:
+Aqui está um exemplo de um componente Vue:
 
 ``` js
 // Definindo novo componente chamado button-counter
@@ -76,7 +76,7 @@ new Vue({ el: '#components-demo2' })
 
 Perceba que ao clicar nos botões, cada um mantêm seu próprio e único `count`. Isso acontece porque cada vez que você usa um componente, uma nova  **instância** dele é criada.
 
-### `data` Precisa ser uma função
+### Use `data` como uma Função
 
 Quando definimos o componente `<button-counter>`, você talvez percebeu que a opção `data` não recebeu um objeto, como abaixo:
 
@@ -120,7 +120,7 @@ new Vue({ el: '#components-demo3' })
 
 ## Organizando Componentes
 
-É comum que um app seja organizado em uma árvore de componentes aninhados:
+É comum que um aplicativo seja organizado em uma árvore de componentes aninhados:
 
 ![Component Tree](/images/components.png)
 
@@ -138,7 +138,7 @@ Componentes registrados globalmente podem ser usados no template de qualquer ins
 
 Isso é tudo que você precisa saber sobre registro por hora, mas assim que você terminar de ler essa página e se sentir confortável com o conteúdo, recomendamos retornar mais tarde para ler o guia completo em [Component Registration](components-registration.html).
 
-## Passando Dados para os Componentes Filhos com Props
+## Passando Dados aos Filhos com Props
 
 Anteriormente falamos sobre criar componentes para postagens de blog. O problema é que, o componente não será útil a não ser que você possa passar dados para ele, como título e conteúdo da postagem específica que desejamos mostrar. É aí que props entra.
 
@@ -268,7 +268,7 @@ Vue.component('blog-post', {
 
 Agora, toda vez que uma nova propriedade é adicionado ao objeto `post`, ela será automaticamente acessível dentro do componente `<blog-post>`.
 
-## Enviando Mensagens ao Componentes Pais com Eventos
+## Enviando Mensagens ao Pai com Eventos
 
 À medida que desenvolvemos nosso componente `<blog-post>`, alguns recursos podem precisar comunicar de volta para o componente pai. Por exemplo, talvez decidamos incluir uma funcionalidade de acessibilidade que aumenta o tamanho da fonte das nossas postagens, enquanto deixa o resto da página no tamanho padrão:
 
@@ -599,9 +599,9 @@ No exemplo acima, `currentTabComponent` pode conter:
 
 Veja [esse exemplo](https://jsfiddle.net/chrisvfritz/o3nycadu/) para experimentar com todo o código, ou [essa versão](https://jsfiddle.net/chrisvfritz/b2qj69o1/) para um exemplo ligando ao objeto de opções de um componente em vez de seu nome registrado.
 
-Isso é tudo que você precisa saber sobre componentes dinâmicos por hora, mas assim que você terminar de ler essa página e se sentir confortável com o conteúdo, recomendamos retornar mais tarde para ler o guia completo em [Dynamic & Async Components](components-dynamic-async.html).
+Isso é tudo que você precisa saber sobre componentes dinâmicos por hora mas, assim que você terminar de ler essa página e se sentir confortável com o conteúdo, recomendamos retornar mais tarde para ler o guia completo sobre componentes [Dinâmicos & Assíncronos](components-dynamic-async.html).
 
-## Ressalvas da análise do DOM
+## Ressalvas na Análise do Template DOM
 
 Alguns elementos HTML, como `<ul>`, `<ol>`, `<table>` e `<select>` têm restrições do que pode aparecer dentro deles, e alguns elementos como `<li>`, `<tr>`, e `<option>` podem aparecer apenas dentro de certos elementos.
 
@@ -623,10 +623,10 @@ O componente `<blog-post-row>` será renderizado antes do elemento `<table>` por
 
 Deve ser notado que **essa limitação _não_ se aplica se você está usando string templates de uma das seguintes fontes**:
 
-- String templates (Ex: `template: '...'`)
+- _Template Strings_ (Ex: `template: '...'`)
 - [Componentes Single-File (`.vue`)](single-file-components.html)
 - [`<script type="text/x-template">`](components-edge-cases.html#X-Templates)
 
- Isso é tudo que você precisa saber sobre componentes dinâmicos por hora -- na verdade, esse é o fim da seção Essenciais do Vue. Parabéns! Ainda tem mais a ser aprendido, mas antes, recomendamos que você tire um tempo para testar o Vue e criar alguma coisa divertida.
+Isso é tudo que você precisa saber sobre componentes dinâmicos por hora -- na verdade, esse é o fim da seção _Essenciais_ do Vue. Parabéns! Ainda há mais a ser aprendido, mas antes, recomendamos que tire um tempo para brincar com o Vue você mesmo e criar alguma coisa divertida.
 
-Assim que você se sentir confortável com o conteúdo que vimos, recomendamos retornar mais tarde para ler o guia completo de [Dynamic & Async Components](components-dynamic-async.html), como também as outras páginas na seção Components In-Depth da barra lateral.
+Assim que você se sentir confortável com o conteúdo que vimos, recomendamos retornar mais tarde para ler o guia completo de componentes [Dinâmicos & Assíncronos](components-dynamic-async.html), como também as outras páginas na seção _Componentes em Detalhes_ da barra lateral.

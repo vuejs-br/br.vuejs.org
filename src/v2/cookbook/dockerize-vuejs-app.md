@@ -1,68 +1,68 @@
 ---
-title: Dockerize Vue.js App
+title: Dockerizando sua Aplicação Vue
 type: cookbook
 order: 13
 ---
 
-## Simple Example
+## Exemplo Base
 
-So you built your first Vue.js app using the amazing [Vue.js webpack template](https://github.com/vuejs-templates/webpack) and now you really want to show off with your colleagues by demonstrating that you can also run it in a Docker container.
+Eis que você construiu sua primeira aplicação usando o incrível [template webpack Vue](https://github.com/vuejs-templates/webpack) e agora quer muito impressionar seus colegas demonstrando que você também pode rodá-lo em um contêiner Docker.
 
-Let's start by creating a `Dockerfile` in the root folder of our project:
+Vamos começar criando um `Dockerfile` na pasta raiz do projeto:
 
 ```docker
 FROM node:9.11.1-alpine
 
-# install simple http server for serving static content
+# instala um servidor http simples para servir conteúdo estático
 RUN npm install -g http-server
 
-# make the 'app' folder the current working directory
+# faz da pasta 'app' o diretório atual de trabalho
 WORKDIR /app
 
-# copy both 'package.json' and 'package-lock.json' (if available)
+# copia os arquivos 'package.json' e 'package-lock.json' (se disponível)
 COPY package*.json ./
 
-# install project dependencies
+# instala dependências do projeto
 RUN npm install
 
-# copy project files and folders to the current working directory (i.e. 'app' folder)
+# copia arquivos e pastas para o diretório atual de trabalho (pasta 'app')
 COPY . .
 
-# build app for production with minification
+# compila a aplicação de produção com minificação
 RUN npm run build
 
 EXPOSE 8080
 CMD [ "http-server", "dist" ]
 ```
 
-It may seem reduntant to first copy `package.json` and `package-lock.json` and then all project files and folders in two separate steps but there is actually [a very good reason for that](http://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/) (spoiler: it allows us to take advantage of cached Docker layers).
+Pode parecer redundante primeiro copiar os arquivos `package.json` e `package-lock.json` e depois todos os arquivos e pastas do projeto em dois passos separados, porém existe [uma razão muito boa](http://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/) para isso (_spoiler_: permite tirar vantagem das camadas armazenadas em cache do Docker).
 
-Now let's build the Docker image of our Vue.js app:
+Agora vamos compilar a imagem Docker da nossa aplicação Vue:
 
 ```bash
 docker build -t vuejs-cookbook/dockerize-vuejs-app .
 ```
 
-Finally, let's run our Vue.js app in a Docker container:
+Finalmente, vamos executar a aplicação Vue em um contêiner Docker:
 
 ```bash
 docker run -it -p 8080:8080 --rm --name dockerize-vuejs-app-1 vuejs-cookbook/dockerize-vuejs-app
 ```
 
-We should be able to access our Vue.js app on `localhost:8080`.
+Devemos conseguir acessar nossa aplicação Vue em `localhost:8080`.
 
-## Real-World Example
+## Exemplo do Mundo Real
 
-In the previous example, we used a simple, zero-configuration command-line [http server](https://github.com/indexzero/http-server) to serve our Vue.js app which is perfectly ok for quick prototyping and _may_ even be ok for simple production scenarios. After all, the documentation says:
+No exemplo anterior, nós usamos [servidor http](https://github.com/indexzero/http-server) simples com zero configurações para servir nossa aplicação Vue, o que é perfeitamente adequado para para prototipação rápida e _pode_ ser adequado para ambientes de produção simples. Até porque, a documentação diz:
 
-> It is powerful enough for production usage, but it's simple and hackable enough to be used for testing, local development, and learning.
+> É poderoso o suficiente para uso em produção, mas é simples e customizável o suficiente para ser usado em testes, desenvolvimento local, e aprendizado.
 
-Nevertheless, for realistically complex production use cases, it may be wiser to stand on the shoulders of some giant like [NGINX](https://www.nginx.com/) or [Apache](https://httpd.apache.org/) and that is exactly what we are going to do next: we are about to leverage NGINX to serve our Vue.js app because it is considered to be one of the most performant and battle-tested solutions out there.
+Apesar disso, para casos de uso reais e complexos, pode ser sensato se sustentar sobre ombros gigantes como o [NGINX](https://www.nginx.com/) ou [Apache](https://httpd.apache.org/) e é exatamente o que faremos em seguida: estamos prestes a usar o NGINX para servir nossa aplicação Vue, pois ele é considerado uma das soluções com melhor desempenho e estabilidade dentre as disponíveis.
 
-Let's refactor our `Dockerfile` to use NGINX:
+Vamos refatorar nosso `Dockerfile` para usar o NGINX:
 
  ```docker
-# build stage
+# estágio de compilação
 FROM node:9.11.1-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
@@ -70,65 +70,65 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# production stage
+# estágio de produção
 FROM nginx:1.13.12-alpine as production-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-Ok, let's see what's going on here:
-* we have split our original `Dockerfile` in multiple stages by leveraging the Docker [multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/) feature;
-* the first stage is responsible for building a production-ready artifact of our Vue.js app;
-* the second stage is responsible for serving such artifact using NGINX.
+Certo, vamos ver o que está acontecendo aqui:
+* dividimos nosso `Dockerfile` original em múltiplos estágios, utilizando a funcionalidade de [compilação multiestágio](https://docs.docker.com/develop/develop-images/multistage-build/) do Docker;
+* o primeiro estágio é responsável por compilar um artefato pronto para produção da nossa aplicação Vue;
+* o segundo estágio é responsável por servir tal artefato usando NGINX.
 
-Now let's build the Docker image of our Vue.js app:
+Agora vamos compilar a imagem Docker da nossa aplicação Vue:
 
 ```bash
 docker build -t vuejs-cookbook/dockerize-vuejs-app .
 ```
 
-Finally, let's run our Vue.js app in a Docker container:
+Finalmente, vamos executar nossa aplicação Vue em um contêiner Docker:
 
 ```bash
 docker run -it -p 8080:80 --rm --name dockerize-vuejs-app-1 vuejs-cookbook/dockerize-vuejs-app
 ```
 
-We should be able to access our Vue.js app on `localhost:8080`.
+Devemos ser capazes de acessar nossa aplicação Vue em `localhost:8080`.
 
-## Additional Context
+## Conteúdo Adicional
 
-If you are reading this cookbook, chances are you already know why you decided to dockerize your Vue.js app. But if you simply landed on this page after hitting the Google's `I'm feeling lucky` button, let me share with you a couple of good reasons for doing that.
+Se você está lendo este livro de receitas, há grandes chances de que você já saiba o motivo para "dockerizar" sua aplicação Vue. Mas, se você aterrissou nessa página depois de apertar o botão `Estou com sorte` no Google, deixe-me compartilhar com você algumas boas razões pra fazer isso.
 
-Today's modern trend is to build applications using the [Cloud-Native](https://pivotal.io/cloud-native) approach which revolves mainly around the following buzzwords:
-* Microservices
-* DevOps
-* Continuous Delivery
+A tendência atual é construir aplicações usando a abordagem [Cloud-Native](https://pivotal.io/cloud-native), a qual resume a maioria das seguintes palavras da moda:
+* Microsserviços
+* _DevOps_
+* Entrega Contínua
 
-Let's see how these concepts actually affect our decision of dockerizing our Vue.js app.
+Vamos ver como esses conceitos realmente afetam nossa decisão de “dockerizar” nossa aplicação Vue.
 
-### Effects of Microservices
+### Efeito dos Microsserviços
 
-By adopting the [microservices architectural style](https://martinfowler.com/microservices/), we end up building a single application as a suite of small services, each running in its own process and communicating with lightweight mechanisms. These services are built around business capabilities and independently deployable by fully automated deployment machinery.
+Adotando o [estilo arquitetural de microsserviços](https://martinfowler.com/microservices/), acabamos por construir uma única aplicação como um conjunto de pequenos serviços, cada um executando nos seus próprios processos e se comunicando com mecanismos leves. Esses serviços são construídos em torno de capacidades de negócios e implantados independentemente, por maquinários completamente automáticos de implantação.
 
-So, committing to this architectural approach most of the time implies developing and delivering our front-end as an independent service.
+Então, aderir a este estilo arquitetural, na maioria das vezes, implica em desenvolver e entregar nosso _front-end_ como um serviço independente.
 
-### Effects of DevOps
+### Efeito do DevOps
 
-The adoption of [DevOps](https://martinfowler.com/bliki/DevOpsCulture.html) culture, tools and agile engineering practices has, among other things, the nice effect of increasing the collaboration between the roles of development and operations. One of the main problem of the past (but also today in some realities) is that the dev team tended to be uninterested in the operation and maintenance of a system once it was handed over to the ops team, while the latter tended to be not really aware of the system's business goals and, therefore, reluctant in satisfying the operational needs of the system (also referred to as "whims of developers").
+A adoção da cultura [DevOps](https://martinfowler.com/bliki/DevOpsCulture.html),ferramentas e práticas de engenharia ágil tem, entre outras coisas, o excelente efeito de aumentar a colaboração entre os desenvolvedores e a equipe de operação. Um dos principais problemas do passado (mas também de hoje, em alguns cenários) é que o time de desenvolvedores tinham a tendência de serem desinteressados na operação e manutenção de um sistema, uma vez que já havia sido entregue ao time de operação, enquanto este tinha a tendência de não estar a par das metas da lógica de negócio do sistema, e portanto, eram relutantes em satisfazer as necessidades operacionais do sistema (também conhecidas como "caprichos de desenvolvedores").
 
-So, delivering our Vue.js app as a Docker image helps reducing, if not removing entirely, the difference between running the service on a developer's laptop, the production environment or any environment we may think of.
+Portanto, distribuir nossa aplicação Vue como uma imagem Docker ajuda a reduzir, senão remover completamente, as diferenças entre o serviço executando no _laptop_ de um desenvolvedor e o serviço no ambiente de produção, ou qualquer ambiente que possamos imaginar.
 
-### Effects of Continuous Delivery
+### Efeitos da Entrega Contínua
 
-By leveraging the [Continuous Delivery](https://martinfowler.com/bliki/ContinuousDelivery.html) discipline we build our software in a way that it can potentially be released to production at any time. Such engineering practice is enabled by means of what is normally called [continuous delivery pipeline](https://martinfowler.com/bliki/DeploymentPipeline.html). The purpose of a continuous delivery pipeline is to split our build into stages (e.g. compilation, unit tests, integration tests, performance tests, etc.) and let each stage verify our build artifact whenever our software changes. Ultimately, each stage increases our confidence in the production readiness of our build artifact and, therefore, reduces the risk of breaking things in production (or any other environment for that matters).
+Usando a disciplina da [Entrega Contínua](https://martinfowler.com/bliki/ContinuousDelivery.html) construímos nosso _software_ de uma maneira que pode potencialmente ser lançado para produção a qualquer momento. Tal prática de engenharia é permitida pelo que é comumente  chamado de [canalização de entrega contínua](https://martinfowler.com/bliki/DeploymentPipeline.html). O propósito de uma canalização de entrega contínua (ou, no inglês, _deployment pipeline_) é dividir os passos de construção em estágios (como compilação, testes de unidade, testes de integração, testes de performance, etc.) e permitir que cada estágio verifique a construção do nosso artefato sempre que nosso _software_ é modificado. Finalmente, cada estágio aumenta nossa confiança na prontidão de produção da construção do nosso artefato e, portanto, reduz o risco de quebrar coisas em produção (ou em qualquer outro ambiente que importe).
 
-So, creating a Docker image for our Vue.js app is a good choice here because that would represent our final build artifact, the same artifact that would be verified against our continuous delivery pipeline and that could potentially be released to production with confidence.
+Portanto, criar uma imagem Docker para nossa aplicação Vue é uma boa escolha, já que ela representa nosso artefato ao final da construção. Este mesmo artefato pode, então, ser verificado pela nossa canalização de entrega contínua e pode, potencialmente, ser lançado em produção com confiança.
 
-## Alternative Patterns
+## Padrões Alternativos
 
-If your company is not into Docker and Kubernetes just yet or you simply want to get your MVP out the door, maybe dockerizing your Vue.js app is not what you need.
+Se sua empresa ainda não gosta de Docker e Kubernetes ou se você apenas quer publicar seu produto mínimo viável, talvez "dockerizar" sua aplicação Vue não seja o que você precisa.
 
-Common alternatives are:
-* leveraging an all-in-one platform like [Netlify](https://www.netlify.com/);
-* hosting your SPA on [Amazon S3](https://aws.amazon.com/s3/) and serving it with [Amazon CloudFront](https://aws.amazon.com/cloudfront/) (see [this](https://serverless-stack.com/chapters/deploy-the-frontend.html) link for a detailed guide).
+As alternativas comuns são:
+* utilizar uma plataforma _all-in-one_ como [Netlify](https://www.netlify.com/);
+* hospedar seu SPA no [Amazon S3](https://aws.amazon.com/s3/) e servi-lo com [Amazon CloudFront](https://aws.amazon.com/cloudfront/) (veja [este artigo](https://serverless-stack.com/chapters/deploy-the-frontend.html) para um guia detalhado).

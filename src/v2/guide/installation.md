@@ -2,7 +2,7 @@
 title: Instalação
 type: guide
 order: 1
-vue_version: 2.5.16
+vue_version: 2.5.17
 gz_size: "30.90"
 ---
 
@@ -37,7 +37,7 @@ Simplesmente faça o _download_ e inclua a _tag_ `<script>` com o caminho corret
 Nós recomendados vincular a um número de versão específico que você possa atualizar manualmente:
 
 ``` html
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 ```
 
 Você pode navegar pelos códigos-fonte do pacote NPM em [cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue/).

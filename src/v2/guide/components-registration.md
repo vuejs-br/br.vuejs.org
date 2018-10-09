@@ -4,7 +4,7 @@ type: guide
 order: 101
 ---
 
-> Essa página assume que você já leu [Componentes](components.html). Leia primeiro se você estiver iniciando com componentes.
+> Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
 
 ## Nome dos Componentes
 

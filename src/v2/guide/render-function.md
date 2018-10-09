@@ -600,7 +600,7 @@ Vue.component('my-functional-button', {
 
 Passando `context.data` como segundo argumento para `createElement`, nós passamos adiante quaisquer atributos ou escutas de eventos usando no `my-functional-button`. É tão transparente, de fato, que os eventos não precisam sequer o modificar `.native`.
 
-If you are using template-based functional components, you will also have to manually add attributes and listeners. Since we have access to the individual context contents, we can use `data.attrs` to pass along any HTML attributes and `listeners` _(the alias for `data.on`)_ to pass along any event listeners.
+Se você estiver usando componentes funcionais baseados em _templates_, também terá de manualmente adicionar atributos e escutas a eventos. Uma vez que você tem acesso ao conteúdo individual do contexto, podemos usar `data.attrs` para passar adiante quaisquer atributos HTML e `listeners` _(apelido para `data.on`)_ para passar adiante quaisquer escutas a eventos.
 
 ```html
 <template functional>

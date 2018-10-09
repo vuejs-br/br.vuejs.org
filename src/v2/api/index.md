@@ -360,7 +360,9 @@ type: api
 
 - **Uso:**
 
-  Instala um plugin do Vue.js. Se o plugin é um Objeto, ele deve expor um método `install`. Se for uma função, ela será tratada como o método install. O método install será chamado com Vue como argumento.
+  Instala um _plugin_ do Vue.js. Se o _plugin_ é um Objeto, ele deve expor um método `install`. Se for uma função, ela será tratada como o próprio método de instalação. O método será chamado com Vue como argumento.
+
+  Este método deve ser chamado antes da execução de `new Vue()`.
 
   Quando este método é chamado no mesmo plugin múltiplas vezes, o plugin só será instalado uma única vez.
 
@@ -2438,11 +2440,11 @@ Usado para denotar um elemento `<template>` como um slot de escopo que foi subst
 
 - **Uso:**
 
-  `<transition-group>` serve como efeito de transição para **múltiplos** elementos/componentes. O `<transition-group>` renderiza um elemento DOM real. Por padrão ele renderiza um `<span>`, e você pode configurar que elemento deverá ser renderizado através do atributo `tag` attribute.
+  `<transition-group>` serve como efeito de transição para **múltiplos** elementos/componentes. O `<transition-group>` renderiza um elemento DOM real. Por padrão, renderiza-se um `<span>`, e você pode configurar qual elemento deverá ser renderizado através do atributo `tag`.
 
   Note que cada filho em um `<transition-group>` deve ser **identificado unicamente** para as animações funcionarem corretamente.
 
-  `<transition-group>` suporta transições em movimento via transformação CSS. Quando a posição de um filho na tela muda após uma atualização, ele aplicará uma classe CSS de movimento (gerada automaticamente a partir do atributo `name` ou configurada com o atributo` move-class`).  Se a propriedade CSS `transform` é passível de transição, quando a classe de movimento for aplicada, o elemento será animado de forma suave para seu destino usando a [técnica FLIP](https://aerotwist.com/blog/flip-your-animations/).
+  `<transition-group>` suporta transições em movimento via transformações CSS. Quando a posição de um filho na tela muda após uma atualização, ele aplicará uma classe CSS de movimento (gerada automaticamente a partir do atributo `name` ou configurada com o atributo `move-class`). Se a propriedade CSS `transform` for passível de transição quando a classe de movimento é aplicada, o elemento será animado de forma suave para seu destino usando a [técnica FLIP](https://aerotwist.com/blog/flip-your-animations/).
 
   ```html
   <transition-group tag="ul" name="slide">
