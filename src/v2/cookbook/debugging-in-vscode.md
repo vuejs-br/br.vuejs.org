@@ -14,7 +14,7 @@ Esse tutorial mostra como usar a extensão [Debugger for Chrome](https://github.
 
 Você precisa ter o Chrome e o VS Code instalados. Certifique-se de ter a versão mais recente da extensão [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) instalada no VS Code.
 
-Instale e crie o projeto com o [vue-cli](https://github.com/vuejs/vue-cli), com as intruções presentes no arquivo `README.md` do projeto. Acesse o novo diretorio criado para a aplicação e abra no VS Code.
+Instale e crie o projeto com o [vue-cli](https://github.com/vuejs/vue-cli) e com as intruções presentes no `README.md`. Acesse o novo diretório criado para a aplicação e abra no VS Code.
 
 ### Exibindo Fontes no Chrome Devtools
 
@@ -78,7 +78,7 @@ Clique no icone de duparação na barra de tarefas para trazer a visualização 
 
   ![Ativando o Ponto de Parada](/images/breakpoint_hit.png)
 
-## Padrãoes Alternativos
+## Padrões Alternativos
 
 ### Vue Devtools
 
