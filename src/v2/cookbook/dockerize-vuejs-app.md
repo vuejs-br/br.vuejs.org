@@ -116,9 +116,9 @@ Adotando o [estilo arquitetural de microsserviços](https://martinfowler.com/mic
 
 So, committing to this architectural approach most of the time implies developing and delivering our front-end as an independent service.
 
-### Effects of DevOps
+### Efeito do DevOps
 
-The adoption of [DevOps](https://martinfowler.com/bliki/DevOpsCulture.html) culture, tools and agile engineering practices has, among other things, the nice effect of increasing the collaboration between the roles of development and operations. One of the main problem of the past (but also today in some realities) is that the dev team tended to be uninterested in the operation and maintenance of a system once it was handed over to the ops team, while the latter tended to be not really aware of the system's business goals and, therefore, reluctant in satisfying the operational needs of the system (also referred to as "whims of developers").
+A adoção da cultura [DevOps](https://martinfowler.com/bliki/DevOpsCulture.html),ferramentas e praticas de engenharia ágil tem, entre outras coisas, o excelente efeito de aumentar a colaboração entre os desenvolvedores e a equipe de operação. Um dos principais problemas do passado (mas também de hoje em alguns cenários) é que o time de desenvolvedores tinham a tendencia de serem desinteressados na operação e manutenção de um sistema uma vez que já tenha sido entregue ao time de operação, enquanto este tinha a tendencia de não estar a parte das metas da lógica de negócio do sistema, e portanto, eram relutantes em satisfazer as necessidades operacionais do sistema. (também conhecido como "caprichos de desenvolvedores")
 
 So, delivering our Vue.js app as a Docker image helps reducing, if not removing entirely, the difference between running the service on a developer's laptop, the production environment or any environment we may think of.
 
