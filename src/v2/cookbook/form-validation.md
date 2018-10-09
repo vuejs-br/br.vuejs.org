@@ -100,7 +100,7 @@ const app = new Vue({
 
 Bastante curto e simples. Definimos um Array para manter erros e fixamos valores iniciais nulos para os três campos do formulário. A lógica do `checkForm` (lembrando que é executado no envio do formulário) valida apenas nome e idade, uma vez que o filme é opcional. Caso esteja vazio, checamos cada um e definimos um erro específico. E é apenas isso. Você pode testar abaixo. Não se esqueça que, em um envio bem-sucedido, você será direcionado a uma URL temporária vazia.
 
-<p data-height="265" data-theme-id="0" data-slug-hash="GObpZM" data-default-tab="html,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="Validação de Formulários 1" class="codepen">Veja o Pen <a href="https://codepen.io/cfjedimaster/pen/GObpZM/">Validação de Formulários 1</a> por Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) no <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="yRMVLj" data-default-tab="html,result" data-user="ErickPetru" data-embed-version="2" data-pen-title="Validação de Formulários com Vue 1" class="codepen">Veja o Pen <a href="https://codepen.io/ErickPetru/pen/yRMVLj/">Validação de Formulários com Vue 1</a> por Erick Eduardo Petrucelli (<a href="https://codepen.io/ErickPetru">@ErickPetru</a>) no <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Usando Validação Personalizada
@@ -199,7 +199,7 @@ const app = new Vue({
 
 Como se pode ver, adicionamos `validEmail` como um novo método, sendo chamado através do `checkForm`. Você pode testar este novo exemplo aqui:
 
-<p data-height="265" data-theme-id="0" data-slug-hash="vWqNXZ" data-default-tab="html,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="Validação de Formulários 2" class="codepen">Veja o Pen <a href="https://codepen.io/cfjedimaster/pen/vWqNXZ/">Validação de Formulários 2</a> por Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) no <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="zmZove" data-default-tab="html,result" data-user="ErickPetru" data-embed-version="2" data-pen-title="Validação de Formulários com Vue 2" class="codepen">Veja o Pen <a href="https://codepen.io/ErickPetru/pen/zmZove/">Validação de Formulários com Vue 2</a> por Erick Eduardo Petrucelli (<a href="https://codepen.io/ErickPetru">@ErickPetru</a>) no <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Outro Exemplo de Validação Personalizada
@@ -221,7 +221,7 @@ Para um terceiro exemplo, construiremos algo que provavelmente você já viu em 
   </p>
 
   <p>
-    Dado um orçamento de 100 dolares, indique
+    Dado um orçamento de 100 dólares, indique
     quanto você gastaria nos seguintes recursos
     para uma próxima geração da Estrela da Morte. 
     O valor total deve ser 100.
@@ -305,7 +305,7 @@ const app = new Vue({
 
 Definimos o valor total como um dado computado, fora do trecho que faz a validação, algo muito simples de se configurar. O método `checkForm`, agora, apenas precisa observar se o total é 100, só isso. Você pode testar isso aqui:
 
-<p data-height="265" data-theme-id="0" data-slug-hash="vWqGoy" data-default-tab="html,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="Validação de Formulários 3" class="codepen">Veja o Pen <a href="https://codepen.io/cfjedimaster/pen/vWqGoy/">Validação de Formulários 3</a> por Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) no <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="pxeNyK" data-default-tab="html,result" data-user="ErickPetru" data-embed-version="2" data-pen-title="Validação de Formulários com Vue 3" class="codepen">Veja o Pen <a href="https://codepen.io/ErickPetru/pen/pxeNyK/">Validação de Formulários com Vue 3</a> por Erick Eduardo Petrucelli (<a href="https://codepen.io/ErickPetru">@ErickPetru</a>) no <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Validação no Lado do Servidor
@@ -313,12 +313,12 @@ Definimos o valor total como um dado computado, fora do trecho que faz a valida�
 No último exemplo, construiremos algo que faz uso de Ajax para validar no servidor. O formulário pedirá para nomear um novo produto e, então, checará se o nome é único. Escrevemos uma rápida ação no _serverless_ [OpenWhisk](http://openwhisk.apache.org/) para fazer a validação desejada. Embora não seja muito importante, aqui está a lógica utilizada para fins de exemplo:
 
 ``` js
-function main(args) {
+function main(params) {
     return new Promise((resolve, reject) => {
         // Nome de produtos ruins: vista, empire, mbp
         const badNames = ['vista', 'empire', 'mbp'];
 
-        if (badNames.includes(args.name)) {
+        if (badNames.includes(params.name.toLowerCase())) {
           reject({error: 'Produto já existente.'});
         }
 
@@ -361,7 +361,7 @@ Basicamente, qualquer nome exceto "vista", "empire" e "mbp" são aceitáveis. Va
 Não há nada especial aqui. Então vamos para o JavaScript:
 
 ``` js
-const apiUrl = 'https://openwhisk.ng.bluemix.net/api/v1/web/rcamden%40us.ibm.com_My%20Space/safeToDelete/productName.json?name=';
+const apiUrl = 'https://openwhisk.ng.bluemix.net/api/v1/web/vue_dev/get-http-resource/productName.json?name=';
 
 const app = new Vue({
   el: '#app',
@@ -396,7 +396,7 @@ const app = new Vue({
 
 Começamos com uma variável representando a URL da API que está executando no OpenWhisk. Veja que o `checkForm`. Nessa versão, nós sempre impedimos que o formulário envie (o que, a propósito, poderia ser feito no HTML com Vue também). Você pode ver uma verificação básica para identificar se `this.name` está vazio e, então, disparamos a API. Se algo der errado, adicionamos um erro como feito antes. Se estiver certo, não estamos fazendo nada especial (apenas um alerta), mas você pode encaminhar o usuário para uma nova página com o nome do produto na URL, ou fazer outras ações conforme desejar. Você pode testar esse exemplo abaixo:
 
-<p data-height="265" data-theme-id="0" data-slug-hash="BmgzeM" data-default-tab="js,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="Validação de Formulários 4" class="codepen">Veja o Pen <a href="https://codepen.io/cfjedimaster/pen/BmgzeM/">Validação de Formulários  4</a> por Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) no <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="QZpGKQ" data-default-tab="html,result" data-user="ErickPetru" data-embed-version="2" data-pen-title="Validação de Formulários com Vue 4" class="codepen">Veja o Pen <a href="https://codepen.io/ErickPetru/pen/QZpGKQ/">Validação de Formulários com Vue 4</a> por Erick Eduardo Petrucelli (<a href="https://codepen.io/ErickPetru">@ErickPetru</a>) no <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Padrões Alternativos
