@@ -134,5 +134,4 @@ Se sua empresa ainda não gosta de Docker e Kubernetes ou  se você apenas quer 
 
 As alternativas comuns são:
 * utilizar uma plataforma _all-in-one_ como [Netlify](https://www.netlify.com/);
-* hosting your SPA on [Amazon S3](https://aws.amazon.com/s3/) and serving it with [Amazon CloudFront](https://aws.amazon.com/cloudfront/) (see [this](https://serverless-stack.com/chapters/deploy-the-frontend.html) link for a detailed guide).
-* Hospedar seu SPA no [Amazon S3](https://aws.amazon.com/s3/) e servi-lo com [Amazon CloudFront](https://aws.amazon.com/cloudfront/) (veja [esse](https://serverless-stack.com/chapters/deploy-the-frontend.html) link para um guia detalhado).
+* hospedar seu SPA no [Amazon S3](https://aws.amazon.com/s3/) e servi-lo com [Amazon CloudFront](https://aws.amazon.com/cloudfront/) (veja [esse](https://serverless-stack.com/chapters/deploy-the-frontend.html) link para um guia detalhado).
