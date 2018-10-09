@@ -8,7 +8,7 @@ order: 102
 
 ## Prop Casing (camelCase vs kebab-case)
 
-O nome de atributos do HTML são insensíveis a maiúsculas e minúsculas, dessa forma os navegadores irão interpretar qualquer letra maiúscula como minúscula. Isso significa que quando você está usando in-DOM templates (quando o Vue é utilizado logo em uma página HTML), nomes de propriedades em camelCase precisam utilizar kebab-case (delimitação por hífen) equivalentes:
+O nome de atributos do HTML são insensíveis a maiúsculas e minúsculas, dessa forma os navegadores irão interpretar qualquer letra maiúscula como minúscula. Isso significa que quando você está usando in-DOM templates (quando o Vue é utilizado logo em uma página HTML), nomes de propriedades em camelCase precisam utilizar os seus equivalentes em kebab-case (delimitados por hífen):
 
 ``` js
 Vue.component('blog-post', {
@@ -16,7 +16,8 @@ Vue.component('blog-post', {
   props: ['postTitle'],
   template: '<h3>{{ postTitle }}</h3>'
 })
-```
+``
+
 
 ``` html
 <!-- kebab-case em HTML -->
@@ -47,7 +48,7 @@ props: {
 
 Isso não apenas documenta o seu componente, mas também irá avisar os usuários no console de Javascript do navegador se eles atribuírem um tipo errado. Você irá aprender muito mais sobre [checagem de tipos e outras validações de propriedades](#Prop-Validation) logo abaixo nesta página.
 
-## Passando propriedades estáticas ou dinâmicas
+## Passando propriedades estáticas ou dinamicas
 
 Até aqui, você viu propriedades sendo passadas através de um valor estático, por exemplo:
 
@@ -55,26 +56,26 @@ Até aqui, você viu propriedades sendo passadas através de um valor estático,
 <blog-post title="Minha jornada com Vue"></blog-post>
 ```
 
-Você também viu propriedades sendo associadas dinâmicamentes com `v-bind`, como em:
+Você também viu propriedades sendo associadas dinamicamente com `v-bind`, como em:
 
 ```html
-<!-- Associando um valor dinâmicamente a uma variável -->
+<!-- Associando um valor dinamicamente a uma variável -->
 <blog-post v-bind:title="post.title"></blog-post>
 
-<!-- Associando dinâmicamente o valor de uma expressão complexa -->
+<!-- Associando dinamicamente o valor de uma expressão complexa -->
 <blog-post v-bind:title="post.title + ' by ' + post.author.name"></blog-post>
 ```
 
-Nos dois exemplos acima, acontece de nós passarmos valores em strings, mas _qualquer_ tipo de valor pode ser passada para uma propriedade.
+Nos dois exemplos acima, acontece de nós passarmos valores do tipo string, mas _qualquer_ tipo de valor pode ser passado.
 
 ### Passando um Número
 
 ```html
 <!-- Embora `42` seja estático, nós precisamos da v-bind para dizer ao Vue que -->
-<!-- essa é uma expressão em Javascript ao invés de uma string.       -->
+<!-- essa é uma expressão em Javascript em vez de uma string.       -->
 <blog-post v-bind:likes="42"></blog-post>
 
-<!-- Associando dinâmicamente através do valor de uma variável. -->
+<!-- Associando dinamicamente através do valor de uma variável. -->
 <blog-post v-bind:likes="post.likes"></blog-post>
 ```
 
@@ -85,10 +86,10 @@ Nos dois exemplos acima, acontece de nós passarmos valores em strings, mas _qua
 <blog-post is-published></blog-post>
 
 <!-- Embora `false` seja estático, nós precisamos da v-bind para dizer ao Vue que -->
-<!-- essa é uma expressão em Javascript ao invés de uma string.          -->
+<!-- essa é uma expressão em Javascript em vez de uma string.          -->
 <blog-post v-bind:is-published="false"></blog-post>
 
-<!-- Associando dinâmicamente através do valor de uma variável. -->
+<!-- Associando dinamicamente através do valor de uma variável. -->
 <blog-post v-bind:is-published="post.isPublished"></blog-post>
 ```
 
@@ -96,10 +97,10 @@ Nos dois exemplos acima, acontece de nós passarmos valores em strings, mas _qua
 
 ```html
 <!-- Embora o array seja estático, nós precisamos da v-bind para dizer ao Vue que -->
-<!-- essa é uma expressão em Javascript ao invés de uma string.            -->
+<!-- essa é uma expressão em Javascript em vez de uma string.            -->
 <blog-post v-bind:comment-ids="[234, 266, 273]"></blog-post>
 
-<!-- Associando dinâmicamente através do valor de uma variável. -->
+<!-- Associando dinamicamente através do valor de uma variável. -->
 <blog-post v-bind:comment-ids="post.commentIds"></blog-post>
 ```
 
@@ -107,16 +108,16 @@ Nos dois exemplos acima, acontece de nós passarmos valores em strings, mas _qua
 
 ```html
 <!-- Embora o objeto seja estático, nós precisamos da v-bind para dizer ao Vue que -->
-<!-- essa é uma expressão em Javascript ao invés de uma string.             -->
+<!-- essa é uma expressão em Javascript em vez de uma string.             -->
 <blog-post v-bind:author="{ name: 'Veronica', company: 'Veridian Dynamics' }"></blog-post>
 
-<!-- Associando dinâmicamente através do valor de uma variável. -->
+<!-- Associando dinamicamente através do valor de uma variável. -->
 <blog-post v-bind:author="post.author"></blog-post>
 ```
 
 ### Passando as propriedades de um Objeto
 
-Se você gostaria de passar todas as propriedades de um objeto como parâmetros, você pode utilizar `v-bind` sem nenhum argumento (`v-bind` ao invés de `v-bind:nome-da-propriedade`). Por exemplo, dado o objeto `post`:
+Se você gostaria de passar todas as propriedades de um objeto como parâmetros, você pode utilizar `v-bind` sem nenhum argumento (`v-bind` em vez de `v-bind:nome-da-propriedade`). Por exemplo, dado o objeto `post`:
 
 ``` js
 post: {
@@ -144,7 +145,7 @@ Serão equivalentes a:
 
 Todas as propriedades formam uma **atribuição unidirecional** entre as propriedades do filho e a do pai: quando as propriedades do pai atualizam, irá seguir um fluxo para os filhos, mas não ao contrário. Isso irá prever que os componentes filhos acidentalmente mudem o estado do pai, o que pode fazer o fluxo de dados da sua aplicação complexo para entender.
 
-Em adicional, cada vez que o componente pai é atualizado, todas as propridades no filho serão atualizadas com o último valor. Isso significa que você **não** deveria tentar mudar uma propriedade dentro de um componente filho. Se você fizer, o Vue irá te avisar no console.
+Além disso, cada vez que o componente pai é atualizado, todas as propridades no filho serão atualizadas com o último valor. Isso significa que você **não** deveria tentar mudar uma propriedade dentro de um componente filho. Se você fizer, o Vue irá te avisar no console.
 
 Normalmente há dois casos onde você tentará mudar uma propriedade:
 
@@ -232,7 +233,7 @@ O `type` pode ser um dos seguintes construtores:
 - Function
 - Symbol
 
-Em adicional, `type` também pode ser uma função construtora e sua asserção será feita através de uma checagem de `instanceof`. Por exemplo, dado a seguinte função construtora existente:
+Além disso, `type` também pode ser uma função construtora e sua asserção será feita através de uma checagem de `instanceof`. Por exemplo, dado a seguinte função construtora existente:
 
 ```js
 function Person (firstName, lastName) {
@@ -259,7 +260,7 @@ Um atributo não propriedade é um atributo que é passado para um componente, m
 
 Enquanto propriedades explicitamente definidas são preferidas para passar informações a um componente filho, autores de bibliotecas de componentes não podem sempre prever o contexto ao qual seus componentes podem ser utilizados. É por isso que componentes podem aceitar atributos arbitrários, que são incluídos ao elemento raiz do componente.
 
-Por exemplo, imagine que você está usando o componente `bootstrap-date-input` de uma biblioteca terceira com um plugin do Boostrap que precisa de um atributo `data-date-picker` no `input`. Nós podemos adicionar esse atributo a instância do nosso componente:
+Por exemplo, imagine que você está utilizando um componente de terceiros chamado `bootstrap-date-input` com um plugin do Bootstrap que requer um atributo `data-date-picker` no `input`. Nós podemos adicionar esse atributo a instância do nosso componente:
 
 ``` html
 <bootstrap-date-input data-date-picker="activated"></bootstrap-date-input>
@@ -330,7 +331,7 @@ Vue.component('base-input', {
 })
 ```
 
-Esse padrão permite que você use componentes base mais como elementos cru do HTML, sem a necessidade de ter que se preocupar sobre qual elemento está em sua raíz:
+Esse padrão permite que você use componentes base mais como elementos padrões do HTML, sem a necessidade de ter que se preocupar sobre qual elemento está em sua raíz:
 
 ```html
 <base-input
