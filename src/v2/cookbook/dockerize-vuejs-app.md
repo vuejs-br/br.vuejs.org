@@ -128,10 +128,11 @@ Usando a disciplina da [Entrega Contínua](https://martinfowler.com/bliki/Contin
 
 Portanto, criar uma imagem Docker para nossa aplicação Vue.js é uma boa escolha já que ela representa nosso artefato ao final da construção, este mesmo artefato pode então ser verificado pela nossa canalização de entrega contínua e pode potencialmente ser lançado em produção com confiança.
 
-## Alternative Patterns
+## Padrões Alternativos
 
-If your company is not into Docker and Kubernetes just yet or you simply want to get your MVP out the door, maybe dockerizing your Vue.js app is not what you need.
+Se sua empresa ainda não gosta de Docker e Kubernetes ou  se você apenas quer publicar seu MVP, talvez "dockerizar" sua aplicação Vue.js não seja o que você precisa.
 
-Common alternatives are:
-* leveraging an all-in-one platform like [Netlify](https://www.netlify.com/);
+As alternativas comuns são:
+* utilizar uma plataforma _all-in-one_ como [Netlify](https://www.netlify.com/);
 * hosting your SPA on [Amazon S3](https://aws.amazon.com/s3/) and serving it with [Amazon CloudFront](https://aws.amazon.com/cloudfront/) (see [this](https://serverless-stack.com/chapters/deploy-the-frontend.html) link for a detailed guide).
+* Hospedar seu SPA no [Amazon S3](https://aws.amazon.com/s3/) e servi-lo com [Amazon CloudFront](https://aws.amazon.com/cloudfront/) (veja [esse](https://serverless-stack.com/chapters/deploy-the-frontend.html) link para um guia detalhado).
