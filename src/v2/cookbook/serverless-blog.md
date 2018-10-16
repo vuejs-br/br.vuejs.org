@@ -3,21 +3,11 @@ title: Criar um Blog com ButterCMS
 type: cookbook
 order: 5
 ---
-
-<p class="tip">**Nota da Equipe de Tradução**
-Este arquivo ainda não foi traduzido! Leia a versão original em inglês a seguir e, se puder, colabore com sua tradução: acesse [nosso projeto no GitHub](https://github.com/vuejs-br/br.vuejs.org/issues), avise que irá contribuir e inicie a tradução. Sua participação é muito importante!</p>
-
 ## Introdução
 
-Então, você concluiu o seu site com Vue.js, parabéns! Agora você quer adicionar um blog que rapidamente se encaixe ao seu site e você quer evitar ter um servidor a mais apenas para hospedar uma instância do Wordpress (ou qualquer gerenciador de conteúdo e banco de dados para este fim).
-Você apenas quer que seja possível adicionar alguns componentes Vue.js de blog, algumas rotas e ter tudo isso apenas funcionando, certo?
-O que você está procurando é um blog que seja inteiramente construído através de uma API que você possa consumir diretamente a partir da sua aplicação Vue.js.
-Esse tutorial vai lhe ensinar exatamente como fazer isso, vamos lá!
+Então, você concluiu o seu site com _Vue.js_, parabéns! Mas agora você quer adicionar um _blog_ que rapidamente se encaixe ao seu site, e quer evitar ter um servidor a mais apenas para hospedar uma instância do _Wordpress_ (ou qualquer outro gerenciador de conteúdo com um banco de dados apenas para este fim).  Você apenas quer que seja possível adicionar alguns componentes _Vue.js_ destinados ao _blog_, algumas rotas e ter tudo isso funcionando, certo?  O que você está procurando é um _blog_ que seja inteiramente construído através de uma _API_ que você possa consumir diretamente a partir da sua aplicação _Vue.js_.  Esse tutorial vai lhe ensinar exatamente como fazer isso, vamos lá!
 
-We're going to quickly build a CMS-powered blog with Vue.js.
-Nós vamos rapidamente construir um blog alimentado por um gerenciador de conteúdo (CMS) com Vue.js.
-Será utilizado o [ButterCMS](https://buttercms.com/), um gerenciador de conteúdo orientado a API que lhe permite utilizar uma dashboard e integrar nossa API de conteúdo no seu aplicativo Vue.js.
-Você pode utilizar o ButterCMS para projetos Vue.js novos ou que já existam.
+Nós vamos construir rapidamente um _blog_ utilizando um sistema de gerenciador de conteúdo, ou _CMS_ (_Content Management System_) com _Vue.js_.  Será utilizado o [_ButterCMS_](https://buttercms.com/), um _CMS_ que nos permite utilizar uma interface gráfica e integrar o conteúdo que queremos com um aplicativo _Vue.js_.  Você pode utilizar o _ButterCMS_ para projetos _Vue.js_ novos ou que já existam.
 
 ![Butter Dashboard](https://user-images.githubusercontent.com/160873/36677285-648798e4-1ad3-11e8-9454-d22fca8280b7.png "Butter Dashboard")
 
@@ -29,37 +19,37 @@ Execute o seguinte comando:
 npm install buttercms --save
 ```
 
-ButterCMS também pode ser carregado através do CDN:
+O _ButterCMS_ também pode ser carregado através do _CDN_:
 
 ```html
 <script src="https://cdnjs.buttercms.com/buttercms-1.1.0.min.js"></script>
 ```
 
-## Quickstart
+## Começo rápido
 
-Configure o toke da sua API:
+Configure o _token_ da sua _API_:
 
 ```javascript
-var butter = require('buttercms')('your_api_token');
+var butter = require('buttercms')('seu_token_da_api');
 ```
 
-Usando ES6:
+Usando _ES6_:
 
 ```javascript
 import Butter from 'buttercms';
-const butter = Butter('your_api_token');
+const butter = Butter('seu_token_da_api');
 ```
 
-Usando CDN:
+Usando _CDN_:
 
 ```html
 <script src="https://cdnjs.buttercms.com/buttercms-1.1.0.min.js"></script>
 <script>
-  var butter = Butter('your_api_token');
+  var butter = Butter('seu_token_da_api');
 </script>
 ```
 
-Importe o ButterCMS em qualquer componente que você queira utilizá-lo. Então execute no console:
+Importe o _ButterCMS_ em qualquer componente que você queira utilizá-lo. Então execute no console:
 
 ```javascript
 butter.post.list({page: 1, page_size: 10}).then(function(response) {
@@ -67,13 +57,13 @@ butter.post.list({page: 1, page_size: 10}).then(function(response) {
 })
 ```
 
-Essa requisição a API obtém as postagens do seu blog. A sua conta vem com uma postagem de exemplo que você verá na resposta da requisição.
+Essa requisição a _API_ obtém as postagens do seu _blog_. A sua conta vem com uma postagem de exemplo que você verá na resposta da requisição.
 
-## Exibindo as postagens do blog
+## Exibindo as postagens do _blog_
 
-Para exibir as postagens vamos criar uma rota `/blog` (usando o Vue Router) na nossa aplicação e adiquirir as postagens do blog a partir da API do ButterCMS, assim como a rota `/blog/:slug` gerenciará postagens individuais.
+Para exibir as postagens vamos criar uma rota `/blog` (usando o _Vue Router_) na nossa aplicação e adquirir as postagens do _blog_ a partir da _API_ do _ButterCMS_, assim como a rota `/blog/:slug` gerenciará as postagens individuais.
 
-See the ButterCMS [API reference](https://buttercms.com/docs/api/?javascript#blog-posts) for additional options such as filtering by category or author. The response also includes some metadata we'll use for pagination.
+Veja [a documentação](https://buttercms.com/docs/api/?javascript#blog-posts) do _ButterCMS_ para mais informações, assim como, por exemplo, filtrar postagens por categoria ou autor. A resposta da requisição também inclui alguns metadados que usaremos para paginação.
 
 `router/index.js:`
 
@@ -102,7 +92,7 @@ export default new Router({
 })
 ```
 
-Then create `components/BlogHome.vue` which will be your blog homepage that lists your most recent posts.
+Em seguida crie `components/BlogHome.vue` que vai ser a página inicial do seu _blog_ e listará as últimas postagens dele.
 
 ```html
 <script>
@@ -134,7 +124,7 @@ Then create `components/BlogHome.vue` which will be your blog homepage that list
 <template>
   <div id="blog-home">
       <h1>{{ page_title }}</h1>
-      <!-- Create `v-for` and apply a `key` for Vue. Here we are using a combination of the slug and index. -->
+      <!-- Cria `v-for` e aplica um `key`, estamos usando uma combinação do slug e index. -->
       <div
         v-for="(post,index) in posts"
         :key="post.slug + '_' + index"
@@ -142,8 +132,8 @@ Then create `components/BlogHome.vue` which will be your blog homepage that list
         <router-link :to="'/blog/' + post.slug">
           <article class="media">
             <figure>
-              <!-- Bind results using a `:` -->
-              <!-- Use a `v-if`/`else` if their is a `featured_image` -->
+              <!-- Vincula results usando um `:` -->
+              <!-- Usa um `v-if`/`else` caso seja `featured_image` -->
               <img
                 v-if="post.featured_image"
                 :src="post.featured_image"
@@ -164,11 +154,11 @@ Then create `components/BlogHome.vue` which will be your blog homepage that list
 </template>
 ```
 
-Here's what it looks like (note we added CSS from https://bulma.io/ for quick styling):
+Veja o resultado (notar que adicionamos o _CSS_ do [Bulma](http://bulma.io/)):
 
 ![buttercms-bloglist](https://user-images.githubusercontent.com/160873/36868500-1b22e374-1d5e-11e8-82a0-20c8dc312716.png)
 
-Now create `components/BlogPost.vue` which will be your Blog Post page to list a single post.
+Agora vamos criar `components/BlogPost.vue` que será a página de uma postagem do _blog_.
 
 ```html
 <script>
@@ -220,19 +210,19 @@ Now create `components/BlogPost.vue` which will be your Blog Post page to list a
 </template>
 ```
 
-Here's a preview:
+Aqui uma prévia de como ficou:
 
 ![buttercms-blogdetail](https://user-images.githubusercontent.com/160873/36868506-218c86b6-1d5e-11e8-8691-0409d91366d6.png)
 
-Now our app is pulling all blog posts and we can navigate to individual posts. However, our next/previous post buttons are not working.
+Agora a nossa aplicação está trazendo todas as postagens do _blog_ e podemos navegar através das postagens de forma individual. Contudo, os botões que exibem a postagem anterior e a seguinte não estão funcionando.
 
-One thing to note when using routes with params is that when the user navigates from `/blog/foo` to `/blog/bar`, the same component instance will be reused. Since both routes render the same component, this is more efficient than destroying the old instance and then creating a new one.
+É importante notar que quando usamos rotas com parâmetros é que quando o usuário navega de `/blog/foo` para `/blog/bar`, a mesma instância do componente será utilizada. Desde que ambas as rotas exibam o mesmo componente, desta maneira é mais eficiente que destruindo uma instância antiga e criando uma nova.
 
-<p class="tip">Be aware, that using the component this way will mean that the lifecycle hooks of the component will not be called. Visit the Vue Router's docs to learn more about [Dynamic Route Matching](https://router.vuejs.org/en/essentials/dynamic-matching.html)</p>
+<p class="tip">Fique atento, que usando um componente deste jeito, significará que os gatilhos do ciclo de vida do componente não serão chamados. Veja a documentação do roteador do _Vue.js_ para aprender mais sobre isso. [Combinando rotas dinâmicas](https://router.vuejs.org/en/essentials/dynamic-matching.html)</p>
 
-To fix this we need to watch the `$route` object and call `getPost()` when the route changes.
+Para corrigir isso, precisamos observar o objeto `$route` e chamar o `getPost()` quando a rota for alterada.
 
-Updated `<script>` section in `components/BlogPost.vue`:
+Atualize a seção `<script>` em `components/BlogPost.vue`:
 
 ```html
 <script>
@@ -266,19 +256,19 @@ Updated `<script>` section in `components/BlogPost.vue`:
 </script>
 ```
 
-Now your app has a working blog that can be updated easily in the ButterCMS dashboard.
+Com isso a sua aplicação agora possui um _blog_ que pode ser, facilmente, atualizado através da interface gráfica fornecida pelo ButterCMS.
 
-## Categories, Tags, and Authors
+## Categorias, Marcações e Autores
 
-Use Butter's APIs for categories, tags, and authors to feature and filter content on your blog.
+Use a API do ButterCMS para categorias, marcações e autores para filtrar o conteúdo do seu _blog_.
 
-See the ButterCMS API reference for more information about these objects:
+Veja a documentação da API do ButterCMS para mais informações sobre esses objetos:
 
-* [Categories](https://buttercms.com/docs/api/?ruby#categories)
-* [Tags](https://buttercms.com/docs/api/?ruby#tags)
-* [Authors](https://buttercms.com/docs/api/?ruby#authors)
+* [Categorias](https://buttercms.com/docs/api/?ruby#categories)
+* [Marcações](https://buttercms.com/docs/api/?ruby#tags)
+* [Autores](https://buttercms.com/docs/api/?ruby#authors)
 
-Here's an example of listing all categories and getting posts by category. Call these methods on the `created()` lifecycle hook:
+Aqui está um exemplo de como listar todas as categorias do _blog_ e também de como obter as postagens organizadas por categoria. Chame esses métodos no gatilho `created()` do ciclo de vida do componente.
 
 ```javascript
 methods: {
@@ -307,10 +297,10 @@ created() {
 }
 ```
 
-## Alternative Patterns
+## Padrões alternativos
 
-An alternative pattern to consider, especially if you prefer writing only in Markdown, is using something like [Nuxtent](https://nuxtent.now.sh/guide/writing#async-components). Nuxtent allows you to use `Vue Component` inside of Markdown files. This approach would be akin to a static site approach (i.e. Jekyll) where you compose your blog posts in Markdown files. Nuxtent adds a nice integration between Vue.js and Markdown allowing you to live in a 100% Vue.js world.
+Um padrão alternativo a ser considerado, especialmente se você preferir escrever apenas em _Markdown_, é usar algo como o [Nuxtent](https://nuxtent.now.sh/guide/writing#async-components). _Nuxtent_ permite que você use um componente do _Vue.js_ dentro de um arquivo _Markdown_. Essa seria uma abordagem bem parecida a abordagem de um site estático (por exemplo _Jekyll_) no qual as postagens do _blog_ são escritas em arquivos _Markdown_. O _Nuxtent_ possui uma boa integração entre o _Vue.js_ e o _Markdown_ permitindo que você viva 100% no mundo do _Vue.js_.
 
-## Wrap up
+## Conclusão
 
-That's it! You now have a fully functional CMS-powered blog running in your app. We hope this tutorial was helpful and made your development experience with Vue.js even more enjoyable :)
+É isso! Você agora possui um _blog_ completamente funcional alimentado por um _CMS_ executando junto com a sua aplicação. Esperamos que esse tutorial tenha lhe ajudado e feito o seu desenvolvimento com _Vue.js_ ainda mais agradável.
