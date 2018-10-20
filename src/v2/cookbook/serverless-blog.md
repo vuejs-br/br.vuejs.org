@@ -3,15 +3,16 @@ title: Criar um Blog com ButterCMS
 type: cookbook
 order: 5
 ---
+
 ## Introdução
 
-Então, você concluiu o seu site com _Vue.js_, parabéns! Mas agora você quer adicionar um _blog_ que rapidamente se encaixe ao seu site, e quer evitar ter um servidor a mais apenas para hospedar uma instância do _Wordpress_ (ou qualquer outro gerenciador de conteúdo com um banco de dados apenas para este fim).  Você apenas quer que seja possível adicionar alguns componentes _Vue.js_ destinados ao _blog_, algumas rotas e ter tudo isso funcionando, certo?  O que você está procurando é um _blog_ que seja inteiramente construído através de uma _API_ que você possa consumir diretamente a partir da sua aplicação _Vue.js_.  Esse tutorial vai lhe ensinar exatamente como fazer isso, vamos lá!
+Então, você concluiu o seu site com Vue, parabéns! Mas agora você quer adicionar um _blog_ que rapidamente se encaixe ao seu site, e quer evitar ter um servidor a mais apenas para hospedar uma instância do WordPress (ou qualquer outro gerenciador de conteúdo com um banco de dados apenas para este fim). Você apenas quer que seja possível adicionar alguns componentes Vue destinados ao _blog_, algumas rotas e ter tudo isso funcionando, certo? O que você está procurando é um _blog_ que seja inteiramente construído através de uma _API_, que você possa consumir diretamente a partir da sua aplicação Vue. Esse tutorial vai lhe ensinar exatamente como fazer isso, vamos lá!
 
-Nós vamos construir rapidamente um _blog_ utilizando um sistema de gerenciador de conteúdo, ou _CMS_ (_Content Management System_) com _Vue.js_.  Será utilizado o [_ButterCMS_](https://buttercms.com/), um _CMS_ que nos permite utilizar uma interface gráfica e integrar o conteúdo que queremos com um aplicativo _Vue.js_.  Você pode utilizar o _ButterCMS_ para projetos _Vue.js_ novos ou que já existam.
+Nós vamos construir rapidamente um _blog_ utilizando um sistema de gerenciador de conteúdo, ou _CMS_ (_Content Management System_), com Vue. Será utilizado o [ButterCMS](https://buttercms.com/), um _CMS_ que nos permite utilizar uma interface gráfica e integrar o conteúdo que queremos com um aplicativo Vue. Você pode utilizar o ButterCMS para projetos Vue novos ou que já existam.
 
-![Butter Dashboard](https://user-images.githubusercontent.com/160873/36677285-648798e4-1ad3-11e8-9454-d22fca8280b7.png "Butter Dashboard")
+![Painel de Controle Butter](https://user-images.githubusercontent.com/160873/36677285-648798e4-1ad3-11e8-9454-d22fca8280b7.png "Painel de Controle Butter")
 
-## Instalar
+## Instalando
 
 Execute o seguinte comando:
 
@@ -19,13 +20,13 @@ Execute o seguinte comando:
 npm install buttercms --save
 ```
 
-O _ButterCMS_ também pode ser carregado através do _CDN_:
+O ButterCMS também pode ser carregado através do _CDN_:
 
 ```html
 <script src="https://cdnjs.buttercms.com/buttercms-1.1.0.min.js"></script>
 ```
 
-## Começo rápido
+## Início Rápido
 
 Configure o _token_ da sua _API_:
 
@@ -49,7 +50,7 @@ Usando _CDN_:
 </script>
 ```
 
-Importe o _ButterCMS_ em qualquer componente que você queira utilizá-lo. Então execute no console:
+Importe o ButterCMS em qualquer componente que você queira utilizá-lo. Então execute no _console_:
 
 ```javascript
 butter.post.list({page: 1, page_size: 10}).then(function(response) {
@@ -57,13 +58,13 @@ butter.post.list({page: 1, page_size: 10}).then(function(response) {
 })
 ```
 
-Essa requisição a _API_ obtém as postagens do seu _blog_. A sua conta vem com uma postagem de exemplo que você verá na resposta da requisição.
+Essa requisição à _API_ obtém as postagens do seu _blog_. A sua conta vem com uma postagem de exemplo que você verá na resposta da requisição.
 
-## Exibindo as postagens do _blog_
+## Exibindo as Postagens
 
-Para exibir as postagens vamos criar uma rota `/blog` (usando o _Vue Router_) na nossa aplicação e adquirir as postagens do _blog_ a partir da _API_ do _ButterCMS_, assim como a rota `/blog/:slug` gerenciará as postagens individuais.
+Para exibir as postagens, vamos criar uma rota `/blog` (usando o Vue Router) na nossa aplicação e adquirir as postagens do _blog_ a partir da _API_ do ButterCMS, assim como a rota `/blog/:slug` exibirá as postagens individuais.
 
-Veja [a documentação](https://buttercms.com/docs/api/?javascript#blog-posts) do _ButterCMS_ para mais informações, assim como, por exemplo, filtrar postagens por categoria ou autor. A resposta da requisição também inclui alguns metadados que usaremos para paginação.
+Veja [a documentação](https://buttercms.com/docs/api/?javascript#blog-posts) do ButterCMS para mais informações, assim como, por exemplo, filtrar postagens por categoria ou autor. A resposta da requisição também inclui alguns metadados que usaremos para paginação.
 
 `router/index.js:`
 
@@ -92,7 +93,7 @@ export default new Router({
 })
 ```
 
-Em seguida crie `components/BlogHome.vue` que vai ser a página inicial do seu _blog_ e listará as últimas postagens dele.
+Em seguida, crie `components/BlogHome.vue` que vai ser a página inicial do seu _blog_ e listará as últimas postagens dele.
 
 ```html
 <script>
@@ -124,11 +125,10 @@ Em seguida crie `components/BlogHome.vue` que vai ser a página inicial do seu _
 <template>
   <div id="blog-home">
       <h1>{{ page_title }}</h1>
-      <!-- Cria `v-for` e aplica um `key`, estamos usando uma combinação do slug e index. -->
+      <!-- Cria `v-for` e aplica um `key`, usando uma combinação do slug e index. -->
       <div
         v-for="(post,index) in posts"
-        :key="post.slug + '_' + index"
-      >
+        :key="post.slug + '_' + index">
         <router-link :to="'/blog/' + post.slug">
           <article class="media">
             <figure>
@@ -137,13 +137,11 @@ Em seguida crie `components/BlogHome.vue` que vai ser a página inicial do seu _
               <img
                 v-if="post.featured_image"
                 :src="post.featured_image"
-                alt=""
-              >
+                alt="">
               <img
                 v-else
                 src="http://via.placeholder.com/250x250"
-                alt=""
-              >
+                alt="">
             </figure>
             <h2>{{ post.title }}</h2>
             <p>{{ post.summary }}</p>
@@ -154,11 +152,11 @@ Em seguida crie `components/BlogHome.vue` que vai ser a página inicial do seu _
 </template>
 ```
 
-Veja o resultado (notar que adicionamos o _CSS_ do [Bulma](http://bulma.io/)):
+Veja o resultado (note que adicionamos o _CSS_ do [Bulma](http://bulma.io/)):
 
-![buttercms-bloglist](https://user-images.githubusercontent.com/160873/36868500-1b22e374-1d5e-11e8-82a0-20c8dc312716.png)
+![Lista de Postagens do ButterCMS](https://user-images.githubusercontent.com/160873/36868500-1b22e374-1d5e-11e8-82a0-20c8dc312716.png)
 
-Agora vamos criar `components/BlogPost.vue` que será a página de uma postagem do _blog_.
+Agora vamos criar `components/BlogPost.vue`, a página de uma postagem do _blog_.
 
 ```html
 <script>
@@ -195,30 +193,28 @@ Agora vamos criar `components/BlogPost.vue` que será a página de uma postagem 
     <router-link
       v-if="post.meta.previous_post"
       :to="/blog/ + post.meta.previous_post.slug"
-      class="button"
-    >
+      class="button">
       {{ post.meta.previous_post.title }}
     </router-link>
     <router-link
       v-if="post.meta.next_post"
       :to="/blog/ + post.meta.next_post.slug"
-      class="button"
-    >
+      class="button">
       {{ post.meta.next_post.title }}
     </router-link>
   </div>
 </template>
 ```
 
-Aqui uma prévia de como ficou:
+Aqui vai uma prévia de como ficou:
 
-![buttercms-blogdetail](https://user-images.githubusercontent.com/160873/36868506-218c86b6-1d5e-11e8-8691-0409d91366d6.png)
+![Detalhes da Postagem do ButterCMS](https://user-images.githubusercontent.com/160873/36868506-218c86b6-1d5e-11e8-8691-0409d91366d6.png)
 
-Agora a nossa aplicação está trazendo todas as postagens do _blog_ e podemos navegar através das postagens de forma individual. Contudo, os botões que exibem a postagem anterior e a seguinte não estão funcionando.
+Agora nossa aplicação está trazendo todas as postagens do _blog_ e podemos navegar através delas de forma individual. Contudo, os botões que exibem a postagem anterior e a seguinte não estão funcionando.
 
-É importante notar que quando usamos rotas com parâmetros é que quando o usuário navega de `/blog/foo` para `/blog/bar`, a mesma instância do componente será utilizada. Desde que ambas as rotas exibam o mesmo componente, desta maneira é mais eficiente que destruindo uma instância antiga e criando uma nova.
+É importante notar que, quando usamos rotas com parâmetros, quando o usuário navega de `/blog/foo` para `/blog/bar`, a mesma instância do componente será utilizada. Ambas as rotas exibindo o mesmo componente é mais eficiente do que destruir uma instância antiga e criar uma nova.
 
-<p class="tip">Fique atento, que usando um componente deste jeito, significará que os gatilhos do ciclo de vida do componente não serão chamados. Veja a documentação do roteador do _Vue.js_ para aprender mais sobre isso. [Combinando rotas dinâmicas](https://router.vuejs.org/en/essentials/dynamic-matching.html)</p>
+<p class="tip">Fique atento que, usando um componente deste jeito, significará que os gatilhos do ciclo de vida do componente não serão chamados. Veja a documentação do roteador do Vue para aprender mais sobre isso em [combinando rotas dinâmicas](https://router.vuejs.org/en/essentials/dynamic-matching.html).</p>
 
 Para corrigir isso, precisamos observar o objeto `$route` e chamar o `getPost()` quando a rota for alterada.
 
@@ -256,19 +252,17 @@ Atualize a seção `<script>` em `components/BlogPost.vue`:
 </script>
 ```
 
-Com isso a sua aplicação agora possui um _blog_ que pode ser, facilmente, atualizado através da interface gráfica fornecida pelo ButterCMS.
+Com isso, a sua aplicação agora possui um _blog_ que pode ser, facilmente, atualizado através da interface gráfica fornecida pelo ButterCMS.
 
 ## Categorias, Marcações e Autores
 
-Use a API do ButterCMS para categorias, marcações e autores para filtrar o conteúdo do seu _blog_.
-
-Veja a documentação da API do ButterCMS para mais informações sobre esses objetos:
+Use a _API_ do ButterCMS para categorias, marcações e autores para filtrar o conteúdo do seu _blog_. Veja a documentação do ButterCMS para mais informações sobre isso:
 
 * [Categorias](https://buttercms.com/docs/api/?ruby#categories)
 * [Marcações](https://buttercms.com/docs/api/?ruby#tags)
 * [Autores](https://buttercms.com/docs/api/?ruby#authors)
 
-Aqui está um exemplo de como listar todas as categorias do _blog_ e também de como obter as postagens organizadas por categoria. Chame esses métodos no gatilho `created()` do ciclo de vida do componente.
+Aqui está um exemplo de como listar todas as categorias do _blog_ e, também, de como obter as postagens organizadas por categoria. Chame esses métodos no gatilho `created()` do ciclo de vida do componente.
 
 ```javascript
 methods: {
@@ -276,7 +270,7 @@ methods: {
   getCategories() {
     butter.category.list()
       .then(res => {
-        console.log('List of Categories:')
+        console.log('Lista de Categorias:')
         console.log(res.data.data)
       })
   },
@@ -285,7 +279,7 @@ methods: {
         include: 'recent_posts'
       })
       .then(res => {
-        console.log('Posts with specific category:')
+        console.log('Postagens de categoria específica:')
         console.log(res)
       })
   }
@@ -299,8 +293,8 @@ created() {
 
 ## Padrões alternativos
 
-Um padrão alternativo a ser considerado, especialmente se você preferir escrever apenas em _Markdown_, é usar algo como o [Nuxtent](https://nuxtent.now.sh/guide/writing#async-components). _Nuxtent_ permite que você use um componente do _Vue.js_ dentro de um arquivo _Markdown_. Essa seria uma abordagem bem parecida a abordagem de um site estático (por exemplo _Jekyll_) no qual as postagens do _blog_ são escritas em arquivos _Markdown_. O _Nuxtent_ possui uma boa integração entre o _Vue.js_ e o _Markdown_ permitindo que você viva 100% no mundo do _Vue.js_.
+Um padrão alternativo a ser considerado, especialmente se você preferir escrever apenas em _Markdown_, é usar algo como o [Nuxtent](https://nuxtent.now.sh/guide/writing#async-components). _Nuxtent_ permite que você use um componente Vue dentro de um arquivo _Markdown_. Essa seria uma abordagem bem parecida à abordagem de um _site_ estático (por exemplo, usando _Jekyll_), onde as postagens do _blog_ são escritas em arquivos _Markdown_. O _Nuxtent_ possui uma boa integração entre o Vue e o _Markdown_, permitindo que você viva 100% no mundo do Vue.
 
 ## Conclusão
 
-É isso! Você agora possui um _blog_ completamente funcional alimentado por um _CMS_ executando junto com a sua aplicação. Esperamos que esse tutorial tenha lhe ajudado e feito o seu desenvolvimento com _Vue.js_ ainda mais agradável.
+É isso! Você agora possui um _blog_ completamente funcional alimentado por um _CMS_ executando junto à sua aplicação. Esperamos que esse tutorial tenha lhe ajudado e feito o seu desenvolvimento com Vue ainda mais agradável.
