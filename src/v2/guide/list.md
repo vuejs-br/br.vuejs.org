@@ -268,7 +268,7 @@ Por limitações no JavaScript, Vue **não pode** detectar as seguintes mudança
 1. Quando se define diretamente um item em um índice: `vm.items[indexOfItem] = newValue`
 2. Quando se modifica diretamente o tamanho do Array: `vm.items.length = newLength`
 
-Por examplo:
+Por exemplo:
 
 ``` js
 var vm = new Vue({
