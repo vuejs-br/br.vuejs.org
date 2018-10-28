@@ -36,7 +36,7 @@ Isso não somente ajuda a evitar copiar/colar os compoentes, mas também permite
 
 ## Não posso simplesmente compartilhar arquivos `.vue` diretamente?
 
-Vue já permite que componentes sejam escritos num arquivo simples. Porque um Componente de Arquivo simples, ou Single File Componente (SFC) já é somente um arquivo, você deve perguntar:
+Vue já permite que componentes sejam escritos num arquivo simples. Porque um Componente de Arquivo Único, ou Single File Componente (SFC) já é somente um arquivo, você deve perguntar:
 
 > "Porque as pessoas não usam o meu arquivo `.vue` diretamente? esse não é a maneira mais simples de compartilhar components?"
 
@@ -61,8 +61,8 @@ dist/
 <p class="tip">Ao longo deste documento, referencias serão feitas ao arquivo package.json listado abaixo. O arquivo utilizado nesses exemplos são gerados manualmente, e incluirá a configuração mínima necessária para a discussão / tarefa em questão. É provável que o seu próprio arquivo package.json contenha muito mais do que o listado aqui. </p>
   
 ### Como o npm sabe qual versão será veiculada para um processo de navegador / criação?
---------------------------------------------------- 
-The package.json file used by npm really only requires one version (`main`), but as it turns out, we aren't limited to that. We can address the most common use cases by specifying 2 additional versions (`module` and `unpkg`), and provide access to the `.vue` file itself using the `browser` field. A sample package.json would look like this:
+
+O arquivo package.json usado pelo npm realmente requer somente uma versão (`main`), mas como constatado, não estamos limitados a isso. Nós podemos endereçar os mais comuns casos de uso especificando 2 versões adicional (`module` e `unpkg`), e fornecer acesso ao proprio arquivo `.vue` usando o campo` browser`. Um exemplo package.json seria assim:
 
 ```json
 {
@@ -78,17 +78,18 @@ The package.json file used by npm really only requires one version (`main`), but
 }
 ```
 
-When webpack 2+, Rollup, or other modern build tools are used, they will pick up on the `module` build. Legacy applications would use the `main` build, and the `unpkg` build can be used directly in browsers. In fact, the [unpkg](https://unpkg.com) cdn automatically uses this when someone enters the URL for your module into their service!
+Quando o webpack 2+, Rolar, ou outras ferramentas modernas de compilação são usadas, eles vao pegar na compilação do `module`. Os aplicativos legados usariam a compilação `main` e a compilação` unpkg` pode ser usada diretamente nos navegadores. De fato, o cdn [unpkg] (https://unpkg.com) usa isso automaticamente quando alguém insere o URL do seu módulo em seu serviço!
 
-### SSR Usage
+### Uso do SSR 
 
-You might have noticed something interesting - browsers aren't going to be using the `browser` version. That's because this field is actually intended to allow authors to provide [hints to bundlers](https://github.com/defunctzombie/package-browser-field-spec#spec) which in turn create their own packages for client side use. With a little creativity, this field allows us to map an alias to the `.vue` file itself. For example:
+Você deve ter notado algo interessante - navegadores não utilizarão a versão `browser`. Isso é poruqe esse campo atualmente serve para permitir que autores informem [hints to bundlers](https://github.com/defunctzombie/package-browser-field-spec#spec) que em troca cria seus próprios pacotes para uso no lado do cliente. Com uma pequena criatividade, esse campo nos permite mapear um alias para o  próprio arquivo `.vue`. Por exemplo:
 
 ```js
 import MyComponent from 'my-component/sfc'; // Note the '/sfc'
 ```
+Empacotadores compatíveis vêem a definição `browser` em package.json e traduzem requisições para` my-component / sfc` em `my-component / src / my-component.vue`, resultando no uso do arquivo original` .vue`. Agora, o processo de SSR pode usar as otimizações de concatenação de strings necessárias para um aumento no desempenho.
 
-Compatible bundlers see the `browser` definition in package.json and translate requests for `my-component/sfc` into `my-component/src/my-component.vue`, resulting in the original `.vue` file being used instead. Now the SSR process can use the string concatenation optimizations it needs to for a boost in performance.
+----------------------------------------------------------------
 
 <p class="tip">Note: When using `.vue` components directly, pay attention to any type of pre-processing required by `script` and `style` tags. These dependencies will be passed on to users. Consider providing 'plain' SFCs to keep things as light as possible.</p>
 
