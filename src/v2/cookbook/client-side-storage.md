@@ -4,24 +4,24 @@ type: cookbook
 order: 11
 ---
 
-<p class="tip">**Nota da Equipe de Tradução**
-Este arquivo ainda não foi traduzido! Leia a versão original em inglês a seguir e, se puder, colabore com sua tradução: acesse [nosso projeto no GitHub](https://github.com/vuejs-br/br.vuejs.org/issues), avise que irá contribuir e inicie a tradução. Sua participação é muito importante!</p>
+<!-- <p class="tip">**Nota da Equipe de Tradução**
+Este arquivo ainda não foi traduzido! Leia a versão original em inglês a seguir e, se puder, colabore com sua tradução: acesse [nosso projeto no GitHub](https://github.com/vuejs-br/br.vuejs.org/issues), avise que irá contribuir e inicie a tradução. Sua participação é muito importante!</p> -->
 
 ## Exemplo Base
 
-Client-side storage is an excellent way to quickly add performance gains to an application. By storing data on the browser itself, you can skip fetching information from the server every time the user needs it. While especially useful when offline, even online users will benefit from using data locally versus a remote server. Client-side storage can be done with [cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies), [Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) (technically "Web Storage"), [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API), and [WebSQL](https://www.w3.org/TR/webdatabase/) (a deprecated method that should not be used in new projects).
+Armazenamento do lado do cliente é um excelente forma de adicionar rapidamente ganhos de performance na aplicação. Por armazenar dados no próprio browser, você pode pular a busca de informações no servidor toda vez que o usuário precisar. Embora seja especialmente útil quando se estiver offline, até mesmo usuários online se beneficiarão do uso de dados locais em comparação a um servidor remoto. Armazenamento do lado do cliente pode ser feito com [Cookies](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies), [Armazenamento Local](https://developer.mozilla.org/pt-BR/docs/Web/API/Web_Storage_API_pt_br) (Tecnicamente "Web Storage"), [IndexedDB](https://developer.mozilla.org/pt-BR/docs/IndexedDB), and [WebSQL](https://www.w3.org/TR/webdatabase/) (a deprecated method that should not be used in new projects).
 
-In this cookbook entry we'll focus on Local Storage, the simplest of the storage mechanisms. Local Storage uses a key/value system for storing data. It is limited to storing only simple values but complex data can be stored if you are willing to encode and decode the values with JSON. In general, Local Storage is appropriate for smaller sets of data you would want to persist, things like user preferences or form data. Larger data with more complex storage needs would be better stored typically in IndexedDB.
+Neste livro de receitas vamos focar no Armazenamento Local, o mais simples dos mecanismos de armazenamento. Armazenamento local usa um sistema de chave/valor para armazenar dados. Ele é limitado a armazenar apenas valores simples, mas dados complexos podem ser armazenados se você estiver disposto a codificar e decodificar os valores com JSON. Em geral, Armazenamento Local é apropriado para pequenos conjuntos de dados que você deseja manter, coisaas como preferências de usuário ou dados de formulário. Dados maiores, com necessidades mais complexas de armazenamento, seriam normalmente melhor armazenados no IndexedDB.
 
-Let's begin with a simple form based example:
+Vamos começar com um exemplo de formulário simples:
 
 ``` html
 <div id="app">
-  My name is <input v-model="name">
+  Meu nome é <input v-model="name">
 </div>
 ```
 
-This example has one form field bound to a Vue value called `name`. Here's the JavaScript:
+Este exemplo tem um campo de formulário ligado a um valor do Vue chamado `name`. Aqui está o JavaScript:
 
 ``` js
 const app = new Vue({
@@ -42,12 +42,14 @@ const app = new Vue({
 });
 ```
 
-Focus on the `mounted` and `watch` parts. We use `mounted` to handle loading the value from localStorage. To handle writing the data base, we watch the `name` value and on change, immediately write it.
+Foque nas partes `mounted` e `watch`. Nós usamos `mounted` para manipular o carregamento dos valores do localStorage. Para lidar com a escrita da base de dados, observamos o valor do `name` e quando alterado imediatamente o escrevemos.
 
-You can run this yourself here:
+Você pode executar isso por conta própria aqui:
 
 <p data-height="265" data-theme-id="0" data-slug-hash="KodaKb" data-default-tab="js,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="testing localstorage" class="codepen">See the Pen <a href="https://codepen.io/cfjedimaster/pen/KodaKb/">testing localstorage</a> by Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+<!-- Continuar daqui -->
 
 Type something in the form and then reload this page. You'll note that the value you typed previously will show up automatically. Don't forget that your browser provides excellent developer tools for inspecting client-side storage. Here's an example in Firefox:
 
