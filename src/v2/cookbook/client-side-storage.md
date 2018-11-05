@@ -9,7 +9,7 @@ Este arquivo ainda não foi traduzido! Leia a versão original em inglês a segu
 
 ## Exemplo Base
 
-Armazenamento do lado do cliente é um excelente forma de adicionar rapidamente ganhos de performance na aplicação. Por armazenar dados no próprio browser, você pode pular a busca de informações no servidor toda vez que o usuário precisar. Embora seja especialmente útil quando se estiver offline, até mesmo usuários online se beneficiarão do uso de dados locais em comparação a um servidor remoto. Armazenamento do lado do cliente pode ser feito com [Cookies](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies), [Armazenamento Local](https://developer.mozilla.org/pt-BR/docs/Web/API/Web_Storage_API_pt_br) (Tecnicamente "Web Storage"), [IndexedDB](https://developer.mozilla.org/pt-BR/docs/IndexedDB), and [WebSQL](https://www.w3.org/TR/webdatabase/) (a deprecated method that should not be used in new projects).
+Armazenamento no lado do cliente é um excelente forma de adicionar rapidamente ganhos de performance na aplicação. Por armazenar dados no próprio browser, você pode pular a busca de informações no servidor toda vez que o usuário precisar. Embora seja especialmente útil quando se estiver offline, até mesmo usuários online se beneficiarão do uso de dados locais em comparação a um servidor remoto. Armazenamento do lado do cliente pode ser feito com [Cookies](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies), [Armazenamento Local](https://developer.mozilla.org/pt-BR/docs/Web/API/Web_Storage_API_pt_br) (Tecnicamente "Web Storage"), [IndexedDB](https://developer.mozilla.org/pt-BR/docs/IndexedDB), and [WebSQL](https://www.w3.org/TR/webdatabase/) (a deprecated method that should not be used in new projects).
 
 Neste livro de receitas vamos focar no Armazenamento Local, o mais simples dos mecanismos de armazenamento. Armazenamento local usa um sistema de chave/valor para armazenar dados. Ele é limitado a armazenar apenas valores simples, mas dados complexos podem ser armazenados se você estiver disposto a codificar e decodificar os valores com JSON. Em geral, Armazenamento Local é apropriado para pequenos conjuntos de dados que você deseja manter, coisaas como preferências de usuário ou dados de formulário. Dados maiores, com necessidades mais complexas de armazenamento, seriam normalmente melhor armazenados no IndexedDB.
 
@@ -17,36 +17,34 @@ Vamos começar com um exemplo de formulário simples:
 
 ``` html
 <div id="app">
-  Meu nome é <input v-model="name">
+  Meu nome é: <input v-model="nome">
 </div>
 ```
 
-Este exemplo tem um campo de formulário ligado a um valor do Vue chamado `name`. Aqui está o JavaScript:
+Este exemplo tem um campo de formulário ligado a um valor do Vue chamado `nome`. Aqui está o JavaScript:
 
 ``` js
 const app = new Vue({
-  el: '#app',
-  data: {
-    name: ''
+  el:'#app',
+  data:{
+    nome:''
   },
   mounted() {
-    if (localStorage.name) {
-      this.name = localStorage.name;
-    }
+    if(localStorage.nome) this.nome = localStorage.nome;
   },
-  watch: {
-    name(newName) {
-      localStorage.name = newName;
+  watch:{
+    nome(novoNome) {
+      localStorage.nome = novoNome;
     }
   }
-});
+})
 ```
 
-Foque nas partes `mounted` e `watch`. Nós usamos `mounted` para manipular o carregamento dos valores do localStorage. Para lidar com a escrita da base de dados, observamos o valor do `name` e quando alterado imediatamente o escrevemos.
+Foque nas partes `mounted` e `watch`. Nós usamos `mounted` para manipular o carregamento dos valores do localStorage. Para lidar com a escrita da base de dados, observamos o valor de `nome` e, quando alterado, imediatamente o escrevemos.
 
 Você pode executar isso por conta própria aqui:
 
-<p data-height="265" data-theme-id="0" data-slug-hash="KodaKb" data-default-tab="js,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="testing localstorage" class="codepen">See the Pen <a href="https://codepen.io/cfjedimaster/pen/KodaKb/">testing localstorage</a> by Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="vQOGmW" data-default-tab="js,result" data-user="brunohgv" data-pen-title="testando localstorage" class="codepen">See the Pen <a href="https://codepen.io/brunohgv/pen/vQOGmW/">testando localstorage</a> by Bruno Henrique Gusmão Vasconcelos (<a href="https://codepen.io/brunohgv">@brunohgv</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 Digite algo no formulário e recarregue essa página. Você notará que o valor que você digitou anteriormente aparecerá automaticamente. Não esqueça que seu navegador fornece ferramentas de desenvolvedor excelentes para inspecionar o armazenamento do lado do cliente. Aqui está um exemplo no Firefox: 
@@ -67,13 +65,10 @@ Escrever imediatamente o valor pode não ser aconselhável. Vamos considerar um 
 
 ``` html
 <div id="app">
-  <p>
-    Meu nome é <input v-model="name">
-    e eu tenho <input v-model="age"> anos de idade.
-  </p>
-  <p>
-    <button @click="persist">Salvar</button>
-  </p>
+  Meu nome é <input v-model="nome">
+  e eu tenho <input v-model="idade"> anos de idade.
+  <br />
+  <button @click="persistir">Salvar</button>
 </div>
 ```
 
@@ -81,24 +76,20 @@ Agora temos dois campos (novamente ligados a uma instância Vue), mas agora há 
 
 ``` js
 const app = new Vue({
-  el: '#app',
+  el:'#app',
   data: {
-    name: '',
-    age: 0
+    nome:'',
+    idade:0
   },
   mounted() {
-    if (localStorage.name) {
-      this.name = localStorage.name;
-    }
-    if (localStorage.age) {
-      this.age = localStorage.age;
-    }
+    if(localStorage.nome) this.nome = localStorage.nome;
+    if(localStorage.idade) this.idade = localStorage.idade;
   },
   methods: {
-    persist() {
-      localStorage.name = this.name;
-      localStorage.age = this.age;
-      console.log('Agora finja que fiz mais coisas...');
+    persistir() {
+      localStorage.nome = this.nome;
+      localStorage.idade = this.idade;
+      console.log('Agora finja que fiz mais coisas');
     }
   }
 })
@@ -106,7 +97,7 @@ const app = new Vue({
 
 Como antes, `mounted` é usado para carregar os dados persistentes, se eles existirem. Desta vez, porém, os dados só são mantidos quando o botão é clicado. Também poderíamos fazer quaisquer validações ou transformações antes de armazenar o valor. Você também pode armazenar uma data representando quando os valores foram armazenados. Com esses metadados, o método `mounted` poderia fazer uma chamada lógica para armazenar, ou não, os valores novamente. Você pode tentar esta versão abaixo.
 
-<p data-height="265" data-theme-id="0" data-slug-hash="rdOjLN" data-default-tab="js,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="testing localstorage 2" class="codepen">See the Pen <a href="https://codepen.io/cfjedimaster/pen/rdOjLN/">testing localstorage 2</a> by Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="PxqNZR" data-default-tab="js,result" data-user="brunohgv" data-pen-title="testing localstorage 2" class="codepen">See the Pen <a href="https://codepen.io/brunohgv/pen/PxqNZR/">testando localstorage 2</a> by Bruno Henrique Gusmão Vasconcelos (<a href="https://codepen.io/brunohgv">@brunohgv</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 ## Trabalhando com valores complexos
@@ -116,17 +107,17 @@ Como mencionado acima, o armazenamento local só funciona com valores simples. P
 ``` html
 <div id="app">
   <h2>Gatos</h2>
-  <div v-for="(cat, n) in cats">
+  <div v-for="(gato,n) in gatos">
     <p>
-      <span class="cat">{{ cat }}</span>
-      <button @click="removeCat(n)">Remover</button>
+    <span class="gato">{{gato}}</span> <button @click="removerGato(n)">Remover</button>
     </p>
   </div>
-
+  
   <p>
-    <input v-model="newCat">
-    <button @click="addCat">Adicionar gato</button>
+    <input v-model="novoGato"> 
+    <button @click="adicionarGato">Adicionar Gato</button>
   </p>
+  
 </div>
 ```
 
@@ -134,38 +125,36 @@ Este "aplicativo" consiste em uma lista simples na parte superior (com um botão
 
 ``` js
 const app = new Vue({
-  el: '#app',
+  el:'#app',
   data: {
-    cats: [],
-    newCat: null
+    gatos:[],
+    novoGato:null
   },
   mounted() {
-    if (localStorage.getItem('cats')) {
+    
+    if(localStorage.getItem('gatos')) {
       try {
-        this.cats = JSON.parse(localStorage.getItem('cats'));
+        this.gatos = JSON.parse(localStorage.getItem('gatos'));
       } catch(e) {
-        localStorage.removeItem('cats');
+        localStorage.removeItem('gatos');
       }
     }
   },
   methods: {
-    addCat() {
-      // ensure they actually typed something
-      if (!this.newCat) {
-        return;
-      }
-
-      this.cats.push(this.newCat);
-      this.newCat = '';
-      this.saveCats();
+    adicionarGato() {
+      // Assegura de que foi digitado algo
+      if(!this.novoGato) return;
+      this.gatos.push(this.novoGato);
+      this.novoGato = '';
+      this.salvarGatos();
     },
-    removeCat(x) {
-      this.cats.splice(x, 1);
-      this.saveCats();
+    removerGato(x) {
+      this.gatos.splice(x,1);
+      this.salvarGatos();
     },
-    saveCats() {
-      const parsed = JSON.stringify(this.cats);
-      localStorage.setItem('cats', parsed);
+    salvarGatos() {
+      let parsed = JSON.stringify(this.gatos);
+      localStorage.setItem('gatos', parsed);
     }
   }
 })
@@ -175,7 +164,7 @@ Nesta aplicação nós mudamos para usar as APIs de armazenamento local em vez d
 
 Nós temos três métodos agora para lidar trabalhando com gatos. Ambos `addCat` e `removeCat` tratam de atualizar os dados Vue "vivos" armazenados em `this.cats`. Em seguida, eles executam o `saveCats`, que manipula a serialização e a persistência dos dados. Você pode testar com esta versão abaixo:
 
-<p data-height="265" data-theme-id="0" data-slug-hash="qoYbyW" data-default-tab="js,result" data-user="cfjedimaster" data-embed-version="2" data-pen-title="localstorage, complex" class="codepen">See the Pen <a href="https://codepen.io/cfjedimaster/pen/qoYbyW/">localstorage, complex</a> by Raymond Camden (<a href="https://codepen.io/cfjedimaster">@cfjedimaster</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="jQPWRe" data-default-tab="js,result" data-user="brunohgv" data-pen-title="localStorage, complexo" class="codepen">See the Pen <a href="https://codepen.io/brunohgv/pen/jQPWRe/">localStorage, complexo</a> by Bruno Henrique Gusmão Vasconcelos (<a href="https://codepen.io/brunohgv">@brunohgv</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 ## Padrões Alternativos
