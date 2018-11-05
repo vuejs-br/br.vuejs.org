@@ -72,7 +72,7 @@ Escrever imediatamente o valor pode não ser aconselhável. Vamos considerar um 
 </div>
 ```
 
-Agora temos dois campos (novamente ligados a uma instância Vue), mas agora há a adição de um botão que executa um método `persist`. Vamos ver o JavaScript.
+Agora temos dois campos (novamente ligados a uma instância Vue), mas agora há a adição de um botão que executa um método `persistir`. Vamos ver o JavaScript.
 
 ``` js
 const app = new Vue({
@@ -128,7 +128,7 @@ const app = new Vue({
   el:'#app',
   data: {
     gatos:[],
-    novoGato:null
+    novoGato: null
   },
   mounted() {
     
@@ -162,7 +162,7 @@ const app = new Vue({
 
 Nesta aplicação nós mudamos para usar as APIs de armazenamento local em vez do acesso "direto". Ambos funcionam, mas o método API é geralmente preferido. `mounted` agora tem que pegar o valor e analisar o valor do JSON. Se algo der errado aqui, assumimos que os dados estão corrompidos e os excluímos. (Lembre-se, sempre que seu aplicativo Web usa o armazenamento do lado do cliente, o usuário tem acesso a ele e pode modificá-lo à vontade.)
 
-Nós temos três métodos agora para lidar trabalhando com gatos. Ambos `addCat` e `removeCat` tratam de atualizar os dados Vue "vivos" armazenados em `this.cats`. Em seguida, eles executam o `saveCats`, que manipula a serialização e a persistência dos dados. Você pode testar com esta versão abaixo:
+Nós temos três métodos agora para lidar trabalhando com gatos. Ambos `adicionarGato` e `removerGato` tratam de atualizar os dados Vue "vivos" armazenados em `this.gatos`. Em seguida, eles executam o `salvarGatos`, que manipula a serialização e a persistência dos dados. Você pode testar com esta versão abaixo:
 
 <p data-height="265" data-theme-id="0" data-slug-hash="jQPWRe" data-default-tab="js,result" data-user="brunohgv" data-pen-title="localStorage, complexo" class="codepen">See the Pen <a href="https://codepen.io/brunohgv/pen/jQPWRe/">localStorage, complexo</a> by Bruno Henrique Gusmão Vasconcelos (<a href="https://codepen.io/brunohgv">@brunohgv</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
