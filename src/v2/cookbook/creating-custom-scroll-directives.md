@@ -6,9 +6,10 @@ order: 7
 
 ## Exemplo Base
 
-Há certos momentos que podemos querer adicionar um certo comportamento, especialmente animações, um evento de rolagem em um site. Há várias formas de fazer isso, mas o caminho com menos quantidade de código e dependências, é talvez usar um [custom directive](https://vuejs.org/v2/guide/custom-directive.html) para criar um `hook` para qualquer coisa que dispara um determinado evento de rolagem.
+Há certos momentos em que podemos querer adicionar algum comportamento, especialmente animações, em um evento de rolagem em uma página. Há várias formas de fazer isso mas, possivelmente, o caminho com menos quantidade de código e dependências é usar uma [diretiva personalizada](https://vuejs.org/v2/guide/custom-directive.html) para criar um gatilho para qualquer coisa que disparar um determinado evento de rolagem.
 
 ```js
+// Código da diretiva
 Vue.directive('scroll', {
   inserted: function (el, binding) {
     let f = function (evt) {
@@ -20,7 +21,7 @@ Vue.directive('scroll', {
   }
 })
 
-// main app
+// Código principal
 new Vue({
   el: '#app',
   methods: {
@@ -42,16 +43,15 @@ new Vue({
   <h1 class="centered">Scroll me</h1>
   <div
     v-scroll="handleScroll"
-    class="box"
-  >
+    class="box">
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque amet harum aut ab veritatis earum porro praesentium ut corporis. Quasi provident dolorem officia iure fugiat, eius mollitia sequi quisquam.</p>
   </div>
 </div>
 ```
 
-<p class="tip">Lembre-se! A diretiva deve ser registrada antes de instancia do Vue </p>
+<p class="tip">Lembre-se! A diretiva deve ser registrada antes de instância Vue.</p>
 
-Nós precisamos também de uma propriedade de estilo que faça a transição dos valores intermediários aqui, neste caso:
+Precisamos também de uma propriedade de estilo que faça a transição dos valores intermediários aqui, neste caso:
 
 ```css
 .box {
@@ -59,10 +59,10 @@ Nós precisamos também de uma propriedade de estilo que faça a transição dos
 }
 ```
 
-<p data-height="450" data-theme-id="5162" data-slug-hash="983220ed949ac670dff96bdcaf9d3338" data-default-tab="result" data-user="sdras" data-embed-version="2" data-pen-title="Custom Scroll Directive- CSS Transition" class="codepen">Veja o Pen <a href="https://codepen.io/sdras/pen/983220ed949ac670dff96bdcaf9d3338/">Custom Scroll Directive- CSS Transition</a> por Sarah Drasner (<a href="https://codepen.io/sdras">@sdras</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="450" data-theme-id="5162" data-slug-hash="983220ed949ac670dff96bdcaf9d3338" data-default-tab="result" data-user="sdras" data-embed-version="2" data-pen-title="Custom Scroll Directive- CSS Transition" class="codepen">Veja o Pen <a href="https://codepen.io/sdras/pen/983220ed949ac670dff96bdcaf9d3338/">Custom Scroll Directive- CSS Transition</a> por Sarah Drasner (<a href="https://codepen.io/sdras">@sdras</a>) no <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Ou, com GreenSock(GSAP) ou qualquer outra biblioteca javascript de animação, o código se torna ainda mais simples:
+Ou, usando GreenSock (GSAP) ou qualquer outra biblioteca JavaScript de animação, o código se torna ainda mais simples:
 
 ```js
 Vue.directive('scroll', {
@@ -76,7 +76,6 @@ Vue.directive('scroll', {
   }
 })
 
-// main app
 new Vue({
   el: '#app',
   methods: {
@@ -92,31 +91,30 @@ new Vue({
     }
   }
 })
-
 ```
 
-No entanto, removeremos a transição anterior do CSS dessa implementação porque agora será tratada com JavaScript.
+No entanto, removeremos a transição CSS da implementação anterior, pois agora será tratada com JavaScript.
 
-## O benefício de usar diretivas personalizadas
+## O Benefício das Diretivas Personalizadas
 
-O Vue é rico em opções para diretivas, a maioria das quais abrange casos de uso muito comuns, o que pode criar uma experiência muito produtiva para o desenvolvedor. Mas mesmo se você tiver uma exceção a uma regra não coberta pelo framework, você também terá coberto neste caso, porque é fácil criar uma diretiva personalizada para atender às suas necessidades.
+O Vue é rico em opções para diretivas, a maioria das quais abrange casos de uso muito comuns, o que pode criar uma experiência muito produtiva para o desenvolvedor. Mas, mesmo se você tiver uma exceção à uma regra não coberta pelo _framework_, você também estará coberto neste caso, porque é fácil criar uma diretiva personalizada para atender às suas necessidades específicas.
 
-Anexar e remover eventos de rolagem para elementos é um bom caso de uso para essa técnica, pois assim como outras diretivas que usamos, elas estão necessariamente vinculadas ao elemento e, caso contrário, precisaríamos encontrar a referência para ele no DOM. Esse padrão evita a necessidade de travessia e mantém a lógica de eventos emparelhada com o node ao qual ela está em referência.
+Adicionar e remover escutas a eventos de rolagem para elementos é um bom caso de uso para essa técnica pois, assim como outras diretivas que usamos, estão necessariamente vinculadas ao elemento e, caso contrário, precisaríamos encontrar a referência para ele no DOM. Esse padrão evita a necessidade de varrer o DOM em busca do elemento, além de manter a lógica de eventos emparelhada com o nó ao qual ela está em referência.
 
-## Exemplo do mundo real: usando uma diretiva de rolagem personalizada para animações em cascata
+## Exemplo do Mundo Real: Usando Diretiva de Rolagem para Animações em Cascata
 
-No decorrer da criação de um site coeso, você pode descobrir que está reutilizando o mesmo tipo de lógica de animação em várias áreas. Parece simples, então criamos uma diretiva personalizada muito específica, certo? Bem, normalmente, se você estiver reutilizando, você precisará alterá-lo _apenas_ para cada uso.
+No decorrer da criação de um _site_ coeso, você pode descobrir que está reutilizando o mesmo tipo de lógica de animação em várias áreas. Parece simples, então criaríamos uma diretiva personalizada específica, certo? Bem, normalmente, se você tentar reutilizá-la, acabaria precisando alterá-la _apenas_ um pouquinho para cada uso.
 
-Para ajudar a manter nosso código conciso e legível, gostaríamos de passar alguns argumentos pré-definidos, como o ponto inicial e final da animação, enquanto rolamos a página para baixo.
+Para ajudar a manter nosso código conciso e legível, poderíamos querer passar alguns argumentos pré-definidos, como o ponto inicial e final da animação, enquanto rolamos a página para baixo.
 
-**Este exemplo é melhor visualizado na [versão full screen](https://s.codepen.io/sdras/debug/078c19f5b3ed7f7d28584da450296cd0).**
+**Este exemplo é melhor visualizado na [versão em tela cheia](https://s.codepen.io/sdras/debug/078c19f5b3ed7f7d28584da450296cd0).**
 
 <p data-height="500" data-theme-id="5162" data-slug-hash="c8c55e3e0bba997350551dd747119100" data-default-tab="result" data-user="sdras" data-embed-version="2" data-pen-title="Scrolling Example- Using Custom Directives in Vue" class="codepen">Veja o Pen <a href="https://codepen.io/sdras/pen/c8c55e3e0bba997350551dd747119100/">Scrolling Example- Using Custom Directives in Vue</a> by Sarah Drasner (<a href="https://codepen.io/sdras">@sdras</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Na demonstração acima, cada uma das seções tem dois tipos diferentes de animação acionados a partir do scroll: uma animação de morphing e uma animação de desenho que anima os caminhos individuais no SVG. Nós reutilizamos essas duas animações, para que possamos criar uma diretiva personalizada para cada uma delas. Os argumentos que transmitiremos ajudarão a manter tudo simples e reutilizável.
+Na demonstração acima, cada uma das seções tem dois tipos diferentes de animação acionados a partir da rolagem: uma animação de metamorfose e uma animação de desenho, que anima os caminhos individuais no SVG. Nós reutilizamos essas duas animações, para que possamos criar uma diretiva personalizada para cada uma delas. Os argumentos que transmitiremos ajudarão a manter tudo simples e reutilizável.
 
-Para mostrar como fazemos isso, vamos dar uma olhada no exemplo da forma de morphing(metamorfose), onde precisaremos declarar o início e o fim, além de passar um valor de caminho para o qual criaremos uma morph(metamorfose). Estes argumentos são definidos como `binding.value.foo`
+Para mostrar como fazemos isso, vamos dar uma olhada no exemplo da metamorfose, onde precisaremos declarar o início e o fim, além de passar um valor de caminho para o qual transformaremos o gráfico vetorial. Estes argumentos são definidos como `binding.value.algo`:
 
 ```js
 Vue.directive('clipscroll', {
@@ -139,8 +137,7 @@ Vue.directive('clipscroll', {
 })
 ```
 
-Nós podemos então usar esta animação em nosso template, neste caso nós estamos anexando a diretiva ao elemento `clipPath`, e passamos todos os nossos argumentos para as diretivas em um objeto.
-
+Nós podemos, então, usar esta animação em nosso _template_. Neste caso, estamos anexando a diretiva ao elemento `clipPath`, e passamos todos os nossos argumentos para a diretiva através de um objeto.
 
 ```html
 <clipPath id="clip-path">
@@ -154,6 +151,6 @@ Nós podemos então usar esta animação em nosso template, neste caso nós esta
 
 ## Padrões Alternativos
 
-As diretivas personalizadas são extremamente úteis, mas você pode encontrar algumas situações em que precisa de algo muito específico, e que já existe em algumas bibliotecas de rolagem, e que não deseja reconstruir a partir do zero.
+As diretivas personalizadas são extremamente úteis, mas você pode encontrar algumas situações em que precisa de algo muito específico, e que já existe em algumas bibliotecas de rolagem, não desejando reconstruir a partir do zero.
 
-[Scrollmagic](http://scrollmagic.io/) tem um ecossistema muito rico de ofertas para trabalhar, bem como boa documentação e demonstrações para explorar. Isso inclui, mas não está limitado a coisas como [parallax](http://scrollmagic.io/examples/advanced/parallax_scrolling.html), [cascading pinning](http://scrollmagic.io/examples/expert/cascading_pins.html), [section wipes](http://scrollmagic.io/examples/basic/section_wipes_natural.html), e [responsive duration](http://scrollmagic.io/examples/basic/responsive_duration.html).
+[Scrollmagic](http://scrollmagic.io/) tem um ecossistema muito rico em recursos, bem como uma boa documentação e demonstrações para explorar. Isso inclui, mas não está limitado a coisas como [parallax](http://scrollmagic.io/examples/advanced/parallax_scrolling.html), [cascading pinning](http://scrollmagic.io/examples/expert/cascading_pins.html), [section wipes](http://scrollmagic.io/examples/basic/section_wipes_natural.html), e [responsive duration](http://scrollmagic.io/examples/basic/responsive_duration.html).
