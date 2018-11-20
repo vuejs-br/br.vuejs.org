@@ -291,10 +291,10 @@ created() {
 }
 ```
 
-## Padrões alternativos
+## Padrões Alternativos
 
 Um padrão alternativo a ser considerado, especialmente se você preferir escrever apenas em _Markdown_, é usar algo como o [Nuxtent](https://nuxtent.now.sh/guide/writing#async-components). _Nuxtent_ permite que você use um componente Vue dentro de um arquivo _Markdown_. Essa seria uma abordagem bem parecida à abordagem de um _site_ estático (por exemplo, usando _Jekyll_), onde as postagens do _blog_ são escritas em arquivos _Markdown_. O _Nuxtent_ possui uma boa integração entre o Vue e o _Markdown_, permitindo que você viva 100% no mundo do Vue.
 
-## Conclusão
+## Considerações Finais
 
 É isso! Você agora possui um _blog_ completamente funcional alimentado por um _CMS_ executando junto à sua aplicação. Esperamos que esse tutorial tenha lhe ajudado e feito o seu desenvolvimento com Vue ainda mais agradável.

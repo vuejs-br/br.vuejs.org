@@ -55,7 +55,7 @@ _obrigatório_
 3.  Mostrar, de forma simplificada, exemplos de códigos bons e ruins.
 4.  Discutir o porquê do padrão utilizado ser o ideal. Referências são incentivadas.
 
-### Exemplo Real 
+### Exemplo do Mundo Real
 
 _obrigatório_
 
