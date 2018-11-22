@@ -6,18 +6,18 @@ order: 106
 
 > Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
 
-<p class="tip">Todos os recursos desta página documentam o tratamento de casos extremos, ou seja, situações incomuns que algumas vezes requerem que as regras do Vue sejam um pouco contornadas. Entretanto, note que todas elas possuem desvantagens ou podem ser perigosas. Isso é observado em casa caso, portanto, lembre-se delas ao decidir usar cada recurso.</p>
+<p class="tip">Todos os recursos desta página documentam o tratamento de casos extremos, ou seja, situações incomuns que, algumas vezes, requerem que as regras do Vue sejam brevemente contornadas. Entretanto, note que todos eles possuem desvantagens ou podem ser perigosos. Estes detalhes são expostos em cada caso, portanto, lembre-se ao decidir usar cada recurso.</p>
 
 ## Acesso a Elementos e Componentes
 
-Na maioria dos casos, é melhor evitar alcançar outras instâncias de componentes ou manualmente manipular elementos de DOM. Entretanto, há casos em que isso pode ser apropriado.
+Geralmente, é melhor evitar alcançar outras instâncias de componentes ou manualmente manipular elementos DOM. Entretanto, às vezes pode ser apropriado.
 
-### Acessando a Instância Raiz
+### Acessando Instância Raiz
 
 Em cada subcomponente de uma instância `new Vue`, a instância raiz pode ser acessada com a propriedade `$root`. Por exemplo, nessa instância raiz:
 
 ```js
-// A instância Raiz do Vue
+// A instância raiz do Vue
 new Vue({
   data: {
     foo: 1
@@ -31,7 +31,7 @@ new Vue({
 })
 ```
 
-Todos os subcomponentes agora são capazes de acessar esta instância e usá-la como *store* global:
+Todos os subcomponentes são capazes de acessá-la e usá-la como um _store_ global:
 
 ```js
 // Recupera dados da raiz
@@ -47,15 +47,15 @@ this.$root.bar
 this.$root.baz()
 ```
 
-<p class="tip">Isso pode ser conveniente para demonstrações ou aplicações muito pequenas, com apenas um punhado de componentes. Porém, o padrão não se adapta muito bem a aplicações de média ou larga escala, de modo que nós recomendamos fortemente a utilização do <a href="https://github.com/vuejs/vuex">Vuex</a> para gerenciar o estado, na maioria dos casos.</p>
+<p class="tip">Isso pode ser conveniente para demonstrações ou aplicações muito pequenas, com apenas um punhado de componentes. Porém, o padrão não se adapta bem a aplicações de média ou larga escala, de modo que nós recomendamos fortemente a utilização do <a href="https://github.com/vuejs/vuex">Vuex</a> para gerenciar o estado, na maioria dos casos.</p>
 
-### Acessando a Instância do Componente Pai
+### Acessando Instância do Componente Pai
 
-Semelhantemente a `$root`, a propriedade `$parent` pode ser utilizada para acessar a instância pai a partir de um filho. Isso é uma alternativa, preguiçosa e tentadora, a passar os dados via propriedades.
+Semelhantemente a `$root`, a propriedade `$parent` pode ser utilizada para acessar a instância pai, a partir de um componente filho. Isso é uma alternativa, preguiçosa e tentadora, ao invés de passar os dados via propriedades.
 
-<p class="tip">Na maioria dos casos, alcançar o interior dos componentes pais torna sua aplicação muito difícil de depurar e entender, especiamente se você modifica dados no componente pai. Ao olhar para o componente posteriormente, será muito difícil de compreender onde aquela mutação se originou.</p>
+<p class="tip">Na maioria dos casos, alcançar o interior dos componentes pais torna sua aplicação muito difícil de depurar e entender, especiamente se você modifica dados no componente pai. Ao olhar para o componente posteriormente, será muito difícil de compreender onde aquela mutação de dados se originou.</p>
 
-Há casos, entretanto, particulamente em bibliotecas de componentes compartilhadas, que isso *pode* ser apropriado. Por exemplo, em componentes abstratos que interagem com com APIs JavaScript em vez de renderizarem HTML, assim como esse componente hipotético do Google Maps:
+Entretanto, há casos, particulamente em bibliotecas compartilhadas, em que isso _pode_ ser apropriado. Por exemplo, componentes abstratos que interagem com APIs JavaScript em vez de renderizarem HTML, como esse componente hipotético do Google Maps:
 
 ```html
 <google-map>
@@ -65,7 +65,7 @@ Há casos, entretanto, particulamente em bibliotecas de componentes compartilhad
 
 O componente `<google-map>` pode definir uma propriedade `map` que todos os subcomponentes precisam acessar. Neste caso, o componente `<google-map-markers>` pode acessar aquele mapa através de algo como `this.$parent.getMap`, para poder adicionar alguns marcadores à ela. Você pode conferir esse padrão [em ação aqui](https://jsfiddle.net/chrisvfritz/ttzutdxh/).
 
-Tenha em mente, no entanto, que componentes construidos com esse padrão são inerentemente frágeis. Por exemplo, imagine que nós adicionaremos um novo componente `<google-map-region>` e quando `<google-map-markers>` aparecer dentro dele, ele só deve renderizar marcadores que estiverem nessa região:
+Tenha em mente, no entanto, que componentes construídos com esse padrão são inerentemente frágeis. Por exemplo, imagine que nós adicionaremos um novo componente `<google-map-region>` e quando `<google-map-markers>` aparecer dentro dele, ele só deve renderizar marcadores que estiverem nessa região:
 
 ```html
 <google-map>
@@ -75,29 +75,29 @@ Tenha em mente, no entanto, que componentes construidos com esse padrão são in
 </google-map>
 ```
 
-Então dentro de `<google-map-markers>` você poderá se encontrar buscando por um *hack* como esse:
+Para solucionar, dentro de `<google-map-markers>` você poderá se encontrar confiando em um _hack_ como esse:
 
 ```js
 var map = this.$parent.map || this.$parent.$parent.map
 ```
 
-Isso rapidamente ficou fora de controle. É por isso que para fornecer informação de contexto para os componentes descendentes arbitráriamente profundos, nós recomendamos a [injeção de dependência](#Injecao-de-Dependencia).
+O que rapidamente foge do controle. É por isso que, para fornecer informação de contexto para os componentes descendentes arbitrariamente profundos, nós recomendamos a [injeção de dependência](#Injecao-de-Dependencia).
 
-### Acessando Instâncias de Componentes Filhos & Elementos Filhos
+### Acessando Instâncias de Componentes e Elementos Filhos
 
-Apesar da existência de propriedades e eventos, algumas vezes você ainda pode precisar acessar diretamente um componente filho em JavaScript. Para alcançar isso, você pode atribuir um ID de referência ao componente filho usando o atributo `ref`. Por exemplo:
+Apesar da existência de propriedades e eventos, algumas vezes você ainda pode precisar acessar diretamente um componente filho em JavaScript. Para isso, você pode atribuir um identificador de referência ao componente filho, usando o atributo `ref`. Por exemplo:
 
 ```html
 <base-input ref="usernameInput"></base-input>
 ```
 
-Agora no componente onde você definiu o `ref`, você pode usar:
+Agora, no componente onde você definiu o `ref`, você pode usar:
 
 ```js
 this.$refs.usernameInput
 ```
 
-para acessar a instância `<base-input>`. Isso pode ser útil quando você quer, por exemplo, "focar" esse *input* programaticamente à partir de um pai. Neste caso, o componente `<base-input>` pode, similarmente, usar o `ref` para prover acesso a elementos específicos dentro dele, como:
+Assim, você acessará a instância `<base-input>`. Isso pode ser útil quando quiser, por exemplo, "focar" o _input_ programaticamente a partir do pai. O `<base-input>` pode, similarmente, usar `ref` para prover acesso a elementos específicos dentro dele, como:
 
 ```html
 <input ref="input">
@@ -114,19 +114,19 @@ methods: {
 }
 ```
 
-Permitindo assim que o componente pai foque o *input* dentro de `<base-input>` com:
+Permitindo, assim, que o componente pai foque o _input_ dentro de `<base-input>` com:
 
 ```js
 this.$refs.usernameInput.focus()
 ```
 
-Quando o `ref` é usado junto com `v-for`, a referência que você obtém será um *array* contendo os componentes filhos espelhando a fonte de dados.
+Quando o `ref` for usado junto com `v-for`, a referência que você obterá será um Array contendo os componentes filhos, espelhando a fonte de dados.
 
-<p class="tip"><code>$refs</code> são populados somente depois que o componente foi renderizado, e não são reativos. É somente uma escotilha para manipulação direta dos filhos - você deve evitar usar <code>$refs</code> de dentro dos *templates* ou dos dados computados.</p>
+<p class="tip"><code>$refs</code> são populados somente depois que o componente foi renderizado, e não são reativos. É somente uma escotilha para manipulação direta dos filhos - evite usar <code>$refs</code> de dentro de _templates_ ou de dados computados.</p>
 
 ### Injeção de Dependência
 
-Anteriormente, quando descrevemos [Acessando a Instância do Componente Pai](#Acessando-a-Instancia-do-Componente-Pai), mostramos um exemplo como esse:
+Anteriormente, quando descrevemos [Acessando Instância do Componente Pai](#Acessando-Instancia-do-Componente-Pai), mostramos um exemplo como esse:
 
 ```html
 <google-map>
@@ -136,9 +136,9 @@ Anteriormente, quando descrevemos [Acessando a Instância do Componente Pai](#Ac
 </google-map>
 ```
 
-Neste componente, todos os descendentes de `<google-map>` necessitam do acesso ao método `getMap`, para saberem com qual mapa estão interagindo. Infelizmente, usando a propriedade `$parent` não escalaremos muito bem para muitos componentes profundamente aninhados. É aí que a injeção de dependência pode ser útil, usando duas novas opções da instância: `provide` e `inject`.
+Neste componente, todos os descendentes de `<google-map>` necessitam do acesso ao método `getMap`, para saberem com qual mapa estão interagindo. Infelizmente, usando a propriedade `$parent`, não escalaremos muito bem para o caso de vários componentes profundamente aninhados. É aí que a injeção de dependência pode ser útil, usando duas novas opções da instância: `provide` e `inject`.
 
-A opção `provide` nos permite especificar quais dados/métodos nós queremos **prover** para os componentes descendentes. Neste caso, é o método `getMap` dentro de `<google-map>`:
+A opção `provide` permite especificar quais dados/métodos queremos **prover** para os componentes descendentes. Neste caso, o método `getMap` de `<google-map>`:
 
 ```js
 provide: function () {
@@ -148,24 +148,24 @@ provide: function () {
 }
 ```
 
-Então em qualquer descendente, nós podemos usar a opção `inject` para receber as propriedades especificas que desejamos adicionar à instância:
+Então em qualquer descendente, podemos usar a opção `inject` para receber as propriedades específicas que desejamos adicionar à instância:
 
 ```js
 inject: ['getMap']
 ```
 
-Você pode ver o [exemplo completo](https://jsfiddle.net/chrisvfritz/tdv8dt3s/). A vantagem, nesse caso, em contraste com a utilização do `$parent`, é que podemos acessar `getMap` em *qualquer* componente descendente, sem expor a instância inteira do `<google-map>`. Isso nos permite continuar o desenvolvimento desse componente com mais segurança, sem medo de que podemos alterar/remover algo que o componente filho esteja confiando. A interface entre esses componentes permanece claramente definida, assim como usando `props`.
+Você pode ver o [exemplo completo](https://jsfiddle.net/chrisvfritz/tdv8dt3s/). A vantagem neste caso, em contraste com a utilização do `$parent`, é que podemos acessar `getMap` em _qualquer_ componente descendente, sem expor a instância inteira do `<google-map>`. Isso nos permite continuar o desenvolvimento desse componente com mais segurança, sem medo de que acabemos por alterar/remover algo que o componente filho esteja esperando. A interface entre esses componentes permanece claramente definida, assim como quando usamos `props`.
 
-Na verdade, você porde pensar a injeção de dependência como uma espécie de "propriedade de longo alcance", exceto por:
+Na verdade, você pode pensar sobre a injeção de dependência como uma espécie de "propriedade de longo alcance", exceto por:
 
-* componentes ancestrais não precisarem saber quais descendentes usam a propriedade que ele provê
-* componentes descendentes não precisarem saber de onde as propriedades injetadas vieram
+* ancestrais não precisarem saber quais descendentes usam a propriedade
+* descendentes não precisarem saber de onde as propriedades injetadas vieram
 
-<p class="tip">Entretanto, existem desvantagens na injeção de dependência. Ela associa os componentes de sua aplicação da maneira que estão organizados atualmente, tornando a refatoração mais difícil. Propriedades providas pelos componentes pais também não são reativas. Isso ocorre por *design*, porque usá-las para criar um *store* de dados central fará sua aplicação escalar tão ruim quanto <a href="#Acessando-a-Instancia-Raiz"> usando <code>$root</code></a> para o mesmo propósito. Se as propriedades que você deseja compartilhar são especificas para sua aplicação, em vez de genéricas, ou se você deseja sempre atualizar os dados providos dentro do componentes ancestrais, então isso é um bom sinal que você provavelmente precisará de uma solução como <a href="https://github.com/vuejs/vuex">Vuex</a> para gerenciar o estado real.</p>
+<p class="tip">Entretanto, existem desvantagens na injeção de dependência. Ela associa os componentes de sua aplicação conforme estão organizados atualmente, tornando a refatoração mais difícil. Propriedades providas pelos componentes pais também não são reativas. Isso ocorre propositalmente, pois usá-las para criar um _store_ de dados central fará sua aplicação escalar tão mal quanto <a href="#Acessando-Instancia-Raiz">usando <code>$root</code></a> para o mesmo propósito. Se as propriedades que você deseja compartilhar são específicas para sua aplicação, em vez de genéricas, ou se você deseja sempre atualizar os dados providos dentro de componentes ancestrais, então é um bom sinal que você provavelmente precisa de uma solução real de gerenciamento de estado, como o <a href="https://github.com/vuejs/vuex">Vuex</a>.</p>
 
 Aprenda mais sobre injeção de dependência na [documentação da API](https://vuejs.org/v2/api/#provide-inject).
 
-## Escuta de eventos programática
+## Escuta de Eventos Programática
 
 Até então, você viu usos do `$emit` e escutou eventos com o `v-on`, porém instâncias Vue também oferecem outros métodos em sua interface de eventos. Nós podemos:
 
@@ -173,11 +173,11 @@ Até então, você viu usos do `$emit` e escutou eventos com o `v-on`, porém in
 - Escutar um evento, uma única vez, com `$once(eventName, eventHandler)`
 - Deixar de escutar um evento com `$off(eventName, eventHandler)`
 
-Normalmente, você não terá que usar nenhum desses métodos, porém eles estão disponíveis para casos em que você precise escutar, manualmente, eventos na instância de um componente. Eles também podem ser úteis como uma ferramenta para organização de código. Por exemplo, você pode observar, frequentemente, esse padrão para integração com uma biblioteca de terceiros:
+Normalmente, você não terá que usar nenhum desses métodos, porém eles estão disponíveis para casos em que você precise escutar, manualmente, eventos na instância de um componente. Eles também podem ser úteis como uma ferramenta para organização de código. Por exemplo, você pode notar frequentemente o padrão abaixo para integração com uma biblioteca de terceiros:
 
 ```js
 // Anexe o datepicker ao input uma única vez
-// ele está montado no DOM.
+// que ele estiver montado no DOM.
 mounted: function () {
   // Pikaday é uma biblioteca datepicker de terceiros
   this.picker = new Pikaday({
@@ -186,7 +186,7 @@ mounted: function () {
   })
 },
 // Imediatamente antes do componente ser destruído,
-// também destrua o datepicker.
+// garante que o datepicker também o seja.
 beforeDestroy: function () {
   this.picker.destroy()
 }
@@ -212,7 +212,7 @@ mounted: function () {
 }
 ```
 
-Usando essa estratégia, nós podemos até mesmo usar o Pickaday com vários elementos _input_, com cada nova instância sendo automaticamente limpa depois de si.
+Usando essa estratégia, podemos até mesmo usar o Pickaday com vários elementos _input_, com cada nova instância automaticamente se registrando para limpeza.
 
 ```js
 mounted: function () {
@@ -233,23 +233,23 @@ methods: {
 }
 ```
 
-Veja [este _fiddle_](https://jsfiddle.net/chrisvfritz/1Leb7up8/) com o código completo. Note, entretanto, que caso esteja tendo que fazer muito _setup_ e limpeza em um único componente, a melhor solução será, usualmente, criar componentes mais modulares. Neste caso, recomendaríamos criar um componente `<input-datepicker>` reutilizável.
+Veja [este _fiddle_](https://jsfiddle.net/chrisvfritz/1Leb7up8/) com o código completo. Entretanto, note que, caso esteja precisando fazer muito _setup_ e limpeza em um único componente, a melhor solução será, usualmente, criar componentes mais modulares. Neste caso, recomendaríamos criar um componente `<input-datepicker>` reutilizável.
 
-Para aprender mais sobre _listeners_ programáticos, dê uma conferida na API de [Métodos de Instância de Eventos](https://vuejs.org/v2/api/#Instance-Methods-Events).
+Para aprender mais sobre escutas de eventos programáticas, dê uma conferida na API de [Métodos de Instância de Eventos](https://vuejs.org/v2/api/#Instance-Methods-Events).
 
-<p class="tip">Note que o sistema de eventos do Vue é diferente do utilizado pelo navegador, a <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/EventTarget">API EventTarget</a>. Embora eles funcionem de modo semelhante, <code>$emit</code>, <code>$on</code>, e <code>$off</code>  <strong>não</strong> são aliases para <code>dispatchEvent</code>, <code>addEventListener</code>, e <code>removeEventListener</code>.</p>
+<p class="tip">Observe que o sistema de eventos do Vue é diferente do sistema utilizado pelo navegador, a <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/EventTarget">API EventTarget</a>. Embora eles funcionem de modo semelhante, <code>$emit</code>, <code>$on</code> e <code>$off</code> <strong>não</strong> são apelidos para <code>dispatchEvent</code>, <code>addEventListener</code> e <code>removeEventListener</code>.</p>
 
 ## Referências Circulares 
 
 ### Componentes Recursivos
 
-Componentes podem invocar a si mesmos recursivamente em seu próprio `template`. Todavia, eles só podem fazer isso com a opção `name`:
+Componentes podem invocar a si mesmos recursivamente, em seu próprio `template`. Todavia, eles só podem fazer isso com a opção `name`:
 
 ``` js
 name: 'unique-name-of-my-component'
 ```
 
-Quando se registra um componente globalmente usando `Vue.component`, o ID global é automaticamente configurado como a opção `name`.
+Quando se registra um componente globalmente com `Vue.component`, o identificador global é automaticamente configurado como a opção `name`.
 
 ``` js
 Vue.component('unique-name-of-my-component', {
@@ -257,18 +257,18 @@ Vue.component('unique-name-of-my-component', {
 })
 ```
 
-Se você não for cuidadoso, componentes recursivos também podem levar a _loops_ infinitos:
+Se você não for cuidadoso, componentes recursivos também podem levar a _loops_ infinitos de renderização:
 
 ``` js
 name: 'stack-overflow',
 template: '<div><stack-overflow></stack-overflow></div>'
 ```
 
-Um componente como o mostrado acima resultará e um erro _"max stack size exceeded"_, então garanta que a invocação recursiva é condicional (ou seja, use um `v-if` que virá a ser, eventualmente, `false`).
+Um componente como o mostrado acima resultará e um erro _"max stack size exceeded"_, então garanta que a invocação recursiva é condicional (ou seja, sempre tenha um `v-if` que virá a ser, eventualmente, `false`).
 
-### Referências Circulares Entre Componentes
+### Entre Componentes
 
-Digamos que você está construindo uma árvore de diretórios de arquivos, como em um Buscador ou Explorador de Arquivos. Você pode ter um componente `tree-folder` com este _template_:
+Digamos que você está construindo uma árvore de diretórios de arquivos, como em um Finder ou Explorer. Você pode ter um componente `tree-folder` com este _template_:
 
 ``` html
 <p>
@@ -288,17 +288,17 @@ Então, um componente `tree-folder-contents`, com este _template_:
 </ul>
 ```
 
-Quando você olha mais de perto, verá que tais componentes irão, na verdade, ser descendente e ancestral um do outro na árvore de renderização - um paradóxo! Quando for registrar esses componentes globalmente com o `Vue.component`, tal paradóxo será resolvido para você automaticamente. Se este é o seu caso, você pode parar sua leitura aqui.
+Quando se olha mais de perto, observa-se que tais componentes serão, na verdade, descendente e ancestral um do outro na árvore de renderização - um paradóxo! Quando for registrar esses componentes globalmente com `Vue.component`, tal paradóxo será resolvido automaticamente. Se este é o seu caso, você pode parar sua leitura aqui.
 
-Todavia, se você está `requiring/importing` componentes usando um __sistema de módulos__, p.ex. via Webpack ou Browserify, você irá se deparar com um erro: 
+Todavia, se você está usando `require/import` de componentes com um __sistema de módulos__, como Webpack ou Browserify, irá se deparar com um erro:
 
 ```
 Failed to mount component: template or render function not defined.
 ```
 
-Para explicar o que está acontecendo, vamos chamar nossos componentes de A e B. O sistema de módulos vê que ele precisa de A, mas primeiro precisa de B, mas B precisa de A, mas A precisa de B, etc. Ele fica preso no _loop_, sem saber como resolver nenhum componente, sem antes resolver o outro. Para que isso seja consertado, precisamos dar ao sistema de módulos um ponto no qual ele possa dizer, "A precisa de B _eventualmente_, mas não há necessidade de resolver B primeiro."
+Para explicar o que ocorre, vamos chamar nossos componentes de A e B. O sistema de módulos observa que precisa de A, mas primeiro precisa de B, mas B precisa de A, mas A precisa de B, etc. Ele fica preso neste _loop_, sem saber como resolver um componente sem antes resolver o outro. Para que isso seja corrigido, precisamos dar ao sistema de módulos um ponto no qual ele possa dizer, "A precisa de B _eventualmente_, mas não há necessidade de resolver B primeiro".
 
-No nosso caso, vamos construir esse ponto no componente `tree-folder`. Nós sabemos que o componente filho que cria o paradóxo é o `tree-folder-contents`, então vamos esperar até que o gatilho de ciclo de vida `beforeCreate` registre-o:
+No nosso caso, vamos construir esse ponto no componente `tree-folder`. Sabemos que o componente filho que cria o paradóxo é o `tree-folder-contents`, então vamos esperar até que o gatilho de ciclo de vida `beforeCreate` registre-o:
 
 ``` js
 beforeCreate: function () {
@@ -306,7 +306,7 @@ beforeCreate: function () {
 }
 ```
 
-Ou, alternativamente, você poderia utilizar o `import` assíncrono do Webpack quando você registra seu componente localmente:
+Ou, alternativamente, poderia utilizar o `import` assíncrono do Webpack, quando registra seu componente localmente:
 
 ``` js
 components: {
@@ -318,24 +318,24 @@ Problema resolvido!
 
 ## Definições de Template Alternativas
 
-###  Templates _inline_
+### Templates Inline
 
-Quando o atributo especial `inline-template` estiver presente em um componente filho, o componente irá utilizar seu conteúdo interno como template, ao invés de tratá-lo como conteúdo distribuído. Isso permite _template-authoring_ mais flexível.
+Quando o atributo especial `inline-template` estiver presente em um componente filho, o componente irá utilizar seu próprio conteúdo interno como _template_, ao invés de tratá-lo como conteúdo distribuído. Isso permite uma autoria de _template_ mais flexível.
 
 ``` html
 <my-component inline-template>
   <div>
     <p>Estes são compilados como template do próprio componente.</p>
-    <p>E não transclusão de conteúdo do parent.</p>
+    <p>E não transclusão de conteúdo do pai.</p>
   </div>
 </my-component>
 ```
 
-<p class="tip">Todavia, a utilização do <code>inline-template</code> faz com que o escopo do seu template seja mais difícil de entender. Como uma boa prática, prefira definir templates dentro do componente, usando a opção<code>template</code> ou em um elemento <code>&lt;template&gt;</code>, em um arquivo <code>.vue</code></p>
+<p class="tip">Todavia, a utilização do <code>inline-template</code> faz com que o escopo do seu _template_ seja mais difícil de entender. Como uma boa prática, prefira definir _templates_ dentro do componente usando a opção <code>template</code>, ou em um elemento <code>&lt;template&gt;</code> de um arquivo <code>.vue</code></p>
 
 ### X-Templates
 
-Uma outra forma de definir templates é dentro de elementos _script_ com tipo `text/x-template`, e então referenciando o template através de um id. Por exemplo:
+Uma outra forma de definir _templates_ é dentro de elementos _script_ com tipo `text/x-template`, e então referenciando o _template_ através de um `id`. Exemplo:
 
 ``` html
 <script type="text/x-template" id="hello-world-template">
@@ -349,23 +349,23 @@ Vue.component('hello-world', {
 })
 ```
 
-<p class="tip">Eles podem ser úteis para demonstrações com templates maiores ou em aplicações extremamente pequenas, porém devem, nos outros casos, ser evitados, uma vez que separam os templates do resto da definição do componente.</p>
+<p class="tip">Eles podem ser úteis para demonstrações com _templates_ maiores ou em aplicações extremamente pequenas, porém devem ser evitados em todos os outros casos, pois separam os _templates_ do resto da definição do componente.</p>
 
 ## Controlando Atualizações
 
-Graças ao sistema de Reatividade do Vue, ele sempre sabe quando atualizar (se você utilizá-lo corretamente). Há casos incomuns, porém, em que você pode querer forçar uma atualização, apesar do fato de nenhum dado reativo ter mudado. Além disso, há os casos em que você pode querer previnir atualizações desnecessárias.
+Graças ao sistema de reatividade do Vue, ele sempre sabe quando atualizar a interface (se você utilizá-lo corretamente). Há casos incomuns, porém, em que você pode querer forçar uma atualização, apesar do fato de nenhum dado reativo ter mudado. Além disso, há os casos em que você pode querer previnir atualizações desnecessárias.
 
 ### Forçando uma Atualização
 
 <p class="tip">Se você se encontrar na situação de precisar forçar uma atualiação no Vue, em 99,99% dos casos, você cometeu algum erro em algum lugar.</p>
 
-Você pode não ter levado em consideração as ressalvas na detecção de mudanças [com arrays](https://vuejs.org/v2/guide/list.html#Caveats) ou [objetos](https://vuejs.org/v2/guide/list.html#Object-Change-Detection-Caveats), ou você pode estar contando com um estado que não é monitorado pelo sistema de reatividade do Vue, p.ex. com `data`.
+Você pode não ter levado em consideração as ressalvas na detecção de mudanças [com Arrays](list.html#list.html#Limitacoes) ou [objetos](list.html#Detectando-Mudancas-em-Objetos), ou você pode estar contando com um estado que não é monitorado pelo sistema de reatividade do Vue, por exemplo, com `data`.
 
-Todavia, se você descartou o exposto e se encontra nessa situação extremamente rara, de ter de manualmente forçar uma atualização, você pode fazer isso com o [`$forceUpdate`](../api/#vm-forceUpdate).
+Todavia, se você descartou o exposto e ainda se encontra na situação extremamente rara de ter de manualmente forçar atualização, pode fazer isso com [`$forceUpdate`](../api/#vm-forceUpdate).
 
 ### Componentes Estáticos Econômicos com `v-once`
 
-Renderizar elementos HTML puros é bastante rápido no Vue, mas algumas vezes você pode ter um componente que possui **uma grande quantidade** de conteúdo estático. Nesses casos, você pode assegurar que ele é avaliado somente uma vez e então colocado em cache, adicionando a diretiva `v-once` ao elemento raiz, como mostrado abaixo:
+Renderizar elementos HTML puros é bem rápido no Vue mas, algumas vezes, você pode ter um componente que possui **uma grande quantidade** de conteúdo estático. Nesses casos, você pode assegurar que ele é avaliado somente uma vez e então colocado em cache, adicionando a diretiva `v-once` ao elemento raiz, como mostrado abaixo:
 
 ``` js
 Vue.component('terms-of-service', {
@@ -378,4 +378,4 @@ Vue.component('terms-of-service', {
 })
 ```
 
-<p class="tip">Mais uma vez, tente não abusar do uso desse padrão. Embora conveniente nos raros casos em que você tem de renderizar muito conteúdo estático, ele é simplesmente desnecessário a não ser que você tenha de fato notado uma renderização lenta -- além disso, ele poderia levar a futura confusões. Por exemplo, imagine um outro desenvolvedor que não é familiarizado com o <code>v-once</code> ou simplesmente não o nota no template. Ele pode vir a perder horas tentando entender por quê o template não está sendo atualizado da forma certa.</p>
+<p class="tip">Como de costume, tente não abusar deste padrão. Embora conveniente nos raros casos em que você tem de renderizar muito conteúdo estático, ele é simplesmente desnecessário a não ser que você tenha de fato notado uma renderização lenta -- além disso, ele poderia levar a confusões futuras. Por exemplo, imagine um outro desenvolvedor que não é familiarizado com o <code>v-once</code> ou simplesmente não o nota no _template_. Ele pode vir a perder horas tentando entender o porquê de o _template_ não estar sendo atualizado.</p>
