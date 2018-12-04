@@ -4,24 +4,19 @@ type: guide
 order: 104
 ---
 
-<p class="tip">**Nota da Equipe de Tradução**
-Este arquivo ainda não foi traduzido! Leia a versão original em inglês a seguir e, se puder, colabore com sua tradução: acesse [nosso projeto no GitHub](https://github.com/vuejs-br/br.vuejs.org/issues), avise que irá contribuir e inicie a tradução. Sua participação é muito importante!</p>
-
-> Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
-
 ## Slot Content
 
-Vue implements a content distribution API that's modeled after the current [Web Components spec draft](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), using the `<slot>` element to serve as distribution outlets for content.
+Vue implementa uma API de distribuição de conteúdo que é modelada após a atual [Detalhamento da especificação dos componentes da Web](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), usando o elemento `<slot>` para servir como saídas de distribuição de conteúdos
 
-This allows you to compose components like this:
+Isso permite que vc componha componentes como este:
 
 ``` html
 <navigation-link url="/profile">
-  Your Profile
+  Seu Perfil
 </navigation-link>
 ```
 
-Then in the template for `<navigation-link>`, you might have:
+Então no template para `<navigation-link>`, você pode ter:
 
 ``` html
 <a
@@ -32,47 +27,46 @@ Then in the template for `<navigation-link>`, you might have:
 </a>
 ```
 
-When the component renders, the `<slot>` element will be replaced by "Your Profile". Slots can contain any template code, including HTML:
+Quando o componente renderiza, o elemento `<slot>` vai ser substituído pelo "Seu Perfil". Slots podem conter qualquer template de código, incluindo HTML:
 
 ``` html
 <navigation-link url="/profile">
   <!-- Add a Font Awesome icon -->
   <span class="fa fa-user"></span>
-  Your Profile
+  Seu Perfil
 </navigation-link>
 ```
 
-Or even other components:
+Ou até mesmo outros componentes:
 
 ``` html
 <navigation-link url="/profile">
   <!-- Use a component to add an icon -->
   <font-awesome-icon name="user"></font-awesome-icon>
-  Your Profile
+  Seu Perfil
 </navigation-link>
 ```
 
-If `<navigation-link>` did **not** contain a `<slot>` element, any content passed to it would simply be discarded.
+Se um `<navigation-link>` **não** conter um elemento `<slot>`, qualquer conteudo informado sera simplesmente descartado.
 
 ## Named Slots
 
-There are times when it's useful to have multiple slots. For example, in a hypothetical `base-layout` component with the following template:
+Existem momentos quando é útil ter multiplos slots. Por exemplo, em um componente hipotético `base-layout` com o seguinte template:
 
 ``` html
 <div class="container">
   <header>
-    <!-- We want header content here -->
+    <!-- Nós queremos o cabeçalho aqui -->
   </header>
   <main>
-    <!-- We want main content here -->
+    <!-- Nós queremos o contúdo principal aqui -->
   </main>
   <footer>
-    <!-- We want footer content here -->
+    <!-- Nós queremos o rodapé aqui -->
   </footer>
 </div>
 ```
-
-For these cases, the `<slot>` element has a special attribute, `name`, which can be used to define additional slots:
+Para esses casos, o elemento `<slot>` tem um atributo especial, `name`, que pode ser utilizado para definir slits adicionais: 
 
 ``` html
 <div class="container">
@@ -88,74 +82,73 @@ For these cases, the `<slot>` element has a special attribute, `name`, which can
 </div>
 ```
 
-To provide content to named slots, we can use the `slot` attribute on a `<template>` element in the parent:
+Para prover conteúdo para os slots nomeados, nos podemos utilizar o atribuo do `slot` em um elemento `<template>` no pai:
 
 ```html
 <base-layout>
   <template slot="header">
-    <h1>Here might be a page title</h1>
+    <h1>Aqui pode ser o título da página</h1>
   </template>
 
-  <p>A paragraph for the main content.</p>
-  <p>And another one.</p>
+  <p>Um parágrafo para o conteúdo principal.</p>
+  <p>e mais um.</p>
 
   <template slot="footer">
-    <p>Here's some contact info</p>
+    <p>Aqui algumas informações de contato</p>
   </template>
 </base-layout>
 ```
 
-Or, the `slot` attribute can also be used directly on a normal element:
+Ou, o atributo `slot` também pode ser utilizado diretamente em um elemento normal:
 
 ``` html
 <base-layout>
-  <h1 slot="header">Here might be a page title</h1>
+  <h1 slot="header">Aqui pode ser o título da página</h1>
 
-  <p>A paragraph for the main content.</p>
-  <p>And another one.</p>
+  <p>Um parágrafo para o conteúdo principal.</p>
+  <p>e mais um.</p>
 
-  <p slot="footer">Here's some contact info</p>
+  <p slot="footer">Aqui algumas informações de contato</p>
 </base-layout>
 ```
-
-There can still be one unnamed slot, which is the **default slot** that serves as a catch-all outlet for any unmatched content. In both examples above, the  rendered HTML would be:
+Ainda pode haver um slot sem nome, que é o **slot padrão** que serve como saída abrangente para qualquer conteúdo sem correspondência. Em ambos os exemplos abaixo, os HTML renderizados devem ser:
 
 ``` html
 <div class="container">
   <header>
-    <h1>Here might be a page title</h1>
+    <h1>Aqui pode ser o título da página</h1>
   </header>
   <main>
-    <p>A paragraph for the main content.</p>
-    <p>And another one.</p>
+  <p>Um parágrafo para o conteúdo principal.</p>
+  <p>e mais um.</p>
   </main>
   <footer>
-    <p>Here's some contact info</p>
+    <p>Aqui algumas informações de contato</p>
   </footer>
 </div>
 ```
 
-## Default Slot Content
+## Conteúdo Padrão de Slot
 
-There are cases when it's useful to provide a slot with default content. For example, a `<submit-button>` component might want the content of the button to be "Submit" by default, but also allow users to override with "Save", "Upload", or anything else.
+Ainda existem casos quando é útil prover um slot com contaúdo padão. Por exemplo, um componente `<submit-button>` pode querer que o conteúdo do botão seja "Enviar" por padrão, mas também permitir que usuários substituam com "Salvar","Carregar", ou qualquer outra coisa.
 
-To achieve this, specify the default content in between the `<slot>` tags.
+Para conseguir isso, especifique o conteúdo padrão entre as tags `<slot>`.
 
 ```html
 <button type="submit">
-  <slot>Submit</slot>
+  <slot>Enviar</slot>
 </button>
 ```
 
-If the slot is provided content by the parent, it will replace the default content.
+se o slot for fornecido pelo pai, ele substituirá o conteúdo padrão.
 
-## Compilation Scope
+## Escopo de Compilação
 
-When you want to use data inside a slot, such as in:
+Quando você quer usar dados dentro de um slot, como em:
 
 ``` html
 <navigation-link url="/profile">
-  Logged in as {{ user.name }}
+  Logado como {{ user.name }}
 </navigation-link>
 ```
 
