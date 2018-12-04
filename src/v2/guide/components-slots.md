@@ -152,15 +152,15 @@ Quando você quer usar dados dentro de um slot, como em:
 </navigation-link>
 ```
 
-That slot has access to the same instance properties (i.e. the same "scope") as the rest of the template. The slot does **not** have access to `<navigation-link>`'s scope. For example, trying to access `url` would not work. As a rule, remember that:
+Este slot tem acesso as mesmas propriedades da instancia(i.e. o mesmo "escopo") como o resto do template. O slot **não** deve ter acesso ao escodo do `<navigation-link>`. Por exemplo, tentar acessar a `url` não deve funcionar. Como uma regra, lembre-se disso:
 
-> Everything in the parent template is compiled in parent scope; everything in the child template is compiled in the child scope.
+> Tudo no template do pai é compilado no escopo do pai; tudo no template filho é compilado no escopo filho.
 
-## Scoped Slots
+## Slots Escopo
 
-> New in 2.1.0+
+> Novo na 2.1.0+
 
-Sometimes you'll want to provide a component with a reusable slot that can access data from the child component. For example, a simple `<todo-list>` component may contain the following in its template:
+As vezes você ira querer prover um componente com um slot reusável que pode sacessar dados de um componente filho. Por Exemplo, um simples componente `<todo-list>` pode conter o seguinte em seu template:
 
 ```html
 <ul>
@@ -173,9 +173,9 @@ Sometimes you'll want to provide a component with a reusable slot that can acces
 </ul>
 ```
 
-But in some parts of our app, we want the individual todo items to render something different than just the `todo.text`. This is where scoped slots come in.
+Mas em algumas partes do nosso aplicativo, queremos que os itens individuais de to-do renderizem algo diferente de apenas o `todo.txt`. É aqui que entram os slots com escopo.
 
-To make the feature possible, all we have to do is wrap the todo item content in a `<slot>` element, then pass the slot any data relevant to its context: in this case, the `todo` object:
+Para fazer o recurso possível, tudo que precisamos fazer é encapsular o conteúdo do item de to-do em um eleento `<slot>`, então passar ao slot qualuqer dado relevante a esse contexto: nesse caso, o objeto `todo`:
 
 ```html
 <ul>
@@ -183,8 +183,8 @@ To make the feature possible, all we have to do is wrap the todo item content in
     v-for="todo in todos"
     v-bind:key="todo.id"
   >
-    <!-- We have a slot for each todo, passing it the -->
-    <!-- `todo` object as a slot prop.                -->
+    <!-- Nós temos um slot para cada todo, passando um -->
+    <!-- objeto `todo` como propriedade do slot.                -->
     <slot v-bind:todo="todo">
       <!-- Fallback content -->
       {{ todo.text }}
@@ -193,25 +193,25 @@ To make the feature possible, all we have to do is wrap the todo item content in
 </ul>
 ```
 
-Now when we use the `<todo-list>` component, we can optionally define an alternative `<template>` for todo items, but with access to data from the child via the `slot-scope` attribute:
+Agora quando formos utiliza o componente `<todo-list>`, nós podemos opcionalmente definir um `<template>`alternativo para os itens to-do, mas com acesso para dados de um filho através do atributo `slot-scope`:
 
 ```html
 <todo-list v-bind:todos="todos">
-  <!-- Define `slotProps` as the name of our slot scope -->
+  <!-- Define `slotProps` como o nome do nosso escopo do slot -->
   <template slot-scope="slotProps">
-    <!-- Define a custom template for todo items, using -->
-    <!-- `slotProps` to customize each todo.            -->
+    <!-- Define um template personalizado para os itens to-do , utilizando -->
+    <!-- `slotProps` ṕara personalizar cada to-do.            -->
     <span v-if="slotProps.todo.isComplete">✓</span>
     {{ slotProps.todo.text }}
   </template>
 </todo-list>
 ```
 
-> In 2.5.0+, `slot-scope` is no longer limited to the `<template>` element, but can instead be used on any element or component in the slot.
+> Na 2.5.0+, `slot-scope` não é mais limitado ao elemento `<template>`, mas pode ser usado em qualquer elemento ou componente no slot.
 
-### Destructuring `slot-scope`
+### Destruindo `slot-scope`
 
-The value of `slot-scope` can actually accept any valid JavaScript expression that can appear in the argument position of a function definition. This means in supported environments ([single-file components](single-file-components.html) or [modern browsers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Browser_compatibility)) you can also use [ES2015 destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) in the expression, like so:
+O valor do `slot-scope`pode na verdade aceitar qualquer expressão JavaScript válida que pode aparecer na posição do argumento de uma definição de função. Isso significa ambientes suportados ([single-file components](single-file-components.html) ou [modern browsers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Browser_compatibility)) você pode também utilizar [ES2015 destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) na expressão, assim:
 
 ```html
 <todo-list v-bind:todos="todos">
@@ -222,4 +222,4 @@ The value of `slot-scope` can actually accept any valid JavaScript expression th
 </todo-list>
 ```
 
-This is a great way to make scoped slots a little cleaner.
+Esse é um excelente modo de criar slotes de escopo um pouco mais limpos.
