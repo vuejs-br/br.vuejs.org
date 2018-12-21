@@ -130,9 +130,9 @@ Outra opção que desenvolvedores Vue terão em breve é utilizar o [NativeScrip
 
 MobX se tornou bem popular na comunidade React e, de fato, utiliza um sistema de reatividade quase idêntico ao Vue. De forma simplista, o fluxo de trabalho React + MobX pode ser pensado como um Vue com código mais prolixo. Por isso, se você estiver usando essa combinação e estiver gostando, saltar para o Vue é, provavelmente, o próximo passo lógico.
 
-### Preact and Other React-Like Libraries
+### Preact e Outras Bibliotecas no Estilo React
 
-React-like libraries usually try to share as much of their API and ecosystem with React as is feasible. For that reason, the vast majority of comparisons above will also apply to them. The main difference will typically be a reduced ecosystem, often significantly, compared to React. Since these libraries cannot be 100% compatible with everything in the React ecosystem, some tooling and companion libraries may not be usable. Or, even if they appear to work, they could break at any time unless your specific React-like library is officially supported on par with React.
+Bibliotecas no estilo do React geralmente tentam compartilhar o máximo de suas APIs e ecossistemas com o React até onde for viável. Por essa razão, a grande maioria das comparações acima também se aplicarão a elas. A principal diferença será tipicamente um ecossistema reduzido, muitas vezes significativamente, comparado ao React. Como essas bibliotecas não podem ser 100% compatíveis com tudo no ecossistema React, algumas bibliotecas de ferramentas e complementares podem não ser utilizáveis. Ou, mesmo que pareçam funcionar, elas podem quebrar a qualquer momento, a menos que sua biblioteca específica no estilo do React seja oficialmente compatível com o React.
 
 ## AngularJS (Angular 1)
 
