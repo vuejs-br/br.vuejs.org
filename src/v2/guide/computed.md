@@ -108,7 +108,7 @@ computed: {
 
 Em comparação, a invocação de um método **sempre** irá rodar a função, toda vez que uma nova renderização ocorrer.
 
-Porque realmente precisamos de cache? Imagine que temos um dado computado **A** muito pesado ao ser processado, exigindo um laço por um Array enorme e fazendo diversos cálculos a cada iteração. Aí temos outros dados computados que dependem de **A** para processar. Sem cache, nós acabaríamos executando o _getter_ de **A** muito mais vezes do que o necessário! Em casos em que você realmente não deseje cache, simplesmente use um método no lugar.
+Por que realmente precisamos de cache? Imagine que temos um dado computado **A** muito pesado ao ser processado, exigindo um laço por um Array enorme e fazendo diversos cálculos a cada iteração. Aí temos outros dados computados que dependem de **A** para processar. Sem cache, nós acabaríamos executando o _getter_ de **A** muito mais vezes do que o necessário! Em casos em que você realmente não deseje cache, simplesmente use um método no lugar.
 
 ### Dados Computados vs. Observadores
 

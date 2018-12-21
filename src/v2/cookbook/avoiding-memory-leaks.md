@@ -10,7 +10,7 @@ Se você estiver desenvolvendo aplicativos com Vue, poderá precisar se atentar 
 
 Os vazamentos de memória nos aplicativos Vue geralmente não vêm do próprio Vue, mas podem acontecer ao incorporar outras bibliotecas em um aplicativo.
 
-## Exemplo Simples
+## Exemplo Base
 
 O exemplo a seguir mostra um vazamento de memória causado pelo uso da biblioteca [Choices.js](https://github.com/jshjohnson/Choices) em um componente Vue, sem limpá-lo corretamente. Mais para frente, mostraremos como remover os usos excessivos de memória desta biblioteca e evitar o vazamento de memória.
 

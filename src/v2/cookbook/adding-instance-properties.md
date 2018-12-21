@@ -4,7 +4,7 @@ type: cookbook
 order: 2
 ---
 
-## Exemplo Básico
+## Exemplo Base
 
 Este exemplo pode ser util se você gostaria de usar muitos componentes, mas sem [poluir o escopo global](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md). Nesses casos, você pode fazer que eles estejam disponíveis em cada instância Vue definindo eles no prototype:
 
@@ -24,7 +24,7 @@ new Vue({
 
 Então `"Meu Aplicativo"` será exibido no console!
 
-## A Importância do Escopo para Propriedades de Instância 
+## A Importância do Escopo para Propriedades de Instância
 
 Você deve estar se perguntando:
 
