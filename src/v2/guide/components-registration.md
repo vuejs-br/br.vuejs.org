@@ -50,7 +50,7 @@ Vue.component('my-component-name', {
 })
 ```
 
-Este componentes são **registrados globalmente**. Isso significa que eles podem ser usados em _templates_ de qualquer instância Vue (`new Vue`) criada após o registro. Por exemplo:
+Estes componentes são **registrados globalmente**. Isso significa que eles podem ser usados em _templates_ de qualquer instância Vue (`new Vue`) criada após o registro. Por exemplo:
 
 ```js
 Vue.component('component-a', { /* ... */ })
