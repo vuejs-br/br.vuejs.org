@@ -154,25 +154,31 @@ Igualmente, quando o  valor de `eventName` é `"focus"`, por exemplo, `v-on:[eve
 
 #### Dynamic Argument Value Constraints
 
-Dynamic arguments are expected to evaluate to a string, with the exception of `null`. The special value `null` can be used to explicitly remove the binding. Any other non-string value will trigger a warning.
+Parâmetros dinâmicos são passados para _String_, com exceção do `null`. O valor especial `null` pode ser usado explicitamente para remover um vinculo. Qualquer outro valor que não seja uma _String_ acionará um aviso.
+
+<!-- Dynamic arguments are expected to evaluate to a string, with the exception of `null`. The special value `null` can be used to explicitly remove the binding. Any other non-string value will trigger a warning. -->
 
 #### Dynamic Argument Expression Constraints
 
-<p class="tip">Dynamic argument expressions have some syntax constraints because certain characters are invalid inside HTML attribute names, such as spaces and quotes. You also need to avoid uppercase keys when using in-DOM templates.</p>
+<p class="tip">Expressões de parâmetros dinâmicos possuem algumas restrições de sintaxe por causa de determinados caracteres que são inválidos dentro de nomes de atributos HTML, como espaços e aspas. Você também precisa evitar letras maiúsculas ao usar _templates_ no _DOM_.</p>
 
-For example, the following is invalid:
+<!-- <p class="tip">Dynamic argument expressions have some syntax constraints because certain characters are invalid inside HTML attribute names, such as spaces and quotes. You also need to avoid uppercase keys when using in-DOM templates.</p> -->
+
+Por exemplo, o seguinte é inválido:
 
 ``` html
-<!-- This will trigger a compiler warning. -->
+<!-- Isso irá disparar um aviso do compilador. -->
 <a v-bind:['foo' + bar]="value"> ... </a>
 ```
 
-The workaround is to either use expressions without spaces or quotes, or replace the complex expression with a computed property.
+A solução alternativa é usa expressões sem espaço ou aspas, ou simplesmente substituir a expressão complexa por um dado computado.
 
-In addition, if you are using in-DOM templates (templates directly written in an HTML file), you have to be aware that browsers will coerce attribute names into lowercase:
+Além disso, se você esta usando _templates_ (_templates_ escrito diretamente no arquivo HTML), você deve estar ciente que os navegadores irão forçar os nomes de atributos a ficarem minúsculas:
+
+<!-- In addition, if you are using in-DOM templates (templates directly written in an HTML file), you have to be aware that browsers will coerce attribute names into lowercase: -->
 
 ``` html
-<!-- This will be converted to v-bind:[someattr] in in-DOM templates. -->
+<!-- Isso será convertido em v-bind:[someattr] no DOM. -->
 <a v-bind:[someAttr]="value"> ... </a>
 
 ### Modificadores
