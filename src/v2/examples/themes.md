@@ -1,11 +1,11 @@
 ---
-title: Themes
+title: Temas
 type: examples
 is_new: true
 order: 13
 ---
 
-> Com esse exemplo the examples below built by our partners from [Creative Tim](https://creative-tim.com?affiliate_id=116187) you can see how a real world application is built, the technology stack behind it and how most of the concepts you've learned so far apply in a real world application.
+> Com os exemplos abaixo criados pelos nossos parceiros da [Creative Tim](https://creative-tim.com?affiliate_id=116187) você pode ver como uma aplicação do mundo real é construída, o _stack_ de tecnologias por trás dela e a maioria dos conceitos que você aprendeu até agora aplicados em aplicações no mundo real.
 
 {% raw %}
 
@@ -22,7 +22,7 @@ order: 13
    <div class="see-more-container">
     <a :href="`https://www.creative-tim.com/bootstrap-themes/vuejs-themes?affiliate_id=${affiliateId}`"
        class="button white see-more-link">
-       See More Themes
+       Veja Mais Temas
     </a>
    </div>
 </div>
