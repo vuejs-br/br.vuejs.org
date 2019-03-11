@@ -128,6 +128,59 @@ Outro simples exemplo é a diretiva `v-on`, que observa eventos do DOM:
 
 Aqui o valor é o nome do evento DOM que ela está escutando. Falaremos sobre gerenciamento de eventos com mais detalhes em breve.
 
+### Dynamic Arguments
+
+> Novo na versão 2.6.0+
+
+A partir da versão 2.6.0, também é possível usar uma expressão _JavaScript_ no parâmetro de uma diretiva envolvendo-a com colchetes:
+<!-- Starting in version 2.6.0, it is also possible to use a JavaScript expression in a directive argument by wrapping it with square brackets: -->
+
+``` html
+<a v-bind:[attributeName]="url"> ... </a>
+```
+Aqui, `attributeName` será dinamicamente avaliado como uma expressão _JavaScript_, o valor avaliado será usado como o valor final para o parâmetro. Por exemplo, se sua instância do _Vue_ tem um propriedade de dados, `attributeName`, cujo o valor é `"href"`, essa ligação irá ser equivalente a `v-bind:href`.
+<!-- Here `attributeName` will be dynamically evaluated as a JavaScript expression, and its evaluated value will be used as the final value for the argument. For example, if your Vue instance has a data property, `attributeName`, whose value is `"href"`, then this binding will be equivalent to `v-bind:href`. -->
+
+Igualmente, você pode usar as propriedades dinâmicas para vincular um manipulador a um nome de evento dinâmico:
+
+<!-- Similarly, you can use dynamic arguments to bind a handler to a dynamic event name: -->
+
+``` html
+<a v-on:[eventName]="doSomething"> ... </a>
+```
+Igualmente, quando o  valor de `eventName` é `"focus"`, por exemplo, `v-on:[eventName]` será equivalente a `v-on:focus`.
+
+<!-- Similarly, when `eventName`'s value is `"focus"`, for example, `v-on:[eventName]` will be equivalent to `v-on:focus`. -->
+
+#### Dynamic Argument Value Constraints
+
+Parâmetros dinâmicos são passados para _String_, com exceção do `null`. O valor especial `null` pode ser usado explicitamente para remover um vinculo. Qualquer outro valor que não seja uma _String_ acionará um aviso.
+
+<!-- Dynamic arguments are expected to evaluate to a string, with the exception of `null`. The special value `null` can be used to explicitly remove the binding. Any other non-string value will trigger a warning. -->
+
+#### Dynamic Argument Expression Constraints
+
+<p class="tip">Expressões de parâmetros dinâmicos possuem algumas restrições de sintaxe por causa de determinados caracteres que são inválidos dentro de nomes de atributos HTML, como espaços e aspas. Você também precisa evitar letras maiúsculas ao usar _templates_ no _DOM_.</p>
+
+<!-- <p class="tip">Dynamic argument expressions have some syntax constraints because certain characters are invalid inside HTML attribute names, such as spaces and quotes. You also need to avoid uppercase keys when using in-DOM templates.</p> -->
+
+Por exemplo, o seguinte é inválido:
+
+``` html
+<!-- Isso irá disparar um aviso do compilador. -->
+<a v-bind:['foo' + bar]="value"> ... </a>
+```
+
+A solução alternativa é usa expressões sem espaço ou aspas, ou simplesmente substituir a expressão complexa por um dado computado.
+
+Além disso, se você esta usando _templates_ (_templates_ escrito diretamente no arquivo HTML), você deve estar ciente que os navegadores irão forçar os nomes de atributos a ficarem minúsculas:
+
+<!-- In addition, if you are using in-DOM templates (templates directly written in an HTML file), you have to be aware that browsers will coerce attribute names into lowercase: -->
+
+``` html
+<!-- Isso será convertido em v-bind:[someattr] no DOM. -->
+<a v-bind:[someAttr]="value"> ... </a>
+
 ### Modificadores
 
 Modificadores são sufixos especiais denotados por um ponto, que indicam que aquela diretiva deve ser vinculada de alguma maneira especial. Por exemplo, o modificador `.prevent` indica que o `v-on` chamará a função `event.preventDefault()` quando o evento for disparado:
