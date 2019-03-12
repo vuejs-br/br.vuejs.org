@@ -167,7 +167,7 @@ Para estes casos, o elemento `<slot>` em um atributo especial chamado, `name`, q
 
 Um `<slot>` sem `name` implica implicitamente como "_default_".
 
-Para fornecer conteúdo para _slots_ nomeados, nos podemos usar a diretiva `v-slot` em um `<template>`, fornecendo o nome do _slot_ como arumento do `v-slot`:
+Para fornecer conteúdo para _slots_ nomeados, nos podemos usar a diretiva `v-slot` em um `<template>`, fornecendo o nome do _slot_ como argumento do `v-slot`:
 
 ```html
 <base-layout>
