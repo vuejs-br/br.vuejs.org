@@ -9,7 +9,7 @@ Este arquivo ainda não foi traduzido! Leia a versão original em inglês a segu
 
 > Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
 
->Na verão 2.6, Nós introduzimos uma nova syntax unificada (A diretiva `v-slot`) para os slots nomeados e com escopo. Ele substitui os atributos `slot` e `slot-scope`, o qual estão agora obsoletos, mas não foram removidos e ainda estão documentados [aqui](#Deprecated-Syntax). Os fundamentos ara nova sintax é descrita neste [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md).
+> Na verão 2.6, Nós introduzimos uma nova sintaxe unificada (A diretiva `v-slot`) para os slots nomeados e com escopo. Ele substitui os atributos `slot` e `slot-scope`, o qual estão agora obsoletos, mas não foram removidos e ainda estão documentados [aqui](#Deprecated-Syntax). Os fundamentos para a nova sintaxe estão descritos neste [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md).
 
 ## Conteúdos _Slot_
 
@@ -38,7 +38,7 @@ Quando o componente renderizar, o elemento `<slot>`  será substituido por "Seu 
 
 ``` html
 <navigation-link url="/profile">
-  <!-- Adicionando icones Font Awesome -->
+  <!-- Adicionando ícones Font Awesome -->
   <span class="fa fa-user"></span>
   Seu Perfil
 </navigation-link>
@@ -48,13 +48,13 @@ Ou até mesmo outros componentes:
 
 ``` html
 <navigation-link url="/profile">
-  <!-- Usado um componente para adcionar um icone -->
+  <!-- Usado um componente para adicionar um ícone -->
   <font-awesome-icon name="user"></font-awesome-icon>
   Seu Perfil
 </navigation-link>
 ```
 
-Se no `<navigation-link>`  **NÃO** contém elemento `<slot>`, qualquer conteúdo passado para ele simplesmente será discartado.
+Se no `<navigation-link>`  **NÃO** contém elemento `<slot>`, qualquer conteúdo passado para ele simplesmente será descartado.
 
 ## Escopo de compilação
 
@@ -92,7 +92,7 @@ Há casos em que é útil especificar o conteúdo de _falllback_ (i.e. padrão) 
 </button>
 ```
 
-Pordemos querer que o texto "Enviar" seja renderizado dentro do `<button>` na maioria das vezes. para "Enviar" o conteúdo de _fallback_, podemos colocá-lo entre as _tags_ `<slot>`:
+Podemos querer que o texto "Enviar" seja renderizado dentro do `<button>` na maioria das vezes. para "Enviar" o conteúdo de _fallback_, podemos colocá-lo entre as _tags_ `<slot>`:
 
 ```html
 <button type="submit">
@@ -131,9 +131,9 @@ Então, o conteúdo fornecido será renderizado:
 ```
 ## Slots Nomeados
 
-> Atualizado em 2.6.0+. [Veja aqui](#Sintaxe-Obsoleta) para a sintax obsoleta usando o atributo `slot`.
+> Atualizado em 2.6.0+. [Veja aqui](#Sintaxe-Obsoleta) para a sintaxe obsoleta usando o atributo `slot`.
 
-Há momentos que é útil ter multiplos elementos slots. Por exemplo, em um componente `<base-layout>` com o seguinte template:
+Há momentos que é útil ter múltiplos elementos slots. Por exemplo, em um componente `<base-layout>` com o seguinte template:
 
 ``` html
 <div class="container">
@@ -222,7 +222,7 @@ De qualquer forma, O _HTML_ renderizado será:
 </div>
 ```
 
-Observe que **`v-slot` só pode ser adicionado a um `<template>`** (com [uníca exeção](#sintaxe-abreviada-para-slots-default)), ao contrário dos  [atributos `slot`](#Deprecated-Syntax).
+Observe que **`v-slot` só pode ser adicionado a um `<template>`** (com [única exceção](#sintaxe-abreviada-para-slots-default)), ao contrário dos  [atributos `slot`](#Deprecated-Syntax).
 
 ## _Scoped Slots_
 
@@ -243,7 +243,7 @@ Podemos querer substituir esse conteúdo de _fallback_ para exibir o primeiro no
 </current-user>
 ```
 
-Isso não funcionará, no entando, porque somente o componente `<current-user>` tem acesso ao `user` e ao conteúdo que estamos fornecendo é renderizado no pai.
+Isso não funcionará, no entanto, porque somente o componente `<current-user>` tem acesso ao `user` e ao conteúdo que estamos fornecendo é renderizado no pai.
 
 Para tornar `user` disponível para o conteúdo do _slot_ no pai, podemos ligar `user` como um atributo do elemento `<slot>`:
 
@@ -285,14 +285,14 @@ Isso pode ser encurtado ainda mais. Assim como o conteúdo não especificado é 
 </current-user>
 ```
 
-Observe que a sintax abreviada para o  _slot default_ **NÂO PODE** ser misturado com slots nomeados, pois isso levaria a ambiguidade do escopo:
+Observe que a sintax abreviada para o  _slot default_ **NÃO PODE** ser misturado com slots nomeados, pois isso levaria a ambiguidade do escopo:
 
 ``` html
 <!-- INVALID, will result in warning -->
 <current-user v-slot="slotProps">
   {{ slotProps.user.firstName }}
   <template v-slot:other="otherSlotProps">
-    slotProps NÂO está disponível aqui!
+    slotProps NÃO está disponível aqui!
   </template>
 </current-user>
 ```
@@ -531,7 +531,7 @@ Aqui `slot=default` pode ser omitido como está implícito:
 </slot-example>
 ```
 
-O atributo `slot-scope` pode tambpem ser usado diretamente em elementos que não seja `<template>` (incluindo componentes):
+O atributo `slot-scope` pode também ser usado diretamente em elementos que não seja `<template>` (incluindo componentes):
 
 ``` html
 <slot-example>
