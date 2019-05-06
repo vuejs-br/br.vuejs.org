@@ -103,7 +103,7 @@ new Vue({
 
 ## O Contexto de Métodos de Prototype
 
-Para o caso de você não estar consciente, métodos adicionados no prototype do JavaScrit ganham o contexto da instância. Isso quer dizer que pode-se usar `this` para acessar dados, dados computados, métodos ou qualquer coisa definida na instância.
+Para o caso de você não estar consciente, métodos adicionados no prototype do JavaScript ganham o contexto da instância. Isso quer dizer que pode-se usar `this` para acessar dados, dados computados, métodos ou qualquer coisa definida na instância.
 
 Vamos tomar vantagem disso no método `$reverseText`:
 

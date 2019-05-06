@@ -8,7 +8,7 @@ order: 102
 
 ## Notação (camelCase vs. kebab-case)
 
-O nome de atributos do HTML são insensíveis a maiúsculas e minúsculas, dessa forma os navegadores irão interpretar qualquer letra maiúscula como minúscula. Isso significa que quando você está usando _templates_ diretamento no DOM (quando o Vue é utilizado diretamente em uma página HTML existente), nomes de propriedades em camelCase precisam utilizar os seus equivalentes em kebab-case (delimitados por hífen):
+O nome de atributos do HTML são insensíveis a maiúsculas e minúsculas, dessa forma os navegadores irão interpretar qualquer letra maiúscula como minúscula. Isso significa que quando você está usando _templates_ diretamente no DOM (quando o Vue é utilizado diretamente em uma página HTML existente), nomes de propriedades em camelCase precisam utilizar os seus equivalentes em kebab-case (delimitados por hífen):
 
 ``` js
 Vue.component('blog-post', {
