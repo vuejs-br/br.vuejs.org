@@ -2160,6 +2160,59 @@ type: api
   - [Interligações em Formulários](../guide/forms.html)
   - [Componentes - Componentes de Formulários usando Eventos Personalizados](../guide/components.html#Componentes-de-Formularios-usando-Eventos-Personalizados)
 
+### v-slot
+
+- **Forma abreviada:** `#`
+
+- **Espera:** Expressão JavaScript válida em uma posição de argumento de função (suporta desestruturação em [ambientes suportados](../guide/components-slots.html#Slot-Props-Destructuring)). Opcional - necessário apenas caso espere-se que os objetos sejam passados para o slot.
+
+- **Argumento:** nome do slot  (opcional, padrão `default`)
+
+- **Limitado a:**
+  - `<template>`
+  - [componentes](../guide/components-slots.html#Abbreviated-Syntax-for-Lone-Default-Slots) (para um único slot padrão com propriedades)
+
+- **Uso:**
+
+  Denotar slots ou slots nomeados que esperam receber propriedades.
+
+- **Examplo:**
+
+  ```html
+  <!-- Nome do slots -->
+  <base-layout>
+    <template v-slot:header>
+      Conteúdo do cabeçalho
+    </template>
+
+    Conteúdo padrão do slot
+
+    <template v-slot:footer>
+      Conteúdo do rodapé
+    </template>
+  </base-layout>
+
+  <!-- Slote nomeado que recebpe propriedades -->
+  <infinite-scroll>
+    <template v-slot:item="slotProps">
+      <div class="item">
+        {{ slotProps.item.text }}
+      </div>
+    </template>
+  </infinite-scroll>
+
+  <!-- Slote padrão que recebe proriedades, com desestruturação -->
+  <mouse-position v-slot="{ x, y }">
+    Posição do mouse: {{ x }}, {{ y }}
+  </mouse-position>
+  ```
+
+  Para mais detalhes, veja os links abaixo.
+
+- **Veja também:**
+  - [Componentes - Slots](../guide/components-slots.html)
+  - [RFC-0001](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md)
+
 ### v-pre
 
 - **Não espera expressão**

@@ -164,4 +164,4 @@ O modificador `.sync` também pode ser usado com o `v-bind` ao usar um objeto pa
 
 Isso passa cada propriedade no objeto `doc` (por exemplo, `title`) como uma propriedade individual, em seguida, adiciona escutas de atualização para cada `v-on`.
 
-<p class="tip">Usar <code>v-bind.sync</code> com objetos literais, como em <code>v-bind.sync="{ title: doc.title }"</code>, não funcionárá, pois há muitos pequenos casos a serem considerados na análise de uma expressão complexa.</p>
+<p class="tip">Usar <code>v-bind.sync</code> com objetos literais, como em <code>v-bind.sync="{ title: doc.title }"</code>, não funcionará, pois há muitos pequenos casos a serem considerados na análise de uma expressão complexa.</p>
