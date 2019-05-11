@@ -152,7 +152,7 @@ Use o novo gatilho `beforeCreate` em vez disso, o que é essencialmente o mesmo.
 </div>
 {% endraw %}
 
-### `ready` <sup>Substituído</sup>
+### `ready` <sup>substituído</sup>
 
 Use o novo gatilho `mounted` em vez disso. Deve notar-se que, com `mounted`, não há garantia de estar no documento pronto. Para isso, também inclua `Vue.nextTick`/`vm.$nextTick`. Por exemplo:
 
@@ -206,7 +206,7 @@ As variáveis `$index` e `$key` implicitamente atribuídas foram removidas em fa
 </div>
 {% endraw %}
 
-### `track-by` <sup>Substituído</sup>
+### `track-by` <sup>substituído</sup>
 
 `track-by` foi substituído por uma `key`, que funciona como qualquer outro atributo: sem o `v-bind:` ou o prefixo  `:`, é tratado como uma string literal. Na maioria dos casos, você desejará usar uma vinculação dinâmica que espera uma expressão completa ao invés de uma chave. Por exemplo, no lugar de:
 
