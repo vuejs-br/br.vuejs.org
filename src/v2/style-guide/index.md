@@ -9,7 +9,7 @@ Este é o guia oficial de estilos para o código Vue. Se você usa Vue em seus p
 
 Na maior parte do guia, também evitamos sugestões sobre JavaScript ou HTML de um modo em geral. Não é importante para o guia se você usa ponto-e-vírgula no final da linha, ou se usa aspas simples ou duplas nos valores de atributos de seu HTML. Entretanto, algumas exceções podem existir, se encontrarmos algum detalhe particular que seja interessante no contexto do Vue.
 
-> **Em breve, proveremos dicas para automação.** As vezes temos que ser apenas disciplinados, mas sempre que possível, devemos exibir a vocês como usar o ESLint e outos programas do tipo para tornar este trabalho mais fácil.
+> **Em breve, proveremos dicas para automação.** As vezes temos que ser apenas disciplinados, mas sempre que possível, devemos exibir a vocês como usar o ESLint e outros programas do tipo para tornar este trabalho mais fácil.
 
 Finalmente, vamos dividir as regras de estilos em quatro categorias:
 
