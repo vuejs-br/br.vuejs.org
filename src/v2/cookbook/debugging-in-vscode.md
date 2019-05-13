@@ -86,14 +86,14 @@ Existem outros métodos para depurar, com diversas complexidades. A mais popular
 
 ![Depuração Temporal no Vue Devtools](/images/devtools-timetravel.gif)
 
-<p class="tip">Vale observar que se a página usa uma versão de produção/minificada do Vue.js (como o _link_ padrão do CDN), a inspeção do _devtools_ é desabilitada por padrão, então o painel Vue não vai aparecer. Se você trocar para uma versão não minificada, você pode ter de realizar uma atualização forçada para ve-lo (limpando o cache do navegador, por exemplo).
+<p class="tip">Vale observar que se a página usa uma versão de produção/minificada do Vue.js (como o _link_ padrão do CDN), a inspeção do _devtools_ é desabilitada por padrão, então o painel Vue não vai aparecer. Se você trocar para uma versão não minificada, você pode ter de realizar uma atualização forçada para vê-lo (limpando o cache do navegador, por exemplo).
 </p>
 
 ### Vuetron
 
 [Vuetron](http://vuetron.io/) é um projeto realmente legal, que amplia o trabalho que o _devtools_ tem feito. Em adição ao fluxo de trabalho normal do _devtools_, você será capaz de:
 
-* Rapidamente ver requisições/repostas da API: se você está usando a API `fetch` para requisições, o evento será exibido para qualquer requisição feita. A área de informação detalhada exibe os dados da requisição, bem como o dados da resposta.
+* Rapidamente ver requisições/respostas da API: se você está usando a API `fetch` para requisições, o evento será exibido para qualquer requisição feita. A área de informação detalhada exibe os dados da requisição, bem como os dados da resposta.
 * Observar partes específicas do estado da sua aplicação para depuração rápida.
 * Visualizar a hierarquia de componentes e uma animação que permite esconder ou exibir a árvore da hierarquia específica de um componente.
 

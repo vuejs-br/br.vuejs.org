@@ -6,7 +6,7 @@ order: 2
 
 ## Exemplo Base
 
-Este exemplo pode ser util se você gostaria de usar muitos componentes, mas sem [poluir o escopo global](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md). Nesses casos, você pode fazer que eles estejam disponíveis em cada instância Vue definindo eles no prototype:
+Este exemplo pode ser útil se você gostaria de usar muitos componentes, mas sem [poluir o escopo global](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md). Nesses casos, você pode fazer que eles estejam disponíveis em cada instância Vue definindo eles no prototype:
 
 ```js
 Vue.prototype.$appName = 'Meu Aplicativo'
@@ -200,6 +200,6 @@ new Vue({
 ```
 
 ### Quando se Está Usando um Sistema de Módulos
-Quando você tem acesso a um sistema de módulos, você pode facilmente organizar seu código em módulos e então `require`/`import` esses módulos onde você precisar deles. Isso é o resumo da clarezaz, porque em cada arquivo você ganha uma lista de dependências. Você sabe _exatamente_ de onde cada um deles veio.
+Quando você tem acesso a um sistema de módulos, você pode facilmente organizar seu código em módulos e então `require`/`import` esses módulos onde você precisar deles. Isso é o resumo da clareza, porque em cada arquivo você ganha uma lista de dependências. Você sabe _exatamente_ de onde cada um deles veio.
 
 Enquanto isso é certamente mais verboso, essa abordagem é definitivamente mais sustentável, especialmente quando trabalhando com outros desenvolvedores ou/e construindo aplicativos de grande porte.

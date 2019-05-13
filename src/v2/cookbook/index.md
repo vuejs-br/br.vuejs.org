@@ -86,4 +86,4 @@ Esta seção é necessária quando você usa a seção acima. É importante expl
 
 ## Obrigado
 
-É preciso tempo para contribuir com a documentação. Então, se você usar o seu tempo para enviar um _pull rquest_ para esta seção de nossos documentos, faça isso com toda nossa gratidão.
+É preciso tempo para contribuir com a documentação. Então, se você usar o seu tempo para enviar um _pull request_ para esta seção de nossos documentos, faça isso com toda nossa gratidão.

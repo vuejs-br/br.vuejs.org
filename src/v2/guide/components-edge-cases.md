@@ -357,7 +357,7 @@ Graças ao sistema de reatividade do Vue, ele sempre sabe quando atualizar a int
 
 ### Forçando uma Atualização
 
-<p class="tip">Se você se encontrar na situação de precisar forçar uma atualiação no Vue, em 99,99% dos casos, você cometeu algum erro em algum lugar.</p>
+<p class="tip">Se você se encontrar na situação de precisar forçar uma atualização no Vue, em 99,99% dos casos, você cometeu algum erro em algum lugar.</p>
 
 Você pode não ter levado em consideração as ressalvas na detecção de mudanças [com Arrays](list.html#list.html#Limitacoes) ou [objetos](list.html#Detectando-Mudancas-em-Objetos), ou você pode estar contando com um estado que não é monitorado pelo sistema de reatividade do Vue, por exemplo, com `data`.
 
