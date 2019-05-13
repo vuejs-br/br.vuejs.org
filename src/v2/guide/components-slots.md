@@ -4,9 +4,6 @@ type: guide
 order: 104
 ---
 
-<p class="tip">**Nota da Equipe de Tradução**
-Este arquivo ainda não foi traduzido! Leia a versão original em inglês a seguir e, se puder, colabore com sua tradução: acesse [nosso projeto no GitHub](https://github.com/vuejs-br/br.vuejs.org/issues), avise que irá contribuir e inicie a tradução. Sua participação é muito importante!</p>
-
 > Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
 
 > Na verão 2.6, Nós introduzimos uma nova sintaxe unificada (A diretiva `v-slot`) para os slots nomeados e com escopo. Ele substitui os atributos `slot` e `slot-scope`, o qual estão agora obsoletos, mas não foram removidos e ainda estão documentados [aqui](#Deprecated-Syntax). Os fundamentos para a nova sintaxe estão descritos neste [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md).
