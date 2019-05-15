@@ -66,7 +66,13 @@ Um objeto de definição de diretiva pode prover algumas funções de gatilhos (
 
 - `update`: chamada após a atualização do VNode que contém o componente, __mas possivelmente antes da atualização de seus filhos__. O valor da diretiva pode ou não ter mudado, mas você pode evitar atualizações desnecessárias comparando os valores atuais com os antigos (veja abaixo, em argumentos dos gatilhos).
 
+<<<<<<< HEAD
 - `componentUpdated`: chamada após a atualização do Vnode que contém o componente, __inclusive de seus filhos__.
+=======
+<p class="tip">We'll cover VNodes in more detail [later](./render-function.html#The-Virtual-DOM), when we discuss [render functions](./render-function.html).</p>
+
+- `componentUpdated`: called after the containing component's VNode __and the VNodes of its children__ have updated.
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 - `unbind`: chamada somente uma vez, quando a diretiva é desvinculada do elemento.
 
@@ -141,7 +147,42 @@ new Vue({
 </script>
 {% endraw %}
 
+<<<<<<< HEAD
 ## Forma Abreviada de Funções
+=======
+Directive arguments can be dynamic. For example, in `v-mydirective:argument=[dataproperty]`, `argument` is the string value assigned to the *arg* property in your directive hook *binding* parameter and `dataproperty` is a reference to a data property on your component instance assigned to the *value* property in the same *binding* parameter. As directive hooks are invoked, the *value* property of the *binding* parameter will dynamically change based on the value of `dataproperty`.
+
+An example of a custom directive using a dynamic argument:
+
+```html
+<div id="app">
+  <p>Scroll down the page</p>
+  <p v-tack:left="[dynamicleft]">I’ll now be offset from the left instead of the top</p>
+</div>
+```
+
+```js
+Vue.directive('tack', {
+  bind(el, binding, vnode) {
+    el.style.position = 'fixed';
+    const s = (binding.arg == 'left' ? 'left' : 'top');
+    el.style[s] = binding.value + 'px';
+  }
+})
+
+// start app
+new Vue({
+  el: '#app',
+  data() {
+    return {
+      dynamicleft: 500
+    }
+  }
+})
+```
+
+## Function Shorthand
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 Em muitos casos, você pode querer ter o mesmo comportamento nos gatilhos `bind` e `update`, e não se importar com os outros gatilhos. Por exemplo:
 

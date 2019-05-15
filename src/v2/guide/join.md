@@ -8,16 +8,31 @@ A comunidade Vue está crescendo incrivelmente rápido e, se você está lendo i
 
 Agora iremos responder tanto o que a comunidade pode fazer por você, quanto o que você pode fazer por nós.
 
+<<<<<<< HEAD
 ## Recursos para Você Aproveitar
+=======
+## Resources
+
+### Code of Conduct
+
+Our [Code of Conduct](/coc) is a guide to make it easier to enrich all of us and the technical communities in which we participate.
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ### Obtendo Suporte
 
+<<<<<<< HEAD
 - [Fórum](https://forum.vuejs.org/) (_inglês_): O melhor lugar para fazer perguntas e obter respostas sobre Vue e seu ecossistema.
 - [Fórum Brasileiro](https://github.com/vuejs-br/forum) (_português_): Iniciativa da comunidade brasileira para dúvidas e respostas sobre Vue e seu ecossistema em português.
 - [Chat](https://chat.vuejs.org/) (_inglês_): Um local para desenvolvedores se encontrarem e conversarem em tempo real.
 - [Meetups](https://www.vuemeetups.org): Quem encontrar entusiastas locais do Vue.js perto de você? Interessado em se tornar um líder da comunidade? Temos o suporte que você precisa bem aqui!
 - [GitHub](https://github.com/vuejs) (_inglês_): Se encontrar um _bug_ ou quiser solicitar algum recurso, é para isso que _issues_ do GitHub estão lá. Também agradecemos _pull requests_!
 - [Comunidade Brasileira](https://github.com/vuejs-br/comunidades) (_português_): Se a conversa em inglês não é muito sua praia, a comunidade brasileira criou uma lista com todos locais oficialmente reconhecidos, para que você possa se envolver sem abandonar a última flor do Lácio.
+=======
+- [Forum](https://forum.vuejs.org/): The best place to ask questions and get answers about Vue and its ecosystem.
+- [Chat](https://chat.vuejs.org/): A place for Vue devs to meet and chat in real time.
+- [Meetups](https://events.vuejs.org/meetups): Want to find local Vue.js enthusiasts like yourself? Interested in becoming a community leader? We have the help and support you need right here!
+- [GitHub](https://github.com/vuejs): If you have a bug to report or feature to request, that's what the GitHub issues are for. We also welcome pull requests!
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ### Explorando o Ecossistema
 
@@ -58,8 +73,16 @@ Se quiser, sinta-se à vontade para fazer um _fork_ do repositório [desta docum
 
 Há muito que você pode fazer para ajudar o Vue a crescer em sua comunidade:
 
+<<<<<<< HEAD
 - **Apresente-se em seu meetup local.** Seja oferecendo uma palestra ou ministrando um _workshop_, você pode agregar muito valor à sua comunidade ao ajudar tanto novos quanto experientes desenvolvedores Vue a continuarem crescendo.
 - **Inicie seu próprio meetup.** Se ainda não há um meetup Vue em sua área, você pode iniciar o seu próprio! Utilize os recursos disponíveis em [vuemeetups.org](https://www.vuemeetups.org/resources/#introduction) para lhe ajudar!
 - **Ajude organizadores de meetups.** Pode nunca haver ajuda demais quando se trata de organizar um evento, então dê uma mão para ajudar os organizadores locais a fazer de cada evento um sucesso.
 
 Se você tiver qualquer dúvida sobre como pode se envolver mais com sua comunidade Vue local, entre em contato em [hello@vuemeetups.org](mailto:hello@vuemeetups.org) ou [@VueMeetups](https://www.twitter.com/vuemeetups)!
+=======
+- **Present at your local meetup.** Whether it's giving a talk or running a workshop, you can bring a lot of value to your community by helping both new and experienced Vue developers continue to grow.
+- **Start your own meetup.** If there's not already a Vue meetup in your area, you can start your own! Use the [resources at events.vuejs.org](https://events.vuejs.org/resources/#getting-started) to help you succeed!
+- **Help meetup organizers.** There can never be too much help when it comes to running an event, so offer a hand to help out local organizers to help make every event a success.
+
+If you have any questions on how you can get more involved with your local Vue community, reach out at [@Vuejs_Events](https://www.twitter.com/vuejs_events)!
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b

@@ -1,14 +1,24 @@
 ---
+<<<<<<< HEAD
 title: Temas
+=======
+title: Themes
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 type: examples
 is_new: true
 order: 13
 ---
+<<<<<<< HEAD
 
 > Com os exemplos abaixo criados pelos nossos parceiros da [Creative Tim](https://creative-tim.com?affiliate_id=116187) você pode ver como uma aplicação do mundo real é construída, o _stack_ de tecnologias por trás dela e a maioria dos conceitos que você aprendeu até agora aplicados em aplicações no mundo real.
 
 {% raw %}
 
+=======
+> With the examples below built by our partners from [Creative Tim](https://creative-tim.com?affiliate_id=116187) you can see how a real world application is built, the technology stack behind it and how most of the concepts you've learned so far apply in a real world application. 
+
+{% raw %}
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 <div id="themes-example" class="themes-grid">
    <div v-for="product in products" :key="product.name" class="item-preview">
      <a class="item-preview-img" :href="`https://www.creative-tim.com/product/${product.name}?affiliate_id=${affiliateId}`" rel="nofollow">
@@ -22,7 +32,11 @@ order: 13
    <div class="see-more-container">
     <a :href="`https://www.creative-tim.com/bootstrap-themes/vuejs-themes?affiliate_id=${affiliateId}`"
        class="button white see-more-link">
+<<<<<<< HEAD
        Veja Mais Temas
+=======
+       See More Themes
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
     </a>
    </div>
 </div>

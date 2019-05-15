@@ -41,7 +41,19 @@ Existem alguns recursos do Vue usados para lidar com casos isolados ou migraçõ
 
 **Nomes de componentes devem ser sempre multi-palavras, exceto a raiz `App`.**
 
+<<<<<<< HEAD
 Isto [previne conflitos](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name) com elementos HTML existentes e futuros, visto que todos os elementos HTML são formados por apenas uma única palavra.
+=======
+## Priority A Rules: Essential (Error Prevention)
+
+
+
+### Multi-word component names <sup data-p="a">essential</sup>
+
+**Component names should always be multi-word, except for root `App` components, and built-in components provided by Vue, such as `<transition>` or `<component>`.**
+
+This [prevents conflicts](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name) with existing and future HTML elements, since all HTML elements are a single word.
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Exemplo Ruim
@@ -320,7 +332,7 @@ Quando o Vue processa diretivas, `v-for` tem maior prioridade que `v-if`, então
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 
@@ -355,7 +367,7 @@ computed: {
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 
@@ -375,7 +387,7 @@ Temos benefícios semelhantes ao trocar:
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 
@@ -388,7 +400,7 @@ Por:
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 
@@ -409,7 +421,7 @@ Em vez disso, verificamos apenas uma vez e nem avaliamos o `v-for` se `shouldSho
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 
@@ -421,7 +433,7 @@ Em vez disso, verificamos apenas uma vez e nem avaliamos o `v-for` se `shouldSho
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 {% raw %}</div>{% endraw %}
@@ -436,7 +448,7 @@ Em vez disso, verificamos apenas uma vez e nem avaliamos o `v-for` se `shouldSho
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 
@@ -447,7 +459,7 @@ Em vez disso, verificamos apenas uma vez e nem avaliamos o `v-for` se `shouldSho
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 {% raw %}</div>{% endraw %}
@@ -551,7 +563,14 @@ Além do atributo `scoped`, usar nomes de classes únicas pode garantir que CSS 
 
 ### Nome de Propriedades Privadas <sup data-p="a">Essencial</sup>
 
+<<<<<<< HEAD
 **Use sempre o prefixo `$_` para propriedades privadas em um _plugin_, _mixin_, etc. Para evitar conflitos com o código de outros autores, também inclua um escopo (por exemplo,`$_yourPluginName_`).**
+=======
+
+### Private property names <sup data-p="a">essential</sup>
+
+**Use module scoping to keep private functions inaccessible from the outside. If that's not possible, always use the `$_` prefix for custom private properties in a plugin, mixin, etc that should not be considered public API. Then to avoid conflicts with code by other authors, also include a named scope (e.g. `$_yourPluginName_`).**
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 {% raw %}
 <details>
@@ -628,6 +647,25 @@ var myGreatMixin = {
     }
   }
 }
+```
+
+``` js
+// Even better!
+var myGreatMixin = {
+  // ...
+  methods: {
+    publicMethod() {
+      // ...
+      myPrivateFunction()
+    }
+  }
+}
+
+function myPrivateFunction() {
+  // ...
+}
+
+export default myGreatMixin
 ```
 {% raw %}</div>{% endraw %}
 
@@ -1180,9 +1218,9 @@ props: {
 }
 ```
 
-``` html
+{% codeblock lang:html %}
 <WelcomeMessage greetingText="hi"/>
-```
+{% endcodeblock %}
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
@@ -1194,9 +1232,9 @@ props: {
 }
 ```
 
-``` html
+{% codeblock lang:html %}
 <WelcomeMessage greeting-text="hi"/>
-```
+{% endcodeblock %}
 {% raw %}</div>{% endraw %}
 
 ### Elementos com multi atributos <sup data-p="b">fortemente recomendado</sup>
@@ -1647,7 +1685,13 @@ computed: {
 
 **É usualmente melhor usar `key` com `v-if` + `v-else`, se eles são do mesmo tipo de elemento (ex. dois elementos `<div>`).**
 
+<<<<<<< HEAD
 Por padrão, o Vue atualiza o DOM da forma mais eficiente possível. Isso significa que, ao alternar entre elementos do mesmo tipo, ele simplesmente atualiza o elemento existente, em vez de removê-lo e adicionar um novo em seu lugar. Isso pode ter [efeitos colaterais não intencionais](https://jsfiddle.net/chrisvfritz/bh8fLeds/) se esses elementos não devessem realmente ser considerados os mesmos.
+=======
+**It's usually best to use `key` with `v-if` + `v-else`, if they are the same element type (e.g. both `<div>` elements).**
+
+By default, Vue updates the DOM as efficiently as possible. That means when switching between elements of the same type, it simply patches the existing element, rather than removing it and adding a new one in its place. This can have [unintended consequences](https://jsfiddle.net/chrisvfritz/bh8fLeds/) if these elements should not actually be considered the same.
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Exemplo Ruim
@@ -1676,15 +1720,6 @@ Por padrão, o Vue atualiza o DOM da forma mais eficiente possível. Isso signif
   v-else
   key="search-results"
 >
-  {{ results }}
-</div>
-```
-
-``` html
-<p v-if="error">
-  Error: {{ error }}
-</p>
-<div v-else>
   {{ results }}
 </div>
 ```
@@ -1919,7 +1954,7 @@ export default {
   var enforcementTypes = {
     none: '<span title="There is unfortunately no way to automatically enforce this rule.">self-discipline</span>',
     runtime: 'runtime error',
-    linter: '<a href="https://github.com/vuejs/eslint-plugin-vue#eslint-plugin-vue" target="_blank">plugin:vue/recommended</a>'
+    linter: '<a href="https://github.com/vuejs/eslint-plugin-vue#eslint-plugin-vue" target="_blank" rel="noopener noreferrer">plugin:vue/recommended</a>'
   }
   Vue.component('sg-enforcement', {
     template: '\

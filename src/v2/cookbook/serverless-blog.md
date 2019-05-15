@@ -132,8 +132,13 @@ Em seguida, crie `components/BlogHome.vue` que vai ser a página inicial do seu 
         <router-link :to="'/blog/' + post.slug">
           <article class="media">
             <figure>
+<<<<<<< HEAD
               <!-- Vincula results usando um `:` -->
               <!-- Usa um `v-if`/`else` caso seja `featured_image` -->
+=======
+              <!-- Bind results using a `:` -->
+              <!-- Use a `v-if`/`else` if there is a `featured_image` -->
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
               <img
                 v-if="post.featured_image"
                 :src="post.featured_image"
@@ -241,12 +246,12 @@ Atualize a seção `<script>` em `components/BlogPost.vue`:
       }
     },
     watch: {
-      $route(to, from) {
-        this.getPost()
+      $route: {
+        immediate: true,
+        handler(to, from) {
+          this.getPost()
+        }
       }
-    },
-    created() {
-      this.getPost()
     }
   }
 </script>
@@ -293,7 +298,11 @@ created() {
 
 ## Padrões Alternativos
 
+<<<<<<< HEAD
 Um padrão alternativo a ser considerado, especialmente se você preferir escrever apenas em _Markdown_, é usar algo como o [Nuxtent](https://nuxtent.now.sh/guide/writing#async-components). _Nuxtent_ permite que você use um componente Vue dentro de um arquivo _Markdown_. Essa seria uma abordagem bem parecida à abordagem de um _site_ estático (por exemplo, usando _Jekyll_), onde as postagens do _blog_ são escritas em arquivos _Markdown_. O _Nuxtent_ possui uma boa integração entre o Vue e o _Markdown_, permitindo que você viva 100% no mundo do Vue.
+=======
+An alternative pattern to consider, especially if you prefer writing only in Markdown, is using something like [Nuxtent](https://nuxtent-module.netlify.com/guide/writing/#async-components). Nuxtent allows you to use `Vue Component` inside of Markdown files. This approach would be akin to a static site approach (i.e. Jekyll) where you compose your blog posts in Markdown files. Nuxtent adds a nice integration between Vue.js and Markdown allowing you to live in a 100% Vue.js world.
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ## Considerações Finais
 

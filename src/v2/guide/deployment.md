@@ -1,10 +1,16 @@
 ---
 title: Publicando em Produção
 type: guide
-order: 401
+order: 404
 ---
 
+<<<<<<< HEAD
 ## Habilitando o Modo de Produção
+=======
+> Most of the tips below are enabled by default if you are using [Vue CLI](https://cli.vuejs.org). This section is only relevant if you are using a custom build setup.
+
+## Turn on Production Mode
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 Em desenvolvimento, Vue proporciona uma grande quantidade de avisos para lhe ajudar a escapar das enrascadas mais comuns. Entretanto, estas Strings de aviso se tornam desnecessárias em produção e sobrecarregam o tamanho de sua aplicação. Além disso, algumas checagens têm um pequeno custo de desempenho durante a execução que pode ser evitado ao habilitar o modo de produção.
 
@@ -41,6 +47,7 @@ module.exports = {
   ]
 }
 ```
+
 #### Browserify
 
 - Execute o comando de _build_ com a variável `NODE_ENV` definida para `"production"`. Isto avisará o `vueify` para evitar incluir _hot-reload_ e códigos de desenvolvimento.

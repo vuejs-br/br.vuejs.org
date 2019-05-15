@@ -17,6 +17,7 @@ this.$emit('myEvent')
 Fazer a escuta a uma versão _kebab-cased_ do evento não terá efeito:
 
 ```html
+<!-- Won't work -->
 <my-component v-on:my-event="doSomething"></my-component>
 ```
 
@@ -156,7 +157,13 @@ Por conveniência, oferecemos um atalho para esse padrão com o modificador `.sy
 <text-document v-bind:title.sync="doc.title"></text-document>
 ```
 
+<<<<<<< HEAD
 O modificador `.sync` também pode ser usado com o `v-bind` ao usar um objeto para definir várias propriedades de uma só vez:
+=======
+<p class="tip">Note that <code>v-bind</code> with the <code>.sync</code> modifier does <strong>not</strong> work with expressions (e.g. <code>v-bind:title.sync="doc.title + '!'"</code> is invalid). Instead, you must only provide the name of the property you want to bind, similar to <code>v-model</code>.</p>
+
+The `.sync` modifier can also be used with `v-bind` when using an object to set multiple props at once:
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ```html
 <text-document v-bind.sync="doc"></text-document>

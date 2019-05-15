@@ -11,7 +11,7 @@ Eis que você construiu sua primeira aplicação usando o incrível [template we
 Vamos começar criando um `Dockerfile` na pasta raiz do projeto:
 
 ```docker
-FROM node:9.11.1-alpine
+FROM node:lts-alpine
 
 # instala um servidor http simples para servir conteúdo estático
 RUN npm install -g http-server
@@ -62,16 +62,26 @@ Apesar disso, para casos de uso reais e complexos, pode ser sensato se sustentar
 Vamos refatorar nosso `Dockerfile` para usar o NGINX:
 
  ```docker
+<<<<<<< HEAD
 # estágio de compilação
 FROM node:9.11.1-alpine as build-stage
+=======
+# build stage
+FROM node:lts-alpine as build-stage
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
 
+<<<<<<< HEAD
 # estágio de produção
 FROM nginx:1.13.12-alpine as production-stage
+=======
+# production stage
+FROM nginx:stable-alpine as production-stage
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
