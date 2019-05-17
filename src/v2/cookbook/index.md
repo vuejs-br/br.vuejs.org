@@ -19,6 +19,8 @@ Como o livro de receitas (_cookbook_) é diferente do guia? Por que ele é neces
 <p class="tip">Com todas essas diferenças, observe que o livro de receitas ainda _não_ é um manual passo-a-passo. Para a maioria de seu conteúdo, espera-se que você tenha uma compreensão básica de conceitos como HTML, CSS, JavaScript, npm/yarn, etc.</p>
 
 ## Fazendo Contribuições
+=======
+<p class="tip">With all these differences, please note that the cookbook is still _not_ a step-by-step manual. For most of its content, you are expected to have a basic understanding of concepts like HTML, CSS, JavaScript, npm/yarn, etc.</p>
 
 ### O Que Procuramos?
 

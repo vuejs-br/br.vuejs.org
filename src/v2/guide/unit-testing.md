@@ -1,12 +1,16 @@
 ---
 title: Testes Unitários
 type: guide
-order: 403
+order: 402
 ---
 
+<<<<<<< HEAD
 ## Configuração
 
 Qualquer coisa compatível com um sistema de _build_ baseado em módulos irá funcionar, mas se está procurando uma recomendação específica, tente o [Karma](http://karma-runner.github.io). Ele possui uma gama de _plugins_ disponibilizados pela comunidade, incluindo suporte para [Webpack](https://github.com/webpack/karma-webpack) e [Browserify](https://github.com/Nikku/karma-browserify). Para detalhes sobre a configuração, consulte as respectivas documentações. Estes exemplos de configurações do Karma para [Webpack](https://github.com/vuejs-templates/webpack/blob/master/template/test/unit/karma.conf.js) e [Browserify](https://github.com/vuejs-templates/browserify/blob/master/template/karma.conf.js) podem te ajudar a começar.
+=======
+> [Vue CLI](https://cli.vuejs.org/) has built-in options for unit testing with [Jest](https://github.com/facebook/jest) or [Mocha](https://mochajs.org/) that works out of the box. We also have the official [Vue Test Utils](https://vue-test-utils.vuejs.org/) which provides more detailed guidance for custom setups.
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ## Declarações Simples
 
@@ -31,7 +35,11 @@ Você não precisa fazer nada especial em seus componentes para torná-los test�
 </script>
 ```
 
+<<<<<<< HEAD
 Importe o componente juntamente com o Vue, e você pode fazer quaisquer verificações comuns:
+=======
+Then import the component options along with Vue, and you can make many common assertions (here we are using Jasmine/Jest style `expect` assertions just as an example):
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ``` js
 // Importando o Vue e o componente a ser testado
@@ -71,7 +79,11 @@ describe('MyComponent', () => {
 
 ## Escrevendo Componentes Testáveis
 
+<<<<<<< HEAD
 O resultado da renderização de componentes é primariamente determinado pelas `props` que recebem. Se a renderização de um componente somente depender disto, torna-se bem direto para testar, similar a garantir o valor de retorno de uma função usando diferentes argumentos. Tome um exemplo simplificado:
+=======
+A component's render output is primarily determined by the props it receives. If a component's render output solely depends on its props it becomes straightforward to test, similar to asserting the return value of a pure function with different arguments. Take a simplified example:
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ``` html
 <template>
@@ -128,6 +140,10 @@ it('updates the rendered message when vm.message updates', done => {
 })
 ```
 
+<<<<<<< HEAD
 Estamos planejando trabalhar em um conjunto com uma coleção de _helpers_ de teste para tornar mais fácil renderizar componentes com diferentes restrições (por exemplo, processamento superficial que ignora componentes filhos) e garantir os valores de suas saídas.
 
 Para maiores informações sobre testes unitários no Vue, veja [vue-test-utils](https://vue-test-utils.vuejs.org/) e nosso _cookbook_ sobre [testes unitários em componentes Vue](https://vuejs.org/v2/cookbook/unit-testing-vue-components.html).
+=======
+For more in-depth information on unit testing in Vue, check out [Vue Test Utils](https://vue-test-utils.vuejs.org/) and our cookbook entry about [unit testing vue components](https://vuejs.org/v2/cookbook/unit-testing-vue-components.html).
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b

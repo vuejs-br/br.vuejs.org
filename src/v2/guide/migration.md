@@ -186,7 +186,11 @@ Ao incluir um `índice`, a ordem dos argumentos para arrays costumava ser `(índ
 
 ### Ordem dos Argumentos para Objects no `v-for` <sup>mudado</sup>
 
+<<<<<<< HEAD
 Ao incluir uma `chave`, a ordem dos argumentos para objetos costumava ser `(chave, valor)`. Agora é `(valor, chave)` para ser mais consistente com os iteradores de objetos comuns, como o `lodash`.
+=======
+When including a property name/key, the argument order for objects used to be `(name, value)`. It is now `(value, name)` to be more consistent with common object iterators such as lodash's.
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 {% raw %}
 <div class="upgrade-path">
@@ -210,15 +214,15 @@ As variáveis `$index` e `$key` implicitamente atribuídas foram removidas em fa
 
 `track-by` foi substituído por uma `key`, que funciona como qualquer outro atributo: sem o `v-bind:` ou o prefixo  `:`, é tratado como uma string literal. Na maioria dos casos, você desejará usar uma vinculação dinâmica que espera uma expressão completa ao invés de uma chave. Por exemplo, no lugar de:
 
-``` html
+{% codeblock lang:html %}
 <div v-for="item in items" track-by="id">
-```
+{% endcodeblock %}
 
 Agora você irá escrever:
 
-``` html
+{% codeblock lang:html %}
 <div v-for="item in items" v-bind:key="item.id">
-```
+{% endcodeblock %}
 
 {% raw %}
 <div class="upgrade-path">
@@ -400,9 +404,9 @@ Para atributos enumerados, além dos valores falsos acima, a string `"false"` ta
 
 Quando usando em um componente, `v-on` agora só escuta eventos customizados `$emit`idos por aquele componente. Para escutar um evento nativo do DOM no elemento raiz, você pode usar o modificador `.native`. Por exemplo:
 
-``` html
+{% codeblock lang:html %}
 <my-component v-on:click.native="doSomething"></my-component>
-```
+{% endcodeblock %}
 
 {% raw %}
 <div class="upgrade-path">
@@ -603,9 +607,9 @@ Como você pode ver, o vínculo bidirecional do `v-model` não faz sentido aqui.
 
 Em vez disso, você deve usar um array de __objects__  para que `v-model` possa atualizar o campo no objeto. Por exemplo:
 
-``` html
+{% codeblock lang:html %}
 <input v-for="obj in objects" v-model="obj.str">
-```
+{% endcodeblock %}
 
 {% raw %}
 <div class="upgrade-path">
@@ -991,9 +995,9 @@ computed: {
 
 Você pode até ordenar por múltiplas colunas:
 
-``` js
+{% codeblock lang:js %}
 _.orderBy(this.users, ['name', 'last_login'], ['asc', 'desc'])
-```
+{% endcodeblock %}
 
 {% raw %}
 <div class="upgrade-path">
@@ -1071,9 +1075,15 @@ function pluralizeKnife (count) {
 
 Para uma implementação muito ingênua, você poderia fazer algo como isto:
 
+<<<<<<< HEAD
 ``` js
 'R$' + price.toFixed(2)
 ```
+=======
+{% codeblock lang:js %}
+'$' + price.toFixed(2)
+{% endcodeblock %}
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 Em muitos casos, porém, você ainda terá um comportamento estranho (exemplo: `0.035.toFixed(2)` arredonda para `0.04`, mas `0.045` arredonda para `0.04`). Para contornar esses problemas, você pode usar a biblioteca [`accounting`](http://openexchangerates.github.io/accounting.js/) para formatar moedas de forma mais confiável.
 
@@ -1366,9 +1376,9 @@ Em vez disso, recupere dados reativos diretamente.
 
 Use a API nativa do DOM:
 
-``` js
+{% codeblock lang:js %}
 myElement.appendChild(vm.$el)
-```
+{% endcodeblock %}
 
 {% raw %}
 <div class="upgrade-path">
@@ -1381,9 +1391,9 @@ myElement.appendChild(vm.$el)
 
 Use a API nativa do DOM:
 
-``` js
+{% codeblock lang:js %}
 myElement.parentNode.insertBefore(vm.$el, myElement)
-```
+{% endcodeblock %}
 
 {% raw %}
 <div class="upgrade-path">
@@ -1396,16 +1406,16 @@ myElement.parentNode.insertBefore(vm.$el, myElement)
 
 Use a API nativa do DOM:
 
-``` js
+{% codeblock lang:js %}
 myElement.parentNode.insertBefore(vm.$el, myElement.nextSibling)
-```
+{% endcodeblock %}
 
 
 Ou se `myElement` for o último filho:
 
-``` js
+{% codeblock lang:js %}
 myElement.parentNode.appendChild(vm.$el)
-```
+{% endcodeblock %}
 
 {% raw %}
 <div class="upgrade-path">
@@ -1418,9 +1428,9 @@ myElement.parentNode.appendChild(vm.$el)
 
 Use a API nativa do DOM:
 
-``` js
+{% codeblock lang:js %}
 vm.$el.remove()
-```
+{% endcodeblock %}
 
 {% raw %}
 <div class="upgrade-path">

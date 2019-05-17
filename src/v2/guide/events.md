@@ -223,6 +223,7 @@ O `.passive` é especialmente útil para otimizar desempenho em dispositivos mó
 
 ## Modificadores de Teclado
 
+<<<<<<< HEAD
 Quando escutamos eventos do teclado, precisamos muitas vezes verificar a ocorrência de códigos de teclas comuns. O Vue também permite a adição de modificadores `v-on` ao escutar eventos de teclado:
 
 ``` html
@@ -241,6 +242,34 @@ Se lembrar de todos os `keyCode` é uma chatice, então o Vue fornece apelidos p
 ```
 
 Lista completa dos apelidos de modificadores de tecla:
+=======
+When listening for keyboard events, we often need to check for specific keys. Vue allows adding key modifiers for `v-on` when listening for key events:
+
+``` html
+<!-- only call `vm.submit()` when the `key` is `Enter` -->
+<input v-on:keyup.enter="submit">
+```
+
+You can directly use any valid key names exposed via [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values) as modifiers by converting them to kebab-case.
+
+``` html
+<input v-on:keyup.page-down="onPageDown">
+```
+
+In the above example, the handler will only be called if `$event.key` is equal to `'PageDown'`.
+
+### Key Codes
+
+<p class="tip">The use of `keyCode` events [is deprecated](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode) and may not be supported in new browsers.</p>
+
+Using `keyCode` attributes is also permitted:
+
+``` html
+<input v-on:keyup.13="submit">
+```
+
+Vue provides aliases for the most commonly used key codes when necessary for legacy browser support:
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 - `.enter`
 - `.tab`
@@ -252,13 +281,20 @@ Lista completa dos apelidos de modificadores de tecla:
 - `.left`
 - `.right`
 
+<<<<<<< HEAD
 Se necessário, defina [apelidos personalizados](../api/#keyCodes) através do objeto global `config.keyCodes`:
+=======
+<p class="tip">A few keys (`.esc` and all arrow keys) have inconsistent `key` values in IE9, so these built-in aliases should be preferred if you need to support IE9.</p>
+
+You can also [define custom key modifier aliases](../api/#keyCodes) via the global `config.keyCodes` object:
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ``` js
 // habilita `v-on:keyup.f1`
 Vue.config.keyCodes.f1 = 112
 ```
 
+<<<<<<< HEAD
 ### Modificadores de Tecla Automáticos
 
 > Novo em 2.5.0+
@@ -274,6 +310,9 @@ No exemplo acima, o gatilho será chamado se `$event.key === 'PageDown'`.
 <p class="tip">Algumas teclas (`.esc` e teclas de setas) tem valores `key` inconsistentes no IE9, os apelidos pré-definidos do Vue devem ser preferidos se você precisar suportar IE9.</p>
 
 ## Teclas Modificadoras de Sistema
+=======
+## System Modifier Keys
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 > Novo em 2.1.0+
 
@@ -284,7 +323,11 @@ Você pode utilizar os modificadores a seguir para acionar eventos de _mouse_ ou
 - `.shift`
 - `.meta`
 
+<<<<<<< HEAD
 > Nota: Nos teclados Macintosh, meta é a tecla de comando (⌘). Nos teclados Windows, meta é a tecla Windows (⊞). Nos teclados Sun Microsystems, meta é marcada como um diamante sólido (◆). Em alguns teclados, especificamente em máquinas MIT e Lisp, como o teclado Knight e teclados space-cadet, meta é descritivamente marcada como “META”. Em teclados Symbolics, meta é descritivamente marcada como “META” ou “Meta”.
+=======
+> Note: On Macintosh keyboards, meta is the command key (⌘). On Windows keyboards, meta is the Windows key (⊞). On Sun Microsystems keyboards, meta is marked as a solid diamond (◆). On certain keyboards, specifically MIT and Lisp machine keyboards and successors, such as the Knight keyboard, space-cadet keyboard, meta is labeled “META”. On Symbolics keyboards, meta is labeled “META” or “Meta”.
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 Por exemplo:
 

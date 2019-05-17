@@ -16,7 +16,11 @@ Vue.component('my-component-name', { /* ... */ })
 
 O nome do componente é o primeiro argumento de `Vue.component`.
 
+<<<<<<< HEAD
 O nome que você dá a um componente depende de onde você pretende utilizá-lo. Quando for utilizar diretamente no DOM (ao contrário de uma _template_ String ou um [Componente Single-File](single-file-components.html), nós recomendamnos fortemente seguir as [regras do W3C](https://www.w3.org/TR/custom-elements/#concepts) para nome de _tags_ customizadas (todas as letras minuscúlas, com hifén entre as palavras). Isso lhe ajuda a evitar conflitos com atuais e futuros elementos nativos do HTML.
+=======
+The name you give a component may depend on where you intend to use it. When using a component directly in the DOM (as opposed to in a string template or [single-file component](single-file-components.html)), we strongly recommend following the [W3C rules](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) for custom tag names (all-lowercase, must contain a hyphen). This helps you avoid conflicts with current and future HTML elements.
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 Você pode ver outras recomendações sobre nome de componentes no [Guia de Estilo](../style-guide/#Base-component-names-strongly-recommended).
 
@@ -205,12 +209,25 @@ requireComponent.keys().forEach(fileName => {
   // Obtém nome em PascalCase do componente
   const componentName = upperFirst(
     camelCase(
+<<<<<<< HEAD
       // Tira o início `./` e a extensão do nome do arquivo
       fileName.replace(/^\.\/(.*)\.\w+$/, '$1')
     )
   )
 
   // Registra o componente globalmente
+=======
+      // Gets the file name regardless of folder depth
+      fileName
+        .split('/')
+        .pop()
+        .replace(/\.\w+$/, '')
+    )
+  )
+
+
+  // Register component globally
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
   Vue.component(
     componentName,
     // Olha para as opções em `.default`, existentes
