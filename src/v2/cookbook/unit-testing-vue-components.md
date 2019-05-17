@@ -45,8 +45,9 @@ export default {
 
 ```js
 import { shallowMount } from '@vue/test-utils'
+import Hello from './Hello.vue'
 
-test('Foo', () => {
+test('Hello', () => {
   // renderiza o componente
   const wrapper = shallowMount(Hello)
 
@@ -57,9 +58,7 @@ test('Foo', () => {
   expect(wrapper.find('.error').exists()).toBe(true)
 
   // atualiza o nome para ser longo o suficiente
-  wrapper.setData({
-    username: 'Lachlan'
-  })
+  wrapper.setData({ username: 'Lachlan' })
 
   // afirma se a mensagem de erro se foi
   expect(wrapper.find('.error').exists()).toBe(false)
@@ -145,6 +144,7 @@ E nossa primeira tentativa de teste:
 
 ```js
 import { shallowMount } from '@vue/test-utils'
+import Foo from './Foo.vue'
 
 describe('Foo', () => {
   it('exibe uma mensagem e responde corretamente à entrada do usuário', () => {
