@@ -47,13 +47,8 @@ export default {
 import { shallowMount } from '@vue/test-utils'
 import Hello from './Hello.vue'
 
-<<<<<<< HEAD
-test('Foo', () => {
-  // renderiza o componente
-=======
 test('Hello', () => {
-  // render the component
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+  // renderiza o componente
   const wrapper = shallowMount(Hello)
 
   // não deve permitir `username` menor que 7 caracteres, exclui espaço em branco
@@ -62,15 +57,8 @@ test('Hello', () => {
   // afirma se a mensagem de erro está renderizada
   expect(wrapper.find('.error').exists()).toBe(true)
 
-<<<<<<< HEAD
   // atualiza o nome para ser longo o suficiente
-  wrapper.setData({
-    username: 'Lachlan'
-  })
-=======
-  // update the name to be long enough
   wrapper.setData({ username: 'Lachlan' })
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
   // afirma se a mensagem de erro se foi
   expect(wrapper.find('.error').exists()).toBe(false)

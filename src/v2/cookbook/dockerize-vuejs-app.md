@@ -62,26 +62,16 @@ Apesar disso, para casos de uso reais e complexos, pode ser sensato se sustentar
 Vamos refatorar nosso `Dockerfile` para usar o NGINX:
 
  ```docker
-<<<<<<< HEAD
 # estágio de compilação
-FROM node:9.11.1-alpine as build-stage
-=======
-# build stage
 FROM node:lts-alpine as build-stage
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
 
-<<<<<<< HEAD
 # estágio de produção
-FROM nginx:1.13.12-alpine as production-stage
-=======
-# production stage
 FROM nginx:stable-alpine as production-stage
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

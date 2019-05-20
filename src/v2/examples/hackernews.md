@@ -14,13 +14,8 @@ order: 12
 </div>
 {% endraw %}
 
-<<<<<<< HEAD
-> [Demonstração ao Vivo](https://vue-hn.now.sh/)
+> [Demonstração ao Vivo](https://vue-hn.herokuapp.com/)
 > Observação: essa demonstração pode precisar de algum tempo de carregamento se ninguém tiver a acessado por um certo período de tempo.
-=======
-> [Live Demo](https://vue-hn.herokuapp.com/)
-> Note: the demo may need some spin up time if nobody has accessed it for a certain period.
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 >
 > [[Código-fonte](https://github.com/vuejs/vue-hackernews-2.0)]
 

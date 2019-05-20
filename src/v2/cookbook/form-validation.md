@@ -30,7 +30,8 @@ Dado um formulário com três campos, faremos dois obrigatórios. Vamos ver o HT
       id="name"
       v-model="name"
       type="text"
-      name="name">
+      name="name"
+    >
   </p>
 
   <p>
@@ -40,7 +41,8 @@ Dado um formulário com três campos, faremos dois obrigatórios. Vamos ver o HT
       v-model="age"
       type="number"
       name="age"
-      min="0">
+      min="0"
+    >
   </p>
 
   <p>
@@ -58,7 +60,8 @@ Dado um formulário com três campos, faremos dois obrigatórios. Vamos ver o HT
   <p>
     <input
       type="submit"
-      value="Enviar">
+      value="Enviar"
+    >
   </p>
 </form>
 ```
@@ -128,7 +131,8 @@ Para o segundo exemplo, o segundo campo de texto (_age_) será modificado para _
       id="name"
       v-model="name"
       type="text"
-      name="name">
+      name="name"
+    >
   </p>
 
   <p>
@@ -137,7 +141,8 @@ Para o segundo exemplo, o segundo campo de texto (_age_) será modificado para _
       id="email"
       v-model="email"
       type="email"
-      name="email">
+      name="email"
+    >
   </p>
 
   <p>
@@ -155,7 +160,8 @@ Para o segundo exemplo, o segundo campo de texto (_age_) será modificado para _
   <p>
     <input
       type="submit"
-      value="Enviar">
+      value="Enviar"
+    >
   </p>
 </form>
 ```
@@ -232,23 +238,28 @@ Para um terceiro exemplo, construiremos algo que provavelmente você já viu em 
     <input
       v-model.number="weapons"
       type="number"
-      name="weapons"> Armas <br/>
+      name="weapons"
+    > Armas <br/>
     <input
       v-model.number="shields"
       type="number"
-      name="shields"> Escudos <br/>
+      name="shields"
+    > Escudos <br/>
     <input
       v-model.number="coffee"
       type="number"
-      name="coffee"> Café <br/>
+      name="coffee"
+    > Café <br/>
     <input
       v-model.number="ac"
       type="number"
-      name="ac"> Ar condicionado <br/>
+      name="ac"
+    > Ar condicionado <br/>
     <input
       v-model.number="mousedroids"
       type="number"
-      name="mousedroids"> Droides rato <br/>
+      name="mousedroids"
+    > Droides rato <br/>
   </p>
 
   <p>
@@ -258,7 +269,8 @@ Para um terceiro exemplo, construiremos algo que provavelmente você já viu em 
   <p>
     <input
       type="submit"
-      value="Enviar">
+      value="Enviar"
+    >
   </p>
 </form>
 ```
@@ -348,13 +360,15 @@ Basicamente, qualquer nome exceto "vista", "empire" e "mbp" são aceitáveis. Va
       id="name"
       v-model="name"
       type="text"
-      name="name">
+      name="name"
+    >
   </p>
 
   <p>
     <input
       type="submit"
-      value="Enviar">
+      value="Enviar"
+    >
   </p>
 </form>
 ```

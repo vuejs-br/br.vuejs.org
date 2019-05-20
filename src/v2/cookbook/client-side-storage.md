@@ -9,7 +9,7 @@ order: 11
 
 Armazenamento no lado do cliente é uma excelente forma de adicionar melhorias de desempenho na aplicação. Por armazenar dados no próprio navegador, você pode pular a busca de informações no servidor toda vez que o usuário precisar. Embora seja especialmente útil quando se está _offline_, usuários _online_ também se beneficiarão do uso de dados locais em comparação a um servidor remoto. Armazenamento no cliente pode ser feito com [Cookies](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies), [Armazenamento Local](https://developer.mozilla.org/pt-BR/docs/Web/API/Web_Storage_API_pt_br) (tecnicamente, _Web Storage_), [IndexedDB](https://developer.mozilla.org/pt-BR/docs/IndexedDB) e [WebSQL](https://www.w3.org/TR/webdatabase/) (um método obsoleto que não deve ser usado em novos projetos).
 
-Neste livro de receitas, vamos focar no Armazenamento Local, o mais simples dos mecanismos de armazenamento. Este armazenamento usa um sistema de chave/valor para organizar os dados. Apesar de ser limitado a armazenar apenas valores simples, dados complexos podem ser armazenados se você estiver disposto a codificar e decodificar os valores com JSON. Em geral, é apropriado para pequenos conjuntos de dados que você deseja manter, coisas como preferências de usuário ou dados de um formulário. Dados maiores, ou com necessidades mais complexas de armazenamento, seriam normalmente melhor armazenados com IndexedDB.
+Neste capítulo do livro de receitas, vamos focar no Armazenamento Local, o mais simples dos mecanismos de armazenamento. Este armazenamento usa um sistema de chave/valor para organizar os dados. Apesar de ser limitado a armazenar apenas valores simples, dados complexos podem ser armazenados se você estiver disposto a codificar e decodificar os valores com JSON. Em geral, é apropriado para pequenos conjuntos de dados que você deseja manter, coisas como preferências de usuário ou dados de um formulário. Dados maiores, ou com necessidades mais complexas de armazenamento, seriam normalmente melhor armazenados com IndexedDB.
 
 Vamos começar com um exemplo de formulário simples:
 
@@ -27,11 +27,13 @@ const app = new Vue({
   data: {
     name: ''
   },
-  mounted () {
-    if (localStorage.name) this.name = localStorage.name;
+  mounted() {
+    if (localStorage.name) {
+      this.name = localStorage.name;
+    }
   },
   watch: {
-    name (newName) {
+    name(newName) {
       localStorage.name = newName;
     }
   }
@@ -63,10 +65,13 @@ Gravar imediatamente o valor a cada modificação pode não ser aconselhável. V
 
 ``` html
 <div id="app">
-  Meu nome é <input v-model="name">
-  e tenho <input v-model="age"> anos de idade.
-  <p/>
-  <button @click="persist">Salvar</button>
+  <p>
+    Meu nome é <input v-model="name">
+    e tenho <input v-model="age"> anos de idade.
+  </p>
+  <p>
+    <button @click="persist">Salvar</button>
+  </p>
 </div>
 ```
 
@@ -79,12 +84,16 @@ const app = new Vue({
     name: '',
     age: 0
   },
-  mounted () {
-    if (localStorage.name) this.name = localStorage.name;
-    if (localStorage.age) this.age = localStorage.age;
+  mounted() {
+    if (localStorage.name) {
+      this.name = localStorage.name;
+    }
+    if (localStorage.age) {
+      this.age = localStorage.age;
+    }
   },
   methods: {
-    persist () {
+    persist() {
       localStorage.name = this.name;
       localStorage.age = this.age;
       console.log('Agora finja que fiz mais coisas...');
@@ -105,12 +114,13 @@ Conforme mencionado antes, armazenamento local só funciona com valores simples.
 ``` html
 <div id="app">
   <h2>Gatos</h2>
-  <div v-for="(cat, i) in cats">
+  <div v-for="(cat, n) in cats">
     <p>
       <span class="cat">{{ cat }}</span>
-      <button @click="removeCat(i)">Remover</button>
+      <button @click="removeCat(n)">Remover</button>
     </p>
   </div>
+
   <p>
     <input v-model="newCat">
     <button @click="addCat">Adicionar</button>
@@ -127,28 +137,31 @@ const app = new Vue({
     cats: [],
     newCat: null
   },
-  mounted () {
+  mounted() {
     if (localStorage.getItem('cats')) {
       try {
         this.cats = JSON.parse(localStorage.getItem('cats'));
-      } catch (error) {
+      } catch(e) {
         localStorage.removeItem('cats');
       }
     }
   },
   methods: {
-    addCat () {
+    addCat() {
       // Garanta que algo foi digitado
-      if (!this.newCat) return;
+      if (!this.newCat) {
+        return;
+      }
+  
       this.cats.push(this.newCat);
       this.newCat = '';
       this.saveCats();
     },
-    removeCat (index) {
-      this.cats.splice(index, 1);
+    removeCat(x) {
+      this.cats.splice(x, 1);
       this.saveCats();
     },
-    saveCats () {
+    saveCats() {
       const parsed = JSON.stringify(this.cats);
       localStorage.setItem('cats', parsed);
     }
@@ -165,7 +178,7 @@ Acrescentamos também três métodos para lidar com gatos. Ambos `addCat` e `rem
 
 ## Padrões Alternativos
 
-Embora a API de armazenamento local seja relativamente simples, carece de alguns recursos básicos que seriam úteis em muitos aplicativos. Os seguintes _plugins_ Vue englobam o acesso ao armazenamento local e facilitam o seu uso, além de adicionar funcionalidades interrantes, como valores padrão.
+Embora a API de armazenamento local seja relativamente simples, carece de alguns recursos básicos que seriam úteis em muitos aplicativos. Os seguintes _plugins_ Vue englobam o acesso ao armazenamento local e facilitam o seu uso, além de adicionar funcionalidades como valores padrão.
 
 * [vue-local-storage](https://github.com/pinguinjkeke/vue-local-storage)
 * [vue-reactive-storage](https://github.com/ropbla9/vue-reactive-storage)

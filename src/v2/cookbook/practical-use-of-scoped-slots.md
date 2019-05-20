@@ -1,8 +1,11 @@
 ---
-title: Practical use of scoped slots with GoogleMaps
+title: Uso prático de slots com escopo com o GoogleMaps
 type: cookbook
 order: 14
 ---
+
+<p class="tip">**Nota da Equipe de Tradução**	
+Este arquivo é novo e ainda não foi traduzido! Leia a versão original em inglês a seguir e, se puder, colabore com sua tradução: acesse [nosso projeto no GitHub](https://github.com/vuejs-br/br.vuejs.org/issues), avise que irá contribuir e inicie a tradução. Sua participação é muito importante!</p>
 
 ## Base Example
 
