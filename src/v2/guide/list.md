@@ -44,11 +44,6 @@ var example1 = new Vue({
       { message: 'Algo' },
       { message: 'Outro' }
     ]
-  },
-  watch: {
-    items: function () {
-      smoothScroll.animateScroll(document.querySelector('#example-1'))
-    }
   }
 })
 </script>
@@ -94,11 +89,14 @@ var example2 = new Vue({
       { message: 'Algo' },
       { message: 'Outro' }
     ]
+<<<<<<< HEAD
   },
   watch: {
     items: function () {
       smoothScroll.animateScroll(document.querySelector('#example-2'))
     }
+=======
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
   }
 })
 </script>
@@ -127,9 +125,15 @@ new Vue({
   el: '#v-for-object',
   data: {
     object: {
+<<<<<<< HEAD
       firstName: 'Zé',
       lastName: 'Ninguém',
       age: 30
+=======
+      title: 'How to do lists in Vue',
+      author: 'Jane Doe',
+      publishedAt: '2016-04-10'
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
     }
   }
 })
@@ -148,37 +152,53 @@ new Vue({
   el: '#v-for-object',
   data: {
     object: {
+<<<<<<< HEAD
       firstName: 'Zé',
       lastName: 'Ninguém',
       age: 30
+=======
+      title: 'How to do lists in Vue',
+      author: 'Jane Doe',
+      publishedAt: '2016-04-10'
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
     }
   }
 })
 </script>
 {% endraw %}
 
+<<<<<<< HEAD
 Você também pode oferecer um segundo argumento para a chave:
+=======
+You can also provide a second argument for the property's name (a.k.a. key):
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ``` html
-<div v-for="(value, key) in object">
-  {{ key }}: {{ value }}
+<div v-for="(value, name) in object">
+  {{ name }}: {{ value }}
 </div>
 ```
 
 {% raw %}
-<div id="v-for-object-value-key" class="demo">
-  <div v-for="(value, key) in object">
-    {{ key }}: {{ value }}
+<div id="v-for-object-value-name" class="demo">
+  <div v-for="(value, name) in object">
+    {{ name }}: {{ value }}
   </div>
 </div>
 <script>
 new Vue({
-  el: '#v-for-object-value-key',
+  el: '#v-for-object-value-name',
   data: {
     object: {
+<<<<<<< HEAD
       firstName: 'Zé',
       lastName: 'Ninguém',
       age: 30
+=======
+      title: 'How to do lists in Vue',
+      author: 'Jane Doe',
+      publishedAt: '2016-04-10'
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
     }
   }
 })
@@ -188,37 +208,48 @@ new Vue({
 E ainda um terceiro para o índice:
 
 ``` html
-<div v-for="(value, key, index) in object">
-  {{ index }}. {{ key }}: {{ value }}
+<div v-for="(value, name, index) in object">
+  {{ index }}. {{ name }}: {{ value }}
 </div>
 ```
 
 {% raw %}
-<div id="v-for-object-value-key-index" class="demo">
-  <div v-for="(value, key, index) in object">
-    {{ index }}. {{ key }}: {{ value }}
+<div id="v-for-object-value-name-index" class="demo">
+  <div v-for="(value, name, index) in object">
+    {{ index }}. {{ name }}: {{ value }}
   </div>
 </div>
 <script>
 new Vue({
-  el: '#v-for-object-value-key-index',
+  el: '#v-for-object-value-name-index',
   data: {
     object: {
+<<<<<<< HEAD
       firstName: 'Zé',
       lastName: 'Ninguém',
       age: 30
+=======
+      title: 'How to do lists in Vue',
+      author: 'Jane Doe',
+      publishedAt: '2016-04-10'
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
     }
   }
 })
 </script>
 {% endraw %}
 
+<<<<<<< HEAD
 <p class="tip">Quando estiver iterando sobre um objeto, a ordem das chaves é baseada na enumeração oferecida por `Object.keys()`, a qual **não** é garantidamente consistente entre implementações distintas de motores JavaScript.</p>
+=======
+<p class="tip">When iterating over an object, the order is based on the enumeration order of `Object.keys()`, which is **not** guaranteed to be consistent across JavaScript engine implementations.</p>
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
-## `key`
+## Maintaining State
 
 Quando Vue está atualizando uma lista de elementos renderizados com `v-for`, por padrão se utiliza de uma estratégia de "remendo local". Se a ordem dos itens de dados tiver mudado, em vez de mover os elementos DOM para combinar com a nova ordem, Vue remendará o conteúdo de cada elemento em seu local atual, garantindo que o resultado reflita o que precisa ser renderizado em cada índice em particular. Isto é similar ao comportamento oferecido por `track-by="$index"` no Vue 1.x.
 
+<<<<<<< HEAD
 Este modo padrão é eficiente, mas adequado apenas **quando seu resultado de renderização não se apoiar em estado de componentes filhos ou estado de DOM temporário (como valores de campos de formulário)**.
 
 Vue precisa de uma dica para que possa rastrear a identidade de cada nó e assim reutilizar e reordenar elementos existentes. Para tanto, defina um atributo `key` único para cada item. Um valor ideal para `key` poderia ser um _id_ exclusivo de cada item. Ele é um equivalente a grosso modo do `track-by` do 1.x, mas funciona como atributo, portanto deve-se utilizar `v-bind` para vinculá-lo a valores dinâmicos (neste exemplo, usando a sintaxe abreviada):
@@ -230,10 +261,31 @@ Vue precisa de uma dica para que possa rastrear a identidade de cada nó e assim
 ```
 
 De fato, é recomendado oferecer um `key` para `v-for` sempre que possível, a menos que esteja iterando conteúdo DOM simples, ou esteja intencionalmente se apoiando no comportamento padrão para ganho de desempenho.
+=======
+This default mode is efficient, but **only suitable when your list render output does not rely on child component state or temporary DOM state (e.g. form input values)**.
+
+To give Vue a hint so that it can track each node's identity, and thus reuse and reorder existing elements, you need to provide a unique `key` attribute for each item:
+
+``` html
+<div v-for="item in items" v-bind:key="item.id">
+  <!-- content -->
+</div>
+```
+
+It is recommended to provide a `key` attribute with `v-for` whenever possible, unless the iterated DOM content is simple, or you are intentionally relying on the default behavior for performance gains.
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 Por ser um mecanismo genérico do Vue para identificar nós, `key` também tem outras utilidades não especificamente associadas ao `v-for`, como veremos futuramente neste guia.
 
+<<<<<<< HEAD
 ## Detectando Mudanças em Arrays
+=======
+<p class="tip">Don't use non-primitive values like objects and arrays as `v-for` keys. Use string or numeric values instead.</p>
+
+For detailed usage of the `key` attribute, please see the [`key` API documentation](https://vuejs.org/v2/api/#key).
+
+## Array Change Detection
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ### Métodos de Mutação
 
@@ -319,7 +371,11 @@ vm.b = 2
 // `vm.b` NÃO é reativo
 ```
 
+<<<<<<< HEAD
 Vue não permite dinamicamente adicionar novas propriedades reativas em nível raiz para uma instância já criada. Entretanto, é possível adicionar propriedades reativas a objetos internos usando o método `Vue.set(object, key, value)`. Por exemplo, dado o código:
+=======
+Vue does not allow dynamically adding new root-level reactive properties to an already created instance. However, it's possible to add reactive properties to a nested object using the `Vue.set(object, propertyName, value)` method. For example, given:
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ``` js
 var vm = new Vue({
@@ -439,7 +495,13 @@ Similar ao uso de _template_ com `v-if`, você pode usar `<template>` com `v-for
 
 ## Utilizando `v-if` com `v-for`
 
+<<<<<<< HEAD
 Quando existentes em um mesmo nó, `v-for` tem maior prioridade que `v-if`. Isto significa que `v-if` será executado separadamente a cada iteração da repetição. Isto pode ser útil se quiser renderizar nós condicionalmente para apenas _alguns_ itens, como abaixo:
+=======
+<p class="tip">Note that it's **not** recommended to use `v-if` and `v-for` together. Refer to [style guide](/v2/style-guide/#Avoid-v-if-with-v-for-essential) for details.</p>
+
+When they exist on the same node, `v-for` has a higher priority than `v-if`. That means the `v-if` will be run on each iteration of the loop separately. This can be useful when you want to render nodes for only _some_ items, like below:
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ``` html
 <li v-for="todo in todos" v-if="!todo.isComplete">

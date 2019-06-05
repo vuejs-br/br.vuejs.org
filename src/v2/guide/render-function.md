@@ -82,7 +82,11 @@ Vue.component('anchored-heading', {
 })
 ```
 
+<<<<<<< HEAD
 Muito mais simples! Mais ou menos. O código é menor, mas requer maior familiaridade com as propriedades de uma instância Vue. Neste caso, você precisa saber que quando você inclui elementos filho em seu componente, sem especificar um atributo `slot`, como o `Olá Mundo!` dentro de `anchored-heading`, esses elementos estão acessíveis na instância através de `$slots.default`. Se você ainda não leu, **é altamente recomendado que leia a seção da API de [propriedades da instância](../api/#Propriedades-de-Instancia) antes de se aprofundar em funções `render`**.
+=======
+Much simpler! Sort of. The code is shorter, but also requires greater familiarity with Vue instance properties. In this case, you have to know that when you pass children without a `v-slot` directive into a component, like the `Hello world!` inside of `anchored-heading`, those children are stored on the component instance at `$slots.default`. If you haven't already, **it's recommended to read through the [instance properties API](../api/#Instance-Properties) before diving into render functions.**
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ## Nós, Árvores e DOM Virtual
 
@@ -231,7 +235,11 @@ Importante observar: assim como `v-bind:class` e `v-bind:style` têm tratamento 
   slot: 'name-of-slot'
   // Outras propriedades especiais de primeiro nível
   key: 'myKey',
-  ref: 'myRef'
+  ref: 'myRef',
+  // If you are applying the same ref name to multiple
+  // elements in the render function. This will make `$refs.myRef` become an
+  // array
+  refInFor: true
 }
 ```
 
@@ -254,7 +262,7 @@ Vue.component('anchored-heading', {
     var headingId = getChildrenTextContent(this.$slots.default)
       .toLowerCase()
       .replace(/\W+/g, '-')
-      .replace(/(^\-|\-$)/g, '')
+      .replace(/(^-|-$)/g, '')
 
     return createElement(
       'h' + this.level,
@@ -475,7 +483,11 @@ Especialmente quando a versão usando _template_ é tão simples em comparação
 </anchored-heading>
 ```
 
+<<<<<<< HEAD
 Por isso há um [plugin para Babel](https://github.com/vuejs/babel-plugin-transform-vue-jsx) destinado à utilização de JSX com o Vue, nos trazendo de volta a uma sintaxe mais semelhante à utilizada em _templates_:
+=======
+That's why there's a [Babel plugin](https://github.com/vuejs/jsx) to use JSX with Vue, getting us back to a syntax that's closer to templates:
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ``` js
 import AnchoredHeading from './AnchoredHeading.vue'
@@ -492,9 +504,15 @@ new Vue({
 })
 ```
 
+<<<<<<< HEAD
 <p class="tip">Apelidar `createElement` como `h` é uma convenção comum que você verá na comunidade Vue e é necessária para o uso de JSX. Se `h` não estiver disponível no escopo, sua aplicação irá gerar um erro.</p>
 
 Para mais informações sobre como JSX é mapeado para JavaScript, veja a [documentação de utilização](https://github.com/vuejs/babel-plugin-transform-vue-jsx#usage).
+=======
+<p class="tip">Aliasing `createElement` to `h` is a common convention you'll see in the Vue ecosystem and is actually required for JSX. Starting with [version 3.4.0](https://github.com/vuejs/babel-plugin-transform-vue-jsx#h-auto-injection) of the Babel plugin for Vue, we automatically inject `const h = this.$createElement` in any method and getter (not functions or arrow functions), declared in ES2015 syntax that has JSX, so you can drop the `(h)` parameter. With prior versions of the plugin, your app would throw an error if `h` was not available in the scope.</p>
+
+For more on how JSX maps to JavaScript, see the [usage docs](https://github.com/vuejs/jsx#installation).
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ## Componentes Funcionais
 
@@ -528,6 +546,7 @@ No 2.5.0+, se você está usando [Componentes Single-File](single-file-component
 
 Tudo que o componente funcional necessita é passado através de `context`, o qual é um objeto contendo:
 
+<<<<<<< HEAD
 - `props`: Um objeto com as propriedades
 - `children`: Um Array de elementos VNode filhos
 - `slots`: Uma função retornando um objeto _slots_
@@ -535,10 +554,24 @@ Tudo que o componente funcional necessita é passado através de `context`, o qu
 - `parent`: Uma referência ao componente pai
 - `listeners`: (2.3.0+) Um objeto contendo escutas a eventos registradas pelo pai. É um atalho para `data.on`
 - `injections`: (2.3.0+) Se estiver usando a opção [`inject`](../api/#provide-inject), aqui estarão as injeções resolvidas
+=======
+- `props`: An object of the provided props
+- `children`: An array of the VNode children
+- `slots`: A function returning a slots object
+- `scopedSlots`: (2.6.0+) An object that exposes passed-in scoped slots. Also exposes normal slots as functions.
+- `data`: The entire [data object](#The-Data-Object-In-Depth), passed to the component as the 2nd argument of `createElement`
+- `parent`: A reference to the parent component
+- `listeners`: (2.3.0+) An object containing parent-registered event listeners. This is an alias to `data.on`
+- `injections`: (2.3.0+) if using the [`inject`](../api/#provide-inject) option, this will contain resolved injections.
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 Após acrescentar `functional: true`, adaptar a função `render` do nosso componente de cabeçalho com âncoras iria requerer acrescentar o parâmetro `context`, atualizar `this.$slots.default` para `context.children` e então atualizar `this.level` para `context.props.level`.
 
+<<<<<<< HEAD
 Como componentes funcionais são apenas funções, eles são muito mais leves para renderizar. Entretanto, por carecer de uma instância persistente, eles não são exibidos na árvore de componentes do [Vue devtools](https://github.com/vuejs/vue-devtools).
+=======
+Since functional components are just functions, they're much cheaper to render.
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 Eles também são muito úteis como componentes encapsuladores. Por exemplo, quando você precisa:
 
@@ -619,10 +652,19 @@ Se você estiver usando componentes funcionais baseados em _templates_, também 
 Você pode se perguntar por que nós precisamos de ambos - `slots()` e `children`. Não seria `slots().default` o mesmo que `children`? Em alguns casos, sim - mas o que aconteceria se você tivesse um componente funcional contendo os seguintes elementos filhos?
 
 ``` html
+<<<<<<< HEAD
 <meu-componente-funcional>
   <p slot="foo">primeiro</p>
   <p>segundo</p>
 </meu-componente-funcional>
+=======
+<my-functional-component>
+  <p v-slot:foo>
+    first
+  </p>
+  <p>second</p>
+</my-functional-component>
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 ```
 
 Para este componente, `children` lhe fornecerá ambos os parágrafos, enquanto `slots().default` lhe fornecerá apenas o segundo, e `slots().foo` lhe fornecerá apenas o primeiro. Tendo tanto `children` quanto `slots()` lhe permite escolher se este componente precisa saber sobre os _slots_ ou talvez delegar tal responsabilidade para outro componente passando adiante `children`.
@@ -632,6 +674,7 @@ Para este componente, `children` lhe fornecerá ambos os parágrafos, enquanto `
 Você pode estar interessado em saber que _templates_ do Vue são compilados para funções `render`. Este é um detalhe de implementação que você não necessita saber, mas se você quiser ver como _templates_ específicos ficam quando compilados, pode ser interessante. Abaixo uma pequena demonstração usando `Vue.compile` para compilar ao vivo uma String de _template_:
 
 {% raw %}
+<<<<<<< HEAD
 <div id="vue-compile-demo" class="demo">
   <textarea v-model="templateText" rows="10"></textarea>
   <div v-if="typeof result === 'object'">
@@ -708,4 +751,7 @@ console.error = function (error) {
   font-family: monospace;
 }
 </style>
+=======
+<script async src="https://jsfiddle.net/phanan/5h0wx9np/embed/result,js,html/"></script>
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 {% endraw %}

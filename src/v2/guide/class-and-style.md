@@ -21,9 +21,10 @@ A sintaxe acima significa que a presença da classe `active` será determinada p
 Você pode ter múltiplas classes alternadas por ter mais campos no objeto. Além disso, a diretiva `v-bind:class` também pode coexistir com um atributo de classe "normal". Veja o exemplo:
 
 ``` html
-<div class="static"
-     v-bind:class="{ active: isActive, 'text-danger': hasError }">
-</div>
+<div
+  class="static"
+  v-bind:class="{ active: isActive, 'text-danger': hasError }"
+></div>
 ```
 
 Com os seguintes dados:

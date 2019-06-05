@@ -11,6 +11,8 @@ $ npm start # servidor executando em http://localhost:4000
 
 ## Publicando
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/67c69642-3235-4dc1-bafc-5eaac44e09c3/deploy-status)](https://app.netlify.com/sites/br-vuejs-org/deploys)
+
 O site é automaticamente publicado quando _commits_ chegam em `master`, via [Netlify](https://www.netlify.com/).
 
 Este processo é disparado somente por um grupo seleto de contribuidores que podem atualizar o _branch_ `master`, a fim de manter a organização. As contribuições são recebidas na forma de _pull requests_ e, quando aceitas, o _deploy_ automático ocorre.

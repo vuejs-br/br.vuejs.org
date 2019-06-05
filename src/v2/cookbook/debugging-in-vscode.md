@@ -1,32 +1,37 @@
 ---
-title: Depuração no VS Code e no Chrome
+title: Depuração no VS Code com Navegador
 type: cookbook
 order: 8
 ---
 
-## Introdução
+Toda aplicação chega em um ponto onde é necessário entender as falhas, de pequenas à grandes. Nesse tutorial, vamos explorar alguns fluxos de trabalho para usuários do VS Code que gostariam de depurar seus aplicativos no navegador.
 
-Toda aplicação chega em um ponto onde é necessário entender as falhas, pequenas ou grandes. Nesse tutorial, vamos explorar algumas abordagens para usuários do VS Code, que estão usando o Chrome para testar. 
+Este tutorial mostra como depurar aplicações geradas através do [Vue CLI](https://github.com/vuejs/vue-cli) enquanto são executadas no navegador.
 
-Esse tutorial mostra como usar a extensão [Debugger for Chrome](https://github.com/Microsoft/VSCode-chrome-debug) com o VS Code para depurar aplicações Vue.js geradas através do [Vue CLI](https://github.com/vuejs/vue-cli).
+<p class="tip">Nota: Este tutorial cobre Chrome e Firefox. Se você sabe como configurar a depuração do VS Code com outros navegadores, por favor, considere compartilhar suas ideias (veja a parte inferior da página).</p>
 
 ## Pré-requisitos
 
-Você precisa ter o Chrome e o VS Code instalados. Certifique-se de ter a versão mais recente da extensão [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) instalada no VS Code.
+Você precisa ter o VS Code e seu navegador preferido instalados e a versão mais recente da extensão correspondente do depurador instalada e ativada:
 
-Instale e crie o projeto com o [vue-cli](https://github.com/vuejs/vue-cli) e com as intruções presentes no `README.md`. Acesse o novo diretório criado para a aplicação e abra no VS Code.
+* [Depurador para Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
+* [Depurador para Firefox](https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-firefox-debug)
 
-### Exibindo Fontes no Chrome Devtools
+Instale e crie o projeto com o [vue-cli](https://github.com/vuejs/vue-cli) seguindo as instruções no [Guia do Vue CLI](https://cli.vuejs.org/).
+ Acesse o novo diretório criado para a aplicação e abra no VS Code.
+
+### Exibindo Código Fonte no Navegador
 
 Antes que você depure seus componentes Vue no VS Code, você precisa atualizar a configuração gerada do Webpack para construir os _sourcemaps_. Nós fazemos isso para que o nosso depurador tenha como mapear o código compactado para cada posição correspondente no arquivo original. Isso garante que você possa depurar a aplicação, mesmo após os recursos terem sido otimizados pelo Webpack.
 
-Vá até `config/index.js` e localize a propriedade `devtool`. Atualize para:
+Se você usar o Vue CLI 2, defina ou atualize a propriedade `devtool` dentro de `config/index.js`, para:
 
 ```json
 devtool: 'source-map',
 ```
 
-Com o Vue CLI 3, você definirá a propriedade `devtool` dentro do `vue.config.js`:
+Se você usar o Vue CLI 3, defina ou atualize a propriedade `devtool` dentro de `vue.config.js`, para:
+
 ```js
 module.exports = {
   configureWebpack: {
@@ -37,7 +42,9 @@ module.exports = {
 
 ### Iniciando a Aplicação pelo VS Code
 
-Clique no icone de duparação na barra de tarefas para trazer a visualização de depuração, então clique no icone de engrenagem para configurar o arquivo `launch.json`, selecionando **Chrome** como o ambiente de execução. Substitua o conteúdo gerado no arquivo pela configuração correspondente:
+<p class="tip">Estamos assumindo que a porta seja `8080` aqui. Se não for o caso (por exemplo, se o `8080` estiver em uso e o Vue CLI escolher automaticamente outra porta para você), apenas modifique a configuração de acordo.</p>
+
+Clique no icone de depuração na barra de atividades para trazer a tela de depuração, então clique no icone de engrenagem para configurar o arquivo `launch.json`, selecionando **Chrome/Firefox: Launch** como o ambiente de execução. Substitua o conteúdo gerado no arquivo pela configuração correspondente:
 
 ![Adicionando Configuração do Chrome](/images/config_add.png)
 
@@ -53,8 +60,16 @@ Clique no icone de duparação na barra de tarefas para trazer a visualização 
       "webRoot": "${workspaceFolder}/src",
       "breakOnLoad": true,
       "sourceMapPathOverrides": {
-        "webpack:///src/*": "${webRoot}/*"
+        "webpack:///./src/*": "${webRoot}/*"
       }
+    },
+    {
+      "type": "firefox",
+      "request": "launch",
+      "name": "vuejs: firefox",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}/src",
+      "pathMappings": [{ "url": "webpack:///src/", "path": "${webRoot}/" }]
     }
   ]
 }
@@ -62,42 +77,36 @@ Clique no icone de duparação na barra de tarefas para trazer a visualização 
 
 ## Configurando um Ponto de Parada
 
-1.  Defina um ponto de parada (_breakpoint_) em **src/components/HelloWorld.vue** na `linha 90` onde a função `data` retorna uma String.
+1. Defina um ponto de parada (_breakpoint_) em **src/components/HelloWorld.vue** na `linha 90` onde a função `data` retorna uma String.
 
-  ![Renderizando o Ponto de Parada](/images/breakpoint_set.png)
+![Renderizando o Ponto de Parada](/images/breakpoint_set.png)
 
-2.  Abra seu terminal favortio na raiz e sirva o aplicativo usando o Vue CLI:
+2. Abra seu terminal favorito na raiz e sirva o aplicativo usando o Vue CLI:
 
-  ```
-  npm start
-  ```
+```
+npm run serve
+```
 
-3.  Vá ate a visualização de depuração e selecione a configuração **'vuejs: chrome'**, então presione F5 ou clique no botão verde de inicio.
+3.  Vá até a tela de depuração e selecione a configuração **'vuejs: chrome/firefox'**, então presione F5 ou clique no botão verde de inicio.
 
-4.  Seu ponto de parada deve ser ativado com a abertura do Chorme na url `http://localhost:8080`.
+4.  Seu ponto de parada agora será ativado com a abertura do navegador na url `http://localhost:8080`.
 
-  ![Ativando o Ponto de Parada](/images/breakpoint_hit.png)
+![Ativando o Ponto de Parada](/images/breakpoint_hit.png)
 
 ## Padrões Alternativos
 
 ### Vue Devtools
 
-Existem outros métodos para depurar, com diversas complexidades. A mais popular e simples delas é usando o excelente [vue-devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd). Um dos beneficios de trabalhar com a barra de ferramentas do Vue é poder ativar a edição em tempo real das propriedades e ver as mudanças refletidas imetiatamente. Outro grande benefício é a habilidade de realizar uma viagem temporal de depuração no histórico de mutações do Vuex.
+Existem outros métodos para depurar, com diversas complexidades. Os mais populares e simples deles é usando o excelente Vue.js devtools [para Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) e [para Firefox](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/). Um dos beneficios de trabalhar com a ferramenta de desenvolvedor do Vue é poder ativar a edição em tempo real das propriedades e ver as mudanças refletidas imetiatamente. Outro grande benefício é a habilidade de realizar uma viagem temporal de depuração no histórico de mutações do Vuex.
+
+![Depuração Temporal no Vue Devtools](/images/devtools-timetravel.gif)
+
+<p class="tip">Vale observar que se a página usa uma versão de produção/minificada do Vue.js (como o _link_ padrão do CDN), a inspeção do _devtools_ é desabilitada por padrão, então o painel Vue não vai aparecer. Se você trocar para uma versão não minificada, você pode ter de realizar uma atualização forçada para vê-lo (limpando o cache do navegador, por exemplo).</p>
 
 ![Depuração Temporal no Vue Devtools](/images/devtools-timetravel.gif)
 
 <p class="tip">Vale observar que se a página usa uma versão de produção/minificada do Vue.js (como o _link_ padrão do CDN), a inspeção do _devtools_ é desabilitada por padrão, então o painel Vue não vai aparecer. Se você trocar para uma versão não minificada, você pode ter de realizar uma atualização forçada para vê-lo (limpando o cache do navegador, por exemplo).
 </p>
-
-### Vuetron
-
-[Vuetron](http://vuetron.io/) é um projeto realmente legal, que amplia o trabalho que o _devtools_ tem feito. Em adição ao fluxo de trabalho normal do _devtools_, você será capaz de:
-
-* Rapidamente ver requisições/respostas da API: se você está usando a API `fetch` para requisições, o evento será exibido para qualquer requisição feita. A área de informação detalhada exibe os dados da requisição, bem como os dados da resposta.
-* Observar partes específicas do estado da sua aplicação para depuração rápida.
-* Visualizar a hierarquia de componentes e uma animação que permite esconder ou exibir a árvore da hierarquia específica de um componente.
-
-![Hierarquia no Vuetron](/images/vuetron-heirarchy.gif)
 
 ### Declaração Simples do Depurador
 

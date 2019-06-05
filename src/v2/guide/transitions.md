@@ -580,7 +580,13 @@ e ganchos JavaScript personalizados
 </transition>
 ```
 
+<<<<<<< HEAD
 ## Transição entre Elementos
+=======
+In the example above, either `appear` attribute or `v-on:appear` hook will cause an appear transition.
+
+## Transitioning Between Elements
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 Nós discutiremos sobre [transição entre Componentes](#Transitioning-Between-Components) em breve, mas você pode realizar transição entre elementos puros utilizando `v-if`/`v-else`. Uma das transições de dois elementos mais comum é entre um recipiente de lista e uma mensagem descrevendo uma lista vazia:
 
@@ -1478,7 +1484,11 @@ Vue.component('my-special-transition', {
 })
 ```
 
+<<<<<<< HEAD
 E componentes funcionais são especialmente bem adequados para esta tarefa:
+=======
+And [functional components](render-function.html#Functional-Components) are especially well-suited to this task:
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ``` js
 Vue.component('my-special-transition', {

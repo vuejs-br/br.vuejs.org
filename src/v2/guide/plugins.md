@@ -58,13 +58,21 @@ Um _plugin_ do Vue deve expor um método `install`. Esse método será chamado t
 MyPlugin.install = function (Vue, options) {
   // 1. adicionar método ou propriedade global
   Vue.myGlobalMethod = function () {
+<<<<<<< HEAD
     // alguma lógica ...
+=======
+    // some logic ...
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
   }
 
   // 2. adicionar um recurso global
   Vue.directive('my-directive', {
     bind (el, binding, vnode, oldVnode) {
+<<<<<<< HEAD
       // alguma lógica ...
+=======
+      // some logic ...
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
     }
     ...
   })
@@ -72,14 +80,22 @@ MyPlugin.install = function (Vue, options) {
   // 3. adicionar algumas opções de componente
   Vue.mixin({
     created: function () {
+<<<<<<< HEAD
       // alguma lógica ...
+=======
+      // some logic ...
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
     }
     ...
   })
 
   // 4. adicionar um método de instância
   Vue.prototype.$myMethod = function (methodOptions) {
+<<<<<<< HEAD
     // algo lógico ...
+=======
+    // some logic ...
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
   }
 }
 ```

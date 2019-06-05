@@ -46,9 +46,15 @@ As chaves duplas interpretam os dados como texto simples, e não HTML. Para que 
 new Vue({
   el: '#example1',
   data: function () {
+<<<<<<< HEAD
   	return {
   	  rawHtml: '<span style="color: red">Sou vermelho</span>'
   	}
+=======
+    return {
+      rawHtml: '<span style="color: red">This should be red.</span>'
+    }
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
   }
 })
 </script>
@@ -66,7 +72,11 @@ Chaves duplas não podem ser usadas em atributos HTML. Para isso, utilize a [dir
 <div v-bind:id="dynamicId"></div>
 ```
 
+<<<<<<< HEAD
 No caso de atributos booleanos, onde sua mera existência implica em `true`, `v-bind` funciona um pouco diferente. Neste exemplo:
+=======
+In the case of boolean attributes, where their mere existence implies `true`, `v-bind` works a little differently. In this example:
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ``` html
 <button v-bind:disabled="isButtonDisabled">Botão</button>
@@ -129,6 +139,53 @@ Outro simples exemplo é a diretiva `v-on`, que observa eventos do DOM:
 Aqui o valor é o nome do evento DOM que ela está escutando. Falaremos sobre gerenciamento de eventos com mais detalhes em breve.
 
 ### Dynamic Arguments
+<<<<<<< HEAD
+=======
+
+> New in 2.6.0+
+
+Starting in version 2.6.0, it is also possible to use a JavaScript expression in a directive argument by wrapping it with square brackets:
+
+``` html
+<a v-bind:[attributeName]="url"> ... </a>
+```
+
+Here `attributeName` will be dynamically evaluated as a JavaScript expression, and its evaluated value will be used as the final value for the argument. For example, if your Vue instance has a data property, `attributeName`, whose value is `"href"`, then this binding will be equivalent to `v-bind:href`.
+
+Similarly, you can use dynamic arguments to bind a handler to a dynamic event name:
+
+``` html
+<a v-on:[eventName]="doSomething"> ... </a>
+```
+
+Similarly, when `eventName`'s value is `"focus"`, for example, `v-on:[eventName]` will be equivalent to `v-on:focus`.
+
+#### Dynamic Argument Value Constraints
+
+Dynamic arguments are expected to evaluate to a string, with the exception of `null`. The special value `null` can be used to explicitly remove the binding. Any other non-string value will trigger a warning.
+
+#### Dynamic Argument Expression Constraints
+
+<p class="tip">Dynamic argument expressions have some syntax constraints because certain characters are invalid inside HTML attribute names, such as spaces and quotes. You also need to avoid uppercase keys when using in-DOM templates.</p>
+
+For example, the following is invalid:
+
+``` html
+<!-- This will trigger a compiler warning. -->
+<a v-bind:['foo' + bar]="value"> ... </a>
+```
+
+The workaround is to either use expressions without spaces or quotes, or replace the complex expression with a computed property.
+
+In addition, if you are using in-DOM templates (templates directly written in an HTML file), you have to be aware that browsers will coerce attribute names into lowercase:
+
+``` html
+<!-- This will be converted to v-bind:[someattr] in in-DOM templates. -->
+<a v-bind:[someAttr]="value"> ... </a>
+```
+
+### Modifiers
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 > Novo na versão 2.6.0+
 
@@ -193,7 +250,11 @@ Você verá outros exemplos de modificadores futuramente, [modificadores para `v
 
 ## Abreviações
 
+<<<<<<< HEAD
 O prefixo `v-` serve como dica visual para identificar atributos específicos do Vue nos _templates_. Isso é útil quando se está utilizando o Vue para aplicar comportamento dinâmico em HTML existente, mas você pode achar um pouco verboso se precisar usar frequentemente. Ao mesmo tempo, o uso do prefixo `v-` se torna menos importante quando se está construindo uma [SPA](https://en.wikipedia.org/wiki/Single-page_application), onde o Vue gerencia cada _template_. Assim, Vue oferece abreviações especiais para as duas diretivas mais utilizadas, `v-bind` e o `v-on`:
+=======
+The `v-` prefix serves as a visual cue for identifying Vue-specific attributes in your templates. This is useful when you are using Vue.js to apply dynamic behavior to some existing markup, but can feel verbose for some frequently used directives. At the same time, the need for the `v-` prefix becomes less important when you are building a [SPA](https://en.wikipedia.org/wiki/Single-page_application), where Vue manages every template. Therefore, Vue provides special shorthands for two of the most often used directives, `v-bind` and `v-on`:
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ### Abreviação para `v-bind`
 
@@ -203,6 +264,9 @@ O prefixo `v-` serve como dica visual para identificar atributos específicos do
 
 <!-- abreviação -->
 <a :href="url"> ... </a>
+
+<!-- shorthand with dynamic argument (2.6.0+) -->
+<a :[key]="url"> ... </a>
 ```
 
 ### Abreviação para `v-on`
@@ -213,6 +277,13 @@ O prefixo `v-` serve como dica visual para identificar atributos específicos do
 
 <!-- abreviação -->
 <a @click="doSomething"> ... </a>
+
+<!-- shorthand with dynamic argument (2.6.0+) -->
+<a @[event]="doSomething"> ... </a>
 ```
 
+<<<<<<< HEAD
 Essas abreviações podem parecer um pouco diferentes do HTML normalmente utilizado, mas os caracteres `:` e `@` são válidos para nomes de atributos em todos os navegadores que o Vue.js suporta. Além disso, não aparecerão no código renderizado. Essa sintaxe é totalmente opcional, mas você provavelmente vai apreciar quando utilizar diretivas frequentemente.
+=======
+They may look a bit different from normal HTML, but `:` and `@` are valid characters for attribute names and all Vue-supported browsers can parse it correctly. In addition, they do not appear in the final rendered markup. The shorthand syntax is totally optional, but you will likely appreciate it when you learn more about its usage later.
+>>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
