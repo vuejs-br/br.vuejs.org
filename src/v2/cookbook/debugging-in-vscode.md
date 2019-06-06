@@ -103,11 +103,6 @@ Existem outros métodos para depurar, com diversas complexidades. Os mais popula
 
 <p class="tip">Vale observar que se a página usa uma versão de produção/minificada do Vue.js (como o _link_ padrão do CDN), a inspeção do _devtools_ é desabilitada por padrão, então o painel Vue não vai aparecer. Se você trocar para uma versão não minificada, você pode ter de realizar uma atualização forçada para vê-lo (limpando o cache do navegador, por exemplo).</p>
 
-![Depuração Temporal no Vue Devtools](/images/devtools-timetravel.gif)
-
-<p class="tip">Vale observar que se a página usa uma versão de produção/minificada do Vue.js (como o _link_ padrão do CDN), a inspeção do _devtools_ é desabilitada por padrão, então o painel Vue não vai aparecer. Se você trocar para uma versão não minificada, você pode ter de realizar uma atualização forçada para vê-lo (limpando o cache do navegador, por exemplo).
-</p>
-
 ### Declaração Simples do Depurador
 
 O exemplo acima é um ótimo fluxo de trabalho. Entretando, existe uma simples opção alternativa, onde você pode usar a [declaração nativa de depuração (`debugger`)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/debugger) diretamente no seu código. Se você escolher trabalhar desse modo, é importante se lembrar de remover a declaração quando terminar a depuração.

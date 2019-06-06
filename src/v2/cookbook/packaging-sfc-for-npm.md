@@ -125,11 +125,7 @@ Não há necessidade de escrever seu módulo várias vezes. É possível prepara
 
 <p class="tip">Lembre-se, se você tiver um arquivo package.json existente, ele provavelmente conterá muito mais do que isto. Apenas ilustramos um ponto de partida. Além disso, os <i>pacotes</i> listados em devDependencies (não suas versões) são os requisitos mínimos para rollup para criar as três compilações separadas (umd, es e unpkg) mencionadas. À medida que versões mais novas se tornam disponíveis, elas devem ser atualizadas conforme necessário.</p>
 
-<<<<<<< HEAD
 Nossas mudanças no package.json estão completas. Em seguida, precisamos de um pequeno empacotador para exportar/instalar automaticamente o SFC real, além de uma configuração mínima do Rollup, e estaremos prontos!
-=======
-Our changes to package.json are complete. Next, we need a small wrapper to export/auto-install the actual SFC, plus a minimal Rollup configuration, and we're set!
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ### Como Empacoto o Componente?
 
