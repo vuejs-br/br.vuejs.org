@@ -82,13 +82,9 @@ type: api
 
   > No 2.2.0+, esse gatilho também captura erros em gatilhos de ciclo de vida do componente. Além disso, quando esse gatilho é `undefined`, os erros capturados são registrados com `console.error` em vez de quebrar o aplicativo.
 
-<<<<<<< HEAD
   > No 2.4.0+, esse gatilho também captura erros disparados dentro de manipuladores de eventos personalizados.
-=======
-  > In 2.4.0+, this hook also captures errors thrown inside Vue custom event handlers.
 
-  > In 2.6.0+, this hook also captures errors thrown inside `v-on` DOM listeners. In addition, if any of the covered hooks or handlers returns a Promise chain (e.g. async functions), the error from that Promise chain will also be handled.
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+  > Mo 2.6.0+, esse gatilho também captura erros disparados dentro de escutadores do DOM `v-on`. Em adição, se algum dos gatilhos cobertos ou manipuladores retorna uma Promise em cadeia (como funções _async_), o erro daquela Promise também será manipulado.
 
   > Serviços de rastreamento de erros [Sentry](https://sentry.io/for/vue/) e [Bugsnag](https://docs.bugsnag.com/platforms/browsers/vue/) fornecem integrações oficiais usando esta opção.
 
@@ -366,13 +362,7 @@ type: api
 
 - **Uso:**
 
-<<<<<<< HEAD
   Instala um _plugin_ do Vue.js. Se o _plugin_ é um Objeto, ele deve expor um método `install`. Se for uma função, ela será tratada como o próprio método de instalação. O método será chamado com Vue como argumento.
-=======
-  Install a Vue.js plugin. If the plugin is an Object, it must expose an `install` method. If it is a function itself, it will be treated as the install method. The install method will be called with Vue as the argument.
-
-  This method has to be called before calling `new Vue()`
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
   Este método deve ser chamado antes da execução de `new Vue()`.
 
@@ -519,20 +509,16 @@ type: api
 
   Uma lista/_hash_ de atributos que são expostos para aceitar dados do componente pai. Possui tanto uma sintaxe baseada em Array como, alternativamente, uma sintaxe baseada em Object, que permite configurações avançadas como checagem de tipos, validações personalizadas e valores padrão.
 
-<<<<<<< HEAD
-- **Exemplo:**
-=======
-  With Object-based syntax, you can use following options:
-    - `type`: can be one of the following native constructors: `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, any custom constructor function or an array of those. Will check if a prop has a given type, and will throw a warning if it doesn't. [More information](../guide/components-props.html#Prop-Types) on prop types.
+  Com a sintaxe baseada em Object, você pode usar as seguintes opções:
+    - `type`: pode ser um dos seguintes construtores nativos: `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, qualquer função construtora personalizada ou um array dessas. Irá verificar se um prop tem o tipo determinado e emitirá um aviso se não tem. [Mais informação](../guide/components-props.html#Prop-Types) em tipos de prop.
     - `default`: `any`
-    Specifies a default value for the prop. If the prop is not passed, this value will be used instead. Object or array defaults must be returned from a factory function.
+    Especifica um valor padrão para o prop. Se o prop não é passado, este valor será usado em seu lugar. Valores padrão de tipo Object ou Array devem ser retornados de uma função _factory_.
     - `required`: `Boolean`
-    Defines if the prop is required. In a non-production environment, a console warning will be thrown if this value is truthy and the prop is not passed.
+    Define se o prop é necessário. Em ambiente de não-produção, um aviso de console será lançado se esse valor for verdadeiro e o prop não for passado.
     - `validator`: `Function`
-    Custom validator function that takes the prop value as the sole argument. In a non-production environment, a console warning will be thrown if this function returns a falsy value (i.e. the validation fails). You can read more about prop validation [here](../guide/components-props.html#Prop-Validation).
+    Função validadora personalizada que usa o valor do prop como único argumento. Em ambiente de não-produção, um aviso de console será acionado se essa função retornar um valor falso (ou seja, a validação falhar). Você pode ler mais sobre validação de prop [aqui](../guide/components-props.html#Prop-Validation).
 
-- **Example:**
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+- **Exemplo:**
 
   ``` js
   // sintaxe simples
@@ -557,12 +543,8 @@ type: api
     }
   })
   ```
-<<<<<<< HEAD
-- **Ver também:** [Propriedades](../guide/components.html#Propriedades)
-=======
 
-- **See also:** [Props](../guide/components-props.html)
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+- **Ver também:** [Propriedades](../guide/components-props.html)
 
 ### propsData
 
@@ -692,11 +674,8 @@ type: api
       },
       // nome do método como string
       b: 'someMethod',
-<<<<<<< HEAD
-      // observador profundo
-=======
-      // the callback will be called whenever any of the watched object properties change regardless of their nested depth
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+      // o callback será chamado na alteração das propriedades do objeto
+      // observado, independentemente de sua profundidade aninhada
       c: {
         handler: function (val, oldVal) { /* ... */ },
         deep: true
@@ -729,11 +708,7 @@ type: api
 
 ### el
 
-<<<<<<< HEAD
-- **Tipo:** `string | HTMLElement`
-=======
-- **Type:** `string | Element`
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+- **Tipo:** `string | Element`
 
 - **Restrição:** respeitado apenas durante a criação da instância com `new`.
 
@@ -1348,11 +1323,7 @@ type: api
 
 ### vm.$el
 
-<<<<<<< HEAD
-- **Tipo:** `HTMLElement`
-=======
-- **Type:** `Element`
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+- **Tipo:** `Element`
 
 - **Somente leitura**
 
@@ -1417,13 +1388,9 @@ type: api
 
 - **Detalhes:**
 
-<<<<<<< HEAD
-  Usado para acessar programaticamente o conteúdo [distribuído pelos *slots*](../guide/components.html#Distribuicao-de-Conteudo-com-Slots). Cada [*slot* nomeado](../guide/components.html#Slots-Nomeados) tem sua propriedade correspondente (por exemplo, o conteúdo do `slot="foo"` poderá ser acessado via `vm.$slots.foo`). A propriedade `default` contém todo nó que não está inserido em nenhum *slot* nomeado.
-=======
-  Used to programmatically access content [distributed by slots](../guide/components.html#Content-Distribution-with-Slots). Each [named slot](../guide/components.html#Named-Slots) has its own corresponding property (e.g. the contents of `v-slot:foo` will be found at `vm.$slots.foo`). The `default` property contains either nodes not included in a named slot or contents of `v-slot:default`.
+  Usado para acessar programaticamente o conteúdo [distribuído pelos *slots*](../guide/components.html#Content-Distribution-with-Slots). Cada [*slot* nomeado](../guide/components.html#Slots-Nomeados) tem sua propriedade correspondente (por exemplo, o conteúdo do `v-slot:foo` poderá ser acessado via `vm.$slots.foo`). A propriedade `default` contém todo nó que não está inserido em nenhum *slot* nomeado ou conteúdo de `v-slot:default`.
 
-  **Note:** `v-slot:foo` is supported in v2.6+. For older versions, you can use the [deprecated syntax](../guide/components-slots.html#Deprecated-Syntax).
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+  **Nota:** `v-slot:foo` é suportado em v2.6+. Para versões mais antigas, você pode usar a [sintaxe obsoleta](../guide/components-slots.html#Deprecated-Syntax).
 
   É bastante útil acessar `vm.$slots` quando se está escrevendo um componente com uma [função de renderização](../guide/render-function.html).
 
@@ -1431,15 +1398,9 @@ type: api
 
   ```html
   <blog-post>
-<<<<<<< HEAD
-    <h1 slot="header">
-      Sobre mim
-    </h1>
-=======
     <template v-slot:header>
-      <h1>About Me</h1>
+      <h1>Sobre mim</h1>
     </template>
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
     <p>Aqui há conteúdo da página que será incluído em vm.$slots.default, pois não está dentro de nenhum slot nomeado.</p>
 
@@ -1466,27 +1427,16 @@ type: api
   })
   ```
 
-<<<<<<< HEAD
 - **Ver também:**
-  - [Componente `<slot>`](#slot-1)
+  - [Componente `<slot>`](#slot)
   - [Distribuição de conteúdo com Slots](../guide/components.html#Distribuicao-de-Conteudo-com-Slots)
   - [Funções de Renderização - Slots](../guide/render-function.html#Slots)
-=======
-- **See also:**
-  - [`<slot>` Component](#slot)
-  - [Content Distribution with Slots](../guide/components.html#Content-Distribution-with-Slots)
-  - [Render Functions - Slots](../guide/render-function.html#Slots)
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ### vm.$scopedSlots
 
 > Novo em 2.1.0+
 
-<<<<<<< HEAD
-- **Tipo:** `{ [name: string]: props => VNode | Array<VNode> }`
-=======
-- **Type:** `{ [name: string]: props => Array<VNode> | undefined }`
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+- **Tipo:** `{ [name: string]: props => Array<VNode> | undefined }`
 
 - **Somente leitura**
 
@@ -1496,23 +1446,16 @@ type: api
 
   É bastante útil acessar `vm.$scopedSlots` quando se está escrevendo um componente com uma [função de renderização](../guide/render-function.html).
 
-<<<<<<< HEAD
+  **Nota:** desde 2.6.0+, há duas mudanças notáveis ​​nessa propriedade:
+
+  1. Agora, é garantido que as funções de slot com escopo retornarão um array de VNodes, a menos que o valor de retorno seja inválido. Nesse caso, a função retornará `undefined`.
+
+  2. Todos os `$slots` agora também estão expostos em `$scopedSlots` como funções. Se você trabalha com funções de renderização, agora é recomendável sempre acessar slots através de `$scopedSlots`, se eles atualmente usam um escopo ou não. Isso não apenas fará com que as futuras refatorações adicionem um escopo mais simples, mas também facilitarão sua eventual migração para o Vue 3, onde todos os slots serão funções.
+
 - **Ver também:**
-  - [Componente `<slot>`](#slot-1)
+  - [Componente `<slot>`](#slot)
   - [Slot com Escopo](../guide/components.html#Slot-com-Escopo)
   - [Funções de Renderização - Slots](../guide/render-function.html#Slots)
-=======
-  **Note:** since 2.6.0+, there are two notable changes to this property:
-
-  1. Scoped slot functions are now guaranteed to return an array of VNodes, unless the return value is invalid, in which case the function will return `undefined`.
-
-  2. All `$slots` are now also exposed on `$scopedSlots` as functions. If you work with render functions, it is now recommended to always access slots via `$scopedSlots`, whether they currently use a scope or not. This will not only make future refactors to add a scope simpler, but also ease your eventual migration to Vue 3, where all slots will be functions.
-
-- **See also:**
-  - [`<slot>` Component](#slot)
-  - [Scoped Slots](../guide/components.html#Scoped-Slots)
-  - [Render Functions - Slots](../guide/render-function.html#Slots)
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ### vm.$refs
 
@@ -1542,13 +1485,9 @@ type: api
 
 ### vm.$attrs
 
-<<<<<<< HEAD
-- **Tipo:** `{ [key: string]: string }`
-=======
-> New in 2.4.0+
+> Novo em 2.4.0+
 
-- **Type:** `{ [key: string]: string }`
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+- **Tipo:** `{ [key: string]: string }`
 
 - **Somente leitura**
 
@@ -1558,13 +1497,9 @@ type: api
 
 ### vm.$listeners
 
-<<<<<<< HEAD
-- **Tipo:** `{ [key: string]: Function | Array<Function> }`
-=======
-> New in 2.4.0+
+> Novo em 2.4.0+
 
-- **Type:** `{ [key: string]: Function | Array<Function> }`
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+- **Tipo:** `{ [key: string]: Function | Array<Function> }`
 
 - **Somente leitura**
 
@@ -2067,11 +2002,7 @@ type: api
 
 ### v-for
 
-<<<<<<< HEAD
-- **Espera:** `Array | Object | number | string`
-=======
-- **Expects:** `Array | Object | number | string | Iterable (since 2.6)`
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+- **Espera:** `Array | Object | number | string | Iterável (desde 2.6)`
 
 - **Uso:**
 
@@ -2099,13 +2030,9 @@ type: api
   </div>
   ```
 
-<<<<<<< HEAD
+  Em 2.6+, `v-for` também pode trabalhar em valores que implementam o [protocolo iterável](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Iteration_protocols#O_protocolo_iter%C3%A1vel_(iterable_protocol)), incluindo `Map` e `Set` nativos. No entanto, deve-se notar que o Vue 2.x atualmente não suporta a reatividade nos valores `Map` e `Set`, portanto não pode detectar automaticamente as alterações.
+  
   <p class="tip">Quando usada em conjunto com v-if, v-for tem uma prioridade maior. Veja o <a href="../guide/list.html#Utilizando-v-if-com-v-for">guia de Renderização de Listas</a> para detalhes.</p>
-=======
-  In 2.6+, `v-for` can also work on values that implement the [Iterable Protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol), including native `Map` and `Set`. However, it should be noted that Vue 2.x currently does not support reactivity on `Map` and `Set` values, so cannot automatically detect changes.
-
-  <p class="tip">When used together with v-if, v-for has a higher priority than v-if. See the <a href="../guide/list.html#v-for-with-v-if">list rendering guide</a> for details.</p>
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
   O uso detalhado de `v-for` é explicado na seção de Guia com link abaixo.
 
@@ -2150,30 +2077,19 @@ type: api
   <!-- manipulador de método -->
   <button v-on:click="doThis"></button>
 
-<<<<<<< HEAD
-  <!-- sintaxe de objeto (2.4.0+) -->
-  <button v-on="{ mousedown: doThis, mouseup: doThat }"></button>
-
-  <!-- declaração em linha -->
-=======
-  <!-- dynamic event (2.6.0+) -->
+  <!-- evento dinâmico (2.6.0+) -->
   <button v-on:[event]="doThis"></button>
 
-  <!-- inline statement -->
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+  <!-- declaração em linha -->
   <button v-on:click="doThat('hello', $event)"></button>
 
   <!-- forma abreviada -->
   <button @click="doThis"></button>
 
-<<<<<<< HEAD
-  <!-- para a propagação -->
-=======
-  <!-- shorthand dynamic event (2.6.0+) -->
+  <!-- forma abreviada para evento dinâmico (2.6.0+) -->
   <button @[event]="doThis"></button>
-
-  <!-- stop propagation -->
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+  
+  <!-- para a propagação -->
   <button @click.stop="doThis"></button>
 
   <!-- previne padrão -->
@@ -2194,7 +2110,7 @@ type: api
   <!-- o evento de clique será acionado somente uma vez -->
   <button v-on:click.once="doThis"></button>
 
-  <!-- object syntax (2.4.0+) -->
+  <!-- sintaxe de objeto (2.4.0+) -->
   <button v-on="{ mousedown: doThis, mouseup: doThat }"></button>
   ```
 
@@ -2243,23 +2159,16 @@ type: api
   <!-- interligando a um atributo -->
   <img v-bind:src="imageSrc">
 
-<<<<<<< HEAD
+  <!-- nome de atributo dinâmico (2.6.0+) -->
+  <button v-bind:[key]="value"></button>
+
   <!-- forma abreviada -->
   <img :src="imageSrc">
 
-  <!-- com concatenação de String no local -->
-=======
-  <!-- dynamic attribute name (2.6.0+) -->
-  <button v-bind:[key]="value"></button>
-
-  <!-- shorthand -->
-  <img :src="imageSrc">
-
-  <!-- shorthand dynamic attribute name (2.6.0+) -->
+  <!-- forma abreviada do nome de atributo dinâmico (2.6.0+) -->
   <button :[key]="value"></button>
 
-  <!-- with inline string concatenation -->
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+  <!-- com concatenação de string na linha -->
   <img :src="'/path/to/images/' + fileName">
 
   <!-- interligando classes -->
@@ -2548,41 +2457,6 @@ type: api
 
 - **Ver também:** [Referencias a Componentes Filhos](../guide/components.html#Referencias-a-Componentes-Filhos)
 
-<<<<<<< HEAD
-### slot
-
-- **Espera:** `string`
-
-  Usado dentro de conteúdos inseridos no componente filho para indicar a qual *named slot* o conteúdo pertence.
-
-  Para maiores detalhes de uso, veja a sessão no guia do link abaixo:
-
-- **Ver também:** [Slots Nomeados](../guide/components.html#Slots-Nomeados)
-
-### slot-scope
-
-> Novo em 2.5.0+
-
-- **Espera:** `function argument expression`
-
-- **Uso:**
-
-Usado para denotar um elemento ou componente como um slot de escopo. O valor do atributo deve ser uma expressão de JavaScript válida que pode aparecer na posição do argumento de uma assinatura de função. Isso significa que, em ambientes suportados, você também pode usar a desestruturação ES2015 na expressão. Serve como um substituto para [`scope`](#scope-replaced) em 2.5.0+.
-
-  Este atributo não suporta ligação dinâmica.
-
-- **Ver também:** [Slot com Escopo](../guide/components.html#Slot-com-Escopo)
-
-### scope <sup>replaced</sup>
-
-Usado para denotar um elemento `<template>` como um slot de escopo que foi substituído por [`slot-scope`](#slot-scope) em 2.5.0+.
-
-- **Uso:**
-
-  O mesmo que [`slot-scope`](#slot-scope) exceto que `scope` somente pode ser utilizado em elementos `<template>`.
-
-=======
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 ### is
 
 - **Espera:** `string | Object (de opções do componente)`
@@ -2608,45 +2482,43 @@ Usado para denotar um elemento `<template>` como um slot de escopo que foi subst
   - [Componentes Dinâmicos](../guide/components.html#Componentes-Dinamicos)
   - [Cuidados com o Uso no DOM](../guide/components.html#Cuidados-com-o-Uso-no-DOM)
 
-<<<<<<< HEAD
+### slot <sup style="color:#c92222">obsoleto</sup>
+
+**Prefira [v-slot](#v-slot) em 2.6.0+.**
+
+- **Espera:** `string`
+
+  Usado dentro de conteúdos inseridos no componente filho para indicar a qual *named slot* o conteúdo pertence.
+
+  Para maiores detalhes de uso, veja a sessão no guia do link abaixo:
+
+- **Ver também:** [Slots Nomeados](../guide/components.html#Slots-Nomeados)
+
+### slot-scope <sup style="color:#c92222">obsoleto</sup>
+
+**Prefira [v-slot](#v-slot) em 2.6.0+.**
+
+- **Espera:** `function argument expression`
+
+- **Uso:**
+
+Usado para denotar um elemento ou componente como um slot de escopo. O valor do atributo deve ser uma expressão de JavaScript válida que pode aparecer na posição do argumento de uma assinatura de função. Isso significa que, em ambientes suportados, você também pode usar a desestruturação ES2015 na expressão. Serve como um substituto para [`scope`](#scope-replaced) em 2.5.0+.
+
+  Este atributo não suporta ligação dinâmica.
+
+- **Ver também:** [Slot com Escopo](../guide/components.html#Slot-com-Escopo)
+
+### scope <sup style="color:#c92222">removido</sup>
+
+**Substituído por [slot-scope](#slot-scope) em 2.5.0+. Prefira [v-slot](#v-slot) em 2.6.0+.**
+
+Usado para denotar um elemento `<template>` como um slot de escopo.
+
+- **Uso:**
+
+  O mesmo que [`slot-scope`](#slot-scope) exceto que `scope` somente pode ser utilizado em elementos `<template>`.
+
 ## Componentes Integrados
-=======
-### slot <sup style="color:#c92222">deprecated</sup>
-
-**Prefer [v-slot](#v-slot) in 2.6.0+.**
-
-- **Expects:** `string`
-
-  Used on content inserted into child components to indicate which named slot the content belongs to.
-
-- **See also:** [Named Slots with `slot`](../guide/components.html#Named-Slots-with-slot)
-
-### slot-scope <sup style="color:#c92222">deprecated</sup>
-
-**Prefer [v-slot](#v-slot) in 2.6.0+.**
-
-- **Expects:** `function argument expression`
-
-- **Usage:**
-
-  Used to denote an element or component as a scoped slot. The attribute's value should be a valid JavaScript expression that can appear in the argument position of a function signature. This means in supported environments you can also use ES2015 destructuring in the expression. Serves as a replacement for [`scope`](#scope-replaced) in 2.5.0+.
-
-  This attribute does not support dynamic binding.
-
-- **See also:** [Scoped Slots with `slot-scope`](../guide/components.html#Scoped-Slots-with-slot-scope)
-
-### scope <sup style="color:#c92222">removed</sup>
-
-**Replaced by [slot-scope](#slot-scope) in 2.5.0+. Prefer [v-slot](#v-slot) in 2.6.0+.**
-
-Used to denote a `<template>` element as a scoped slot.
-
-- **Usage:**
-
-  Same as [`slot-scope`](#slot-scope) except that `scope` can only be used on `<template>` elements.
-
-## Built-In Components
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ### component
 
@@ -2671,22 +2543,13 @@ Used to denote a `<template>` element as a scoped slot.
 
 ### transition
 
-<<<<<<< HEAD
 - **Propriedades:**
   - `name` - string. Usado para gerar automaticamente nomes de classes CSS de transição. Por exemplo, `name: 'fade'` expandirá automaticamente para `.fade-enter`, `.fade-enter-active` e etc. Por padrão, `"v"` (`v-enter`, `v-enter-active`).
-  - `appear` - boolean. Usado para aplicar a transição na renderização inicial. Por padrão, `false`.
-  - `css` - boolean. Usado para aplicar classes de transição CSS. Padrão para  `true`. Se configurado para `false`, apenas irá desencadear gatilhos registrado no JavaScript por meio de eventos de componentes.
+  - `appear` - boolean. Aplicar ou não a transição na renderização inicial. Por padrão, `false`.
+  - `css` - boolean. Aplicar ou não classes de transição CSS. Padrão é `true`. Se configurado para `false`, apenas irá desencadear gatilhos registrado no JavaScript por meio de eventos de componentes.
   - `type` - string. Especifica os tipos de eventos de transição à aguardar a especificação do tempo final da transição. Valores disponíveis são `"transition"` e `"animation"`. Por padrão, será detectado automaticamente o tipo que tenha uma duração mais longa.
-  - `mode` - string. Controla a sequência de temporização das transições de saída / entrada. Modos disponíveis são `"out-in"` e `"in-out"`. Por padrão, simultaneamente.
-=======
-- **Props:**
-  - `name` - string, Used to automatically generate transition CSS class names. e.g. `name: 'fade'` will auto expand to `.fade-enter`, `.fade-enter-active`, etc. Defaults to `"v"`.
-  - `appear` - boolean, Whether to apply transition on initial render. Defaults to `false`.
-  - `css` - boolean, Whether to apply CSS transition classes. Defaults to `true`. If set to `false`, will only trigger JavaScript hooks registered via component events.
-  - `type` - string, Specifies the type of transition events to wait for to determine transition end timing. Available values are `"transition"` and `"animation"`. By default, it will automatically detect the type that has a longer duration.
-  - `mode` - string, Controls the timing sequence of leaving/entering transitions. Available modes are `"out-in"` and `"in-out"`; defaults to simultaneous.
-  - `duration` - number | { `enter`: number, `leave`: number }, Specifies the duration of transition. By default, Vue waits for the first `transitionend` or `animationend` event on the root transition element.
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+  - `mode` - string. Controla a sequência de temporização das transições de saída/entrada. Modos disponíveis são `"out-in"` e `"in-out"`. Por padrão, simultaneamente.
+  - `duration` - number | { `enter`: number, `leave`: number }. Especifica a duração da transição. Por padrão, o Vue aguarda o primeiro evento de `transitionend` ou `animationend` no elemento de transição raiz.
   - `enter-class` - string
   - `leave-class` - string
   - `appear-class` - string
@@ -2778,16 +2641,10 @@ Used to denote a `<template>` element as a scoped slot.
 
 ### keep-alive
 
-<<<<<<< HEAD
 - **Propriedades:**
   - `include` - string ou RegExp ou Array. Somente os componentes correspondentes serão armazenados em cache.
   - `exclude` - string ou RegExp ou Array. Qualquer componente compatível com isso não será armazenado em cache.
-=======
-- **Props:**
-  - `include` - string or RegExp or Array. Only components with matching names will be cached.
-  - `exclude` - string or RegExp or Array. Any component with a matching name will not be cached.
-  - `max` - number. The maximum number of component instances to cache.
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+  - `max` - number. O número máximo de instâncias do componente a serem armazenadas em cache.
 
 - **Uso:**
 
@@ -2797,11 +2654,7 @@ Used to denote a `<template>` element as a scoped slot.
 
   > Em 2.2.0+, "activated" e "deactivated" dispararão para todos os componentes aninhados dentro de uma árvore `<keep-alive>`.
 
-<<<<<<< HEAD
- Principalmente usado com preservar o estado do componente ou evitar re-renderização.
-=======
-  Primarily used to preserve component state or avoid re-rendering.
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+  Usado principalmente para preservar o estado do componente ou evitar re-renderização.
 
   ```html
   <!-- básico -->
@@ -2850,23 +2703,19 @@ Os acessórios `include` e `exclude` permitem que os componentes sejam armazenad
 
 A correspondência é verificada pela primeira vez na opção `name` do componente, em seguida, pelo nome no registro local (a chave dentro das opções do `components` pai) se a opção `name` não estiver disponível. Os componentes anônimos não podem ser comparados.
 
-<<<<<<< HEAD
-  <p class="tip">`<keep-alive>` não funciona com componentes funcionais porque eles não têm instâncias a serem armazenadas em cache.</p>
-=======
 - **`max`**
 
-  > New in 2.5.0+
+  > Novo em 2.5.0+
 
-  The maximum number of component instances to cache. Once this number is reached, the cached component instance that was least recently accessed will be destroyed before creating a new instance.
+  O número máximo de instâncias do componente a serem armazenadas em cache. Quando esse número for atingido, a instância do componente em cache que foi acessada menos recentemente será destruída antes de criar uma nova instância.
 
   ``` html
   <keep-alive :max="10">
     <component :is="view"></component>
   </keep-alive>
   ```
-
-  <p class="tip">`<keep-alive>` does not work with functional components because they do not have instances to be cached.</p>
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+  
+  <p class="tip">`<keep-alive>` não funciona com componentes funcionais porque eles não têm instâncias a serem armazenadas em cache.</p>
 
 - **Ver também:** [Componentes Dinâmicos - keep-alive](../guide/components.html#keep-alive)
 
