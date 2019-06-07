@@ -63,15 +63,10 @@ Você também viu propriedades associadas dinamicamente com `v-bind`, como em:
 <!-- Associando um valor dinamicamente a uma variável -->
 <blog-post v-bind:title="post.title"></blog-post>
 
-<<<<<<< HEAD
 <!-- Associando dinamicamente o valor de uma expressão complexa -->
-<blog-post v-bind:title="post.title + ' by ' + post.author.name"></blog-post>
-=======
-<!-- Dynamically assign the value of a complex expression -->
 <blog-post
   v-bind:title="post.title + ' by ' + post.author.name"
 ></blog-post>
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 ```
 
 Nos dois exemplos acima, aconteceu de passarmos valores do tipo String, mas _qualquer_ tipo de dado pode ser utilizado em uma propriedade.
@@ -115,20 +110,14 @@ Nos dois exemplos acima, aconteceu de passarmos valores do tipo String, mas _qua
 ### Passando um Objeto
 
 ```html
-<<<<<<< HEAD
 <!-- Embora o Object seja estático, usamos v-bind para dizer ao Vue -->
 <!-- que essa é uma expressão JavaScript em vez de uma String.      -->
-<blog-post v-bind:author="{ name: 'Veronica', company: 'Veridian Dynamics' }"></blog-post>
-=======
-<!-- Even though the object is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.             -->
 <blog-post
   v-bind:author="{
     name: 'Veronica',
     company: 'Veridian Dynamics'
   }"
 ></blog-post>
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 <!-- Associando dinamicamente através do valor de uma variável. -->
 <blog-post v-bind:author="post.author"></blog-post>
@@ -201,11 +190,7 @@ Para especificar validações de propriedades, atribua um objeto com requisitos 
 ``` js
 Vue.component('my-component', {
   props: {
-<<<<<<< HEAD
-    // Checagem básica de tipos (`null` corresponde a qualquer tipo)
-=======
-    // Basic type check (`null` and `undefined` values will pass any type validation)
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+    // Checagem básica de tipos (`null` and `undefined` passarão em qualquer validação de tipo)
     propA: Number,
     // Multíplos tipos possíveis
     propB: [String, Number],
@@ -330,13 +315,8 @@ Isso pode ser especialmente útil quando combinado com a propridade de instânci
 
 ```js
 {
-<<<<<<< HEAD
-  class: 'username-input',
-  placeholder: 'Digite seu usuário'
-=======
   required: true,
-  placeholder: 'Enter your username'
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+  placeholder: 'Digite seu usuário'
 }
 ```
 
@@ -359,23 +339,14 @@ Vue.component('base-input', {
 })
 ```
 
-<<<<<<< HEAD
-Esse padrão permite utilizar componentes base mais parecidos com elementos padrão do HTML, sem a necessidade de se preocupar sobre qual elemento está na raíz:
-=======
-<p class="tip">Note that `inheritAttrs: false` option does **not** affect `style` and `class` bindings.</p>
+<p class="tip">Observe que a opção `inheritAttrs: false` **não** afeta vínculos `style` e `class`.</p>
 
-This pattern allows you to use base components more like raw HTML elements, without having to care about which element is actually at its root:
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+Esse padrão permite utilizar componentes base mais parecidos com elementos padrão do HTML, sem a necessidade de se preocupar sobre qual elemento está na raiz:
 
 ```html
 <base-input
   v-model="username"
-<<<<<<< HEAD
-  class="username-input"
-  placeholder="Digite seu usuário"
-=======
   required
-  placeholder="Enter your username"
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+  placeholder="Digite seu usuário"
 ></base-input>
 ```
