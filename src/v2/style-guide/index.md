@@ -39,7 +39,7 @@ Existem alguns recursos do Vue usados para lidar com casos isolados ou migraçõ
 
 ### Nomes de componentes com multi-palavras <sup data-p="a">Essencial</sup>
 
-**Nomes de componentes devem ser sempre multi-palavras, exceto pelo componente `App` raiz e componentes internos fornecidos pelo Vue, como <transition> ou <component>.**
+**Nomes de componentes devem ser sempre multi-palavras, exceto pelo componente `App` raiz e componentes internos fornecidos pelo Vue, como `<transition>` ou `<component>`.**
 
 Isto [previne conflitos](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name) com elementos HTML existentes e futuros, visto que todos os elementos HTML são formados por apenas uma única palavra.
 
