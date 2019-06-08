@@ -4,13 +4,9 @@ type: guide
 order: 404
 ---
 
-<<<<<<< HEAD
-## Habilitando o Modo de Produção
-=======
-> Most of the tips below are enabled by default if you are using [Vue CLI](https://cli.vuejs.org). This section is only relevant if you are using a custom build setup.
+> A maioria das dicas abaixo são ativadas por padrão se você estiver usando [Vue CLI](https://cli.vuejs.org). Esta seção só é relevante se você estiver usando uma configuração de compilação personalizada.
 
-## Turn on Production Mode
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+## Habilitando o Modo de Produção
 
 Em desenvolvimento, Vue proporciona uma grande quantidade de avisos para lhe ajudar a escapar das enrascadas mais comuns. Entretanto, estas Strings de aviso se tornam desnecessárias em produção e sobrecarregam o tamanho de sua aplicação. Além disso, algumas checagens têm um pequeno custo de desempenho durante a execução que pode ser evitado ao habilitar o modo de produção.
 
