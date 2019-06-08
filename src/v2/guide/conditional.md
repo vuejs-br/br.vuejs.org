@@ -6,38 +6,17 @@ order: 7
 
 ## `v-if`
 
-<<<<<<< HEAD
-Em _templates_ estilo Handlebars, poderíamos escrever blocos condicionais como este:
+A diretiva `v-if` é usada para renderizar condicionalmente um bloco. O bloco só será renderizado se a expressão da diretiva retornar um valor verdadeiro.
 
 ``` html
-<!-- Handlebars template -->
-{{#if ok}}
-  <h1>Sim</h1>
-{{/if}}
-```
-
-No Vue, usamos a diretiva `v-if` para atingir o mesmo resultado:
-
-``` html
-<h1 v-if="ok">Sim</h1>
-=======
-The directive `v-if` is used to conditionally render a block. The block will only be rendered if the directive's expression returns a truthy value.
-
-``` html
-<h1 v-if="awesome">Vue is awesome!</h1>
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+<h1 v-if="awesome">Vue é incrível!</h1>
 ```
 
 Também é possível adicionar um "bloco senão" usando `v-else`:
 
 ``` html
-<<<<<<< HEAD
-<h1 v-if="ok">Sim</h1>
-<h1 v-else>Não</h1>
-=======
-<h1 v-if="awesome">Vue is awesome!</h1>
-<h1 v-else>Oh no 😢</h1>
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+<h1 v-if="awesome">Vue é incrível!</h1>
+<h1 v-else>Oh não 😢</h1>
 ```
 
 ### Grupos Condicionais com `<template>`
@@ -208,10 +187,6 @@ De modo geral, `v-if` tem custo maior durante alternâncias de visibilidade, enq
 
 ## `v-if` com `v-for`
 
-<<<<<<< HEAD
-Quando utilizado em conjunto com `v-for`, este possui maior prioridade do que o `v-if`. Veja o guia de <a href="../guide/list.html#v-for-com-v-if">renderização de listas</a> para mais detalhes.
-=======
-<p class="tip">Using `v-if` and `v-for` together is **not recommended**. See the [style guide](/v2/style-guide/#Avoid-v-if-with-v-for-essential) for further information.</p>
+<p class="tip">Usar `v-if` e `v-for` juntos não é recomendado. Veja o [guia de estilos](/v2/style-guide/#Evite-v-if-com-v-for-Essencial) para mais informações.</p>
 
-When used together with `v-if`, `v-for` has a higher priority than `v-if`. See the <a href="../guide/list.html#v-for-with-v-if">list rendering guide</a> for details.
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+Quando utilizado em conjunto com `v-for`, este possui maior prioridade do que o `v-if`. Veja o guia de <a href="../guide/list.html#v-for-com-v-if">renderização de listas</a> para mais detalhes.
