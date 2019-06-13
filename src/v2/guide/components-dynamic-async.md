@@ -235,11 +235,7 @@ Vue.component(
 )
 ```
 
-<<<<<<< HEAD
 Ao usar o [registro local](components-registration.html#Registro-Local) de componentes, você também pode fornecer diretamente uma função que retorna uma `Promise`:
-=======
-When using [local registration](components-registration.html#Local-Registration), you can also directly provide a function that returns a `Promise`:
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ``` js
 new Vue({

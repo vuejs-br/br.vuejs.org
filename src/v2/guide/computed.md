@@ -94,11 +94,7 @@ methods: {
 }
 ```
 
-<<<<<<< HEAD
-Em vez de um dado computado, podemos definir a mesma funcionalidade como um método. Como resultado final, ambas abordagens têm o mesmo efeito. No entanto, a diferença é que **dados computados são cacheados de acordo com suas dependências**. Um dado computado somente será reavaliado quando alguma de suas dependências for alterada. Isso significa que enquanto `message` não sofrer alterações, múltiplos acessos ao `reversedMessage` retornarão o último valor calculado sem precisar executar a função novamente.
-=======
-Instead of a computed property, we can define the same function as a method instead. For the end result, the two approaches are indeed exactly the same. However, the difference is that **computed properties are cached based on their reactive dependencies.** A computed property will only re-evaluate when some of its reactive dependencies have changed. This means as long as `message` has not changed, multiple access to the `reversedMessage` computed property will immediately return the previously computed result without having to run the function again.
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+Em vez de um dado computado, podemos definir a mesma funcionalidade como um método. Como resultado final, ambas abordagens têm o mesmo efeito. No entanto, a diferença é que **dados computados são cacheados de acordo com suas dependências reativas.** Um dado computado somente será reavaliado quando alguma de suas dependências for alterada. Isso significa que enquanto `message` não sofrer alterações, múltiplos acessos ao `reversedMessage` retornarão o último valor calculado sem precisar executar a função novamente.
 
 Isto inclusive significa que o seguinte dado computado nunca se alterará, pois `Date.now()` não é uma dependência reativa por natureza:
 
@@ -202,17 +198,10 @@ Por exemplo:
 ```
 
 ``` html
-<<<<<<< HEAD
 <!-- Como já existe um rico ecossistema de bibliotecas para Ajax     -->
 <!-- e de coleções de métodos utilitários com propósitos gerais, o   -->
 <!-- núcleo Vue permanece pequeno não os reinventando. Isto também   -->
 <!-- dá a você liberdade de usar apenas o que estiver familiarizado. -->
-=======
-<!-- Since there is already a rich ecosystem of ajax libraries    -->
-<!-- and collections of general-purpose utility methods, Vue core -->
-<!-- is able to remain small by not reinventing them. This also   -->
-<!-- gives you the freedom to use what you're familiar with.      -->
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 <script>
