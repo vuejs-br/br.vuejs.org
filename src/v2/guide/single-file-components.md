@@ -62,20 +62,10 @@ Com componentes `.vue`, estamos entrando no reino das aplicações JavaScript av
 
 - **JavaScript Moderno com ES2015+**: Leia o guia [Learn ES2015](https://babeljs.io/docs/learn-es2015/) do Babel. Não é necessário memorizar cada recurso agora, mas mantenha esta página como referência.
 
-<<<<<<< HEAD
-Depois que tiver tirado um dia para mergulhar nestes tópicos, dê uma olhada no modelo de projeto [webpack](https://vuejs-templates.github.io/webpack). Seguindo as instruções, você terá em mãos um projeto Vue com componentes `.vue`, ES2015 e _hot-reloading_, rodando em pouquíssimo tempo!
-
-Para aprender mais sobre o próprio Webpack, dê uma olhada na [documentação oficial deles](https://webpack.js.org/configuration/) e na [Webpack Academy](https://webpack.academy/p/the-core-concepts). No Webpack, cada arquivo pode ser transformado por um "_loader_" antes de ser incluído no pacote, e Vue dispõe do _plugin_ [vue-loader](https://vue-loader.vuejs.org) para traduzir Componentes Single-File (`.vue`) em códigos compreensíveis ao Webpack.
-=======
-After you've taken a day to dive into these resources, we recommend checking out [Vue CLI 3](https://cli.vuejs.org/). Follow the instructions and you should have a Vue project with `.vue` components, ES2015, Webpack and hot-reloading in no time!
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+Depois que tiver tirado um dia para mergulhar nestes tópicos, recomendamos dar uma olhada no [Vue CLI 3](https://cli.vuejs.org/). Seguindo as instruções, você terá em mãos um projeto Vue com componentes `.vue`, ES2015, Webpack e _hot-reloading_, rodando em pouquíssimo tempo!
 
 ### Para Usuários Avançados
 
-<<<<<<< HEAD
-Independentemente de sua preferência por Webpack ou por Browserify, temos modelos de projeto documentados para ambos, tanto para projetos simples quanto para mais complexos. Recomendados que vasculhe o repositório [github.com/vuejs-templates](https://github.com/vuejs-templates), escolhendo o *template* que considerar mais adequado para o seu caso, seguindo as instruções de cada README para gerar um novo projeto com ajuda da ferramenta [vue-cli](https://github.com/vuejs/vue-cli).
-=======
-The CLI takes care of most of the tooling configurations for you, but also allows fine-grained customization through its own [config options](https://cli.vuejs.org/config/).
+A CLI cuida da maioria das configurações de ferramentas para você, mas também permite a personalização grã-fina através de suas próprias opções de configuração.
 
-In case you prefer setting up your own build setup from scratch, you will need to manually configure webpack with [vue-loader](https://vue-loader.vuejs.org). To learn more about webpack itself, check out [their official docs](https://webpack.js.org/configuration/) and [Webpack Academy](https://webpack.academy/p/the-core-concepts).
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+Caso você prefira configurar seu próprio build a partir do zero, você precisará configurar manualmente o webpack com o [vue-loader](https://vue-loader.vuejs.org). Para saber mais sobre o webpack, confira os [documentos oficiais](https://webpack.js.org/configuration/) e a [Webpack Academy](https://webpack.academy/p/the-core-concepts).

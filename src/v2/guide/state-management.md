@@ -8,13 +8,9 @@ order: 502
 
 Aplicações grandes podem também crescer em complexidade, principalmente devido a múltiplos dados de estado da aplicação espalhados entre diversos componentes e interações entre eles. Para resolver este problema, Vue oferece [vuex](https://github.com/vuejs/vuex): nossa própria biblioteca de gerenciamento de estado inspirada em Elm. Além disso, ela se integra ao [vue-devtools](https://github.com/vuejs/vue-devtools), permitindo viajar pelo histórico de [mudanças de estado (*time travel*)]((https://raw.githubusercontent.com/vuejs/vue-devtools/master/media/demo.gif)) sem precisar de nenhuma configuração adicional.
 
-<<<<<<< HEAD
-### Informação para Desenvolvedores React
-=======
-<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/mastering-vuex/intro-to-vuex/" target="_blank" rel="noopener" title="Vuex Tutorial">Watch a video explanation on Vue Mastery</a></div>
+<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/mastering-vuex/intro-to-vuex/" target="_blank" rel="noopener" title="Vuex Tutorial">Assista a uma explicação em vídeo no Vue Mastery</a></div>
 
-### Information for React Developers
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+### Informação para Desenvolvedores React
 
 Se você vem do React, é possível que esteja se perguntando como vuex se compara ao [redux](https://github.com/reactjs/redux), a mais popular implementação Flux daquele ecossistema. Redux é agnóstico em relação à camada _view_, podendo ser facilmente utilizado com Vue através de alguns [bindings simples](https://yarnpkg.com/en/packages?q=redux%20vue&p=1). Vuex é diferente, uma vez que ele **sabe** que está em uma aplicação Vue. Isto permite melhor integração com o Vue, oferecendo uma API mais intuitiva e uma experiência de desenvolvimento otimizada.
 
@@ -55,11 +51,7 @@ var store = {
 }
 ```
 
-<<<<<<< HEAD
 Observe que todas as ações que modificam o estado do _store_ são colocadas dentro do próprio. Este tipo de gerenciamento de estado centralizado torna mais fácil compreender quais tipos de mutação poderiam acontecer e como poderiam ser disparadas. Se algo der errado, teremos registros no console sobre cada passo realizado para rastrearmos o *bug*.
-=======
-Notice all actions that mutate the store's state are put inside the store itself. This type of centralized state management makes it easier to understand what type of mutations could happen and how they are triggered. Now when something goes wrong, we'll also have a log of what happened leading up to the bug.
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 Adicionalmente, cada instância/componente ainda pode gerenciar e manter seus próprios dados privados:
 

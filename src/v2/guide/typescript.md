@@ -4,11 +4,7 @@ type: guide
 order: 403
 ---
 
-<<<<<<< HEAD
-> No Vue 2.5.0+ melhoramos bastante a declaração de tipos para funcionar com a API baseada em objetos padrão. Ao mesmo tempo, isto introduziu mudanças que requerem ações de migração para esta versão. Leia [esta postagem](https://medium.com/the-vue-point/upcoming-typescript-changes-in-vue-2-5-e9bd7e2ecf08) para mais detalhes.
-=======
-> [Vue CLI](https://cli.vuejs.org) provides built-in TypeScript tooling support. In our next major version of Vue (3.x), we are also planning to considerably improve our TypeScript support with built-in class based components API and TSX support.
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+> O [Vue CLI](https://cli.vuejs.org) oferece suporte a ferramentas TypeScript integrado. Em nossa próxima versão principal do Vue (3.x), também estamos planejando melhorar consideravelmente nosso suporte a TypeScript com API interna para componentes baseados em classe e suporte a TSX.
 
 ## Declaração Oficial em Pacotes NPM
 
