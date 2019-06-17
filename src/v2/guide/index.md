@@ -13,28 +13,20 @@ Vue (pronuncia-se /vjuː/, como **view**, em inglês) é um **framework progress
 
 Se você gostaria de saber mais sobre Vue antes de mergulhar nele, nós <a id="modal-player"  href="#">criamos um vídeo</a> passeando pelos princípios básicos com um exemplo de projeto.
 
-<<<<<<< HEAD
 Se você é um desenvolvedor _frontend_ experiente e quer saber como Vue se compara a outras bibliotecas/_frameworks_, confira a [Comparação com Outros Frameworks](comparison.html).
+
+<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/" target="_blank" rel="noopener" title="Free Vue.js Course">Assista à um curso em vídeo gratuito em Vue Mastery</a></div>
 
 ## Primeiros Passos
 
+<a class="button" href="installation.html">Instalação</a>
+
 <p class="tip">O guia oficial supõe um nível intermediário em HTML, CSS e JavaScript. Se você é totalmente novo no mundo do _frontend_, mergulhar diretamente em um _framework_ pode não ser a melhor ideia para começar - compreenda primeiro o básico e depois volte! Experiência anterior com outros _frameworks_ ajuda, mas não é obrigatória.</p>
 
-A forma mais simples de testar Vue.js é usando o [exemplo de Olá Mundo no JSFiddle](https://jsfiddle.net/ErickPetru/39ocp6er/). Sinta-se à vontade para abrí-lo em outra aba e acompanhar conosco durante alguns exemplos básicos. Ou, você pode <a href="https://gist.githubusercontent.com/ErickPetru/dcc4f4f27034a7bb6e5f91023659b7c7/raw/afd3e563112897dba2d84e181a54f32eb862fc47/index.html" target="_blank" download="index.html">criar um arquivo `.html`</a> e incluir Vue com:
-=======
-<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/" target="_blank" rel="noopener" title="Free Vue.js Course">Watch a free video course on Vue Mastery</a></div>
-
-## Getting Started
-
-<a class="button" href="installation.html">Installation</a>
-
-<p class="tip">The official guide assumes intermediate level knowledge of HTML, CSS, and JavaScript. If you are totally new to frontend development, it might not be the best idea to jump right into a framework as your first step - grasp the basics then come back! Prior experience with other frameworks helps, but is not required.</p>
-
-The easiest way to try out Vue.js is using the [JSFiddle Hello World example](https://jsfiddle.net/chrisvfritz/50wL7mdz/). Feel free to open it in another tab and follow along as we go through some basic examples. Or, you can <a href="https://gist.githubusercontent.com/chrisvfritz/7f8d7d63000b48493c336e48b3db3e52/raw/ed60c4e5d5c6fec48b0921edaed0cb60be30e87c/index.html" target="_blank" download="index.html" rel="noopener noreferrer">create an <code>index.html</code> file</a> and include Vue with:
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+A forma mais simples de testar Vue.js é usando o [exemplo de Olá Mundo no JSFiddle](https://jsfiddle.net/ErickPetru/39ocp6er/). Sinta-se à vontade para abrí-lo em outra aba e acompanhar conosco durante alguns exemplos básicos. Ou, você pode <a href="https://gist.githubusercontent.com/ErickPetru/dcc4f4f27034a7bb6e5f91023659b7c7/raw/afd3e563112897dba2d84e181a54f32eb862fc47/index.html" target="_blank" download="index.html" rel="noopener noreferrer">criar um arquivo <code>index.html</code></a> e incluir Vue com:
 
 ``` html
-<!-- versão de desenvolvimento, inclui aviso úteis no console  -->
+<!-- versão de desenvolvimento, inclui avisos úteis no console  -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 ```
 
@@ -51,11 +43,7 @@ Se você preferir algo mais interativo, pode dar uma olhada [nesta série de tut
 
 ## Renderização Declarativa
 
-<<<<<<< HEAD
-<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/cQ3QVcr" target="_blank">Tente esta lição no Scrimba</a></div>
-=======
-<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/cQ3QVcr" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/cQ3QVcr" target="_blank" rel="noopener noreferrer">Tente esta lição no Scrimba</a></div>
 
 No núcleo do Vue.js está um sistema que nos permite declarativamente renderizar dados no DOM (Document Object Model) usando uma sintaxe de _template_ simples:
 
@@ -127,11 +115,7 @@ Se você abrir seu _console_ JavaScript novamente e informar `app2.message = 'al
 
 ## Condicionais e Laços
 
-<<<<<<< HEAD
-<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/cEQe4SJ" target="_blank">Tente esta lição no Scrimba</a></div>
-=======
-<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/cEQe4SJ" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/cEQe4SJ" target="_blank" rel="noopener noreferrer">Tente esta lição no Scrimba</a></div>
 
 Também é fácil alternar a presença de um elemento:
 
@@ -216,11 +200,7 @@ No _console_, informe `app4.todos.push({ text: 'Novo item' })`. Você verá um n
 
 ## Tratando Interação do Usuário
 
-<<<<<<< HEAD
-<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/czPNaUr" target="_blank">Tente esta lição no Scrimba</a></div>
-=======
-<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/czPNaUr" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/czPNaUr" target="_blank" rel="noopener noreferrer">Tente esta lição no Scrimba</a></div>
 
 Para permitir aos usuários interagir com o aplicativo, podemos usar a diretiva `v-on` para anexar escutas a eventos (_event listeners_) que invocam métodos em nossas instâncias Vue:
 
@@ -298,11 +278,7 @@ var app6 = new Vue({
 
 ## Composição com Componentes
 
-<<<<<<< HEAD
-<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/cEQVkA3" target="_blank">Tente esta lição no Scrimba</a></div>
-=======
-<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/cEQVkA3" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/cEQVkA3" target="_blank" rel="noopener noreferrer">Tente esta lição no Scrimba</a></div>
 
 O sistema de componentes também é outro importante conceito no Vue, por ser uma abstração que proporciona a construção de aplicações de larga escala compostas por pequenos componentes, auto-contidos e frequentemente reutilizáveis. Se nós pensarmos sobre isso, quase qualquer tipo de interface de uma aplicação pode ser abstraída em uma árvore de componentes:
 
@@ -416,22 +392,14 @@ Em uma aplicação grande, é essencial dividir todo o aplicativo em componentes
 
 Você pode ter notado que componentes Vue são muito similares aos **Elementos Customizados**, parte da [Especificação de Web Components](https://www.w3.org/wiki/WebComponents/). Isto ocorre pois a sintaxe de componentes Vue foi vagamente modelada a partir da especificação. Por exemplo, implementamos a [Slot API](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md) e o atributo especial `is`. Entretanto, existem algumas diferenças fundamentais:
 
-<<<<<<< HEAD
-1. A Especificação de Web Components ainda é um rascunho (_draft status_), não está nativamente implementada em todos os navegadores. Em comparação, componentes Vue não requerem qualquer tipo de _polyfill_ e funcionam consistentemente em todos os navegadores suportados (IE9 e superiores). Quando necessário, componentes Vue também podem ser envolvidos dentro de um elemento customizado nativo.
-=======
-1. The Web Components Spec has been finalized, but is not natively implemented in every browser. Safari 10.1+, Chrome 54+ and Firefox 63+ natively support web components. In comparison, Vue components don't require any polyfills and work consistently in all supported browsers (IE9 and above). When needed, Vue components can also be wrapped inside a native custom element.
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+1. A Especificação de Web Components foi finalizada, mas não está nativamente implementada em todos os navegadores. O Safari 10.1+, Chrome 54+ e Firefox 63+ suportam nativamente os componentes da web. Em comparação, componentes Vue não requerem qualquer tipo de _polyfill_ e funcionam consistentemente em todos os navegadores suportados (IE9 e superiores). Quando necessário, componentes Vue também podem ser envolvidos dentro de um elemento customizado nativo.
 
 2. Componentes Vue oferecem importantes recursos não disponíveis em elementos customizados tradicionais, mais notavelmente: fluxo de dados entre componentes, comunicação com eventos customizados e integração com ferramentas para _build_.
 
-<<<<<<< HEAD
-## Pronto para Mais?
-=======
-Although Vue doesn't use custom elements internally, it has [great interoperability](https://custom-elements-everywhere.com/#vue) when it comes to consuming or distributing as custom elements. Vue CLI also supports building Vue components that register themselves as native custom elements.
+Embora o Vue não use elementos personalizados internamente, ele tem [ótima interoperabilidade](https://custom-elements-everywhere.com/#vue) quando se trata de consumir ou distribuir como elementos personalizados. O Vue CLI também suporta a criação de componentes do Vue que se registram como elementos personalizados nativos.
 
-## Ready for More?
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+## Pronto para Mais?
 
 Nós introduzimos brevemente os recursos mais básicos do núcleo do Vue.js - o resto deste guia se aprofundará neles e em outros recursos avançados em um nível muito maior de detalhes, portanto certifique-se de ler tudo!
 
-<div id="video-modal" class="modal"><div class="video-space" style="padding: 56.25% 0 0 0; position: relative;"><iframe src="https://player.vimeo.com/video/247494684" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%; margin: 0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script><p class="modal-text">Video by <a href="https://www.vuemastery.com" target="_blank" rel="noopener" title="Vue.js Courses on Vue Mastery">Vue Mastery</a>. Watch Vue Mastery’s free <a href="https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/" target="_blank" rel="noopener" title="Vue.js Courses on Vue Mastery">Intro to Vue course</a>.</div>
+<div id="video-modal" class="modal"><div class="video-space" style="padding: 56.25% 0 0 0; position: relative;"><iframe src="https://player.vimeo.com/video/247494684" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%; margin: 0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script><p class="modal-text">Video by <a href="https://www.vuemastery.com" target="_blank" rel="noopener" title="Vue.js Courses on Vue Mastery">Vue Mastery</a>. Assista gratuitamente a <a href="https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/" target="_blank" rel="noopener" title="Vue.js Courses on Vue Mastery">curso Intro ao Vue</a> do Vue Mastery.</div>

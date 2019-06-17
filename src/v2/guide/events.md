@@ -223,53 +223,31 @@ O `.passive` é especialmente útil para otimizar desempenho em dispositivos mó
 
 ## Modificadores de Teclado
 
-<<<<<<< HEAD
-Quando escutamos eventos do teclado, precisamos muitas vezes verificar a ocorrência de códigos de teclas comuns. O Vue também permite a adição de modificadores `v-on` ao escutar eventos de teclado:
+Quando escutamos eventos do teclado, precisamos muitas vezes verificar a ocorrência de teclas específicas. O Vue também permite a adição de modificadores `v-on` ao escutar eventos de teclado:
 
 ``` html
-<!-- só chama `vm.submit()` quando o `keyCode` é 13 -->
-<input v-on:keyup.13="submit">
-```
-
-Se lembrar de todos os `keyCode` é uma chatice, então o Vue fornece apelidos para as teclas mais usadas:
-
-``` html
-<!-- igual o acima -->
-<input v-on:keyup.enter="submit">
-
-<!-- também funciona com abreviações -->
-<input @keyup.enter="submit">
-```
-
-Lista completa dos apelidos de modificadores de tecla:
-=======
-When listening for keyboard events, we often need to check for specific keys. Vue allows adding key modifiers for `v-on` when listening for key events:
-
-``` html
-<!-- only call `vm.submit()` when the `key` is `Enter` -->
+<!-- só chama `vm.submit()` quando o `key` é `Enter` -->
 <input v-on:keyup.enter="submit">
 ```
-
-You can directly use any valid key names exposed via [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values) as modifiers by converting them to kebab-case.
+Você pode usar diretamente qualquer nome de chave válido exposto via [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values) como modificadores, convertendo-os em kebab-case.
 
 ``` html
 <input v-on:keyup.page-down="onPageDown">
 ```
 
-In the above example, the handler will only be called if `$event.key` is equal to `'PageDown'`.
+No exemplo acima, o manipulador só será chamado se `$event.key` for igual a `'PageDown'`.
 
 ### Key Codes
 
-<p class="tip">The use of `keyCode` events [is deprecated](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode) and may not be supported in new browsers.</p>
+<p class="tip">O uso de eventos `keyCode` [está obsoleto](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode) e pode não ser suportado em novos navegadores.</p>
 
-Using `keyCode` attributes is also permitted:
+Usando os atributos `keyCode` também é permitido:
 
 ``` html
 <input v-on:keyup.13="submit">
 ```
 
-Vue provides aliases for the most commonly used key codes when necessary for legacy browser support:
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+O Vue fornece apelidos para os códigos de teclas mais comuns ​​quando necessário para suporte a um navegador legado:
 
 - `.enter`
 - `.tab`
@@ -281,38 +259,16 @@ Vue provides aliases for the most commonly used key codes when necessary for leg
 - `.left`
 - `.right`
 
-<<<<<<< HEAD
-Se necessário, defina [apelidos personalizados](../api/#keyCodes) através do objeto global `config.keyCodes`:
-=======
-<p class="tip">A few keys (`.esc` and all arrow keys) have inconsistent `key` values in IE9, so these built-in aliases should be preferred if you need to support IE9.</p>
+<p class="tip">Algumas teclas (`.esc` e todas as teclas de seta) têm valores `key` inconsistentes no IE9, portanto, esses apelidos internos devem ter preferência se você precisar dar suporte ao IE9.</p>
 
-You can also [define custom key modifier aliases](../api/#keyCodes) via the global `config.keyCodes` object:
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+Se necessário, defina [apelidos personalizados](../api/#keyCodes) através do objeto global `config.keyCodes`:
 
 ``` js
 // habilita `v-on:keyup.f1`
 Vue.config.keyCodes.f1 = 112
 ```
 
-<<<<<<< HEAD
-### Modificadores de Tecla Automáticos
-
-> Novo em 2.5.0+
-
-Você também pode diretamente utilizar qualquer nome de chave válido exposto via [`KeyboardEvent.key`](https://developer.mozilla.org/pt-BR/docs/Web/API/KeyboardEvent/key/Key_Values) como modificador convertendo-o para _kebab-case_:
-
-``` html
-<input @keyup.page-down="onPageDown">
-```
-
-No exemplo acima, o gatilho será chamado se `$event.key === 'PageDown'`.
-
-<p class="tip">Algumas teclas (`.esc` e teclas de setas) tem valores `key` inconsistentes no IE9, os apelidos pré-definidos do Vue devem ser preferidos se você precisar suportar IE9.</p>
-
 ## Teclas Modificadoras de Sistema
-=======
-## System Modifier Keys
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 > Novo em 2.1.0+
 
@@ -323,11 +279,7 @@ Você pode utilizar os modificadores a seguir para acionar eventos de _mouse_ ou
 - `.shift`
 - `.meta`
 
-<<<<<<< HEAD
-> Nota: Nos teclados Macintosh, meta é a tecla de comando (⌘). Nos teclados Windows, meta é a tecla Windows (⊞). Nos teclados Sun Microsystems, meta é marcada como um diamante sólido (◆). Em alguns teclados, especificamente em máquinas MIT e Lisp, como o teclado Knight e teclados space-cadet, meta é descritivamente marcada como “META”. Em teclados Symbolics, meta é descritivamente marcada como “META” ou “Meta”.
-=======
-> Note: On Macintosh keyboards, meta is the command key (⌘). On Windows keyboards, meta is the Windows key (⊞). On Sun Microsystems keyboards, meta is marked as a solid diamond (◆). On certain keyboards, specifically MIT and Lisp machine keyboards and successors, such as the Knight keyboard, space-cadet keyboard, meta is labeled “META”. On Symbolics keyboards, meta is labeled “META” or “Meta”.
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+> Nota: Nos teclados Macintosh, meta é a tecla de comando (⌘). Nos teclados Windows, meta é a tecla Windows (⊞). Nos teclados Sun Microsystems, meta é marcada como um diamante sólido (◆). Em alguns teclados, especificamente em máquinas MIT e Lisp, como o teclado Knight e teclados space-cadet, meta é marcada como “META”. Em teclados Symbolics, meta é marcada como “META” ou “Meta”.
 
 Por exemplo:
 

@@ -66,13 +66,9 @@ Um objeto de definição de diretiva pode prover algumas funções de gatilhos (
 
 - `update`: chamada após a atualização do VNode que contém o componente, __mas possivelmente antes da atualização de seus filhos__. O valor da diretiva pode ou não ter mudado, mas você pode evitar atualizações desnecessárias comparando os valores atuais com os antigos (veja abaixo, em argumentos dos gatilhos).
 
-<<<<<<< HEAD
-- `componentUpdated`: chamada após a atualização do Vnode que contém o componente, __inclusive de seus filhos__.
-=======
-<p class="tip">We'll cover VNodes in more detail [later](./render-function.html#The-Virtual-DOM), when we discuss [render functions](./render-function.html).</p>
+<p class="tip">Abordaremos o VNodes com mais detalhes [depois](./render-function.html#DOM-Virtual), quando discutirmos [funções de renderização](./render-function.html).</p>
 
-- `componentUpdated`: called after the containing component's VNode __and the VNodes of its children__ have updated.
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+- `componentUpdated`: chamada após a atualização do Vnode que contém o componente, __inclusive de seus filhos__.
 
 - `unbind`: chamada somente uma vez, quando a diretiva é desvinculada do elemento.
 
@@ -147,17 +143,14 @@ new Vue({
 </script>
 {% endraw %}
 
-<<<<<<< HEAD
-## Forma Abreviada de Funções
-=======
-Directive arguments can be dynamic. For example, in `v-mydirective:argument=[dataproperty]`, `argument` is the string value assigned to the *arg* property in your directive hook *binding* parameter and `dataproperty` is a reference to a data property on your component instance assigned to the *value* property in the same *binding* parameter. As directive hooks are invoked, the *value* property of the *binding* parameter will dynamically change based on the value of `dataproperty`.
+Os argumentos de diretiva podem ser dinâmicos. Por exemplo, em `v-mydirective:argument=[dataproperty]`, `argument` é o valor string atribuído à propriedade *arg* em seu parâmetro *binding* do gatilho de diretiva e `dataproperty` é uma referência a uma propriedade de dados na instância do componente atribuída à propriedade *value* no mesmo parâmetro *binding*. Conforme os gatilhos da diretiva são invocados, a propriedade *value* do parâmetro *binding* será alterada dinamicamente com base no valor de `dataproperty`.
 
-An example of a custom directive using a dynamic argument:
+Um exemplo de uma diretiva personalizada usando um argumento dinâmico:
 
 ```html
 <div id="app">
-  <p>Scroll down the page</p>
-  <p v-tack:left="[dynamicleft]">I’ll now be offset from the left instead of the top</p>
+  <p>Role a página</p>
+  <p v-tack:left="[dynamicleft]">Agora vou ser deslocado da esquerda em vez do topo</p>
 </div>
 ```
 
@@ -170,7 +163,7 @@ Vue.directive('tack', {
   }
 })
 
-// start app
+// iniciar app
 new Vue({
   el: '#app',
   data() {
@@ -181,8 +174,7 @@ new Vue({
 })
 ```
 
-## Function Shorthand
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+## Forma Abreviada de Funções
 
 Em muitos casos, você pode querer ter o mesmo comportamento nos gatilhos `bind` e `update`, e não se importar com os outros gatilhos. Por exemplo:
 
