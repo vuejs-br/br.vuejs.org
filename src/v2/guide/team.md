@@ -1084,7 +1084,7 @@ order: 803
     },
     {
       name: 'EGOIST',
-      title: 'Build Tool Simplificator',
+      title: 'Simplificador de Compilação',
       city: 'Chengdu, China',
       languages: ['zh', 'en'],
       github: 'egoist',
@@ -1161,20 +1161,6 @@ order: 803
       },
       reposPersonal: [
         'translation-gang/ru.vuejs.org'
-      ]
-    },
-    {
-      name: 'EGOIST',
-      title: 'Simplificador de Compilação',
-      city: 'Chengdu, China',
-      languages: ['zh', 'en'],
-      github: 'egoist',
-      twitter: '_egoistlily',
-      reposOfficial: [
-        'vue-cli'
-      ],
-      reposPersonal: [
-        'poi', 'ream', 'vue-play'
       ]
     },
     {
