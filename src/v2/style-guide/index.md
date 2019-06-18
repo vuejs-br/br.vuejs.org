@@ -1387,7 +1387,7 @@ Enquanto os valores de atributos sem espaços não são necessários para ter as
 
 ### Abreviação de diretivas <sup data-p="b">Altamente Recomendado</sup>
 
-**Abreviações de diretiva (`:` para `v-bind:` e `@` para `v-on:`) devem ser usadas sempre ou nunca.**
+**Abreviações de diretiva (`:` para `v-bind:`, `@` para `v-on:` e `#` para `v-slot`) devem ser sempre usadas ou nunca usadas, matendo-se um padrão.**
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Mal Exemplo
@@ -1404,6 +1404,16 @@ Enquanto os valores de atributos sem espaços não são necessários para ter as
   v-on:input="onInput"
   @focus="onFocus"
 >
+```
+
+``` html
+<template v-slot:header>
+  <h1>Here might be a page title</h1> 
+</template>
+
+<template #footer>
+  <p>Here's some contact info</p>
+</template>
 ```
 {% raw %}</div>{% endraw %}
 
@@ -1436,6 +1446,26 @@ Enquanto os valores de atributos sem espaços não são necessários para ter as
   v-on:input="onInput"
   v-on:focus="onFocus"
 >
+```
+
+``` html
+<template v-slot:header>
+  <h1>Here might be a page title</h1> 
+</template>
+
+<template v-slot:footer>
+  <p>Here's some contact info</p>
+</template>
+```
+
+``` html
+<template #header>
+  <h1>Here might be a page title</h1> 
+</template>
+
+<template #footer>
+  <p>Here's some contact info</p>
+</template>
 ```
 {% raw %}</div>{% endraw %}
 

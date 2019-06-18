@@ -330,7 +330,7 @@ type: api
   var myFilter = Vue.filter('my-filter')
   ```
 
-- **See also:** [Filters](../guide/filters.html)
+- **Ver também:** [Filters](../guide/filters.html)
 
 ### Vue.component( id, [definition] )
 
@@ -406,16 +406,16 @@ type: api
 
 ### Vue.observable( object )
 
-> New in 2.6.0+
+> Novo em 2.6.0+
 
-- **Arguments:**
+- **Argumentos:**
   - `{Object} object`
 
-- **Usage:**
+- **Uso:**
 
-  Make an object reactive. Internally, Vue uses this on the object returned by the `data` function.
+  Torna um objeto reativo. Internamente, Vue utiliza este método no objeto retornado pela função `data`.
 
-  The returned object can be used directly inside [render functions](../guide/render-function.html) and [computed properties](../guide/computed.html), and will trigger appropriate updates when mutated. It can also be used as a minimal, cross-component state store for simple scenarios:
+  O objeto retornado pode ser utilizado diretamente dentro de [funções de renderização](../guide/render-function.html) e [dados computados](../guide/computed.html), e irá disparar as atualizações apropriadas quando for modificado. Também pode ser usado como um armazenamento de estado mínimo entre componentes, para cenários simples:
 
   ``` js
   const state = Vue.observable({ count: 0 })
@@ -429,9 +429,9 @@ type: api
   }
   ```
 
-  <p class="tip">In Vue 2.x, `Vue.observable` directly mutates the object passed to it, so that it is equivalent to the object returned, as [demonstrated here](../guide/instance.html#Data-and-Methods). In Vue 3.x, a reactive proxy will be returned instead, leaving the original object non-reactive if mutated directly. Therefore, for future compatibility, we recommend always working with the object returned by `Vue.observable`, rather than the object originally passed to it.</p>
+  <p class="tip">No Vue 2.x, `Vue.observable` diretamente modifica o objeto passado para ele, de forma que seja equivalente ao objeto retornado, como [demonstrado aqui](../guide/instance.html##Dados-e-Metodos). No Vue 3.x, um _proxy_ de reatividade será retornado, mantendo o objetivo original não-reativo se mutado diretamente. Sendo assim, para futura compatibilidade, recomendamos que sempre trabahe com o objeto retornado por `Vue.observable`, ao invés de utilizar o objeto originalmente passado para tal método.</p>
 
-- **See also:** [Reactivity in Depth](../guide/reactivity.html)
+- **Ver também:** [Reatividade em Profundidade](../guide/reactivity.html)
 
 ### Vue.version
 
@@ -1402,7 +1402,7 @@ type: api
       <h1>Sobre mim</h1>
     </template>
 
-    <p>Aqui há conteúdo da página que será incluído em vm.$slots.default, pois não está dentro de nenhum slot nomeado.</p>
+    <p>Aqui há conteúdo da página que será incluído em vm.$slots.default, pois não está dentro de nenhum _slot_ nomeado.</p>
 
     <template v-slot:footer>
       <p>Copyright 2016 Evan You</p>
@@ -1448,9 +1448,9 @@ type: api
 
   **Nota:** desde 2.6.0+, há duas mudanças notáveis ​​nessa propriedade:
 
-  1. Agora, é garantido que as funções de slot com escopo retornarão um array de VNodes, a menos que o valor de retorno seja inválido. Nesse caso, a função retornará `undefined`.
+  1. Agora, é garantido que as funções de _slot_ com escopo retornarão um array de VNodes, a menos que o valor de retorno seja inválido. Nesse caso, a função retornará `undefined`.
 
-  2. Todos os `$slots` agora também estão expostos em `$scopedSlots` como funções. Se você trabalha com funções de renderização, agora é recomendável sempre acessar slots através de `$scopedSlots`, se eles atualmente usam um escopo ou não. Isso não apenas fará com que as futuras refatorações adicionem um escopo mais simples, mas também facilitarão sua eventual migração para o Vue 3, onde todos os slots serão funções.
+  2. Todos os `$slots` agora também estão expostos em `$scopedSlots` como funções. Se você trabalha com funções de renderização, agora é recomendável sempre acessar _slots_ através de `$scopedSlots`, se eles atualmente usam um escopo ou não. Isso não apenas fará com que as futuras refatorações adicionem um escopo mais simples, mas também facilitarão sua eventual migração para o Vue 3, onde todos os _slots_ serão funções.
 
 - **Ver também:**
   - [Componente `<slot>`](#slot)
@@ -2238,20 +2238,20 @@ type: api
 
 - **Espera:** Expressão JavaScript válida em uma posição de argumento de função (suporta desestruturação em [ambientes suportados](../guide/components-slots.html#Slot-Props-Destructuring)). Opcional - necessário apenas caso espere-se que os objetos sejam passados para o slot.
 
-- **Argumento:** nome do slot  (opcional, padrão `default`)
+- **Argumento:** nome do _slot_  (opcional, padrão `default`)
 
 - **Limitado a:**
   - `<template>`
-  - [componentes](../guide/components-slots.html#Abbreviated-Syntax-for-Lone-Default-Slots) (para um único slot padrão com propriedades)
+  - [componentes](../guide/components-slots.html#Abbreviated-Syntax-for-Lone-Default-Slots) (para um único _slot_ padrão com propriedades)
 
 - **Uso:**
 
-  Denotar slots ou slots nomeados que esperam receber propriedades.
+  Denotar _slots_ ou _slots_ nomeados que esperam receber propriedades.
 
 - **Examplo:**
 
   ```html
-  <!-- Nome do slots -->
+  <!-- Nome do _slots_ -->
   <base-layout>
     <template v-slot:header>
       Conteúdo do cabeçalho
@@ -2279,7 +2279,7 @@ type: api
   </mouse-position>
   ```
 
-  Para mais detalhes, veja os links abaixo.
+  Para mais detalhes, veja os _links_ abaixo.
 
 - **Veja também:**
   - [Componentes - Slots](../guide/components-slots.html)
@@ -2287,37 +2287,37 @@ type: api
 
 ### v-slot
 
-- **Shorthand:** `#`
+- **Abreviação:** `#`
 
-- **Expects:** JavaScript expression that is valid in a function argument position (supports destructuring in [supported environments](../guide/components-slots.html#Slot-Props-Destructuring)). Optional - only needed if expecting props to be passed to the slot.
+- **Espera:** expressão JavaScript que seja válida na posição de um argumento de função (aceita desestruturação em [ambientes suportados](../guide/components-slots.html#Desestruturando-Props-do-Slot)). Opcional - somente necessário se estiver esperando que propriedades sejam passadas ao _slot_.
 
-- **Argument:** slot name (optional, defaults to `default`)
+- **Argumento:** nome do _slot_ (opcional, o valor padrão é `default`)
 
-- **Limited to:**
+- **Limitado a:**
   - `<template>`
-  - [components](../guide/components-slots.html#Abbreviated-Syntax-for-Lone-Default-Slots) (for a lone default slot with props)
+  - [components](../guide/components-slots.html#Abbreviated-Syntax-for-Lone-Default-Slots) (para um único _slot_ padrão com propriedades)
 
-- **Usage:**
+- **Uso:**
 
-  Denote named slots or slots that expect to receive props.
+  Denotar _slots_ ou _slots_ nomeados que esperam receber propriedades.
 
-- **Example:**
+- **Exemplo:**
 
   ```html
-  <!-- Named slots -->
+  <!-- Slots nomeados -->
   <base-layout>
     <template v-slot:header>
       Header content
     </template>
 
-    Default slot content
+    Default _slot_ content
 
     <template v-slot:footer>
       Footer content
     </template>
   </base-layout>
 
-  <!-- Named slot that receives props -->
+  <!-- Slot nomeado que recebe propriedades -->
   <infinite-scroll>
     <template v-slot:item="slotProps">
       <div class="item">
@@ -2326,15 +2326,15 @@ type: api
     </template>
   </infinite-scroll>
 
-  <!-- Default slot that receive props, with destructuring -->
+  <!-- Slot padrão que recebe propriedades, com desestruturação -->
   <mouse-position v-slot="{ x, y }">
     Mouse position: {{ x }}, {{ y }}
   </mouse-position>
   ```
 
-  For more details, see the links below.
+  Para mais detalhes, veja os _links_ abaixo.
 
-- **See also:**
+- **Ver também:**
   - [Components - Slots](../guide/components-slots.html)
   - [RFC-0001](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md)
 
@@ -2482,7 +2482,7 @@ type: api
   - [Componentes Dinâmicos](../guide/components.html#Componentes-Dinamicos)
   - [Cuidados com o Uso no DOM](../guide/components.html#Cuidados-com-o-Uso-no-DOM)
 
-### slot <sup style="color:#c92222">obsoleto</sup>
+### _slot_ <sup style="color:#c92222">obsoleto</sup>
 
 **Prefira [v-slot](#v-slot) em 2.6.0+.**
 
@@ -2502,7 +2502,7 @@ type: api
 
 - **Uso:**
 
-Usado para denotar um elemento ou componente como um slot de escopo. O valor do atributo deve ser uma expressão de JavaScript válida que pode aparecer na posição do argumento de uma assinatura de função. Isso significa que, em ambientes suportados, você também pode usar a desestruturação ES2015 na expressão. Serve como um substituto para [`scope`](#scope-replaced) em 2.5.0+.
+Usado para denotar um elemento ou componente como um _slot_ de escopo. O valor do atributo deve ser uma expressão de JavaScript válida que pode aparecer na posição do argumento de uma assinatura de função. Isso significa que, em ambientes suportados, você também pode usar a desestruturação ES2015 na expressão. Serve como um substituto para [`scope`](#scope-replaced) em 2.5.0+.
 
   Este atributo não suporta ligação dinâmica.
 
@@ -2512,7 +2512,7 @@ Usado para denotar um elemento ou componente como um slot de escopo. O valor do 
 
 **Substituído por [slot-scope](#slot-scope) em 2.5.0+. Prefira [v-slot](#v-slot) em 2.6.0+.**
 
-Usado para denotar um elemento `<template>` como um slot de escopo.
+Usado para denotar um elemento `<template>` como um _slot_ de escopo.
 
 - **Uso:**
 
@@ -2722,7 +2722,7 @@ A correspondência é verificada pela primeira vez na opção `name` do componen
 ### slot
 
 - **Propriedades:**
-  - `name` - string. Usado para o slot nomeado.
+  - `name` - string. Usado para o _slot_ nomeado.
 
 - **Uso:**
 

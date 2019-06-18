@@ -213,4 +213,4 @@ No momento em que esta receita foi escrita, o Vue CLI 3 estava em _beta_. Esta v
 
 ## Agradecimentos
 
-Esta receita é resultado de uma palestra relâmpago dada por [Mike Dodge](https://twitter.com/mgdodgeycode) no VueConf.us, em março de 2018. Ele publicou um utilitário para o npm que irá rapidamente organizar um exemplo de SFC através desta receita. Você pode baixar o utilitário [vue-sfc-rollup](https://www.npmjs.com/package/vue-sfc-rollup) a partir do npm. Você também pode [clonar o repositório](https://github.com/team-innovation/vue-sfc-rollup) e personalizá-lo.
+Esta receita é resultado de uma palestra relâmpago dada por [Mike Dodge](https://twitter.com/webdevdodge) no VueConf.us, em março de 2018. Ele publicou um utilitário para o npm que irá rapidamente organizar um exemplo de SFC através desta receita. Você pode baixar o utilitário [vue-sfc-rollup](https://www.npmjs.com/package/vue-sfc-rollup) a partir do npm. Você também pode [clonar o repositório](https://github.com/team-innovation/vue-sfc-rollup) e personalizá-lo.

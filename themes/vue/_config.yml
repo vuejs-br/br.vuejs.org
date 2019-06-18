@@ -11,10 +11,6 @@ special_sponsors:
     description: 'Construa APIs em minutos ao invés de dias, gratuitamente.'
 platinum_sponsors:
   - url: >-
-      https://moduscreate.com/?utm_source=Vue&utm_medium=Partnership&utm_campaign=VueShip
-    img: modus.png
-    name: Modus
-  - url: >-
       https://bit.dev/?utm_source=vue&utm_medium=vue&utm_campaign=vue&utm_term=vue&utm_content=vue
     img: bit.png
     name: Bit
@@ -104,12 +100,27 @@ gold_sponsors:
   - url: 'https://www.bacancytechnology.com'
     img: bacancy_technology.png
     name: Bacancy Technology
+  - url: 'https://www.bestvpn.co/'
+    img: bestvpn_co.png
+    name: BestVPN.co
   - url: 'https://blokt.com/'
     img: blokt_cryptocurrency_news.png
     name: Blokt Cryptocurrency News
   - url: 'https://www.jqwidgets.com/vue/'
-    img: jqwidgets_.png
-    name: 'jQWidgets '
+    img: jqwidgets_ltd.png
+    name: jQWidgets LTD
+  - url: 'https://www.y8.com/'
+    img: y8.png
+    name: Y8
+  - url: 'https://js.devexpress.com/'
+    img: devexpress.png
+    name: DevExpress
+  - url: 'https://fastcoding.jp/javascript/ '
+    img: fastcoding_inc.svg
+    name: FASTCODING Inc
+  - url: 'https://usave.co.uk/utilities/broadband'
+    img: usave.png
+    name: usave
 silver_sponsors:
   - url: 'https://dopamine.bg/'
     img: dopamine.png

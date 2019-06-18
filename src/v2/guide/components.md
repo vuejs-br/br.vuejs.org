@@ -590,7 +590,7 @@ new Vue({
 O exemplo acima é possível por causa do elemento `<component>` com o atributo especial `is`:
 
 ```html
-<!-- Component changes when currentTabComponent changes -->
+<!-- Componente atualiza quando currentTabComponent muda -->
 <component v-bind:is="currentTabComponent"></component>
 ```
 
