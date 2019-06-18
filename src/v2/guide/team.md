@@ -853,7 +853,7 @@ order: 803
         orgUrl: 'https://orion.sh'
       },
       reposPersonal: [
-        'nuxt/*', 'nuxt-community/*', 'declandewet/vue-meta'
+        'nuxt/*', 'nuxt-community/*', 'nuxt/vue-meta'
       ]
     },
     {
@@ -1136,15 +1136,16 @@ order: 803
       github: 'filrak',
       twitter: 'filrakowski',
       work: {
-        role: 'Co-Fundador Vue Storefront',
+        role: 'Co-Fundador do Vue Storefront',
         org: 'Divante',
         orgUrl: 'https://divante.co/'
       },
       reposPersonal: [
-        'DivanteLtd/vue-storefront', 'filrak/vue-offline'
+        'DivanteLtd/vue-storefront', 'DivanteLtd/storefront-ui'
       ],
       links: [
-        'https://vuestorefront.io'
+        'https://vuestorefront.io',
+        'https://storefrontui.io'
       ]
     },
     {

@@ -143,36 +143,69 @@ new Vue({
 </script>
 {% endraw %}
 
-Os argumentos de diretiva podem ser dinâmicos. Por exemplo, em `v-mydirective:argument=[dataproperty]`, `argument` é o valor string atribuído à propriedade *arg* em seu parâmetro *binding* do gatilho de diretiva e `dataproperty` é uma referência a uma propriedade de dados na instância do componente atribuída à propriedade *value* no mesmo parâmetro *binding*. Conforme os gatilhos da diretiva são invocados, a propriedade *value* do parâmetro *binding* será alterada dinamicamente com base no valor de `dataproperty`.
+### Argumentos de Diretiva Dinâmicos
 
-Um exemplo de uma diretiva personalizada usando um argumento dinâmico:
+Os argumentos de diretiva podem ser dinâmicos. Por exemplo, em `v-mydirective:[argument]="value"`, o `argument` pode ser atualizado baseado em propriedades de dados em nossa instância de componente! Isso torna nossas diretivas personalizadas flexíveis para serem utilizadas ao longo da aplicação.
+
+Digamos que você quer fazer uma diretiva personalizada que permite fixar elementos em sua página através de posicionamento `fixed`. Poderíamos criar uma diretiva personalizada em que os valores atualizassem o posicionamento vertical em _pixels_, desta forma:
 
 ```html
-<div id="app">
-  <p>Role a página</p>
-  <p v-tack:left="[dynamicleft]">Agora vou ser deslocado da esquerda em vez do topo</p>
+<div id="baseexample">
+  <p>Role a página para baixo</p>
+  <p v-pin="200">Me prenda 200px a partir do topo da página</p>
 </div>
 ```
 
 ```js
-Vue.directive('tack', {
-  bind(el, binding, vnode) {
-    el.style.position = 'fixed';
-    const s = (binding.arg == 'left' ? 'left' : 'top');
-    el.style[s] = binding.value + 'px';
+Vue.directive('pin', {
+  bind: function (el, binding, vnode) {
+    el.style.position = 'fixed'
+    el.style.top = binding.value + 'px'
   }
 })
 
-// iniciar app
 new Vue({
-  el: '#app',
-  data() {
+  el: '#baseexample'
+})
+```
+
+Isto fixaria o elemento 200px a partir do topo da página. Mas e se encontrássemos um cenário em que precisássemos fixar o elemento a partir da esquerda, ao invés do topo? Aqui está um argumento dinâmico que pode ser atualizado em cada instância de componente:
+
+```html
+<div id="dynamicexample">
+  <h3>Role para baixo dentro desta seção ↓</h3>
+  <p v-pin:[direction]="200">Estou fixo na página 200px a partir da esquerda.</p>
+</div>
+```
+
+```js
+Vue.directive('pin', {
+  bind: function (el, binding, vnode) {
+    el.style.position = 'fixed'
+    var s = (binding.arg == 'left' ? 'left' : 'top')
+    el.style[s] = binding.value + 'px'
+  }
+})
+
+new Vue({
+  el: '#dynamicexample',
+  data: function () {
     return {
-      dynamicleft: 500
+      direction: 'left'
     }
   }
 })
 ```
+
+Result:
+{% raw %}
+<iframe height="200" style="width: 100%;" class="demo" scrolling="no" title="Argumentos de Diretiva Dinâmicos" src="//codepen.io/ErickPetru/embed/ydayJV/?height=300&theme-id=32763&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  Veja o Pen <a href='https://codepen.io/ErickPetru/pen/ydayJV/'>Argumentos de Diretiva Dinâmicos</a> por Erick Eduardo Petrucelli
+  (<a href='https://codepen.io/ErickPetru'>@ErickPetru</a>) no <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+{% endraw %}
+
+Nossa diretiva personalizada agora é flexível o suficiente para suportar alguns casos de uso diferentes.
 
 ## Forma Abreviada de Funções
 
