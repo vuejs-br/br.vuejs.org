@@ -10,16 +10,12 @@ Você pode usar a diretiva `v-model` para criar interligações de mão dupla (_
 
 <p class="tip">A diretiva `v-model` irá ignorar o estado inicial de `value`, `checked` ou `selected` encontrado em qualquer elemento de formulário. Sempre se tratará a instância Vue como a fonte dos dados verdadeiros. Ou seja, declare os valores iniciais no lado JavaScript, dentro da opção `data` de seu componente.</p>
 
-<<<<<<< HEAD
-<p class="tip" id="vmodel-ime-tip">Para linguagens que requerem um [IME](https://en.wikipedia.org/wiki/Input_method) (Chinês, Japonês, Coreano etc.), você notará que `v-model` não é atualizado durante a atualização da composição IME. Se você quiser atender a estas atualizações, use o evento `input` em vez do `v-model`.</p>
-=======
-`v-model` internally uses different properties and emits different events for different input elements:
-- text and textarea elements use `value` property and `input` event;
-- checkboxes and radiobuttons use `checked` property and `change` event;
-- select fields use `value` as a prop and `change` as an event.
+`v-model` usa internamente diferentes propriedades e emite diferentes eventos para diferentes elementos _input_:
+- os elementos _text_ e _textarea_ usam a propriedade `value` e o evento `input`;
+- _checkboxes_ e _radiobuttons_ usam a propriedade `checked` e o evento `change`;
+- campos de seleção usam `value` como prop e `change` como um evento.
 
-<p class="tip" id="vmodel-ime-tip">For languages that require an [IME](https://en.wikipedia.org/wiki/Input_method) (Chinese, Japanese, Korean etc.), you'll notice that `v-model` doesn't get updated during IME composition. If you want to cater for these updates as well, use `input` event instead.</p>
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+<p class="tip" id="vmodel-ime-tip">Para linguagens que requerem um [IME](https://en.wikipedia.org/wiki/Input_method) (Chinês, Japonês, Coreano etc.), você notará que `v-model` não é atualizado durante a atualização da composição IME. Se você quiser atender a estas atualizações, use o evento `input` em vez do `v-model`.</p>
 
 ### Input
 
@@ -385,11 +381,7 @@ Isso é bastante útil, porque mesmo no caso de `type="number"`, o valor retorna
 
 ### `.trim`
 
-<<<<<<< HEAD
 Se você quiser que a entrada do usuário seja automaticamente isenta de espaços no início e no fim do texto, você pode adicionar o modificador `trim` ao `v-model` do elemento:
-=======
-If you want whitespace from user input to be trimmed automatically, you can add the `trim` modifier to your `v-model`-managed inputs:
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ```html
 <input v-model.trim="msg">

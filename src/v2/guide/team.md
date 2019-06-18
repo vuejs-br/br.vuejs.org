@@ -122,13 +122,8 @@ order: 803
 <div id="team-members">
   <div class="team">
 
-<<<<<<< HEAD
-    <h2 id="the-core-team">
-      Equipe Principal
-=======
     <h2 id="active-core-team-members">
-      Active Core Team Members
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+      Membros Ativos da Equipe Principal
       <button
         v-if="geolocationSupported && !userPosition"
         @click="getUserPosition"
@@ -168,11 +163,11 @@ order: 803
 
   <div class="team">
     <h2 id="core-team-emeriti">
-      Core Team Emeriti
+      Equipe Principal Emérito
     </h2>
 
     <p>
-      Here we honor some no-longer-active core team members who have made valuable contributions in the past.
+      Aqui nós homenageamos alguns membros da equipe principal que não são mais ativos e que fizeram contribuições valiosas no passado.
     </p>
 
     <vuer-profile
@@ -227,19 +222,6 @@ order: 803
 <script>
 (function () {
   var cityCoordsFor = {
-<<<<<<< HEAD
-    'Alicante, Espanha' : [38.346543, -0.483838],
-    'Annecy, França': [45.899247, 6.129384],
-    'Bangalore, Índia': [12.971599, 77.594563],
-    'Bordéus, França': [44.837789, -0.579180],
-    'Bucareste, Romênia': [44.426767, 26.102538],
-    'Chengtu, China': [30.572815, 104.066801],
-    'Denver, Estados Unidos': [39.739236, -104.990251],
-    'Dubna, Rússia': [56.732020, 37.166897],
-    'East Lansing, Estados Unidos': [42.736979, -84.483865],
-    'Hancheu, China': [30.274084, 120.155070],
-    'Jersey City, Estados Unidos': [40.728157, -74.558716],
-=======
     'Annecy, France': [45.899247, 6.129384],
     'Alicante, Spain' : [38.346543, -0.483838],
     'Amsterdam, Netherlands': [4.895168, 52.370216],
@@ -257,7 +239,6 @@ order: 803
     'Fort Worth, TX, USA': [32.755331, -97.325735],
     'Hangzhou, China': [30.274084, 120.155070],
     'Jersey City, NJ, USA': [40.728157, -74.558716],
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
     'Kingston, Jamaica': [18.017874, -76.809904],
     'Krasnodar, Russia': [45.039267, 38.987221],
     'Lansing, MI, USA': [42.732535, -84.555535],
@@ -270,42 +251,26 @@ order: 803
     'Paris, France': [48.856614, 2.352222],
     'Posnânia, Polônia': [52.4006553, 16.761583],
     'Seoul, South Korea': [37.566535, 126.977969],
-<<<<<<< HEAD
-    'Xangai, China': [31.230390, 121.473702],
-=======
     'Shanghai, China': [31.230390, 121.473702],
     'Singapore': [1.352083, 103.819839],
     'Sydney, Australia': [-33.868820, 151.209290],
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
     'Taquaritinga, Brazil': [-21.430094, -48.515285],
     'Tehran, Iran': [35.689197, 51.388974],
     'Thessaloniki, Greece': [40.640063, 22.944419],
     'Tokyo, Japan': [35.689487, 139.691706],
     'Toronto, Canada': [43.653226, -79.383184],
-<<<<<<< HEAD
-    'Wroclaw, Polônia': [51.107885, 17.038538],
-    'Boston, Estados Unidos': [42.360081, -71.058884],
-    'Quieve, Ucrânia': [50.450100, 30.523399]
+    'Wrocław, Polônia': [51.107885, 17.038538],
+    'Boston, MA, EUA': [42.360081, -71.058884],
+    'Kyiv, Ucrânia': [50.450100, 30.523399],
+    'Washington, DC, EUA': [38.8935755,-77.0846156,12],
+    'Kraków, Polônia': [50.064650, 19.936579]
   }
   var languageNameFor = {
     en: 'Inglês',
+    nl: 'Holandês',
     zh: 'Chinês',
     vi: 'Vietnamita',
     pl: 'Polonês',
-=======
-    'Wrocław, Poland': [51.107885, 17.038538],
-    'Boston, MA, USA': [42.360081, -71.058884],
-    'Kyiv, Ukraine': [50.450100, 30.523399],
-    'Washington, DC, USA': [38.8935755,-77.0846156,12],
-    'Kraków, Poland': [50.064650, 19.936579]
-  }
-  var languageNameFor = {
-    en: 'English',
-    nl: 'Nederlands',
-    zh: '中文',
-    vi: 'Tiếng Việt',
-    pl: 'Polski',
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
     pt: 'Português',
     ru: 'Russo',
     jp: 'Japonês',
@@ -368,13 +333,7 @@ order: 803
       github: 'posva',
       twitter: 'posva',
       work: {
-<<<<<<< HEAD
-        role: 'Instrutor Líder',
-        org: 'IronHack',
-        orgUrl: 'https://www.ironhack.com/'
-=======
-        role: 'Freelance Developer & Consultant',
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+        role: 'Desenvolvedor Freelancer & Consultor',
       },
       reposOfficial: [
         'vuefire', 'vue-router'
@@ -428,29 +387,9 @@ order: 803
       ]
     },
     {
-<<<<<<< HEAD
-      name: 'EGOIST',
-      title: 'Simplificador de Compilação',
-      city: 'Chengtu, China',
-      languages: ['zh', 'en'],
-      github: 'egoist',
-      twitter: '_egoistlily',
-      reposOfficial: [
-        'vue-cli'
-      ],
-      reposPersonal: [
-        'poi', 'ream', 'vue-play'
-      ]
-    },
-    {
       name: 'Katashin',
       title: 'Um Tipo de Gerente de Estado',
-      city: 'Tóquio, Japão',
-=======
-      name: 'Katashin',
-      title: 'One of a Type State Manager',
-      city: 'Singapore',
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+      city: 'Singapura',
       languages: ['jp', 'en'],
       work: {
         role: 'Software Engineer',
@@ -474,13 +413,9 @@ order: 803
       github: 'kazupon',
       twitter: 'kazu_pon',
       work: {
-<<<<<<< HEAD
-        role: 'CTO & Desenvolvedor Full Stack'
-=======
-        role: 'Engineer',
+        role: 'Engenheiro',
         org: 'PLAID, Inc.',
         orgUrl: 'https://plaid.co.jp'
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
       },
       reposOfficial: [
         'vuejs.org', 'jp.vuejs.org'
@@ -515,60 +450,6 @@ order: 803
       ]
     },
     {
-<<<<<<< HEAD
-      name: 'Alan Song',
-      title: 'Regente de Roteamento',
-      city: 'Hancheu, China',
-      languages: ['zh', 'en'],
-      work: {
-        role: 'Co-Fundador',
-        org: 'Futurenda',
-        orgUrl: 'https://www.futurenda.com/'
-      },
-      github: 'fnlctrl',
-      reposOfficial: [
-        'vue-router'
-      ]
-    },
-    {
-      name: 'Blake Newman',
-      title: 'Técnico de Desempenho & Deletador de Código',
-      city: 'Londres, Reino Unido',
-      languages: ['en'],
-      work: {
-        role: 'Engenheiro de Software',
-        org: 'Attest',
-        orgUrl: 'https://www.askattest.com/'
-      },
-      github: 'blake-newman',
-      twitter: 'blakenewman',
-      reposOfficial: [
-        'vuex', 'vue-router', 'vue-loader'
-      ]
-    },
-    {
-      name: 'Phan An',
-      title: 'Designer de Backend & Poeta de Processos',
-      city: 'Munique, Alemanha',
-      languages: ['vi', 'en'],
-      github: 'phanan',
-      twitter: 'notphanan',
-      reposOfficial: [
-        'vuejs.org', {
-          name: 'vi.vuejs.org',
-          url: 'https://github.com/vuejs-vn/vuejs.org'
-        }
-      ],
-      reposPersonal: [
-        'vuequery', 'vue-google-signin-button'
-      ],
-      links: [
-        'https://phanan.net/'
-      ]
-    },
-    {
-=======
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
       name: 'Linusborg',
       title: 'Polêmico Moderador (Talvez um Bot)',
       city: 'Mannheim, Alemanha',
@@ -586,28 +467,6 @@ order: 803
       ]
     },
     {
-<<<<<<< HEAD
-      name: 'Denis Karabaza',
-      title: 'Diretor de Diretivas (Híbrido Emoji-Humano)',
-      city: 'Dubna, Rússia',
-      languages: ['ru', 'en'],
-      github: 'simplesmiler',
-      twitter: 'simplesmiler',
-      work: {
-        role: 'Engenheiro de Software',
-        org: 'Neolant',
-        orgUrl: 'http://neolant.ru/'
-      },
-      reposPersonal: [
-        'vue-focus', 'vue-clickaway'
-      ],
-      links: [
-        'mailto:denis.karabaza@gmail.com'
-      ]
-    },
-    {
-=======
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
       name: 'Guillaume Chau',
       title: 'Astronauta Cliente-Servidor',
       city: 'Lyon, França',
@@ -652,71 +511,13 @@ order: 803
       ]
     },
     {
-<<<<<<< HEAD
-      name: 'defcc',
-      title: 'Divindade do Detalhismo & Cirurgião de Insetos',
-      city: 'Xunquim, China',
-      languages: ['zh', 'en'],
-      github: 'defcc',
-      work: {
-        org: 'zbj.com',
-        orgUrl: 'http://www.zbj.com/'
-      },
-      reposOfficial: [
-        'vue', 'vuejs.org', 'cn.vuejs.org'
-      ],
-      reposPersonal: [
-        'weexteam/weex-vue-framework', 'into-vue'
-      ]
-    },
-    {
-      name: 'gebilaoxiong',
-      title: 'Aniquilador de Problemas',
-      city: 'Xunquim, China',
-      languages: ['zh', 'en'],
-      github: 'gebilaoxiong',
-      work: {
-        org: 'zbj.com',
-        orgUrl: 'http://www.zbj.com/'
-      },
-      reposOfficial: [
-        'vue'
-      ]
-    },
-    {
-      name: 'Andrew Tomaka',
-      title: 'O Servidor do Servidor',
-      city: 'East Lansing, Estados Unidos',
-      languages: ['en'],
-      github: 'atomaka',
-      twitter: 'atomaka',
-      reposOfficial: [
-        'vuejs/*'
-      ],
-      work: {
-        org: 'Universidade Estadual de Michigan',
-        orgUrl: 'https://msu.edu/'
-      },
-      links: [
-        'https://atomaka.com/'
-      ]
-    },
-    {
-=======
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
       name: 'Sarah Drasner',
       city: 'Denver, Estados Unidos',
       languages: ['en'],
       work: {
-<<<<<<< HEAD
-        role: 'Desenvolvedora Evangelista Sênior',
-        org: 'Microsoft',
-        orgUrl: 'https://www.microsoft.com/'
-=======
-        role: 'Head of Developer Experience',
+        role: 'Chefe da Experiência dos Desenvolvedores',
         org: 'Netlify',
         orgUrl: 'https://www.netlify.com/'
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
       },
       github: 'sdras',
       twitter: 'sarah_edo',
@@ -745,44 +546,8 @@ order: 803
         'news.vuejs.org'
       ],
       reposPersonal: [
-<<<<<<< HEAD
-        'shentao/vue-multiselect'
-      ]
-    },
-    {
-      name: 'kingwl',
-      title: 'Abelha Nova',
-      city: 'Pequim, China',
-      languages: ['zh'],
-      work: {
-        role: 'Engenheiro de Software',
-        org: 'Chaitin',
-        orgUrl: 'https://chaitin.cn/'
-      },
-      github: 'kingwl',
-      reposOfficial: [
-        'vue'
-      ]
-    },
-    {
-      name: 'Alex Kyriakidis',
-      title: 'Vueducador Extraordinário',
-      city: 'Tessalônica, Grécia',
-      languages: ['el', 'en'],
-      github: 'hootlex',
-      twitter: 'hootlex',
-      work: {
-        role: 'Consultor / Autor'
-      },
-      reposPersonal: [
-        'vuejs-paginator', 'vuedo/vuedo', 'the-majesty-of-vuejs-2'
-      ],
-      links: [
-        'https://vuejsfeed.com/', 'https://vueschool.io/'
-=======
         'shentao/vue-multiselect',
         'shentao/vue-global-events'
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
       ]
     },
     {
@@ -1061,24 +826,6 @@ order: 803
       ]
     },
     {
-<<<<<<< HEAD
-      name: 'Natalia Tepluhina',
-      title: 'Raposa Guru da Tecnologia',
-      city: 'Quieve, Ucrânia',
-      languages: ['uk', 'ru', 'en'],
-      work: {
-        role: 'CTO',
-        org: 'Vue Vixens',
-      },
-      github: 'NataliaTepluhina',
-      twitter: 'N_Tepluhina',
-      links: [
-        'https://vuevixens.org/'
-      ]
-    },
-    {
-=======
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
       name: 'Alex Jover',
       title: 'Espremedor de Componentes Vue',
       city: 'Alicante, Espanha',
@@ -1281,26 +1028,15 @@ order: 803
     },
     {
       name: 'John Leider',
-<<<<<<< HEAD
       title: 'Vuepletamente Escultor de Framework',
-      city: 'Orlando, Estados Unidos',
-=======
-      title: 'Vuetiful Framework Sculptor',
-      city: 'Fort Worth, TX, USA',
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+      city: 'Fort Worth, TX, EUA',
       languages: ['en'],
       github: 'vuetifyjs',
       twitter: 'vuetifyjs',
       work: {
-<<<<<<< HEAD
-        role: 'Desenvolvedor',
-        org: 'Fast Forward Academy',
-        orgUrl: 'https://fastforwardacademy.com'
-=======
         role: 'CEO',
         org: 'Vuetify LLC',
         orgUrl: 'https://vuetifyjs.com'
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
       },
       reposPersonal: [
         'vuetifyjs/vuetify'

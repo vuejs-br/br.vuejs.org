@@ -186,11 +186,7 @@ Ao incluir um `índice`, a ordem dos argumentos para arrays costumava ser `(índ
 
 ### Ordem dos Argumentos para Objects no `v-for` <sup>mudado</sup>
 
-<<<<<<< HEAD
-Ao incluir uma `chave`, a ordem dos argumentos para objetos costumava ser `(chave, valor)`. Agora é `(valor, chave)` para ser mais consistente com os iteradores de objetos comuns, como o `lodash`.
-=======
-When including a property name/key, the argument order for objects used to be `(name, value)`. It is now `(value, name)` to be more consistent with common object iterators such as lodash's.
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+Ao incluir um nome/chave de propriedade, a ordem dos argumentos para objetos costumava ser `(nome, valor)`. Agora é `(valor, nome)` para ser mais consistente com os iteradores de objetos comuns, como o `lodash`.
 
 {% raw %}
 <div class="upgrade-path">
@@ -1075,15 +1071,9 @@ function pluralizeKnife (count) {
 
 Para uma implementação muito ingênua, você poderia fazer algo como isto:
 
-<<<<<<< HEAD
-``` js
-'R$' + price.toFixed(2)
-```
-=======
 {% codeblock lang:js %}
-'$' + price.toFixed(2)
+'R$' + price.toFixed(2)
 {% endcodeblock %}
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 Em muitos casos, porém, você ainda terá um comportamento estranho (exemplo: `0.035.toFixed(2)` arredonda para `0.04`, mas `0.045` arredonda para `0.04`). Para contornar esses problemas, você pode usar a biblioteca [`accounting`](http://openexchangerates.github.io/accounting.js/) para formatar moedas de forma mais confiável.
 

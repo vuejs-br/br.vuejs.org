@@ -141,13 +141,9 @@ new Vue({
 
 Existem outros gatilhos (em inglês, _hooks_) chamados em diferentes etapas do ciclo de vida da instância, como [`mounted`](../api/#mounted), [`updated`](../api/#updated) e [`destroyed`](../api/#destroyed). Qualquer gatilho de ciclo de vida é executado com seu contexto `this` apontando para a instância Vue que o invocou.
 
-<<<<<<< HEAD
 <p class="tip">
-Não utilize [arrow functions](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/Arrow_functions) em propriedades de opções ou _callback_, como em `created: () => console.log(this.a)` ou `vm.$watch('a', newValue => this.myMethod())`. Como as _arrow functions_ são vinculadas ao contexto pai, `this` não representará a instância Vue como você pode esperar, frequentemente resultando em erros como `Uncaught TypeError: Cannot read property of undefined` ou `Uncaught TypeError: this.myMethod is not a function`.
+Não utilize [arrow functions](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/Arrow_functions) em propriedades de opções ou _callback_, como em `created: () => console.log(this.a)` ou `vm.$watch('a', newValue => this.myMethod())`. Como as _arrow functions_ não tem um `this`,`this` será tratado como qualquer outra variável e lexicamente pesquisada através de escopos parentais até ser encontrada, frequentemente resultando em erros como `Uncaught TypeError: Cannot read property of undefined` ou `Uncaught TypeError: this.myMethod is not a function`.
 </p>
-=======
-<p class="tip">Don't use [arrow functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) on an options property or callback, such as `created: () => console.log(this.a)` or `vm.$watch('a', newValue => this.myMethod())`. Since an arrow function doesn't have a `this`, `this` will be treated as any other variable and lexically looked up through parent scopes until found, often resulting in errors such as `Uncaught TypeError: Cannot read property of undefined` or `Uncaught TypeError: this.myMethod is not a function`.</p>
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
 
 ## Diagrama do Ciclo de Vida
 

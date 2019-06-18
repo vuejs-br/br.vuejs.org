@@ -6,17 +6,11 @@ order: 601
 
 Agora é hora de um mergulho mais profundo! Uma das características mais distintas do Vue é seu sistema de reatividade não obstrusivo. Modelos de dados são simplesmente objetos JavaScript puros. Quando você os modifica, a camada visual se atualiza. Isto torna o gerenciamento de estado simples e intuitivo, mas também é importante entender como funciona para evitar algumas pegadinhas. Nesta seção, estaremos nos aprofundando em alguns detalhes de baixo-nível do sistema de reatividade do Vue.
 
-<<<<<<< HEAD
+<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/advanced-components/build-a-reactivity-system" target="_blank" rel="noopener" title="Vue Reactivity">Assista à uma explicação em vídeo no Vue Mastery</a></div>
+
 ## Como as Alterações são Monitoradas
 
-Quando passamos um objeto JavaScript puro à instância Vue através da opção `data`, Vue itera através de todas as suas propriedades e as converte em [getter/setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Defining_getters_and_setters) através do método [Object.defineProperty](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Defining_getters_and_setters). Este é um recurso exclusivo do ES5 e impossível de simular em versões anteriores, sendo este o motivo do Vue não suportar IE8 e anteriores.
-=======
-<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/advanced-components/build-a-reactivity-system" target="_blank" rel="noopener" title="Vue Reactivity">Watch a video explanation on Vue Mastery</a></div>
-
-## How Changes Are Tracked
-
-When you pass a plain JavaScript object to a Vue instance as its `data` option, Vue will walk through all of its properties and convert them to [getter/setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Defining_getters_and_setters) using [`Object.defineProperty`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty). This is an ES5-only and un-shimmable feature, which is why Vue doesn't support IE8 and below.
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+Quando passamos um objeto JavaScript puro à instância Vue através da opção `data`, Vue itera através de todas as suas propriedades e as converte em [getter/setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Defining_getters_and_setters) através do método [`Object.defineProperty`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Defining_getters_and_setters). Este é um recurso exclusivo do ES5 e impossível de simular em versões anteriores, sendo este o motivo do Vue não suportar IE8 e anteriores.
 
 Os _getter_/_setters_ são invisíveis para o usuário, mas internamente habilitam o Vue a executar o rastreamento de dependências e notificações de alteração quando propriedades são acessadas ou modificadas. Note que o _console_ dos navegadores formata _getter_/_setters_ de forma diferente quando registram alterações em objetos de dados, então é provável que você prefira instalar o [vue-devtools](https://github.com/vuejs/vue-devtools) para uma interface de inspeção mais amigável.
 
@@ -40,11 +34,7 @@ vm.b = 2
 // `vm.b` NÃO é reativo
 ```
 
-<<<<<<< HEAD
-Vue não permite dinamicamente adicionar novas propriedades reativas em nível raiz para uma instância já criada. Entretanto, é possível adicionar propriedades reativas a objetos internos usando o método `Vue.set(object, key, value)`:
-=======
-Vue does not allow dynamically adding new root-level reactive properties to an already created instance. However, it's possible to add reactive properties to a nested object using the `Vue.set(object, propertyName, value)` method:
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+Vue não permite dinamicamente adicionar novas propriedades reativas em nível raiz para uma instância já criada. Entretanto, é possível adicionar propriedades reativas a objetos internos usando o método `Vue.set(object, propertyName, value)`:
 
 ``` js
 Vue.set(vm.someObject, 'b', 2)
@@ -87,11 +77,7 @@ Há razões técnicas para essa restrição - elimina uma gama de casos extremos
 
 ## Fila de Atualização Assíncrona
 
-<<<<<<< HEAD
-Caso não tenha reparado ainda, Vue executa atualizações do DOM de forma **assíncrona**. Sempre que uma alteração de dados for observada, será enfileirada juntamente com todas as alterações de dados que ocorrerem em um mesmo laço de eventos. Se um mesmo observador for acionado várias vezes, ele será empurrado para a fila apenas uma vez. Esta ação é importante para evitar cálculos duplicados e manipulações DOM desnecessárias. Então, no próximo "tique-taque" do laço eventos, Vue libera a fila e executa o trabalho atual. Internamente, Vue tenta utilizar os nativos `Promise.then` e `MessageChannel` para o enfileiramento assíncrono e retrocede para `setTimeout(fn, 0)` se necessário.
-=======
-In case you haven't noticed yet, Vue performs DOM updates **asynchronously**. Whenever a data change is observed, it will open a queue and buffer all the data changes that happen in the same event loop. If the same watcher is triggered multiple times, it will be pushed into the queue only once. This buffered de-duplication is important in avoiding unnecessary calculations and DOM manipulations. Then, in the next event loop "tick", Vue flushes the queue and performs the actual (already de-duped) work. Internally Vue tries native `Promise.then`, `MutationObserver`, and `setImmediate` for the asynchronous queuing and falls back to `setTimeout(fn, 0)`.
->>>>>>> dc8b494b86b36d0169cea6f972596faeb6ef228b
+Caso não tenha reparado ainda, Vue executa atualizações do DOM de forma **assíncrona**. Sempre que uma alteração de dados for observada, será enfileirada juntamente com todas as alterações de dados que ocorrerem em um mesmo laço de eventos. Se um mesmo observador for acionado várias vezes, ele será empurrado para a fila apenas uma vez. Esta ação é importante para evitar cálculos duplicados e manipulações DOM desnecessárias. Então, no próximo "tique-taque" do laço eventos, Vue libera a fila e executa o trabalho atual. Internamente, Vue tenta utilizar os nativos `Promise.then`, `MutationObserver` e `setImmediate` para o enfileiramento assíncrono e retrocede para `setTimeout(fn, 0)` se necessário.
 
 Por exemplo, quando você define `vm.someData = 'novo valor'`, o componente não será re-renderizado imediatamente. Ele será atualizado no próximo "tique-taque" em que a fila for liberada. Raramente precisamos nos preocupar com isso, mas a situação pode se complicar se precisar fazer algo que depende do estado do DOM após a atualização. Embora o Vue encoraje os desenvolvedores a pensarem de forma dirigida aos dados, evitando tocar no DOM diretamente, em alguns casos pode ser necessário sujar as mãos. Para aguardar até que o Vue tenha terminado de atualizar o DOM após alterações de dados, utilize o `Vue.nextTick(callback)` imediatamente após a alteração dos dados. A função _callback_ será executada após o término da atualização do DOM. Por exemplo:
 
