@@ -1408,11 +1408,11 @@ Enquanto os valores de atributos sem espaços não são necessários para ter as
 
 ``` html
 <template v-slot:header>
-  <h1>Here might be a page title</h1> 
+  <h1>Aqui poderia ser um título de página</h1>
 </template>
 
 <template #footer>
-  <p>Here's some contact info</p>
+  <p>Aqui alguma informação de contato</p>
 </template>
 ```
 {% raw %}</div>{% endraw %}
@@ -1450,21 +1450,21 @@ Enquanto os valores de atributos sem espaços não são necessários para ter as
 
 ``` html
 <template v-slot:header>
-  <h1>Here might be a page title</h1> 
+  <h1>Aqui poderia ser um título de página</h1>
 </template>
 
 <template v-slot:footer>
-  <p>Here's some contact info</p>
+  <p>Aqui alguma informação de contato</p>
 </template>
 ```
 
 ``` html
 <template #header>
-  <h1>Here might be a page title</h1> 
+  <h1>Aqui poderia ser um título de página</h1>
 </template>
 
 <template #footer>
-  <p>Here's some contact info</p>
+  <p>Aqui alguma informação de contato</p>
 </template>
 ```
 {% raw %}</div>{% endraw %}
