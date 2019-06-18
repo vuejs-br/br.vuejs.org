@@ -197,7 +197,8 @@ new Vue({
 })
 ```
 
-Result:
+Resultado:
+
 {% raw %}
 <iframe height="200" style="width: 100%;" class="demo" scrolling="no" title="Argumentos de Diretiva Dinâmicos" src="//codepen.io/ErickPetru/embed/ydayJV/?height=300&theme-id=32763&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
   Veja o Pen <a href='https://codepen.io/ErickPetru/pen/ydayJV/'>Argumentos de Diretiva Dinâmicos</a> por Erick Eduardo Petrucelli
