@@ -94,7 +94,7 @@ methods: {
 }
 ```
 
-Em vez de um dado computado, podemos definir a mesma funcionalidade como um método. Como resultado final, ambas abordagens têm o mesmo efeito. No entanto, a diferença é que **dados computados são cacheados de acordo com suas dependências**. Um dado computado somente será reavaliado quando alguma de suas dependências for alterada. Isso significa que enquanto `message` não sofrer alterações, múltiplos acessos ao `reversedMessage` retornarão o último valor calculado sem precisar executar a função novamente.
+Em vez de um dado computado, podemos definir a mesma funcionalidade como um método. Como resultado final, ambas abordagens têm o mesmo efeito. No entanto, a diferença é que **dados computados são cacheados de acordo com suas dependências reativas.** Um dado computado somente será reavaliado quando alguma de suas dependências for alterada. Isso significa que enquanto `message` não sofrer alterações, múltiplos acessos ao `reversedMessage` retornarão o último valor calculado sem precisar executar a função novamente.
 
 Isto inclusive significa que o seguinte dado computado nunca se alterará, pois `Date.now()` não é uma dependência reativa por natureza:
 
@@ -229,7 +229,7 @@ var watchExampleVM = new Vue({
     this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
   },
   methods: {
-    getAnswer:  function () {
+    getAnswer: function () {
       if (this.question.indexOf('?') === -1) {
         this.answer = 'Perguntas geralmente têm uma interrogação. ;-)'
         return
@@ -279,7 +279,7 @@ var watchExampleVM = new Vue({
     this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
   },
   methods: {
-    getAnswer:  function () {
+    getAnswer: function () {
       if (this.question.indexOf('?') === -1) {
         this.answer = 'Perguntas geralmente têm uma interrogação. ;-)'
         return

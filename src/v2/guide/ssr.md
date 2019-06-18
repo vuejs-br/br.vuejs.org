@@ -11,3 +11,7 @@ Renderização no lado do servidor, ou simplesmente SSR (do inglês _Server-Side
 ## Nuxt.js
 
 Configurar corretamente todos os aspectos de uma aplicação pronta para produção utilizando renderização pelo servidor pode ser uma tarefa árdua. Felizmente, existe um excelente projeto da comunidade que visa tornar tudo isso mais fácil: [Nuxt.js](https://nuxtjs.org/). Nuxt.js é um _framework_ de alto nível criado por cima do ecossistema Vue que fornece uma experiência extremamente simplificada para escrever aplicações universais. Melhor ainda, você pode utilizá-lo como um gerador de páginas estáticas (páginas HTML geradas a partir de Componentes _Single-File_)! Nós recomendamos fortemente experimentá-lo.
+
+## Quasar Framework SSR + PWA
+
+[Quasar Framework](https://quasar-framework.org/) gerará um app SSR (com opcional entrega de PWA) que aproveita seu sistema de _build_ melhor-da-turma, configuração sensata e extensibilidade do desenvolvedor para facilitar o desenho e construção de sua ideia. Com mais de cem componentes específicos compatíveis com “Material Design 2.0”, você pode decidir quais executar no servidor, quais estão disponíveis no navegador - e até gerenciar as tags `<meta>` do seu site. Quasar é um ambiente de desenvolvimento baseado em node.js e webpack que supercarrega e agiliza o rápido desenvolvimento dos aplicativos SPA, PWA, SSR, Electron e Cordova - tudo a partir de uma base de código.

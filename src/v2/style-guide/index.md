@@ -39,7 +39,7 @@ Existem alguns recursos do Vue usados para lidar com casos isolados ou migraçõ
 
 ### Nomes de componentes com multi-palavras <sup data-p="a">Essencial</sup>
 
-**Nomes de componentes devem ser sempre multi-palavras, exceto pelo componente `App` raiz e componentes internos fornecidos pelo Vue, como <transition> ou <component>.**
+**Nomes de componentes devem ser sempre multi-palavras, exceto pelo componente `App` raiz e componentes internos fornecidos pelo Vue, como `<transition>` ou `<component>`.**
 
 Isto [previne conflitos](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name) com elementos HTML existentes e futuros, visto que todos os elementos HTML são formados por apenas uma única palavra.
 
@@ -320,7 +320,7 @@ Quando o Vue processa diretivas, `v-for` tem maior prioridade que `v-if`, então
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 
@@ -355,7 +355,7 @@ computed: {
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 
@@ -375,7 +375,7 @@ Temos benefícios semelhantes ao trocar:
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 
@@ -388,7 +388,7 @@ Por:
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 
@@ -409,7 +409,7 @@ Em vez disso, verificamos apenas uma vez e nem avaliamos o `v-for` se `shouldSho
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 
@@ -421,7 +421,7 @@ Em vez disso, verificamos apenas uma vez e nem avaliamos o `v-for` se `shouldSho
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 {% raw %}</div>{% endraw %}
@@ -436,7 +436,7 @@ Em vez disso, verificamos apenas uma vez e nem avaliamos o `v-for` se `shouldSho
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 
@@ -447,7 +447,7 @@ Em vez disso, verificamos apenas uma vez e nem avaliamos o `v-for` se `shouldSho
     :key="user.id"
   >
     {{ user.name }}
-  <li>
+  </li>
 </ul>
 ```
 {% raw %}</div>{% endraw %}
@@ -1198,9 +1198,9 @@ props: {
 }
 ```
 
-``` html
+{% codeblock lang:html %}
 <WelcomeMessage greetingText="hi"/>
-```
+{% endcodeblock %}
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
@@ -1212,9 +1212,9 @@ props: {
 }
 ```
 
-``` html
+{% codeblock lang:html %}
 <WelcomeMessage greeting-text="hi"/>
-```
+{% endcodeblock %}
 {% raw %}</div>{% endraw %}
 
 ### Elementos multi-atributo <sup data-p="b">Altamente Recomendado</sup>
@@ -1706,6 +1706,7 @@ Por padrão, o Vue atualiza o DOM da forma mais eficiente possível. Isso signif
   {{ results }}
 </div>
 ```
+
 {% raw %}</div>{% endraw %}
 
 ### Seletores de elemento com `scoped` <sup data-p="d">Use Cautelosamente</sup>

@@ -17,6 +17,7 @@ this.$emit('myEvent')
 Fazer a escuta a uma versão _kebab-cased_ do evento não terá efeito:
 
 ```html
+<!-- Won't work -->
 <my-component v-on:my-event="doSomething"></my-component>
 ```
 
@@ -155,6 +156,8 @@ Por conveniência, oferecemos um atalho para esse padrão com o modificador `.sy
 ```html
 <text-document v-bind:title.sync="doc.title"></text-document>
 ```
+
+<p class="tip">Observe que <code>v-bind</code> com o modificador <code>.sync</code> <strong>não</strong> funciona com expressões (por exemplo, <code>v-bind:title.sync="doc.title + '!'"</code> é inválido). Em vez disso, você deve fornecer apenas o nome da propriedade que deseja associar, semelhante ao <code>v-model</code>.</p>
 
 O modificador `.sync` também pode ser usado com o `v-bind` ao usar um objeto para definir várias propriedades de uma só vez:
 

@@ -41,7 +41,9 @@ props: {
   likes: Number,
   isPublished: Boolean,
   commentIds: Array,
-  author: Object
+  author: Object,
+  callback: Function,
+  contactsPromise: Promise // or any other constructor
 }
 ```
 
@@ -62,7 +64,9 @@ Você também viu propriedades associadas dinamicamente com `v-bind`, como em:
 <blog-post v-bind:title="post.title"></blog-post>
 
 <!-- Associando dinamicamente o valor de uma expressão complexa -->
-<blog-post v-bind:title="post.title + ' by ' + post.author.name"></blog-post>
+<blog-post
+  v-bind:title="post.title + ' by ' + post.author.name"
+></blog-post>
 ```
 
 Nos dois exemplos acima, aconteceu de passarmos valores do tipo String, mas _qualquer_ tipo de dado pode ser utilizado em uma propriedade.
@@ -108,7 +112,12 @@ Nos dois exemplos acima, aconteceu de passarmos valores do tipo String, mas _qua
 ```html
 <!-- Embora o Object seja estático, usamos v-bind para dizer ao Vue -->
 <!-- que essa é uma expressão JavaScript em vez de uma String.      -->
-<blog-post v-bind:author="{ name: 'Veronica', company: 'Veridian Dynamics' }"></blog-post>
+<blog-post
+  v-bind:author="{
+    name: 'Veronica',
+    company: 'Veridian Dynamics'
+  }"
+></blog-post>
 
 <!-- Associando dinamicamente através do valor de uma variável. -->
 <blog-post v-bind:author="post.author"></blog-post>
@@ -181,7 +190,7 @@ Para especificar validações de propriedades, atribua um objeto com requisitos 
 ``` js
 Vue.component('my-component', {
   props: {
-    // Checagem básica de tipos (`null` corresponde a qualquer tipo)
+    // Checagem básica de tipos (`null` and `undefined` passarão em qualquer validação de tipo)
     propA: Number,
     // Multíplos tipos possíveis
     propB: [String, Number],
@@ -306,7 +315,7 @@ Isso pode ser especialmente útil quando combinado com a propridade de instânci
 
 ```js
 {
-  class: 'username-input',
+  required: true,
   placeholder: 'Digite seu usuário'
 }
 ```
@@ -330,12 +339,14 @@ Vue.component('base-input', {
 })
 ```
 
-Esse padrão permite utilizar componentes base mais parecidos com elementos padrão do HTML, sem a necessidade de se preocupar sobre qual elemento está na raíz:
+<p class="tip">Observe que a opção `inheritAttrs: false` **não** afeta vínculos `style` e `class`.</p>
+
+Esse padrão permite utilizar componentes base mais parecidos com elementos padrão do HTML, sem a necessidade de se preocupar sobre qual elemento está na raiz:
 
 ```html
 <base-input
   v-model="username"
-  class="username-input"
+  required
   placeholder="Digite seu usuário"
 ></base-input>
 ```

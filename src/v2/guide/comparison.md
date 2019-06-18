@@ -26,7 +26,7 @@ Alguma das seções abaixo podem estar levemente desatualizadas por causa de rec
 
 ### Desempenho em Execução
 
-Tanto React quanto Vue são excepcionalmente e similarmente rápidos, então desempenho não deve ser um fator decisivo para uma escolha entre eles. Para métricas específicas, pode dar uma olhada neste [comparativo independente](http://www.stefankrause.net/js-frameworks-benchmark7/table.html), que foca no desempenho bruto de renderização/atualização com árvores de componentes bem simples.
+Tanto React quanto Vue são excepcionalmente e similarmente rápidos, então desempenho não deve ser um fator decisivo para uma escolha entre eles. Para métricas específicas, pode dar uma olhada neste [comparativo independente](https://stefankrause.net/js-frameworks-benchmark8/table.html), que foca no desempenho bruto de renderização/atualização com árvores de componentes bem simples.
 
 #### Esforços de Otimização
 
@@ -86,7 +86,7 @@ Se você é um fã de CSS-no-JS, muitas bibliotecas populares deste tipo suporta
 
 O atributo opcional `scoped` automaticamente cria escopo ao CSS de seu componente adicionando um atributo único (por exemplo, `data-v-21e5b78`) aos elementos e compilando `.list-container:hover` para algo como `.list-container[data-v-21e5b78]:hover`.
 
-Por fim, a estilização em Componentes Single-File no Vue é muito flexível. Através do [vue-loader](https://github.com/vuejs/vue-loader), você pode utilizar qualquer pré-processador, pós-processador ou mesmo integração profunda com [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html) - tudo sem abrir mão de seu elemento `<style>`.
+Por fim, a estilização em Componentes Single-File no Vue é muito flexível. Através do [vue-loader](https://github.com/vuejs/vue-loader), você pode utilizar qualquer pré-processador, pós-processador ou mesmo integração profunda com [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html) - tudo dentro de seu elemento `<style>`.
 
 ### Escalabilidade
 
@@ -124,7 +124,7 @@ React Native lhe permite escrever aplicativos nativamente renderizados para iOS 
 
 No presente momento, Weex ainda é um projeto em desenvolvimento ativo e não está tão maduro e testado na prática quanto o ReactNative, mas o desenvolvimento é dirigido às necessidades de produção do maior negócio de comércio eletrônico do mundo, e a equipe Vue colaborará ativamente com a equipe Weex para garantir a experiência mais suave possível aos desenvolvedores Vue.
 
-Outra opção que desenvolvedores Vue terão em breve é utilizar o [NativeScript](https://www.nativescript.org/), através de um [plugin](https://github.com/rigor789/nativescript-vue) desenvolvido pela comunidade.
+Outra opção é o [NativeScript-Vue](https://nativescript-vue.org/), um plugin [NativeScript](https://www.nativescript.org/) para construir aplicativos verdadeiramente nativos usando o Vue.js.
 
 ### Utilizando MobX
 
@@ -146,7 +146,7 @@ Vue é muito mais simples que o AngularJS, tanto em termos de API quanto de _des
 
 AngularJS tem fortes opiniões sobre como as aplicações devem ser estruturadas, enquanto Vue é uma solução mais flexível e modular. Ainda que isto torne Vue mais adaptável a uma ampla variedade de projetos, reconhecemos que às vezes é útil ter algumas decisões já tomadas para você, para que possa simplesmente sair codificando.
 
-É por isso que oferecemos o [modelo de projeto com webpack](https://github.com/vuejs-templates/webpack) que você pode configurar dentro de poucos minutos, ainda assim concedendo-lhe acesso a recursos avançados como _hot module reloading_, _linting_, extração de CSS, e muito mais.
+É por isso que oferecemos um sistema completo para o rápido desenvolvimento do Vue.js. O [Vue CLI](https://github.com/vuejs/vue-cli) pretende ser a linha de base de ferramentas padrão para o ecossistema Vue. Ele garante que as várias ferramentas de construção funcionem perfeitamente em conjunto com os padrões sensatos, para que você possa se concentrar em escrever seu aplicativo, em vez de gastar horas brigando com configurações. Ao mesmo tempo, ainda oferece a flexibilidade de ajustar a configuração de cada ferramenta para necessidades específicas.
 
 ### Interligação com Dados
 
@@ -178,7 +178,7 @@ Por fim, ainda que não tão profundamente integrado com TypeScript quanto Angul
 
 ### Desempenho em Execução
 
-Ambos os _frameworks_ são excepcionalmente rápidos, com métricas muito similares nos _benchmarks_. Você pode [navegar por métricas específicas](http://www.stefankrause.net/js-frameworks-benchmark7/table.html) para uma comparação mais granular, mas desempenho provavelmente não é um fator decisivo entre ambos.
+Ambos os _frameworks_ são excepcionalmente rápidos, com métricas muito similares nos _benchmarks_. Você pode [navegar por métricas específicas](https://stefankrause.net/js-frameworks-benchmark8/table.html) para uma comparação mais granular, mas desempenho provavelmente não é um fator decisivo entre ambos.
 
 ### Tamanho
 
@@ -204,7 +204,7 @@ Com isto dito, seria provavelmente mais adequado uma comparação entre o núcle
 
 - A sintaxe de _templates_ do Vue se arma com o poder total de expressões JavaScript, enquanto a sintaxe de expressões e _helpers_ do Handlebars é bastante limitada.
 
-- Em termos de performance, Vue supera Ember [por uma margem justa](http://www.stefankrause.net/js-frameworks-benchmark7/table.html), mesmo após a atualização mais recente do motor Glimmer no Ember 2.x. Vue realiza atualizações em lote automaticamente, enquanto no Ember você precisa lidar manualmente com laços de execução em situações de desempenho crítico.
+- Em termos de performance, Vue supera Ember [por uma margem justa](https://stefankrause.net/js-frameworks-benchmark8/table.html), mesmo após a atualização mais recente do motor Glimmer no Ember 3.x. Vue realiza atualizações em lote automaticamente, enquanto no Ember você precisa lidar manualmente com laços de execução em situações de desempenho crítico.
 
 ## Knockout
 

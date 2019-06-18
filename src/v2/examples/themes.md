@@ -8,7 +8,6 @@ order: 13
 > Com os exemplos abaixo criados pelos nossos parceiros da [Creative Tim](https://creative-tim.com?affiliate_id=116187) você pode ver como uma aplicação do mundo real é construída, o _stack_ de tecnologias por trás dela e a maioria dos conceitos que você aprendeu até agora aplicados em aplicações no mundo real.
 
 {% raw %}
-
 <div id="themes-example" class="themes-grid">
    <div v-for="product in products" :key="product.name" class="item-preview">
      <a class="item-preview-img" :href="`https://www.creative-tim.com/product/${product.name}?affiliate_id=${affiliateId}`" rel="nofollow">

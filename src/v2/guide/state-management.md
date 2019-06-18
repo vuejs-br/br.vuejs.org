@@ -8,6 +8,8 @@ order: 502
 
 Aplicações grandes podem também crescer em complexidade, principalmente devido a múltiplos dados de estado da aplicação espalhados entre diversos componentes e interações entre eles. Para resolver este problema, Vue oferece [vuex](https://github.com/vuejs/vuex): nossa própria biblioteca de gerenciamento de estado inspirada em Elm. Além disso, ela se integra ao [vue-devtools](https://github.com/vuejs/vue-devtools), permitindo viajar pelo histórico de [mudanças de estado (*time travel*)]((https://raw.githubusercontent.com/vuejs/vue-devtools/master/media/demo.gif)) sem precisar de nenhuma configuração adicional.
 
+<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/mastering-vuex/intro-to-vuex/" target="_blank" rel="noopener" title="Vuex Tutorial">Assista a uma explicação em vídeo no Vue Mastery</a></div>
+
 ### Informação para Desenvolvedores React
 
 Se você vem do React, é possível que esteja se perguntando como vuex se compara ao [redux](https://github.com/reactjs/redux), a mais popular implementação Flux daquele ecossistema. Redux é agnóstico em relação à camada _view_, podendo ser facilmente utilizado com Vue através de alguns [bindings simples](https://yarnpkg.com/en/packages?q=redux%20vue&p=1). Vuex é diferente, uma vez que ele **sabe** que está em uma aplicação Vue. Isto permite melhor integração com o Vue, oferecendo uma API mais intuitiva e uma experiência de desenvolvimento otimizada.

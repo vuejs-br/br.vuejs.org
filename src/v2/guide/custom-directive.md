@@ -66,6 +66,8 @@ Um objeto de definição de diretiva pode prover algumas funções de gatilhos (
 
 - `update`: chamada após a atualização do VNode que contém o componente, __mas possivelmente antes da atualização de seus filhos__. O valor da diretiva pode ou não ter mudado, mas você pode evitar atualizações desnecessárias comparando os valores atuais com os antigos (veja abaixo, em argumentos dos gatilhos).
 
+<p class="tip">Abordaremos o VNodes com mais detalhes [depois](./render-function.html#DOM-Virtual), quando discutirmos [funções de renderização](./render-function.html).</p>
+
 - `componentUpdated`: chamada após a atualização do Vnode que contém o componente, __inclusive de seus filhos__.
 
 - `unbind`: chamada somente uma vez, quando a diretiva é desvinculada do elemento.
@@ -140,6 +142,37 @@ new Vue({
 })
 </script>
 {% endraw %}
+
+Os argumentos de diretiva podem ser dinâmicos. Por exemplo, em `v-mydirective:argument=[dataproperty]`, `argument` é o valor string atribuído à propriedade *arg* em seu parâmetro *binding* do gatilho de diretiva e `dataproperty` é uma referência a uma propriedade de dados na instância do componente atribuída à propriedade *value* no mesmo parâmetro *binding*. Conforme os gatilhos da diretiva são invocados, a propriedade *value* do parâmetro *binding* será alterada dinamicamente com base no valor de `dataproperty`.
+
+Um exemplo de uma diretiva personalizada usando um argumento dinâmico:
+
+```html
+<div id="app">
+  <p>Role a página</p>
+  <p v-tack:left="[dynamicleft]">Agora vou ser deslocado da esquerda em vez do topo</p>
+</div>
+```
+
+```js
+Vue.directive('tack', {
+  bind(el, binding, vnode) {
+    el.style.position = 'fixed';
+    const s = (binding.arg == 'left' ? 'left' : 'top');
+    el.style[s] = binding.value + 'px';
+  }
+})
+
+// iniciar app
+new Vue({
+  el: '#app',
+  data() {
+    return {
+      dynamicleft: 500
+    }
+  }
+})
+```
 
 ## Forma Abreviada de Funções
 

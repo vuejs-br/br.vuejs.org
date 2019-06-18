@@ -331,7 +331,9 @@ Quando o atributo especial `inline-template` estiver presente em um componente f
 </my-component>
 ```
 
-<p class="tip">Todavia, a utilização do <code>inline-template</code> faz com que o escopo do seu _template_ seja mais difícil de entender. Como uma boa prática, prefira definir _templates_ dentro do componente usando a opção <code>template</code>, ou em um elemento <code>&lt;template&gt;</code> de um arquivo <code>.vue</code></p>
+Seu template inline precisa ser definido dentro do elemento DOM ao qual o Vue está conectado.
+
+<p class="tip">Todavia, a utilização do <code>inline-template</code> faz com que o escopo do seu _template_ seja mais difícil de entender. Como uma boa prática, prefira definir _templates_ dentro do componente usando a opção <code>template</code>, ou em um elemento <code>&lt;template&gt;</code> em um arquivo <code>.vue</code></p>
 
 ### X-Templates
 
@@ -348,6 +350,8 @@ Vue.component('hello-world', {
   template: '#hello-world-template'
 })
 ```
+
+Seu x-template precisa ser definido fora do elemento DOM ao qual o Vue está conectado.
 
 <p class="tip">Eles podem ser úteis para demonstrações com _templates_ maiores ou em aplicações extremamente pequenas, porém devem ser evitados em todos os outros casos, pois separam os _templates_ do resto da definição do componente.</p>
 

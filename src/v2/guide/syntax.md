@@ -128,41 +128,33 @@ Outro simples exemplo é a diretiva `v-on`, que observa eventos do DOM:
 
 Aqui o valor é o nome do evento DOM que ela está escutando. Falaremos sobre gerenciamento de eventos com mais detalhes em breve.
 
-### Dynamic Arguments
+### Argumentos Dinâmicos
 
 > Novo na versão 2.6.0+
 
-A partir da versão 2.6.0, também é possível usar uma expressão _JavaScript_ no parâmetro de uma diretiva envolvendo-a com colchetes:
-<!-- Starting in version 2.6.0, it is also possible to use a JavaScript expression in a directive argument by wrapping it with square brackets: -->
+A partir da versão 2.6.0, também é possível usar uma expressão _JavaScript_ no argumento de uma diretiva envolvendo-a com colchetes:
 
 ``` html
 <a v-bind:[attributeName]="url"> ... </a>
 ```
-Aqui, `attributeName` será dinamicamente avaliado como uma expressão _JavaScript_, o valor avaliado será usado como o valor final para o parâmetro. Por exemplo, se sua instância do _Vue_ tem um propriedade de dados, `attributeName`, cujo o valor é `"href"`, essa ligação irá ser equivalente a `v-bind:href`.
-<!-- Here `attributeName` will be dynamically evaluated as a JavaScript expression, and its evaluated value will be used as the final value for the argument. For example, if your Vue instance has a data property, `attributeName`, whose value is `"href"`, then this binding will be equivalent to `v-bind:href`. -->
 
-Igualmente, você pode usar as propriedades dinâmicas para vincular um manipulador a um nome de evento dinâmico:
+Aqui, `attributeName` será dinamicamente processado como uma expressão _JavaScript_, seu valor será usado como o final para o argumento. Por exemplo, se sua instância do _Vue_ tem um propriedade de dados, `attributeName`, cujo o valor é `"href"`, essa ligação irá ser equivalente a `v-bind:href`.
 
-<!-- Similarly, you can use dynamic arguments to bind a handler to a dynamic event name: -->
+Igualmente, você pode usar argumentos dinâmicos para vincular um manipulador a um nome de evento dinâmico:
 
 ``` html
 <a v-on:[eventName]="doSomething"> ... </a>
 ```
-Igualmente, quando o  valor de `eventName` é `"focus"`, por exemplo, `v-on:[eventName]` será equivalente a `v-on:focus`.
 
-<!-- Similarly, when `eventName`'s value is `"focus"`, for example, `v-on:[eventName]` will be equivalent to `v-on:focus`. -->
+Igualmente, quando o valor de `eventName` é `"focus"`, por exemplo, `v-on:[eventName]` será equivalente a `v-on:focus`.
 
-#### Dynamic Argument Value Constraints
+#### Restrições de Valores de Argumentos Dinâmicos
 
-Parâmetros dinâmicos são passados para _String_, com exceção do `null`. O valor especial `null` pode ser usado explicitamente para remover um vinculo. Qualquer outro valor que não seja uma _String_ acionará um aviso.
+Argumentos dinâmicos são passados para _String_, com exceção do `null`. O valor especial `null` pode ser usado explicitamente para remover um vínculo. Qualquer outro valor que não seja uma _String_ acionará um aviso.
 
-<!-- Dynamic arguments are expected to evaluate to a string, with the exception of `null`. The special value `null` can be used to explicitly remove the binding. Any other non-string value will trigger a warning. -->
+#### Restrições da Expressão de Argumento Dinâmico
 
-#### Dynamic Argument Expression Constraints
-
-<p class="tip">Expressões de parâmetros dinâmicos possuem algumas restrições de sintaxe por causa de determinados caracteres que são inválidos dentro de nomes de atributos HTML, como espaços e aspas. Você também precisa evitar letras maiúsculas ao usar _templates_ no _DOM_.</p>
-
-<!-- <p class="tip">Dynamic argument expressions have some syntax constraints because certain characters are invalid inside HTML attribute names, such as spaces and quotes. You also need to avoid uppercase keys when using in-DOM templates.</p> -->
+<p class="tip">Expressões de argumentos dinâmicos possuem algumas restrições de sintaxe por causa de determinados caracteres que são inválidos dentro de nomes de atributos HTML, como espaços e aspas. Você também precisa evitar letras maiúsculas ao usar _templates_ no _DOM_.</p>
 
 Por exemplo, o seguinte é inválido:
 
@@ -171,15 +163,14 @@ Por exemplo, o seguinte é inválido:
 <a v-bind:['foo' + bar]="value"> ... </a>
 ```
 
-A solução alternativa é usa expressões sem espaço ou aspas, ou simplesmente substituir a expressão complexa por um dado computado.
+A solução alternativa é usar expressões sem espaço ou aspas, ou simplesmente substituir a expressão complexa por uma propriedade computada.
 
-Além disso, se você esta usando _templates_ (_templates_ escrito diretamente no arquivo HTML), você deve estar ciente que os navegadores irão forçar os nomes de atributos a ficarem minúsculas:
-
-<!-- In addition, if you are using in-DOM templates (templates directly written in an HTML file), you have to be aware that browsers will coerce attribute names into lowercase: -->
+Além disso, se você está usando _templates_ no DOM (_templates_ escritos diretamente no arquivo HTML), você deve estar ciente que os navegadores irão forçar os nomes de atributos a ficarem em minúsculas:
 
 ``` html
 <!-- Isso será convertido em v-bind:[someattr] no DOM. -->
 <a v-bind:[someAttr]="value"> ... </a>
+```
 
 ### Modificadores
 
@@ -203,6 +194,9 @@ O prefixo `v-` serve como dica visual para identificar atributos específicos do
 
 <!-- abreviação -->
 <a :href="url"> ... </a>
+
+<!-- shorthand with dynamic argument (2.6.0+) -->
+<a :[key]="url"> ... </a>
 ```
 
 ### Abreviação para `v-on`
@@ -213,6 +207,9 @@ O prefixo `v-` serve como dica visual para identificar atributos específicos do
 
 <!-- abreviação -->
 <a @click="doSomething"> ... </a>
+
+<!-- shorthand with dynamic argument (2.6.0+) -->
+<a @[event]="doSomething"> ... </a>
 ```
 
-Essas abreviações podem parecer um pouco diferentes do HTML normalmente utilizado, mas os caracteres `:` e `@` são válidos para nomes de atributos em todos os navegadores que o Vue.js suporta. Além disso, não aparecerão no código renderizado. Essa sintaxe é totalmente opcional, mas você provavelmente vai apreciar quando utilizar diretivas frequentemente.
+Essas abreviações podem parecer um pouco diferentes do HTML normalmente utilizado, mas os caracteres `:` e `@` são válidos para nomes de atributos em todos os navegadores que o Vue suporta. Além disso, não aparecerão no código renderizado. Essa sintaxe é totalmente opcional, mas você provavelmente vai apreciar quando utilizar diretivas frequentemente.

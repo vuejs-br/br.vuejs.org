@@ -580,6 +580,8 @@ e ganchos JavaScript personalizados
 </transition>
 ```
 
+No exemplo acima, ambos atributo `appear` ou gatilho `v-on:appear` farão com que apareça uma transição.
+
 ## Transição entre Elementos
 
 Nós discutiremos sobre [transição entre Componentes](#Transitioning-Between-Components) em breve, mas você pode realizar transição entre elementos puros utilizando `v-if`/`v-else`. Uma das transições de dois elementos mais comum é entre um recipiente de lista e uma mensagem descrevendo uma lista vazia:
@@ -1478,7 +1480,7 @@ Vue.component('my-special-transition', {
 })
 ```
 
-E componentes funcionais são especialmente bem adequados para esta tarefa:
+E [componentes funcionais](render-function.html#Componentes-Funcionais) são especialmente bem adequados para esta tarefa:
 
 ``` js
 Vue.component('my-special-transition', {

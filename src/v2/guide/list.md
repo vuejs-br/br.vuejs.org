@@ -44,11 +44,6 @@ var example1 = new Vue({
       { message: 'Algo' },
       { message: 'Outro' }
     ]
-  },
-  watch: {
-    items: function () {
-      smoothScroll.animateScroll(document.querySelector('#example-1'))
-    }
   }
 })
 </script>
@@ -94,11 +89,6 @@ var example2 = new Vue({
       { message: 'Algo' },
       { message: 'Outro' }
     ]
-  },
-  watch: {
-    items: function () {
-      smoothScroll.animateScroll(document.querySelector('#example-2'))
-    }
   }
 })
 </script>
@@ -127,9 +117,9 @@ new Vue({
   el: '#v-for-object',
   data: {
     object: {
-      firstName: 'Zé',
-      lastName: 'Ninguém',
-      age: 30
+      title: 'Como fazer listas no Vue',
+      author: 'Jane Doe',
+      publishedAt: '2016-04-10'
     }
   }
 })
@@ -148,37 +138,37 @@ new Vue({
   el: '#v-for-object',
   data: {
     object: {
-      firstName: 'Zé',
-      lastName: 'Ninguém',
-      age: 30
+      title: 'Como fazer listas no Vue',
+      author: 'Jane Doe',
+      publishedAt: '2016-04-10'
     }
   }
 })
 </script>
 {% endraw %}
 
-Você também pode oferecer um segundo argumento para a chave:
+Você também pode oferecer um segundo argumento para o nome da propriedade (também conhecido como chave):
 
 ``` html
-<div v-for="(value, key) in object">
-  {{ key }}: {{ value }}
+<div v-for="(value, name) in object">
+  {{ name }}: {{ value }}
 </div>
 ```
 
 {% raw %}
-<div id="v-for-object-value-key" class="demo">
-  <div v-for="(value, key) in object">
-    {{ key }}: {{ value }}
+<div id="v-for-object-value-name" class="demo">
+  <div v-for="(value, name) in object">
+    {{ name }}: {{ value }}
   </div>
 </div>
 <script>
 new Vue({
-  el: '#v-for-object-value-key',
+  el: '#v-for-object-value-name',
   data: {
     object: {
-      firstName: 'Zé',
-      lastName: 'Ninguém',
-      age: 30
+      title: 'Como fazer listas no Vue',
+      author: 'Jane Doe',
+      publishedAt: '2016-04-10'
     }
   }
 })
@@ -188,50 +178,54 @@ new Vue({
 E ainda um terceiro para o índice:
 
 ``` html
-<div v-for="(value, key, index) in object">
-  {{ index }}. {{ key }}: {{ value }}
+<div v-for="(value, name, index) in object">
+  {{ index }}. {{ name }}: {{ value }}
 </div>
 ```
 
 {% raw %}
-<div id="v-for-object-value-key-index" class="demo">
-  <div v-for="(value, key, index) in object">
-    {{ index }}. {{ key }}: {{ value }}
+<div id="v-for-object-value-name-index" class="demo">
+  <div v-for="(value, name, index) in object">
+    {{ index }}. {{ name }}: {{ value }}
   </div>
 </div>
 <script>
 new Vue({
-  el: '#v-for-object-value-key-index',
+  el: '#v-for-object-value-name-index',
   data: {
     object: {
-      firstName: 'Zé',
-      lastName: 'Ninguém',
-      age: 30
+      title: 'Como fazer listas no Vue',
+      author: 'Jane Doe',
+      publishedAt: '2016-04-10'
     }
   }
 })
 </script>
 {% endraw %}
 
-<p class="tip">Quando estiver iterando sobre um objeto, a ordem das chaves é baseada na enumeração oferecida por `Object.keys()`, a qual **não** é garantidamente consistente entre implementações distintas de motores JavaScript.</p>
+<p class="tip">Quando estiver iterando sobre um objeto, a ordem é baseada na enumeração do `Object.keys()`, a qual **não** é garantidamente consistente entre implementações distintas de motores JavaScript.</p>
 
-## `key`
+## Maintaining State
 
 Quando Vue está atualizando uma lista de elementos renderizados com `v-for`, por padrão se utiliza de uma estratégia de "remendo local". Se a ordem dos itens de dados tiver mudado, em vez de mover os elementos DOM para combinar com a nova ordem, Vue remendará o conteúdo de cada elemento em seu local atual, garantindo que o resultado reflita o que precisa ser renderizado em cada índice em particular. Isto é similar ao comportamento oferecido por `track-by="$index"` no Vue 1.x.
 
-Este modo padrão é eficiente, mas adequado apenas **quando seu resultado de renderização não se apoiar em estado de componentes filhos ou estado de DOM temporário (como valores de campos de formulário)**.
+Este modo padrão é eficiente, mas **adequado apenas quando seu resultado de renderização não se apoiar em estado de componentes filhos ou estado de DOM temporário (como valores de campos de formulário)**.
 
-Vue precisa de uma dica para que possa rastrear a identidade de cada nó e assim reutilizar e reordenar elementos existentes. Para tanto, defina um atributo `key` único para cada item. Um valor ideal para `key` poderia ser um _id_ exclusivo de cada item. Ele é um equivalente a grosso modo do `track-by` do 1.x, mas funciona como atributo, portanto deve-se utilizar `v-bind` para vinculá-lo a valores dinâmicos (neste exemplo, usando a sintaxe abreviada):
+Para dar uma dica ao Vue e ele poder rastrear a identidade de cada nó e assim reutilizar e reordenar elementos existentes, defina um atributo `key` único para cada item.
 
 ``` html
-<div v-for="item in items" :key="item.id">
+<div v-for="item in items" v-bind:key="item.id">
   <!-- conteúdo -->
 </div>
 ```
 
-De fato, é recomendado oferecer um `key` para `v-for` sempre que possível, a menos que esteja iterando conteúdo DOM simples, ou esteja intencionalmente se apoiando no comportamento padrão para ganho de desempenho.
+De fato, é recomendado oferecer um atributo `key` para `v-for` sempre que possível, a menos que esteja iterando conteúdo DOM simples, ou esteja intencionalmente se apoiando no comportamento padrão para ganho de desempenho.
 
 Por ser um mecanismo genérico do Vue para identificar nós, `key` também tem outras utilidades não especificamente associadas ao `v-for`, como veremos futuramente neste guia.
+
+<p class="tip">Não use valores não primitivos como objetos e arrays como chaves para `v-for`. Use string ou valores numéricos.</p>
+
+Para uso detalhado do atributo `key`, por favor veja a [documentação da API `key`](https://vuejs.org/v2/api/#key).
 
 ## Detectando Mudanças em Arrays
 
@@ -319,7 +313,7 @@ vm.b = 2
 // `vm.b` NÃO é reativo
 ```
 
-Vue não permite dinamicamente adicionar novas propriedades reativas em nível raiz para uma instância já criada. Entretanto, é possível adicionar propriedades reativas a objetos internos usando o método `Vue.set(object, key, value)`. Por exemplo, dado o código:
+Vue não permite dinamicamente adicionar novas propriedades reativas em nível raiz para uma instância já criada. Entretanto, é possível adicionar propriedades reativas a objetos internos usando o método `Vue.set(object, propertyName, value)`. Por exemplo, dado o código:
 
 ``` js
 var vm = new Vue({
@@ -438,6 +432,8 @@ Similar ao uso de _template_ com `v-if`, você pode usar `<template>` com `v-for
 ```
 
 ## Utilizando `v-if` com `v-for`
+
+<p class="tip">Note que **não** é recomendado usar `v-if` e `v-for` juntos. Consulte o [guia de estilos](/v2/style-guide/#Evite-v-if-com-v-for-Essencial) para detalhes.</p>
 
 Quando existentes em um mesmo nó, `v-for` tem maior prioridade que `v-if`. Isto significa que `v-if` será executado separadamente a cada iteração da repetição. Isto pode ser útil se quiser renderizar nós condicionalmente para apenas _alguns_ itens, como abaixo:
 

@@ -73,7 +73,7 @@ var router = new VueRouter({
 })
 ```
 
-A sintaxe com Array oferece mais precisão na definição de rotas, uma vez que ao iterar sobre objetos não existe garantia da mesma ordem dos atributos entre navegadores.
+A sintaxe com Array oferece mais precisão na definição de rotas, uma vez que ao iterar sobre objetos não existe garantia da mesma ordem de propriedades entre navegadores.
 
 {% raw %}
 <div class="upgrade-path">
@@ -211,9 +211,9 @@ Para uma definição conforme exibido abaixo, na configuração de suas `routes`
 
 Se você precisar de múltiplos apelidos, é possível usar uma sintaxe de Array:
 
-``` js
+{% codeblock lang:js %}
 alias: ['/manage', '/administer', '/administrate']
-```
+{% endcodeblock %}
 
 {% raw %}
 <div class="upgrade-path">

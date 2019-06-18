@@ -6,26 +6,17 @@ order: 7
 
 ## `v-if`
 
-Em _templates_ estilo Handlebars, poderíamos escrever blocos condicionais como este:
+A diretiva `v-if` é usada para renderizar condicionalmente um bloco. O bloco só será renderizado se a expressão da diretiva retornar um valor verdadeiro.
 
 ``` html
-<!-- Handlebars template -->
-{{#if ok}}
-  <h1>Sim</h1>
-{{/if}}
-```
-
-No Vue, usamos a diretiva `v-if` para atingir o mesmo resultado:
-
-``` html
-<h1 v-if="ok">Sim</h1>
+<h1 v-if="awesome">Vue é incrível!</h1>
 ```
 
 Também é possível adicionar um "bloco senão" usando `v-else`:
 
 ``` html
-<h1 v-if="ok">Sim</h1>
-<h1 v-else>Não</h1>
+<h1 v-if="awesome">Vue é incrível!</h1>
+<h1 v-else>Oh não 😢</h1>
 ```
 
 ### Grupos Condicionais com `<template>`
@@ -195,5 +186,7 @@ Em comparação, `v-show` é mais simples - o elemento sempre será renderizado 
 De modo geral, `v-if` tem custo maior durante alternâncias de visibilidade, enquanto `v-show` tem custo maior na renderização inicial. Então prefira `v-show` se precisar alternar a visibilidade de algo com muita frequência; e prefira `v-if` se a condição não tem tanta probabilidade de se modificar durante a execução.
 
 ## `v-if` com `v-for`
+
+<p class="tip">Usar `v-if` e `v-for` juntos não é recomendado. Veja o [guia de estilos](/v2/style-guide/#Evite-v-if-com-v-for-Essencial) para mais informações.</p>
 
 Quando utilizado em conjunto com `v-for`, este possui maior prioridade do que o `v-if`. Veja o guia de <a href="../guide/list.html#v-for-com-v-if">renderização de listas</a> para mais detalhes.

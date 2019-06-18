@@ -27,17 +27,31 @@ Simplesmente faça o _download_ e inclua a _tag_ `<script>` com o caminho corret
 <p class="tip">Não use a versão minificada (de produção) durante o desenvolvimento. Você irá perder todos os avisos interessantes para os erros mais comuns!</p>
 
 <div id="downloads">
-<a class="button" href="/js/vue.js" download>Versão Desenvolvedor</a><span class="light info">Mensagens de erro completas e modo de depuração</span>
+  <a class="button" href="/js/vue.js" download>Versão Desenvolvedor</a><span class="light info">Mensagens de erro completas e modo de depuração</span>
 
-<a class="button" href="/js/vue.min.js" download>Versão de Produção</a><span class="light info">Sem mensagens de erro, {{gz_size}}KB min+gzip</span>
+  <a class="button" href="/js/vue.min.js" download>Versão de Produção</a><span class="light info">Sem mensagens de erro, {{gz_size}}KB min+gzip</span>
 </div>
 
 ### CDN
 
-Nós recomendados vincular a um número de versão específico que você possa atualizar manualmente:
+Para propósitos de prototipação ou aprendizado, você pode usar a versão mais recente com:
 
 ``` html
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+```
+
+Para produção, recomendados vincular a um número de versão específico  para evitar quebra de funções das versões mais novas:
+
+``` html
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0/dist/vue.js"></script>
+```
+
+Se você está usando Modulos ES nativos, existe uma _build_ compatível com isso:
+
+``` html
+<script type="module">
+  import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.0/dist/vue.esm.browser.js'
+</script>
 ```
 
 Você pode navegar pelos códigos-fonte do pacote NPM em [cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue/).
@@ -61,16 +75,18 @@ Vue.js oferece um [CLI oficial](https://github.com/vuejs/vue-cli) para rapidamen
 
 <p class="tip">Este assunto pressupõe conhecimento prévio em Node.js e ferramentas de _build_ associadas. Se você é novo no Vue ou neste tipo de ferramenta, recomendamos fortemente que passe por todo <a href="./">o guia</a> antes de tentar usar o CLI.</p>
 
+<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/real-world-vue-js/vue-cli" target="_blank" rel="noopener" title="Vue CLI">Assita à uma explicação em vídeo no Vue Mastery</a></div>
+
 ## Explicação das Distribuições
 
 No [diretório `dist/`do pacote NPM](https://cdn.jsdelivr.net/npm/vue/dist/) você encontrará muitas distribuições diferentes do Vue.js. Aqui está uma visão geral das variações entre cada uma delas:
 
-| | UMD | CommonJS | ES Module |
+| | UMD | CommonJS | ES Module (para empacotadores) | ES Module (para navegadores) |
 | --- | --- | --- | --- |
-| **Completa** | vue.js | vue.common.js | vue.esm.js |
-| **Apenas Runtime** | vue.runtime.js | vue.runtime.common.js | vue.runtime.esm.js |
-| **Completa (produção)** | vue.min.js | - | - |
-| **Apenas Runtime (produção)** | vue.runtime.min.js | - | - |
+| **Completa** | vue.js | vue.common.js | vue.esm.js | vue.esm.browser.js |
+| **Apenas Runtime** | vue.runtime.js | vue.runtime.common.js | vue.runtime.esm.js | - |
+| **Completa (produção)** | vue.min.js | - | - | vue.esm.browser.min.js |
+| **Apenas Runtime (produção)** | vue.runtime.min.js | - | - | - |
 
 ### Termos
 
@@ -84,7 +100,11 @@ No [diretório `dist/`do pacote NPM](https://cdn.jsdelivr.net/npm/vue/dist/) voc
 
 - **[CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1)**: formato destinado a empacotadores antigos como [browserify](http://browserify.org/) ou [webpack 1](https://webpack.github.io). O arquivo padrão para estes empacotadores (`pkg.main`) é a distribuição apenas Runtime em formato CommonJS (`vue.runtime.common.js`).
 
-- **[ES Module](http://exploringjs.com/es6/ch_modules.html)**: formato de módulos ECMAScript destinado a empacotadores modernos como [webpack 2](https://webpack.js.org) ou [rollup](https://rollupjs.org/). O arquivo padrão para estes empacotadores (`pkg.module`) é a distribuição apenas Runtime em formato ES Module (`vue.runtime.esm.js`).
+- **[ES Module](http://exploringjs.com/es6/ch_modules.html)**: a partir de 2.6 Vue fornece dois _builds_ ES Modules (ESM):
+
+  - ESM para empacotadores: destinado ao uso com empacotadores modernos como o [webpack 2](https://webpack.js.org) ou [rollup](https://rollupjs.org/). O formato ESM é projetado para ser estaticamente analisável, de modo que os empacotadores possam tirar proveito disso para realizar _"tree-shaking"_ e eliminar o código não utilizado de seu pacote final. O arquivo padrão para estes empacotadores (`pkg.module`) é a distribuição apenas Runtime em formato ES Module (`vue.runtime.esm.js`).
+
+  - ESM para navegadores (somente 2.6+): destinado a importações diretas em navegadores modernos via `<script type="module">`.
 
 ### Runtime + Compilador vs. Runtime
 
@@ -128,7 +148,7 @@ rollup({
   // ...
   plugins: [
     alias({
-      'vue': 'vue/dist/vue.esm.js'
+      'vue': require.resolve('vue/dist/vue.esm.js')
     })
   ]
 })

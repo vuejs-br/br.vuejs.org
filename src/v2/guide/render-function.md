@@ -82,7 +82,7 @@ Vue.component('anchored-heading', {
 })
 ```
 
-Muito mais simples! Mais ou menos. O código é menor, mas requer maior familiaridade com as propriedades de uma instância Vue. Neste caso, você precisa saber que quando você inclui elementos filho em seu componente, sem especificar um atributo `slot`, como o `Olá Mundo!` dentro de `anchored-heading`, esses elementos estão acessíveis na instância através de `$slots.default`. Se você ainda não leu, **é altamente recomendado que leia a seção da API de [propriedades da instância](../api/#Propriedades-de-Instancia) antes de se aprofundar em funções `render`**.
+Muito mais simples! Mais ou menos. O código é menor, mas requer maior familiaridade com as propriedades de uma instância Vue. Neste caso, você precisa saber que quando você inclui elementos filho em seu componente, sem especificar uma diretiva `v-slot`, como o `Olá Mundo!` dentro de `anchored-heading`, esses elementos estão acessíveis na instância através de `$slots.default`. Se você ainda não leu, **é altamente recomendado que leia a seção da API de [propriedades da instância](../api/#Propriedades-de-Instancia) antes de se aprofundar em funções `render`**.
 
 ## Nós, Árvores e DOM Virtual
 
@@ -231,7 +231,11 @@ Importante observar: assim como `v-bind:class` e `v-bind:style` têm tratamento 
   slot: 'name-of-slot'
   // Outras propriedades especiais de primeiro nível
   key: 'myKey',
-  ref: 'myRef'
+  ref: 'myRef',
+  // If you are applying the same ref name to multiple
+  // elements in the render function. This will make `$refs.myRef` become an
+  // array
+  refInFor: true
 }
 ```
 
@@ -254,7 +258,7 @@ Vue.component('anchored-heading', {
     var headingId = getChildrenTextContent(this.$slots.default)
       .toLowerCase()
       .replace(/\W+/g, '-')
-      .replace(/(^\-|\-$)/g, '')
+      .replace(/(^-|-$)/g, '')
 
     return createElement(
       'h' + this.level,
@@ -475,7 +479,7 @@ Especialmente quando a versão usando _template_ é tão simples em comparação
 </anchored-heading>
 ```
 
-Por isso há um [plugin para Babel](https://github.com/vuejs/babel-plugin-transform-vue-jsx) destinado à utilização de JSX com o Vue, nos trazendo de volta a uma sintaxe mais semelhante à utilizada em _templates_:
+Por isso há um [plugin para Babel](https://github.com/vuejs/jsx) destinado à utilização de JSX com o Vue, nos trazendo de volta a uma sintaxe mais semelhante à utilizada em _templates_:
 
 ``` js
 import AnchoredHeading from './AnchoredHeading.vue'
@@ -492,9 +496,9 @@ new Vue({
 })
 ```
 
-<p class="tip">Apelidar `createElement` como `h` é uma convenção comum que você verá na comunidade Vue e é necessária para o uso de JSX. Se `h` não estiver disponível no escopo, sua aplicação irá gerar um erro.</p>
+<p class="tip">Apelidar `createElement` como `h` é uma convenção comum que você verá na comunidade Vue e é necessária para o uso de JSX. Começando com a [versão 3.4.0](https://github.com/vuejs/babel-plugin-transform-vue-jsx#h-auto-injection) do plugin Babel para Vue, nós automaticamente injetamos `const h = this.$createElement` em qualquer método e _getter_ (não funções ou _arrow functions_), declarado na sintaxe do ES2015 que possui JSX, então você pode descartar o parâmetro `(h)`. Com as versões anteriores do plug-in, seu aplicativo lançaria um erro se `h` não estivesse disponível no escopo.</p>
 
-Para mais informações sobre como JSX é mapeado para JavaScript, veja a [documentação de utilização](https://github.com/vuejs/babel-plugin-transform-vue-jsx#usage).
+Para mais informações sobre como JSX é mapeado para JavaScript, veja a [documentação de utilização](https://github.com/vuejs/jsx#installation).
 
 ## Componentes Funcionais
 
@@ -531,14 +535,15 @@ Tudo que o componente funcional necessita é passado através de `context`, o qu
 - `props`: Um objeto com as propriedades
 - `children`: Um Array de elementos VNode filhos
 - `slots`: Uma função retornando um objeto _slots_
-- `data`: Todo o [objeto `data]((#The-Data-Object-In-Depth)) passado ao componente
+- `scopedSlots`: (2.6.0+) Um objeto que expõe os slots com escopo no passado. Também expõe slots normais como funções.
+- `data`: Todo o [objeto `data`](#O-Objeto-de-Dados-em-Detalhes) passado ao componente como segundo argumento de `createElement`
 - `parent`: Uma referência ao componente pai
-- `listeners`: (2.3.0+) Um objeto contendo escutas a eventos registradas pelo pai. É um atalho para `data.on`
+- `listeners`: (2.3.0+) Um objeto contendo escutadores de eventos registradas pelo pai. É um atalho para `data.on`
 - `injections`: (2.3.0+) Se estiver usando a opção [`inject`](../api/#provide-inject), aqui estarão as injeções resolvidas
 
 Após acrescentar `functional: true`, adaptar a função `render` do nosso componente de cabeçalho com âncoras iria requerer acrescentar o parâmetro `context`, atualizar `this.$slots.default` para `context.children` e então atualizar `this.level` para `context.props.level`.
 
-Como componentes funcionais são apenas funções, eles são muito mais leves para renderizar. Entretanto, por carecer de uma instância persistente, eles não são exibidos na árvore de componentes do [Vue devtools](https://github.com/vuejs/vue-devtools).
+Como componentes funcionais são apenas funções, eles são muito mais leves para renderizar.
 
 Eles também são muito úteis como componentes encapsuladores. Por exemplo, quando você precisa:
 
@@ -620,7 +625,9 @@ Você pode se perguntar por que nós precisamos de ambos - `slots()` e `children
 
 ``` html
 <meu-componente-funcional>
-  <p slot="foo">primeiro</p>
+  <p v-slot:foo>
+    primeiro
+  </p>
   <p>segundo</p>
 </meu-componente-funcional>
 ```
@@ -632,80 +639,5 @@ Para este componente, `children` lhe fornecerá ambos os parágrafos, enquanto `
 Você pode estar interessado em saber que _templates_ do Vue são compilados para funções `render`. Este é um detalhe de implementação que você não necessita saber, mas se você quiser ver como _templates_ específicos ficam quando compilados, pode ser interessante. Abaixo uma pequena demonstração usando `Vue.compile` para compilar ao vivo uma String de _template_:
 
 {% raw %}
-<div id="vue-compile-demo" class="demo">
-  <textarea v-model="templateText" rows="10"></textarea>
-  <div v-if="typeof result === 'object'">
-    <label>render:</label>
-    <pre><code>{{ result.render }}</code></pre>
-    <label>staticRenderFns:</label>
-    <pre v-for="(fn, index) in result.staticRenderFns"><code>_m({{ index }}): {{ fn }}</code></pre>
-    <pre v-if="!result.staticRenderFns.length"><code>{{ result.staticRenderFns }}</code></pre>
-  </div>
-  <div v-else>
-    <label>Erro de compilação:</label>
-    <pre><code>{{ result }}</code></pre>
-  </div>
-</div>
-<script>
-new Vue({
-  el: '#vue-compile-demo',
-  data: {
-    templateText: '\
-<div>\n\
-  <header>\n\
-    <h1>Sou um template!</h1>\n\
-  </header>\n\
-  <p v-if="message">\n\
-    {{ message }}\n\
-  </p>\n\
-  <p v-else>\n\
-    Nenhuma mensagem.\n\
-  </p>\n\
-</div>\
-    ',
-  },
-  computed: {
-    result: function () {
-      if (!this.templateText) {
-        return 'Informe um template válido acima'
-      }
-      try {
-        var result = Vue.compile(this.templateText.replace(/\s{2,}/g, ''))
-        return {
-          render: this.formatFunction(result.render),
-          staticRenderFns: result.staticRenderFns.map(this.formatFunction)
-        }
-      } catch (error) {
-        return error.message
-      }
-    }
-  },
-  methods: {
-    formatFunction: function (fn) {
-      return fn.toString().replace(/(\{\n)(\S)/, '$1  $2')
-    }
-  }
-})
-console.error = function (error) {
-  throw new Error(error)
-}
-</script>
-<style>
-#vue-compile-demo {
-  -webkit-user-select: inherit;
-  user-select: inherit;
-}
-#vue-compile-demo pre {
-  padding: 10px;
-  overflow-x: auto;
-}
-#vue-compile-demo code {
-  white-space: pre;
-  padding: 0
-}
-#vue-compile-demo textarea {
-  width: 100%;
-  font-family: monospace;
-}
-</style>
+<script async src="https://jsfiddle.net/phanan/5h0wx9np/embed/result,js,html/"></script>
 {% endraw %}

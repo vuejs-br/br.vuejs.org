@@ -10,9 +10,9 @@ order: 105
 
 Anteriormente, usamos o atributo `is` para alternar entre componentes em uma interface com guias:
 
-```html
+{% codeblock lang:html %}
 <component v-bind:is="currentTabComponent"></component>
-```
+{% endcodeblock %}
 
 Ao alternar entre esses componentes, às vezes, você desejará manter seu estado ou evitar a nova renderização, por motivos de desempenho. Por exemplo, ao expandir nossa interface com guias um pouco:
 
