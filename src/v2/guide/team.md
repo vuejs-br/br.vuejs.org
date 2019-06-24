@@ -640,7 +640,8 @@ order: 803
       city: 'Quieve, Ucrânia',
       languages: ['uk', 'ru', 'en'],
       reposOfficial: [
-        'vuejs.org'
+        'vuejs.org',
+        'vue-cli'
       ],
       work: {
         role: 'Engenheira Front-End Sênior',
@@ -649,9 +650,6 @@ order: 803
       },
       github: 'NataliaTepluhina',
       twitter: 'N_Tepluhina',
-      links: [
-        'https://vuevixens.org/'
-      ]
     }
   ]))
 
