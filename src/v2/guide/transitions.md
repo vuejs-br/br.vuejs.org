@@ -958,6 +958,7 @@ Então, que tal ter uma lista de itens e renderizá-los simultaneamente com o `v
 - Diferentemente do `<transition>`, ele renderiza um elemento por padrão: o `<span>`. Você pode mudar o elemento que é renderizado com o atributo `tag`.
 - [Modos de Transição](#Modos-de-Transição) não estão disponíveis, pois não estamos mais alternando entre elementos mutuamente exclusivos.
 - Elementos dentro **sempre requerem** um atributo `key` único.
+- Classes de transição CSS serão aplicadas a elementos internos e não ao grupo/_container_ em si.
 
 ### Transição de Entrada/Saída de Lista
 
