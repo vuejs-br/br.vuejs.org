@@ -117,7 +117,7 @@ Então, nós inicializamos os valores google e map como nulos:
   },
 ```
 
-Na hook `mounted` nós instanciamos os objetos `googleMapApi` e `Map` do `GoogleMapsApi` e atribuímos os valores de `google` e `map` às instâncias criadas:
+No gaatilho `mounted` nós instanciamos os objetos `googleMapApi` e `Map` do `GoogleMapsApi` e atribuímos os valores de `google` e `map` às instâncias criadas:
 
 ```js
   async mounted() {
@@ -303,7 +303,7 @@ Ambos recebem `google`, que nós usamos para extrair o objeto obrigatório (Mark
 
 Cada componente também espera uma prop extra para criar um elemento correspondente. Nesse caso, nós temos `market` e `path`, respectivamente.
 
-Na hook mounted, nós criamos um elemento (Marker/Polyline) e o anexamos ao nosso mapa ao passar a propriedade `map` ao construtor do objeto.
+No gatilho mounted, nós criamos um elemento (Marker/Polyline) e o anexamos ao nosso mapa ao passar a propriedade `map` ao construtor do objeto.
 
 Ainda há mais um passo...
 
