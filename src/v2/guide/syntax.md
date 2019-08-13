@@ -150,9 +150,7 @@ Igualmente, quando o valor de `eventName` é `"focus"`, por exemplo, `v-on:[even
 
 #### Restrições de Valores de Argumentos Dinâmicos
 
-<!-- A tradução para o português do trecho abaixo torna confuso o entendimento a questão, uma vez que não necessáriamente você deve passar uma string como argumento, mas sim algo que após o processamento retorne uma string. -->
-
-Se espera que os Argumentos Dinâmicos sejam processados resultando em uma _String_, com exceção do `null`. O valor especial `null` pode ser usado para explicitamente remover um vínculo. Qualquer outro valor que não seja uma _String_ acionará um aviso.
+Se espera que argumentos dinâmicos sejam avaliados resultando-se em uma _String_, com exceção do `null`. O valor especial `null` pode ser usado para explicitamente remover um vínculo. Qualquer outro valor que não seja uma _String_ acionará um aviso.
 
 #### Restrições da Expressão de Argumento Dinâmico
 
