@@ -486,8 +486,13 @@ Em seu lugar, use [`beforeRouteEnter`](https://router.vuejs.org/en/advanced/navi
 
 {% raw %}
 <div class="upgrade-path">
+<<<<<<< HEAD
   <h4>Caminho para Atualização</h4>
   <p>Execute a <a href="https://github.com/vuejs/vue-migration-helper">ferramenta de migração</a> para encontrar casos de <code>active</code>.</p>
+=======
+  <h4>Upgrade Path</h4>
+  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>activate</code> hook.</p>
+>>>>>>> 68fb014c0a500891dda4737fc4b3d9c7c533439b
 </div>
 {% endraw %}
 

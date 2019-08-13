@@ -6,7 +6,13 @@ order: 101
 
 > Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
 
+<<<<<<< HEAD
 ## Nome dos Componentes
+=======
+<div class="vueschool"><a href="https://vueschool.io/lessons/global-vs-local-components?friend=vuejs" target="_blank" rel="noopener" title="Free Vue.js Component Registration lesson">Watch a free video lesson on Vue School</a></div>
+
+## Component Names
+>>>>>>> 68fb014c0a500891dda4737fc4b3d9c7c533439b
 
 Quando registramos um componente, sempre daremos um nome. Por exemplo, no registro global que vimos até agora:
 

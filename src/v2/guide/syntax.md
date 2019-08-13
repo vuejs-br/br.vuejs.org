@@ -135,6 +135,10 @@ Aqui o valor é o nome do evento DOM que ela está escutando. Falaremos sobre ge
 A partir da versão 2.6.0, também é possível usar uma expressão _JavaScript_ no argumento de uma diretiva envolvendo-a com colchetes:
 
 ``` html
+<!--
+Note that there are some constraints to the argument expression, as explained
+in the "Dynamic Argument Expression Constraints" section below.
+-->
 <a v-bind:[attributeName]="url"> ... </a>
 ```
 
@@ -146,7 +150,11 @@ Igualmente, você pode usar argumentos dinâmicos para vincular um manipulador a
 <a v-on:[eventName]="doSomething"> ... </a>
 ```
 
+<<<<<<< HEAD
 Igualmente, quando o valor de `eventName` é `"focus"`, por exemplo, `v-on:[eventName]` será equivalente a `v-on:focus`.
+=======
+In this example, when `eventName`'s value is `"focus"`, `v-on:[eventName]` will be equivalent to `v-on:focus`.
+>>>>>>> 68fb014c0a500891dda4737fc4b3d9c7c533439b
 
 #### Restrições de Valores de Argumentos Dinâmicos
 
@@ -154,9 +162,13 @@ Se espera que argumentos dinâmicos sejam avaliados resultando-se em uma _String
 
 #### Restrições da Expressão de Argumento Dinâmico
 
+<<<<<<< HEAD
 <p class="tip">Expressões de argumentos dinâmicos possuem algumas restrições de sintaxe por causa de determinados caracteres que são inválidos dentro de nomes de atributos HTML, como espaços e aspas. Você também precisa evitar letras maiúsculas ao usar _templates_ no _DOM_.</p>
 
 Por exemplo, o seguinte é inválido:
+=======
+Dynamic argument expressions have some syntax constraints because certain characters, such as spaces and quotes, are invalid inside HTML attribute names. For example, the following is invalid:
+>>>>>>> 68fb014c0a500891dda4737fc4b3d9c7c533439b
 
 ``` html
 <!-- Isso irá disparar um aviso do compilador. -->
@@ -165,10 +177,20 @@ Por exemplo, o seguinte é inválido:
 
 A solução alternativa é usar expressões sem espaço ou aspas, ou simplesmente substituir a expressão complexa por uma propriedade computada.
 
+<<<<<<< HEAD
 Além disso, se você está usando _templates_ no DOM (_templates_ escritos diretamente no arquivo HTML), você deve estar ciente que os navegadores irão forçar os nomes de atributos a ficarem em minúsculas:
 
 ``` html
 <!-- Isso será convertido em v-bind:[someattr] no DOM. -->
+=======
+When using in-DOM templates (templates directly written in an HTML file), you should also avoid naming keys with uppercase characters, as browsers will coerce attribute names into lowercase:
+
+``` html
+<!--
+This will be converted to v-bind:[someattr] in in-DOM templates.
+Unless you have a "someattr" property in your instance, your code won't work.
+-->
+>>>>>>> 68fb014c0a500891dda4737fc4b3d9c7c533439b
 <a v-bind:[someAttr]="value"> ... </a>
 ```
 

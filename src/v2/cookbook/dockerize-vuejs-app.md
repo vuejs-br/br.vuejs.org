@@ -35,7 +35,11 @@ EXPOSE 8080
 CMD [ "http-server", "dist" ]
 ```
 
+<<<<<<< HEAD
 Pode parecer redundante primeiro copiar os arquivos `package.json` e `package-lock.json` e depois todos os arquivos e pastas do projeto em dois passos separados, porém existe [uma razão muito boa](http://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/) para isso (_spoiler_: permite tirar vantagem das camadas armazenadas em cache do Docker).
+=======
+It may seem redundant to first copy `package.json` and `package-lock.json` and then all project files and folders in two separate steps but there is actually [a very good reason for that](http://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/) (spoiler: it allows us to take advantage of cached Docker layers).
+>>>>>>> 68fb014c0a500891dda4737fc4b3d9c7c533439b
 
 Agora vamos compilar a imagem Docker da nossa aplicação Vue:
 

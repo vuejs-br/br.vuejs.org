@@ -112,11 +112,12 @@ Não há necessidade de escrever seu módulo várias vezes. É possível prepara
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/my-component.min.js"
   },
   "devDependencies": {
-    "rollup": "^0.57.1",
-    "rollup-plugin-buble": "^0.19.2",
-    "rollup-plugin-vue": "^3.0.0",
-    "vue": "^2.5.16",
-    "vue-template-compiler": "^2.5.16",
+    "rollup": "^1.17.0",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-vue": "^5.0.1",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10"
     ...
   },
   ...
@@ -169,6 +170,7 @@ Observe que a primeira linha importa diretamente seu SFC e a última linha o exp
 Com a seção package.json `scripts` pronta e o empacotador do SFC no lugar, tudo o que resta é garantir que o Rollup esteja configurado corretamente. Felizmente, isso pode ser feito com um pequeno arquivo rollup.config.js de 16 linhas:
 
 ```js
+<<<<<<< HEAD
 import vue from 'rollup-plugin-vue'; // Manipula arquivos .vue
 import buble from 'rollup-plugin-buble'; // Transpila com considerável suporte a navegadores
 export default {
@@ -184,6 +186,25 @@ export default {
     }),
     buble(), // Transpila para ES5
   ],
+=======
+import commonjs from 'rollup-plugin-commonjs'; // Convert CommonJS modules to ES6
+import vue from 'rollup-plugin-vue'; // Handle .vue SFC files
+import buble from 'rollup-plugin-buble'; // Transpile/polyfill with reasonable browser support
+export default {
+    input: 'src/wrapper.js', // Path relative to package.json
+    output: {
+        name: 'MyComponent',
+        exports: 'named',
+    },
+    plugins: [
+        commonjs(),
+        vue({
+            css: true, // Dynamically inject css as a <style> tag
+            compileTemplate: true, // Explicitly convert template to render function
+        }),
+        buble(), // Transpile to ES5
+    ],
+>>>>>>> 68fb014c0a500891dda4737fc4b3d9c7c533439b
 };
 ```
 
