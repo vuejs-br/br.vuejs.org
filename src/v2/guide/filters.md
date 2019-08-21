@@ -39,12 +39,8 @@ new Vue({
   // ...
 })
 ```
-<<<<<<< HEAD
-Quando um filtro global tiver o mesmo nome de um filtro local, o filtro local terá prioridade.
-=======
 
-When the global filter has the same name as the local filter, the local filter will be preferred.
->>>>>>> 68fb014c0a500891dda4737fc4b3d9c7c533439b
+Quando um filtro global tiver o mesmo nome de um filtro local, o filtro local terá prioridade.
 
 Abaixo está um exemplo de nosso filtro `capitalize` sendo utilizado:
 
