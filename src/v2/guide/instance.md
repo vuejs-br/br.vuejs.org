@@ -122,13 +122,9 @@ No futuro, você pode consultar a [documentação da API](../api/#Propriedades-d
 
 ## Ciclo de Vida da Instância
 
-<<<<<<< HEAD
-Cada instância Vue passa por uma série de etapas em sua inicialização - por exemplo, é necessário configurar a observação de dados, compilar o _template_, montar a instância no DOM, atualizar o DOM quando os dados forem alterados. Ao longo do caminho, ocorrerá a invocação de alguns **gatilhos de ciclo de vida**, oferecendo a oportunidade de executar lógicas personalizadas em etapas específicas.
-=======
-<div class="vueschool"><a href="https://vueschool.io/lessons/understanding-the-vuejs-lifecycle-hooks?friend=vuejs" target="_blank" rel="noopener" title="Free Vue.js Lifecycle Hooks Lesson">Watch a free lesson on Vue School</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/understanding-the-vuejs-lifecycle-hooks?friend=vuejs" target="_blank" rel="noopener" title="Explicação gratuita sobre Gatilhos do Ciclo de Vida do Vue.js">Assista à uma explicação em vídeo no Vue School</a></div>
 
-Each Vue instance goes through a series of initialization steps when it's created - for example, it needs to set up data observation, compile the template, mount the instance to the DOM, and update the DOM when data changes. Along the way, it also runs functions called **lifecycle hooks**, giving users the opportunity to add their own code at specific stages.
->>>>>>> 68fb014c0a500891dda4737fc4b3d9c7c533439b
+Cada instância Vue passa por uma série de etapas em sua inicialização - por exemplo, é necessário configurar a observação de dados, compilar o _template_, montar a instância no DOM, atualizar o DOM quando os dados forem alterados. Ao longo do caminho, ocorrerá a invocação de alguns **gatilhos de ciclo de vida**, oferecendo a oportunidade de executar lógicas personalizadas em etapas específicas.
 
 Por exemplo, o gatilho [`created`](../api/#created) pode ser utilizado para executar código logo após a instância ser criada:
 

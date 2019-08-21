@@ -4,13 +4,9 @@ type: guide
 order: 11
 ---
 
-<<<<<<< HEAD
-## Exemplo Base
-=======
-<div class="vueschool"><a href="https://vueschool.io/courses/vuejs-components-fundamentals?friend=vuejs" target="_blank" rel="noopener" title="Free Vue.js Components Fundamentals Course">Watch a free video course on Vue School</a></div>
+<div class="vueschool"><a href="https://vueschool.io/courses/vuejs-components-fundamentals?friend=vuejs" target="_blank" rel="noopener" title="Curso gratuito sobre Fundamentos de Componentes do Vue">Assista à uma explicação em vídeo no Vue School</a></div>
 
-## Base Example
->>>>>>> 68fb014c0a500891dda4737fc4b3d9c7c533439b
+## Exemplo Base
 
 Aqui está um exemplo de um componente Vue:
 

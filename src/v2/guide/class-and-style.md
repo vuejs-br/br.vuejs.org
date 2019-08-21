@@ -6,12 +6,8 @@ order: 6
 
 Uma necessidade comum de interligação de dados é manipular as classes dos elementos e seus estilos _inline_. Uma vez que ambos são atributos, podemos usar `v-bind` para lidar com eles: apenas precisamos calcular uma String final com nossas expressões. No entanto, mexer com concatenação é irritante e propenso a erros. Por esta razão, Vue fornece aprimoramentos especiais quando `v-bind` é usado com `class` e `style`. Além de Strings, as expressões também podem avaliar Objetos ou Arrays.
 
-<<<<<<< HEAD
 ## Interligando Classes HTML
-=======
-## Binding HTML Classes
-<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-dynamic-classes?friend=vuejs" target="_blank" rel="noopener" title="Free Vue.js Dynamic Classes Lesson">Watch a free video lesson on Vue School</a></div>
->>>>>>> 68fb014c0a500891dda4737fc4b3d9c7c533439b
+<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-dynamic-classes?friend=vuejs" target="_blank" rel="noopener" title="Explicação sobre Classes Dinâmicas do Vue.js">Assista à uma explicação em vídeo no Vue School</a></div>
 
 ### Sintaxe do Objeto
 
