@@ -39,7 +39,7 @@ Vue permite que os componentes sejam escritos em único arquivo. Já que um comp
 
 > "Por que as pessoas não podem usar meu arquivo `.vue` diretamente? Essa não é a maneira mais simples de compartilhar componentes?"
 
-É verdade, você pode compartilhar arquivos `.vue` diretamente, e qualquer um pode usar uma [distribuição do Vue](https://vuejs.org/v2/guide/installation.html#Explanation-of-Different-Builds) contendo o compilador do próprio Vue, permitindo utiliza-lo imediatamente. Além disso, a construção de SSR usa a concatenação de Strings como uma otimização, portanto, o arquivo `.vue` pode ser preferido neste cenário (consulte [Utilização com SSR](#SSR-Usage) para obter mais detalhes). No entanto, isso exclui qualquer pessoa que deseje usar o componente diretamente em um navegador através da _tag_ `<script>`, qualquer pessoa que use uma compilação somente para tempo de execução, ou qualquer pessoa que utiliza processos de compilação que não entendam o que fazer com arquivos `.vue`.
+É verdade, você pode compartilhar arquivos `.vue` diretamente, e qualquer um pode usar uma [distribuição do Vue](https://br.vuejs.org/v2/guide/installation.html#Explicacao-das-Distribuicoes) contendo o compilador do próprio Vue, permitindo utiliza-lo imediatamente. Além disso, a construção de SSR usa a concatenação de Strings como uma otimização, portanto, o arquivo `.vue` pode ser preferido neste cenário (consulte [Utilização com SSR](#SSR-Usage) para obter mais detalhes). No entanto, isso exclui qualquer pessoa que deseje usar o componente diretamente em um navegador através da _tag_ `<script>`, qualquer pessoa que use uma compilação somente para tempo de execução, ou qualquer pessoa que utiliza processos de compilação que não entendam o que fazer com arquivos `.vue`.
 
 Criar adequadamente o seu SFC (_Single-File Component_) para distribuição via npm permite que o seu componente seja compartilhado de uma forma que esteja pronto para uso em qualquer lugar!
 
@@ -170,7 +170,7 @@ Observe que a primeira linha importa diretamente seu SFC e a última linha o exp
 Com a seção package.json `scripts` pronta e o empacotador do SFC no lugar, tudo o que resta é garantir que o Rollup esteja configurado corretamente. Felizmente, isso pode ser feito com um pequeno arquivo rollup.config.js de 16 linhas:
 
 ```js
-<<<<<<< HEAD
+import commonjs from 'rollup-plugin-commonjs'; // Converte módulos CommonJS para ES6
 import vue from 'rollup-plugin-vue'; // Manipula arquivos .vue
 import buble from 'rollup-plugin-buble'; // Transpila com considerável suporte a navegadores
 export default {
@@ -180,31 +180,13 @@ export default {
     exports: 'named',
   },
   plugins: [
+    commonjs(),
     vue({
       css: true, // Dinamicamente injeta CSS como uma tag <style>
-      compileTemplate: true, // Explicitamente converte template para função render()
+      compileTemplate: true, // Explicitamente converte template para função render
     }),
     buble(), // Transpila para ES5
   ],
-=======
-import commonjs from 'rollup-plugin-commonjs'; // Convert CommonJS modules to ES6
-import vue from 'rollup-plugin-vue'; // Handle .vue SFC files
-import buble from 'rollup-plugin-buble'; // Transpile/polyfill with reasonable browser support
-export default {
-    input: 'src/wrapper.js', // Path relative to package.json
-    output: {
-        name: 'MyComponent',
-        exports: 'named',
-    },
-    plugins: [
-        commonjs(),
-        vue({
-            css: true, // Dynamically inject css as a <style> tag
-            compileTemplate: true, // Explicitly convert template to render function
-        }),
-        buble(), // Transpile to ES5
-    ],
->>>>>>> 68fb014c0a500891dda4737fc4b3d9c7c533439b
 };
 ```
 
