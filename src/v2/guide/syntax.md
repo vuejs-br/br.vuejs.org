@@ -98,7 +98,7 @@ Essas expressões serão compiladas como JavaScript no escopo de dados da instâ
 {{ if (ok) { return message } }}
 ```
 
-<p class="tip">Expressões em _templates_ são restritas a um ambiente controlado e somente possuem acesso a uma lista de variáveis globais permitidas, como `Math` e `Date`. Você não deve tentar acessar variáveis globais definidas pelo usuário em uma expressão de _template_.</p>
+<p class="tip">Expressões em _templates_ são restritas a um ambiente controlado e somente possuem acesso a uma [lista de variáveis globais permitidas](https://github.com/vuejs/vue/blob/v2.6.10/src/core/instance/proxy.js#L9), como `Math` e `Date`. Você não deve tentar acessar variáveis globais definidas pelo usuário em uma expressão de _template_.</p>
 
 ## Diretivas
 
@@ -150,11 +150,7 @@ Igualmente, você pode usar argumentos dinâmicos para vincular um manipulador a
 <a v-on:[eventName]="doSomething"> ... </a>
 ```
 
-<<<<<<< HEAD
-Igualmente, quando o valor de `eventName` é `"focus"`, por exemplo, `v-on:[eventName]` será equivalente a `v-on:focus`.
-=======
-In this example, when `eventName`'s value is `"focus"`, `v-on:[eventName]` will be equivalent to `v-on:focus`.
->>>>>>> 68fb014c0a500891dda4737fc4b3d9c7c533439b
+Neste exemplo, quando o valor de `eventName` for `"focus"`, por exemplo, `v-on:[eventName]` será equivalente a `v-on:focus`.
 
 #### Restrições de Valores de Argumentos Dinâmicos
 
@@ -162,13 +158,7 @@ Se espera que argumentos dinâmicos sejam avaliados resultando-se em uma _String
 
 #### Restrições da Expressão de Argumento Dinâmico
 
-<<<<<<< HEAD
-<p class="tip">Expressões de argumentos dinâmicos possuem algumas restrições de sintaxe por causa de determinados caracteres que são inválidos dentro de nomes de atributos HTML, como espaços e aspas. Você também precisa evitar letras maiúsculas ao usar _templates_ no _DOM_.</p>
-
-Por exemplo, o seguinte é inválido:
-=======
-Dynamic argument expressions have some syntax constraints because certain characters, such as spaces and quotes, are invalid inside HTML attribute names. For example, the following is invalid:
->>>>>>> 68fb014c0a500891dda4737fc4b3d9c7c533439b
+Expressões de argumentos dinâmicos possuem algumas restrições de sintaxe por causa de determinados caracteres, como espaços e aspas, os quais são inválidos dentro de nomes de atributos HTML. Por exemplo, o seguinte é inválido:
 
 ``` html
 <!-- Isso irá disparar um aviso do compilador. -->
@@ -177,20 +167,13 @@ Dynamic argument expressions have some syntax constraints because certain charac
 
 A solução alternativa é usar expressões sem espaço ou aspas, ou simplesmente substituir a expressão complexa por uma propriedade computada.
 
-<<<<<<< HEAD
-Além disso, se você está usando _templates_ no DOM (_templates_ escritos diretamente no arquivo HTML), você deve estar ciente que os navegadores irão forçar os nomes de atributos a ficarem em minúsculas:
-
-``` html
-<!-- Isso será convertido em v-bind:[someattr] no DOM. -->
-=======
-When using in-DOM templates (templates directly written in an HTML file), you should also avoid naming keys with uppercase characters, as browsers will coerce attribute names into lowercase:
+Quando estiver usando _templates_ no DOM (_templates_ escritos diretamente no arquivo HTML), você também deve evitar nomear suas chaves de argumentos dinâmicos cm caracteres maiúsculos, já que os navegadores forçarão os nomes dos atributos a ficarem em minúsculas:
 
 ``` html
 <!--
-This will be converted to v-bind:[someattr] in in-DOM templates.
-Unless you have a "someattr" property in your instance, your code won't work.
+Isso será convertido em v-bind:[someattr] em templates no DOM.
+A menos que você tenha uma propriedade "someattr" (totalmente em minúsculas) em sua instância, tal código não funcionará.
 -->
->>>>>>> 68fb014c0a500891dda4737fc4b3d9c7c533439b
 <a v-bind:[someAttr]="value"> ... </a>
 ```
 

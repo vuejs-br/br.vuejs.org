@@ -37,13 +37,13 @@ Simplesmente faça o _download_ e inclua a _tag_ `<script>` com o caminho corret
 Para propósitos de prototipação ou aprendizado, você pode usar a versão mais recente com:
 
 ``` html
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 ```
 
 Para produção, recomendados vincular a um número de versão específico  para evitar quebra de funções das versões mais novas:
 
 ``` html
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
 ```
 
 Se você está usando Modulos ES nativos, existe uma _build_ compatível com isso:
