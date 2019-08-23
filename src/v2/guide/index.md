@@ -15,7 +15,7 @@ Se você gostaria de saber mais sobre Vue antes de mergulhar nele, nós <a id="m
 
 Se você é um desenvolvedor _frontend_ experiente e quer saber como Vue se compara a outras bibliotecas/_frameworks_, confira a [Comparação com Outros Frameworks](comparison.html).
 
-<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/" target="_blank" rel="noopener" title="Free Vue.js Course">Assista à um curso em vídeo gratuito em Vue Mastery</a></div>
+<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/" target="_blank" rel="noopener" title="Curso gratuito de Vue.js">Assista a um vídeo-curso gratuito em Vue Mastery</a></div>
 
 ## Primeiros Passos
 
