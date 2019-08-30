@@ -842,13 +842,13 @@ order: 803
     {
       name: 'Sebastien Chopin',
       title: 'Irmão Número 1 do Projeto Nuxt',
-      city: 'Paris, França',
+      city: 'Bordéus, França',
       languages: ['fr', 'en'],
       github: 'Atinux',
       twitter: 'Atinux',
       work: {
-        org: 'Orion',
-        orgUrl: 'https://orion.sh'
+        org: 'NuxtJS',
+        orgUrl: 'https://nuxtjs.org'
       },
       reposPersonal: [
         'nuxt/*', 'nuxt-community/*', 'nuxt/vue-meta'
@@ -860,10 +860,10 @@ order: 803
       city: 'Bordéus, França',
       languages: ['fr', 'en'],
       github: 'alexchopin',
-      twitter: '_achopin',
+      twitter: 'iamnuxt',
       work: {
-        org: 'Orion',
-        orgUrl: 'https://orion.sh'
+        org: 'NuxtJS',
+        orgUrl: 'https://nuxtjs.org'
       },
       reposPersonal: [
         'nuxt/*', 'nuxt-community/*', 'vue-flexboxgrid'
