@@ -291,6 +291,8 @@ No Vue, um componente é essencialmente uma instância Vue com opções predefin
 Vue.component('todo-item', {
   template: '<li>Isso é um item</li>'
 })
+
+var app = new Vue(...)
 ```
 
 Agora você pode compor com isto no _template_ de outro componente:

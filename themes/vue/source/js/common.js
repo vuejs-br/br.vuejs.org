@@ -122,7 +122,11 @@
         if (ulNode.tagName === 'UL') {
           var specNode = document.createElement('li')
           var specLink = createSourceSearchPath(titleNode.textContent)
+<<<<<<< HEAD
           specNode.innerHTML = '<a href="' + specLink + '" target="_blank">Código-fonte</a>'
+=======
+          specNode.innerHTML = '<a href="' + specLink + '" target="_blank" rel="noopener">Source</a>'
+>>>>>>> upstream/master
           ulNode.appendChild(specNode)
         }
       })
