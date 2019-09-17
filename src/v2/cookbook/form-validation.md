@@ -420,4 +420,4 @@ Começamos com uma variável representando a URL da API que está executando no 
 Embora esse tópico do Livro de Receitas tenha se focado em fazer validação de formulários "à mão", existe, claro, algumas ótimas bibliotecas Vue que vão lidar com muitos destes detalhes para você. Trocando para uma biblioteca pré-empacotada, você pode sentir um impacto no tamanho final de sua aplicação, mas o benefício pode ser enorme. Você terá código (muito provavelmente) testado e também atualizado regularmente. Alguns exemplos de bibliotecas de validação de formulários para o Vue incluem:
 
 * [vuelidate](https://github.com/monterail/vuelidate)
-* [VeeValidate](http://vee-validate.logaretm.com/)
+* [VeeValidate](https://logaretm.github.io/vee-validate/)
