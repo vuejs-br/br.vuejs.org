@@ -60,11 +60,7 @@ Se você quiser se mergulhar agora mesmo e começar a brincar com Componentes Si
 
 Com componentes `.vue`, estamos entrando no reino das aplicações JavaScript avançadas. Significa aprender a utilizar algumas ferramentas adicionais se ainda não teve oportunidade:
 
-<<<<<<< HEAD
-- **Node Package Manager (NPM)**: Leia o guia [Getting Started](https://docs.npmjs.com/getting-started/what-is-npm) do NPM até a seção _10: Uninstalling global packages_.
-=======
-- **Node Package Manager (NPM)**: Read the [Getting Started guide](https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry) section about how to get packages from the registry.
->>>>>>> upstream/master
+- **Node Package Manager (NPM)**: Leia o guia [Getting Started](https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry) do NPM na seção sobre como obter pacotes do registro.
 
 - **JavaScript Moderno com ES2015+**: Leia o guia [Learn ES2015](https://babeljs.io/docs/learn-es2015/) do Babel. Não é necessário memorizar cada recurso agora, mas mantenha esta página como referência.
 

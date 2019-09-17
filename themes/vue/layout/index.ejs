@@ -18,15 +18,9 @@
       <p>
         <a id="modal-player" class="button has-icon" href="javascript:;">
           <%- partial('icons/play') %>
-<<<<<<< HEAD
           POR QUE VUE?</a>
         <a class="button white" href="<%- url_for("/v2/guide/") %>">COMEÇAR</a>
-        <a class="button gray has-icon" href="https://github.com/vuejs/vue" target="_blank">
-=======
-          WHY VUE.JS?</a>
-        <a class="button white" href="<%- url_for("/v2/guide/") %>">GET STARTED</a>
         <a class="button gray has-icon" href="https://github.com/vuejs/vue" target="_blank" rel="noopener">
->>>>>>> upstream/master
           <%- partial('icons/github-dark') %>
           GITHUB</a>
       </p>
@@ -34,13 +28,8 @@
   </div>
 </div>
 
-<<<<<<< HEAD
-<div id="special-sponsor">
-  <h3>Patrocinador Especial</h3>
-=======
 <div id="special">
-  <h3>Special Sponsor</h3>
->>>>>>> upstream/master
+  <h3>Patrocinador Especial</h3>
   <% var specialSponsor = theme.special_sponsors[0]; %>
   <a href="<%- specialSponsor.url %>" target="_blank" rel="noopener">
     <img src="<%- url_for(`/images/${specialSponsor.img}`) %>" style="width:160px" alt="Code.xyz Logo">
@@ -108,11 +97,7 @@
       >
     </form>
     <p>
-<<<<<<< HEAD
-      Você pode ler as edições anteriores e escutar nosso podcast em <a href="https://news.vuejs.org" target="_blank">news.vuejs.org</a>.
-=======
-      You can read the previous issues and listen to our podcast at <a href="https://news.vuejs.org" target="_blank" rel="noopener">news.vuejs.org</a>.
->>>>>>> upstream/master
+      Você pode ler as edições anteriores e escutar nosso podcast em <a href="https://news.vuejs.org" target="_blank" rel="noopener">news.vuejs.org</a>.
     </p>
   </div>
 </div>
@@ -129,18 +114,14 @@
       <%- partial('icons/medium') %>
     </a>
   </p>
-<<<<<<< HEAD
-  <p>Distribuído sob a <a href="https://opensource.org/licenses/MIT" target="_blank">Licença MIT</a><br>
-=======
-  <p>Released under the <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a><br>
->>>>>>> upstream/master
+  <p>Distribuído sob a <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">Licença MIT</a><br>
   Copyright &copy; 2014-<%- new Date().getFullYear() %> Evan You</p>
 </div>
 
 <div id="video-modal" class="modal">
   <div class="video-space" style="padding: 56.25% 0 0 0; position: relative;"><iframe src="https://player.vimeo.com/video/247494684" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   </div><script src="https://player.vimeo.com/api/player.js"></script>
-  <p class="modal-text">Video by <a href="https://www.vuemastery.com" target="_blank" rel="noopener" title="Vue.js Courses on Vue Mastery">Vue Mastery</a>. Watch Vue Mastery’s free <a href="https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/" target="_blank" rel="noopener" title="Vue.js Courses on Vue Mastery">Intro to Vue course</a>.
+  <p class="modal-text">Vídeo por <a href="https://www.vuemastery.com" target="_blank" rel="noopener" title="Coursos sobre Vue.js no Vue Mastery">Vue Mastery</a>. Assista ao gratuito <a href="https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/" target="_blank" rel="noopener" title="Vue.js Courses on Vue Mastery">Curso de Introdução ao Vue</a> do Vue Mastery.
   </p>
 </div>
 
