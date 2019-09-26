@@ -207,7 +207,7 @@
     var linkExpirePeriod = 60 * 24 * 3600 * 1000 // 2 months
     var links = [
       {
-        title: 'Resources',
+        title: 'Recursos',
         updatedOn: new Date("Mon Sep 9 2019")
       }
     ]

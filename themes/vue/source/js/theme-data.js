@@ -1,7 +1,7 @@
 var themeData = [
   {
     name: 'Creative Tim',
-    description: `With the examples below built by our partners from [Creative Tim](https://creative-tim.com?affiliate_id=116187) you can see how a real world application is built, the technology stack behind it and how most of the concepts you've learned so far apply in a real world application.`,
+    description: `Com os exemplos abaixo criados pelos nossos parceiros da [Creative Tim](https://creative-tim.com?affiliate_id=116187) você pode ver como uma aplicação do mundo real é construída, o _stack_ de tecnologias por trás dela e a maioria dos conceitos que você aprendeu até agora aplicados em aplicações no mundo real.`,
     seeMoreUrl: 'https://www.creative-tim.com/bootstrap-themes/vuejs-themes?affiliate_id=116187',
     products: [
       {

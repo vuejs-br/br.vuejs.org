@@ -1,5 +1,5 @@
 ---
-title: Themes
+title: Temas
 type: resources
 order: 804
 ---
@@ -10,8 +10,8 @@ order: 804
   </section>
 
   <p>
-    Want to feature your themes here?
-    <a href="mailto:evan@vuejs.org?subject=Theme+affiliation">Contact us</a>!
+    Deseja destacar seus temas aqui?
+    <a href="mailto:evan@vuejs.org?subject=Theme+affiliation">Contate-nos</a>!
   </p>
 </div>
 
@@ -33,7 +33,7 @@ order: 804
         <div class="item-preview-description">{{product.description}}</div>
       </div>
       <div class="see-more-container">
-        <a :href="partner.seeMoreUrl" class="button white see-more-link">See More Themes from {{partner.name}}</a>
+        <a :href="partner.seeMoreUrl" class="button white see-more-link">Veja Mais Temas da {{partner.name}}</a>
       </div>
     </div>
   </div>
