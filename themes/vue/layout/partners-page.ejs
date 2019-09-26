@@ -1,19 +1,30 @@
 <div id="partners">
   <p>
     Vue Partners are premium shops that provide first-class Vue consulting and development.
+    If your company is interested in being listed as a partner, please contact us at <a href="mailto:partners@vuejs.org">partners@vuejs.org.</a>
   </p>
 
-  <h2>Active Partners</h2>
+  <h2 id="active-partners">Active Partners</h2>
 
   <% for (let partner of page.partners_list) { %>
     <div class="partner">
       <div class="logo">
-        <img src="<%- partner.logo.startsWith(`http`) ? partner.logo : url_for(`/images/${partner.logo}`) %>" alt="<%= partner.name %>">
+        <a href="https://<%- partner.url_link %>" target="_blank">
+          <img src="<%- partner.logo.startsWith(`http`) ? partner.logo : url_for(`/images/${partner.logo}`) %>" alt="<%= partner.name %>">
+        </a>
       </div>
       <div class="profile">
         <!-- <h3> <%= partner.name %> </h3> -->
         <p class="description"><%= partner.description %></p>
         <dl>
+          <dt>
+              <i class="fa fa-link"></i>
+              <span class="sr-only">Link</span>
+            </dt>
+            <dd>
+              <a href="https://<%- partner.url_link %>" target=_blank><%- partner.url_text %></a>
+            </dd>
+
           <dt>
             <i class="fa fa-map-marker"></i>
             <span class="sr-only">Location</span>
@@ -35,26 +46,19 @@
               <% } %>
             </ul>
           </dd>
-          <dt>
-            <i class="fa fa-link"></i>
-            <span class="sr-only">Link</span>
-          </dt>
-          <dd>
-            <a href="https://<%- partner.url_link %>" target=_blank><%- partner.url_text %></a>
-          </dd>
 
           <dt>Proficiencies</dt>
           <dd>
             <ul>
               <% for (let proficiency of partner.proficiencies) { %>
                 <li>
-                  <a href="<%- page.proficiencies_urls[proficiency] %>" target=_blank> <%= proficiency %></a>
+                  <a href="<%- proficiency.url || page.proficiencies_urls[proficiency] %>" target=_blank rel="noopener"> <%= proficiency.name || proficiency %></a>
                 </li>
               <% } %>
             </ul>
           </dd>
 
-          <footer class="social">
+          <dd class="social">
             <% if (partner.email) { %>
               <a href="mailto:<%- partner.email %>?subject=Hire <%- partner.name %>">
                 <i class="fa fa-envelope"></i>
@@ -67,13 +71,8 @@
                 <span class="sr-only"><%= link.name %></span>
               </a>
             <% } %>
-          </footer>
+          </dd>
         </dl>
-      </div>
-      <div>
-        <a class="button" href="https://<%- partner.hire_url %>">
-          Hire <%= partner.name %>
-        </a>
       </div>
     </div>
   <% } %>

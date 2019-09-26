@@ -41,6 +41,11 @@ body.docs
     position: relative
     margin: 0 .6em
 
+  .nav-dropdown-container
+    padding-right: .8em
+    &:last-child
+      padding-right: 0
+
   .nav-dropdown
     overflow: hidden
     overflow-y: auto
@@ -67,8 +72,6 @@ body.docs
   white-space: nowrap
   &:hover, &.current
     border-bottom: 3px solid $green
-  &.team
-    margin-left: 10px
   &.new::before
     red-dot-before()
 
