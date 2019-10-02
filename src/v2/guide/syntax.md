@@ -136,7 +136,7 @@ A partir da versão 2.6.0, também é possível usar uma expressão _JavaScript_
 
 ``` html
 <!--
-Note que aqui existem algumas restrição à expressão do argumento, como explicado na seção
+Note que existem algumas restrições à expressão do argumento, como explicado na seção
 "Restrições da Expressão de Argumento Dinâmico" abaixo.
 -->
 <a v-bind:[attributeName]="url"> ... </a>
