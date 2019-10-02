@@ -1582,10 +1582,9 @@ type: api
   // `callback` é acionada imediatamente com o novo valor de 'a'
   ```
 
-  Note that with `immediate` option you won't be able to unwatch the given property on the first callback call.
-
+  Observe que com a opção `immediate` você não será capaz de parar a observação da propriedade na primeira chamada da função de _callback_.
   ``` js
-  // This will cause an error
+  // Isso irá causar um erro
   var unwatch = vm.$watch(
     'value',
     function () {
@@ -1596,7 +1595,7 @@ type: api
   )
   ```
 
-  If you still want to call an unwatch function inside the callback, you should check its availability first:
+  Se você ainda assim quer chamar uma função de _unwatch_ dentro da função de _callback_, observe se ela está disponível primeiro:
 
   ``` js
   var unwatch = vm.$watch(
