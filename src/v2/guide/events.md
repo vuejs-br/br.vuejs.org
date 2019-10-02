@@ -195,7 +195,7 @@ Para resolver esse problema, o Vue fornece **modificadores de evento** para `v-o
 <div v-on:click.self="doThat">...</div>
 ```
 
-<p class="tip">A ordem importa ao utilizar modificadores pois o código relevante é gerado na mesma ordem. Desta forma, `v-on:click.prevent.self` previnirá **todos os cliques**, enquanto `v-on:click.self.prevent` previnirá apenas cliques no próprio elemento.</p>
+<p class="tip">A ordem importa ao utilizar modificadores pois o código relevante é gerado na mesma ordem. Desta forma, `v-on:click.prevent.self` prevenirá **todos os cliques**, enquanto `v-on:click.self.prevent` prevenirá apenas cliques no próprio elemento.</p>
 
 > Novo em 2.1.4+
 
@@ -219,7 +219,7 @@ Vue também oferece o modificador `.passive`, correspondendo à [opção `passiv
 
 O `.passive` é especialmente útil para otimizar desempenho em dispositivos móveis.
 
-<p class="tip">Não use `.passive` e `.prevent` juntos, pois `.prevent` será ignorado e seu navegador provavelmente exibirá um aviso. Lembre-se, `.passive` comunica ao navegador que você _não_ quer previnir o comportamento padrão do evento.</p>
+<p class="tip">Não use `.passive` e `.prevent` juntos, pois `.prevent` será ignorado e seu navegador provavelmente exibirá um aviso. Lembre-se, `.passive` comunica ao navegador que você _não_ quer prevenir o comportamento padrão do evento.</p>
 
 ## Modificadores de Teclado
 
