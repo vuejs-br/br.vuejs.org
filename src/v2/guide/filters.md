@@ -40,6 +40,8 @@ new Vue({
 })
 ```
 
+Quando um filtro global tiver o mesmo nome de um filtro local, o filtro local terá prioridade.
+
 Abaixo está um exemplo de nosso filtro `capitalize` sendo utilizado:
 
 {% raw %}

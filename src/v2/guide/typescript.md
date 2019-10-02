@@ -1,10 +1,10 @@
 ---
 title: Suporte ao TypeScript
 type: guide
-order: 404
+order: 403
 ---
 
-> No Vue 2.5.0+ melhoramos bastante a declaração de tipos para funcionar com a API baseada em objetos padrão. Ao mesmo tempo, isto introduziu mudanças que requerem ações de migração para esta versão. Leia [esta postagem](https://medium.com/the-vue-point/upcoming-typescript-changes-in-vue-2-5-e9bd7e2ecf08) para mais detalhes.
+> [Vue CLI](https://cli.vuejs.org) oferece suporte de fábrica às ferramentas TypeScript.
 
 ## Declaração Oficial em Pacotes NPM
 

@@ -45,8 +45,9 @@ export default {
 
 ```js
 import { shallowMount } from '@vue/test-utils'
+import Hello from './Hello.vue'
 
-test('Foo', () => {
+test('Hello', () => {
   // renderiza o componente
   const wrapper = shallowMount(Hello)
 
@@ -57,9 +58,7 @@ test('Foo', () => {
   expect(wrapper.find('.error').exists()).toBe(true)
 
   // atualiza o nome para ser longo o suficiente
-  wrapper.setData({
-    username: 'Lachlan'
-  })
+  wrapper.setData({ username: 'Lachlan' })
 
   // afirma se a mensagem de erro se foi
   expect(wrapper.find('.error').exists()).toBe(false)
@@ -67,7 +66,7 @@ test('Foo', () => {
 ```
 O trecho de código acima mostra como testar se uma mensagem de erro é exibida com base no comprimento do nome de usuário. Ele demonstra a ideia geral dos componentes Vue de teste unitário: renderizar o componente e afirmar que o código corresponde ao estado do componente.
 
-## Por que testar?
+## Por Que Testar?
 
 Testes unitários em componentes têm muitos benefícios:
 
@@ -83,7 +82,7 @@ Testes automatizados permitem que grandes equipes de desenvolvedores mantenham b
 
 [Vue Test Utils](https://github.com/vuejs/vue-test-utils) é a biblioteca oficial para testes unitários em componentes Vue. O template `webpack` que pode ser criado via [vue-cli](https://github.com/vuejs/vue-cli) vem com Karma ou Jest, ambos executadores de teste bem suportados, e há alguns [guias](https://vue-test-utils.vuejs.org/guides/) na documentação do Vue Test Utils.
 
-## Exemplo do mundo real
+## Exemplo do Mundo Real
 
 Os testes unitários devem ser:
 
@@ -145,6 +144,7 @@ E nossa primeira tentativa de teste:
 
 ```js
 import { shallowMount } from '@vue/test-utils'
+import Foo from './Foo.vue'
 
 describe('Foo', () => {
   it('exibe uma mensagem e responde corretamente à entrada do usuário', () => {
@@ -187,7 +187,11 @@ import Foo from './Foo'
 
 const factory = (values = {}) => {
   return shallowMount(Foo, {
-    data: { ...values  }
+    data () {
+      return {
+        ...values
+      }
+    }
   })
 }
 
@@ -243,6 +247,6 @@ Testes de nível alto, como testes de ponta a ponta, são executados muito mais 
 
 Mais informações sobre como testar os componentes do Vue podem ser encontradas em [Testing Vue.js Applications](https://www.manning.com/books/testing-vuejs-applications) escrito pelo membro da equipe principal, [Edd Yerburgh](https://eddyerburgh.me/).
 
-## Quando evitar esse padrão
+## Quando Evitar o Padrão
 
 O teste unitário é uma parte importante de qualquer aplicativo sério. No início, quando a visão de uma aplicação não é clara, o teste de unidade pode retardar o desenvolvimento, mas uma vez que uma visão é estabelecida e usuários reais estarão interagindo com a aplicação, testes de unidade (e outros tipos de testes automatizados) são absolutamente essenciais para garantir que a base de código seja sustentável e escalável.

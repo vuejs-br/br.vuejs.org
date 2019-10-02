@@ -79,7 +79,7 @@ MyPlugin.install = function (Vue, options) {
 
   // 4. adicionar um método de instância
   Vue.prototype.$myMethod = function (methodOptions) {
-    // algo lógico ...
+    // alguma lógica ...
   }
 }
 ```

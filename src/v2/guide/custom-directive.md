@@ -6,6 +6,8 @@ order: 302
 
 ## Introdução
 
+<div class="vueschool"><a href="https://vueschool.io/lessons/create-vuejs-directive?friend=vuejs" target="_blank" rel="noopener" title="Explicação gratuita sobre Diretivas Customizadas do Vue.js">Assista à uma explicação em vídeo no Vue Mastery</a></div>
+
 Adicionalmente ao conjunto de diretivas incluídas em seu núcleo (`v-model` e `v-show`), Vue permite registrar suas próprias diretivas personalizadas. Note que no Vue 2.0, a forma primária de abstração e reuso de código são componentes - no entanto, pode haver casos em que você só precisa de um acesso de baixo nível ao DOM em elementos simples, e aí diretivas personalizadas seriam úteis. Um exemplo seria colocar o foco a um elemento _input_ como este:
 
 {% raw %}
@@ -65,6 +67,8 @@ Um objeto de definição de diretiva pode prover algumas funções de gatilhos (
 - `inserted`: chamada quando o elemento for inserido no nó pai (garante a presença no nó pai, mas não necessariamente no documento).
 
 - `update`: chamada após a atualização do VNode que contém o componente, __mas possivelmente antes da atualização de seus filhos__. O valor da diretiva pode ou não ter mudado, mas você pode evitar atualizações desnecessárias comparando os valores atuais com os antigos (veja abaixo, em argumentos dos gatilhos).
+
+<p class="tip">Abordaremos o VNodes com mais detalhes [depois](./render-function.html#DOM-Virtual), quando discutirmos [funções de renderização](./render-function.html).</p>
 
 - `componentUpdated`: chamada após a atualização do Vnode que contém o componente, __inclusive de seus filhos__.
 
@@ -140,6 +144,71 @@ new Vue({
 })
 </script>
 {% endraw %}
+
+### Argumentos de Diretiva Dinâmicos
+
+Os argumentos de diretiva podem ser dinâmicos. Por exemplo, em `v-mydirective:[argument]="value"`, o `argument` pode ser atualizado baseado em propriedades de dados em nossa instância de componente! Isso torna nossas diretivas personalizadas flexíveis para serem utilizadas ao longo da aplicação.
+
+Digamos que você quer fazer uma diretiva personalizada que permite fixar elementos em sua página através de posicionamento `fixed`. Poderíamos criar uma diretiva personalizada em que os valores atualizassem o posicionamento vertical em _pixels_, desta forma:
+
+```html
+<div id="baseexample">
+  <p>Role a página para baixo</p>
+  <p v-pin="200">Me prenda 200px a partir do topo da página</p>
+</div>
+```
+
+```js
+Vue.directive('pin', {
+  bind: function (el, binding, vnode) {
+    el.style.position = 'fixed'
+    el.style.top = binding.value + 'px'
+  }
+})
+
+new Vue({
+  el: '#baseexample'
+})
+```
+
+Isto fixaria o elemento 200px a partir do topo da página. Mas e se encontrássemos um cenário em que precisássemos fixar o elemento a partir da esquerda, ao invés do topo? Aqui está um argumento dinâmico que pode ser atualizado em cada instância de componente:
+
+```html
+<div id="dynamicexample">
+  <h3>Role para baixo dentro desta seção ↓</h3>
+  <p v-pin:[direction]="200">Estou fixo na página 200px a partir da esquerda.</p>
+</div>
+```
+
+```js
+Vue.directive('pin', {
+  bind: function (el, binding, vnode) {
+    el.style.position = 'fixed'
+    var s = (binding.arg == 'left' ? 'left' : 'top')
+    el.style[s] = binding.value + 'px'
+  }
+})
+
+new Vue({
+  el: '#dynamicexample',
+  data: function () {
+    return {
+      direction: 'left'
+    }
+  }
+})
+```
+
+Resultado:
+
+{% raw %}
+<iframe height="200" style="width: 100%;" class="demo" scrolling="no" title="Argumentos de Diretiva Dinâmicos" src="//codepen.io/ErickPetru/embed/ydayJV/?height=300&theme-id=32763&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  Veja o Pen <a href='https://codepen.io/ErickPetru/pen/ydayJV/'>Argumentos de Diretiva Dinâmicos</a> por Erick Eduardo Petrucelli
+  (<a href='https://codepen.io/ErickPetru'>@ErickPetru</a>) no <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+{% endraw %}
+
+Nossa diretiva personalizada agora é flexível o suficiente para suportar alguns casos de uso diferentes.
 
 ## Forma Abreviada de Funções
 

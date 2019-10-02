@@ -10,9 +10,9 @@ order: 105
 
 Anteriormente, usamos o atributo `is` para alternar entre componentes em uma interface com guias:
 
-```html
+{% codeblock lang:html %}
 <component v-bind:is="currentTabComponent"></component>
-```
+{% endcodeblock %}
 
 Ao alternar entre esses componentes, às vezes, você desejará manter seu estado ou evitar a nova renderização, por motivos de desempenho. Por exemplo, ao expandir nossa interface com guias um pouco:
 
@@ -200,6 +200,8 @@ Agora, a guia _Postagens_ mantém seu estado (a postagem selecionada) mesmo quan
 Confira mais detalhes sobre o `<keep-alive>` em [Referências de API](../api/#keep-alive).
 
 ## Componentes Assíncronos
+
+<div class="vueschool"><a href="https://vueschool.io/lessons/dynamically-load-components?friend=vuejs" target="_blank" rel="noopener" title="Explicação gratuita sobre Componentes Async do Vue.js">Assista à uma explicação em vídeo no Vue School</a></div>
 
 Em aplicativos grandes, talvez seja necessário dividí-lo em partes menores e carregar apenas um componente do servidor quando necessário. Para tornar isto mais fácil, o Vue permite que você defina seu componente como uma função de fabricação (_factory function_), que resolve de forma assíncrona sua definição de componente. O Vue só acionará a função quando o componente precisar ser renderizado, e armazenará em _cache_ o resultado para novas renderizações futuras. Por exemplo:
 

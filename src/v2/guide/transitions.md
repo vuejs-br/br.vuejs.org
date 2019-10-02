@@ -580,6 +580,8 @@ e ganchos JavaScript personalizados
 </transition>
 ```
 
+No exemplo acima, ambos atributo `appear` ou gatilho `v-on:appear` farão com que apareça uma transição.
+
 ## Transição entre Elementos
 
 Nós discutiremos sobre [transição entre Componentes](#Transitioning-Between-Components) em breve, mas você pode realizar transição entre elementos puros utilizando `v-if`/`v-else`. Uma das transições de dois elementos mais comum é entre um recipiente de lista e uma mensagem descrevendo uma lista vazia:
@@ -956,6 +958,7 @@ Então, que tal ter uma lista de itens e renderizá-los simultaneamente com o `v
 - Diferentemente do `<transition>`, ele renderiza um elemento por padrão: o `<span>`. Você pode mudar o elemento que é renderizado com o atributo `tag`.
 - [Modos de Transição](#Modos-de-Transição) não estão disponíveis, pois não estamos mais alternando entre elementos mutuamente exclusivos.
 - Elementos dentro **sempre requerem** um atributo `key` único.
+- Classes de transição CSS serão aplicadas a elementos internos e não ao grupo/_container_ em si.
 
 ### Transição de Entrada/Saída de Lista
 
@@ -1478,7 +1481,7 @@ Vue.component('my-special-transition', {
 })
 ```
 
-E componentes funcionais são especialmente bem adequados para esta tarefa:
+E [componentes funcionais](render-function.html#Componentes-Funcionais) são especialmente bem adequados para esta tarefa:
 
 ``` js
 Vue.component('my-special-transition', {

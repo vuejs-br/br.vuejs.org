@@ -10,6 +10,11 @@ Você pode usar a diretiva `v-model` para criar interligações de mão dupla (_
 
 <p class="tip">A diretiva `v-model` irá ignorar o estado inicial de `value`, `checked` ou `selected` encontrado em qualquer elemento de formulário. Sempre se tratará a instância Vue como a fonte dos dados verdadeiros. Ou seja, declare os valores iniciais no lado JavaScript, dentro da opção `data` de seu componente.</p>
 
+`v-model` usa internamente diferentes propriedades e emite diferentes eventos para diferentes elementos _input_:
+- os elementos _text_ e _textarea_ usam a propriedade `value` e o evento `input`;
+- _checkboxes_ e _radiobuttons_ usam a propriedade `checked` e o evento `change`;
+- campos de seleção usam `value` como prop e `change` como um evento.
+
 <p class="tip" id="vmodel-ime-tip">Para linguagens que requerem um [IME](https://en.wikipedia.org/wiki/Input_method) (Chinês, Japonês, Coreano etc.), você notará que `v-model` não é atualizado durante a atualização da composição IME. Se você quiser atender a estas atualizações, use o evento `input` em vez do `v-model`.</p>
 
 ### Input

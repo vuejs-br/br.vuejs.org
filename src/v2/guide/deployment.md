@@ -1,8 +1,10 @@
 ---
 title: Publicando em Produção
 type: guide
-order: 401
+order: 404
 ---
+
+> A maioria das dicas abaixo são ativadas por padrão se você estiver usando [Vue CLI](https://cli.vuejs.org). Esta seção só é relevante se você estiver usando uma configuração de compilação personalizada.
 
 ## Habilitando o Modo de Produção
 
@@ -41,6 +43,7 @@ module.exports = {
   ]
 }
 ```
+
 #### Browserify
 
 - Execute o comando de _build_ com a variável `NODE_ENV` definida para `"production"`. Isto avisará o `vueify` para evitar incluir _hot-reload_ e códigos de desenvolvimento.

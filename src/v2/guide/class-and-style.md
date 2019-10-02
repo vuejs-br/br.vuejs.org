@@ -7,6 +7,7 @@ order: 6
 Uma necessidade comum de interligação de dados é manipular as classes dos elementos e seus estilos _inline_. Uma vez que ambos são atributos, podemos usar `v-bind` para lidar com eles: apenas precisamos calcular uma String final com nossas expressões. No entanto, mexer com concatenação é irritante e propenso a erros. Por esta razão, Vue fornece aprimoramentos especiais quando `v-bind` é usado com `class` e `style`. Além de Strings, as expressões também podem avaliar Objetos ou Arrays.
 
 ## Interligando Classes HTML
+<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-dynamic-classes?friend=vuejs" target="_blank" rel="noopener" title="Explicação sobre Classes Dinâmicas do Vue.js">Assista à uma explicação em vídeo no Vue School</a></div>
 
 ### Sintaxe do Objeto
 
@@ -21,9 +22,10 @@ A sintaxe acima significa que a presença da classe `active` será determinada p
 Você pode ter múltiplas classes alternadas por ter mais campos no objeto. Além disso, a diretiva `v-bind:class` também pode coexistir com um atributo de classe "normal". Veja o exemplo:
 
 ``` html
-<div class="static"
-     v-bind:class="{ active: isActive, 'text-danger': hasError }">
-</div>
+<div
+  class="static"
+  v-bind:class="{ active: isActive, 'text-danger': hasError }"
+></div>
 ```
 
 Com os seguintes dados:

@@ -22,7 +22,7 @@ O mais básico _data binding_, interpolando texto com a sintaxe _Mustache_ (chav
 
 A _tag mustache_ vai ser trocada pelo valor da propriedade `msg` do objeto de dados correspondente. Esse texto também reagirá sempre que a propriedade `msg` for modificada.
 
-Você também pode realizar interpolações únicas que não são atualizada quando os dados mudam através da [diretiva v-once](/api/#v-once), mas lembre-se que isso afetará qualquer _binding_ realizado no mesmo nó:
+Você também pode realizar interpolações únicas que não são atualizadas quando os dados mudam através da [diretiva v-once](/api/#v-once), mas lembre-se que isso afetará qualquer _binding_ realizado no mesmo nó:
 
 ``` html
 <span v-once>Esse valor nunca será modificado: {{ msg }}</span>
@@ -98,7 +98,7 @@ Essas expressões serão compiladas como JavaScript no escopo de dados da instâ
 {{ if (ok) { return message } }}
 ```
 
-<p class="tip">Expressões em _templates_ são restritas a um ambiente controlado e somente possuem acesso a uma lista de variáveis globais permitidas, como `Math` e `Date`. Você não deve tentar acessar variáveis globais definidas pelo usuário em uma expressão de _template_.</p>
+<p class="tip">Expressões em _templates_ são restritas a um ambiente controlado e somente possuem acesso a uma [lista de variáveis globais permitidas](https://github.com/vuejs/vue/blob/v2.6.10/src/core/instance/proxy.js#L9), como `Math` e `Date`. Você não deve tentar acessar variáveis globais definidas pelo usuário em uma expressão de _template_.</p>
 
 ## Diretivas
 
@@ -128,6 +128,55 @@ Outro simples exemplo é a diretiva `v-on`, que observa eventos do DOM:
 
 Aqui o valor é o nome do evento DOM que ela está escutando. Falaremos sobre gerenciamento de eventos com mais detalhes em breve.
 
+### Argumentos Dinâmicos
+
+> Novo na versão 2.6.0+
+
+A partir da versão 2.6.0, também é possível usar uma expressão _JavaScript_ no argumento de uma diretiva envolvendo-a com colchetes:
+
+``` html
+<!--
+Note that there are some constraints to the argument expression, as explained
+in the "Dynamic Argument Expression Constraints" section below.
+-->
+<a v-bind:[attributeName]="url"> ... </a>
+```
+
+Aqui, `attributeName` será dinamicamente processado como uma expressão _JavaScript_, seu valor será usado como o final para o argumento. Por exemplo, se sua instância do _Vue_ tem um propriedade de dados, `attributeName`, cujo o valor é `"href"`, essa ligação irá ser equivalente a `v-bind:href`.
+
+Igualmente, você pode usar argumentos dinâmicos para vincular um manipulador a um nome de evento dinâmico:
+
+``` html
+<a v-on:[eventName]="doSomething"> ... </a>
+```
+
+Neste exemplo, quando o valor de `eventName` for `"focus"`, por exemplo, `v-on:[eventName]` será equivalente a `v-on:focus`.
+
+#### Restrições de Valores de Argumentos Dinâmicos
+
+Se espera que argumentos dinâmicos sejam avaliados resultando-se em uma _String_, com exceção do `null`. O valor especial `null` pode ser usado para explicitamente remover um vínculo. Qualquer outro valor que não seja uma _String_ acionará um aviso.
+
+#### Restrições da Expressão de Argumento Dinâmico
+
+Expressões de argumentos dinâmicos possuem algumas restrições de sintaxe por causa de determinados caracteres, como espaços e aspas, os quais são inválidos dentro de nomes de atributos HTML. Por exemplo, o seguinte é inválido:
+
+``` html
+<!-- Isso irá disparar um aviso do compilador. -->
+<a v-bind:['foo' + bar]="value"> ... </a>
+```
+
+A solução alternativa é usar expressões sem espaço ou aspas, ou simplesmente substituir a expressão complexa por uma propriedade computada.
+
+Quando estiver usando _templates_ no DOM (_templates_ escritos diretamente no arquivo HTML), você também deve evitar nomear suas chaves de argumentos dinâmicos cm caracteres maiúsculos, já que os navegadores forçarão os nomes dos atributos a ficarem em minúsculas:
+
+``` html
+<!--
+Isso será convertido em v-bind:[someattr] em templates no DOM.
+A menos que você tenha uma propriedade "someattr" (totalmente em minúsculas) em sua instância, tal código não funcionará.
+-->
+<a v-bind:[someAttr]="value"> ... </a>
+```
+
 ### Modificadores
 
 Modificadores são sufixos especiais denotados por um ponto, que indicam que aquela diretiva deve ser vinculada de alguma maneira especial. Por exemplo, o modificador `.prevent` indica que o `v-on` chamará a função `event.preventDefault()` quando o evento for disparado:
@@ -150,6 +199,9 @@ O prefixo `v-` serve como dica visual para identificar atributos específicos do
 
 <!-- abreviação -->
 <a :href="url"> ... </a>
+
+<!-- shorthand with dynamic argument (2.6.0+) -->
+<a :[key]="url"> ... </a>
 ```
 
 ### Abreviação para `v-on`
@@ -160,6 +212,9 @@ O prefixo `v-` serve como dica visual para identificar atributos específicos do
 
 <!-- abreviação -->
 <a @click="doSomething"> ... </a>
+
+<!-- shorthand with dynamic argument (2.6.0+) -->
+<a @[event]="doSomething"> ... </a>
 ```
 
-Essas abreviações podem parecer um pouco diferentes do HTML normalmente utilizado, mas os caracteres `:` e `@` são válidos para nomes de atributos em todos os navegadores que o Vue.js suporta. Além disso, não aparecerão no código renderizado. Essa sintaxe é totalmente opcional, mas você provavelmente vai apreciar quando utilizar diretivas frequentemente.
+Essas abreviações podem parecer um pouco diferentes do HTML normalmente utilizado, mas os caracteres `:` e `@` são válidos para nomes de atributos em todos os navegadores que o Vue suporta. Além disso, não aparecerão no código renderizado. Essa sintaxe é totalmente opcional, mas você provavelmente vai apreciar quando utilizar diretivas frequentemente.

@@ -4,9 +4,9 @@ type: cookbook
 order: 2
 ---
 
-## Exemplo Básico
+## Exemplo Base
 
-Este exemplo pode ser util se você gostaria de usar muitos componentes, mas sem [poluir o escopo global](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md). Nesses casos, você pode fazer que eles estejam disponíveis em cada instância Vue definindo eles no prototype:
+Este exemplo pode ser útil se você precisar usar muitos dados/utilitários em vários componentes, mas sem [poluir o escopo global](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/scope-closures/ch3.md). Nesses casos, você pode torná-los disponíveis em cada instância Vue, definindo-os no _prototype_:
 
 ```js
 Vue.prototype.$appName = 'Meu Aplicativo'
@@ -24,7 +24,7 @@ new Vue({
 
 Então `"Meu Aplicativo"` será exibido no console!
 
-## A Importância do Escopo para Propriedades de Instância 
+## A Importância do Escopo para Propriedades de Instância
 
 Você deve estar se perguntando:
 
@@ -103,7 +103,7 @@ new Vue({
 
 ## O Contexto de Métodos de Prototype
 
-Para o caso de você não estar consciente, métodos adicionados no prototype do JavaScrit ganham o contexto da instância. Isso quer dizer que pode-se usar `this` para acessar dados, dados computados, métodos ou qualquer coisa definida na instância.
+Para o caso de você não estar consciente, métodos adicionados no _prototype_ do JavaScript ganham o contexto da instância. Isso quer dizer que pode-se usar `this` para acessar dados, dados computados, métodos ou qualquer coisa definida na instância.
 
 Vamos tomar vantagem disso no método `$reverseText`:
 
@@ -148,8 +148,7 @@ Uncaught TypeError: Cannot read property 'split' of undefined
 
 ## Quando Evitar Esse Padrão
 
-
-Desde que você esteja vigilante em escopo das propriedades de prototype, usar esse padrão é bastante seguro, e provavelmente, não deve produzir erros.
+Desde que você esteja vigilante em escopo das propriedades de _prototype_, usar esse padrão é bastante seguro, e provavelmente, não deve produzir erros.
 
 Entretanto, em alguns casos pode causar confusão entre desenvolvedores. Eles pode ver `this.$http`, por exemplo e pensar, "Oh, eu não conhecia esse recurso do Vue!" então ele pode se mover para um projeto diferente e ficar confuso quando `this.$http` estiver indefinido. Ou talvez ele pode ir ao Google para ver como fazer algo, mas não encontrar resultados porque ele não percebeu que na realidade o que está sendo usado é Axios.
 
@@ -200,6 +199,6 @@ new Vue({
 ```
 
 ### Quando se Está Usando um Sistema de Módulos
-Quando você tem acesso a um sistema de módulos, você pode facilmente organizar seu código em módulos e então `require`/`import` esses módulos onde você precisar deles. Isso é o resumo da clarezaz, porque em cada arquivo você ganha uma lista de dependências. Você sabe _exatamente_ de onde cada um deles veio.
+Quando você tem acesso a um sistema de módulos, você pode facilmente organizar seu código em módulos e então `require`/`import` esses módulos onde você precisar deles. Isso é o resumo da clareza, porque em cada arquivo você ganha uma lista de dependências. Você sabe _exatamente_ de onde cada um deles veio.
 
 Enquanto isso é certamente mais verboso, essa abordagem é definitivamente mais sustentável, especialmente quando trabalhando com outros desenvolvedores ou/e construindo aplicativos de grande porte.

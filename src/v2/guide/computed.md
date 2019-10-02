@@ -94,7 +94,7 @@ methods: {
 }
 ```
 
-Em vez de um dado computado, podemos definir a mesma funcionalidade como um método. Como resultado final, ambas abordagens têm o mesmo efeito. No entanto, a diferença é que **dados computados são cacheados de acordo com suas dependências**. Um dado computado somente será reavaliado quando alguma de suas dependências for alterada. Isso significa que enquanto `message` não sofrer alterações, múltiplos acessos ao `reversedMessage` retornarão o último valor calculado sem precisar executar a função novamente.
+Em vez de um dado computado, podemos definir a mesma funcionalidade como um método. Como resultado final, ambas abordagens têm o mesmo efeito. No entanto, a diferença é que **dados computados são cacheados de acordo com suas dependências reativas.** Um dado computado somente será reavaliado quando alguma de suas dependências for alterada. Isso significa que enquanto `message` não sofrer alterações, múltiplos acessos ao `reversedMessage` retornarão o último valor calculado sem precisar executar a função novamente.
 
 Isto inclusive significa que o seguinte dado computado nunca se alterará, pois `Date.now()` não é uma dependência reativa por natureza:
 
@@ -108,7 +108,7 @@ computed: {
 
 Em comparação, a invocação de um método **sempre** irá rodar a função, toda vez que uma nova renderização ocorrer.
 
-Porque realmente precisamos de cache? Imagine que temos um dado computado **A** muito pesado ao ser processado, exigindo um laço por um Array enorme e fazendo diversos cálculos a cada iteração. Aí temos outros dados computados que dependem de **A** para processar. Sem cache, nós acabaríamos executando o _getter_ de **A** muito mais vezes do que o necessário! Em casos em que você realmente não deseje cache, simplesmente use um método no lugar.
+Por que realmente precisamos de cache? Imagine que temos um dado computado **A** muito pesado ao ser processado, exigindo um laço por um Array enorme e fazendo diversos cálculos a cada iteração. Aí temos outros dados computados que dependem de **A** para processar. Sem cache, nós acabaríamos executando o _getter_ de **A** muito mais vezes do que o necessário! Em casos em que você realmente não deseje cache, simplesmente use um método no lugar.
 
 ### Dados Computados vs. Observadores
 
@@ -229,7 +229,7 @@ var watchExampleVM = new Vue({
     this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
   },
   methods: {
-    getAnswer:  function () {
+    getAnswer: function () {
       if (this.question.indexOf('?') === -1) {
         this.answer = 'Perguntas geralmente têm uma interrogação. ;-)'
         return
@@ -279,7 +279,7 @@ var watchExampleVM = new Vue({
     this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
   },
   methods: {
-    getAnswer:  function () {
+    getAnswer: function () {
       if (this.question.indexOf('?') === -1) {
         this.answer = 'Perguntas geralmente têm uma interrogação. ;-)'
         return

@@ -6,6 +6,8 @@ order: 101
 
 > Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
 
+<div class="vueschool"><a href="https://vueschool.io/lessons/global-vs-local-components?friend=vuejs" target="_blank" rel="noopener" title="Explicação gratuita sobre Registração de Componentes do Vue">Assista à uma explicação em vídeo no Vue School</a></div>
+
 ## Nome dos Componentes
 
 Quando registramos um componente, sempre daremos um nome. Por exemplo, no registro global que vimos até agora:
@@ -16,7 +18,7 @@ Vue.component('my-component-name', { /* ... */ })
 
 O nome do componente é o primeiro argumento de `Vue.component`.
 
-O nome que você dá a um componente depende de onde você pretende utilizá-lo. Quando for utilizar diretamente no DOM (ao contrário de uma _template_ String ou um [Componente Single-File](single-file-components.html), nós recomendamnos fortemente seguir as [regras do W3C](https://www.w3.org/TR/custom-elements/#concepts) para nome de _tags_ customizadas (todas as letras minuscúlas, com hifén entre as palavras). Isso lhe ajuda a evitar conflitos com atuais e futuros elementos nativos do HTML.
+O nome que você dá a um componente depende de onde você pretende utilizá-lo. Quando for utilizar diretamente no DOM (ao contrário de uma _template_ String ou um [Componente Single-File](single-file-components.html), nós recomendamnos fortemente seguir as [regras do W3C](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) para nome de _tags_ customizadas (todas as letras minuscúlas, com hífen entre as palavras). Isso lhe ajuda a evitar conflitos com atuais e futuros elementos nativos do HTML.
 
 Você pode ver outras recomendações sobre nome de componentes no [Guia de Estilo](../style-guide/#Base-component-names-strongly-recommended).
 
@@ -50,7 +52,7 @@ Vue.component('my-component-name', {
 })
 ```
 
-Este componentes são **registrados globalmente**. Isso significa que eles podem ser usados em _templates_ de qualquer instância Vue (`new Vue`) criada após o registro. Por exemplo:
+Estes componentes são **registrados globalmente**. Isso significa que eles podem ser usados em _templates_ de qualquer instância Vue (`new Vue`) criada após o registro. Por exemplo:
 
 ```js
 Vue.component('component-a', { /* ... */ })
@@ -205,8 +207,11 @@ requireComponent.keys().forEach(fileName => {
   // Obtém nome em PascalCase do componente
   const componentName = upperFirst(
     camelCase(
-      // Tira o início `./` e a extensão do nome do arquivo
-      fileName.replace(/^\.\/(.*)\.\w+$/, '$1')
+      // Obtém o nome do arquivo, independentemente da profundidade da pasta
+      fileName
+        .split('/')
+        .pop()
+        .replace(/\.\w+$/, '')
     )
   )
 

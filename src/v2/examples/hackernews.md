@@ -8,13 +8,13 @@ order: 12
 
 {% raw %}
 <div style="max-width: 600px;">
-  <a href="https://github.com/vuejs/vue-hackernews-2.0" target="_blank">
+  <a href="https://github.com/vuejs/vue-hackernews-2.0" target="_blank" rel="noopener noreferrer">
     <img style="width: 100%;" src="../../images/hn.png">
   </a>
 </div>
 {% endraw %}
 
-> [Demonstração ao Vivo](https://vue-hn.now.sh/)
+> [Demonstração ao Vivo](https://vue-hn.herokuapp.com/)
 > Observação: essa demonstração pode precisar de algum tempo de carregamento se ninguém tiver a acessado por um certo período de tempo.
 >
 > [[Código-fonte](https://github.com/vuejs/vue-hackernews-2.0)]

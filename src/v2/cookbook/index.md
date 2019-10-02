@@ -16,6 +16,8 @@ Como o livro de receitas (_cookbook_) é diferente do guia? Por que ele é neces
 
 * **Explorando o Ecossistema**: Para recursos avançados, assumimos que você já tenha algum conhecimento do ecossistema. Por exemplo, se você quer usar componentes _single-file_ no Webpack, não explicamos como configurar as partes "não-Vue" na configuração do Webpack. No livro de receitas, temos espaço para explorar estas bibliotecas do ecossistema com mais profundidade - pelo menos até onde seja universalmente útil para desenvolvedores Vue.
 
+<p class="tip">Com todas essas diferenças, observe que o livro de receitas ainda _não_ é um manual passo-a-passo. Para a maioria de seu conteúdo, espera-se que você tenha uma compreensão básica de conceitos como HTML, CSS, JavaScript, npm/yarn, etc.</p>
+
 ## Fazendo Contribuições
 
 ### O Que Procuramos?
@@ -55,7 +57,7 @@ _obrigatório_
 3.  Mostrar, de forma simplificada, exemplos de códigos bons e ruins.
 4.  Discutir o porquê do padrão utilizado ser o ideal. Referências são incentivadas.
 
-### Exemplo Real 
+### Exemplo do Mundo Real
 
 _obrigatório_
 
@@ -86,4 +88,4 @@ Esta seção é necessária quando você usa a seção acima. É importante expl
 
 ## Obrigado
 
-É preciso tempo para contribuir com a documentação. Então, se você usar o seu tempo para enviar um _pull rquest_ para esta seção de nossos documentos, faça isso com toda nossa gratidão.
+É preciso tempo para contribuir com a documentação. Então, se você usar o seu tempo para enviar um _pull request_ para esta seção de nossos documentos, faça isso com toda nossa gratidão.
