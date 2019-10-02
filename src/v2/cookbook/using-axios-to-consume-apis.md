@@ -91,7 +91,7 @@ filters: {
 * A requisição foi realizada de forma incorreta.
 * A API não retornou as informações da maneira que esperávamos.
 
-Ao realizar a requisição, devemos checar todas essas circustâncias, obtendo informações em todos os casos para que possamos lidar com o problema. Em uma chamada _axios_, fazemos isso usando `catch`.
+Ao realizar a requisição, devemos checar todas essas circunstâncias, obtendo informações em todos os casos para que possamos lidar com o problema. Em uma chamada _axios_, fazemos isso usando `catch`.
 
 ```js
 axios

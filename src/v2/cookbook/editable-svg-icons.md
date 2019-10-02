@@ -49,7 +49,7 @@ Criaremos um componente de ícone base (`IconBase.vue`), que usará um `slot`.
 
 Você pode usar essa base de ícones do jeito que está – a única coisa que você pode precisar atualizar é a `viewBox`, dependendo da _viewBox_ dos ícones que for utilizar. Na base, vamos usar propriedades para `width`, `height`, `iconColor` e `iconName`, para que possam ser atualizados dinamicamente. O nome será usado tanto para o conteúdo do `<title>` e seu `id` quanto para a acessibilidade.
 
-Nosso _script_ vai ter a aparência a seguir. Definimos alguns valores padrão para que o ícone seja renderizado consistentemente mesmo se as propriedades não forem preechidas:
+Nosso _script_ vai ter a aparência a seguir. Definimos alguns valores padrão para que o ícone seja renderizado consistentemente mesmo se as propriedades não forem preenchidas:
 
 ```js
 export default {
@@ -185,4 +185,4 @@ Outras ferramentas que podem auxiliar no gerenciamento de ícones:
 * [svg-sprite-loader](https://github.com/kisenka/svg-sprite-loader)
 * [svgo-loader](https://github.com/rpominov/svgo-loader)
 
-Estes pacotes agrupam SVGs em tempo de compilação, mas os torna um pouco mais difíceis de se editar durante o tempo de execução, pois a _tag_ `<use>` pode introduzir problemas de compatibildiade entre navegadores para quaisquer ações mais complexas. Eles ainda deixam você com duas propriedades `viewBox` aninhadas e, desta forma, dois sistemas de coordenadas. Isto deixa a implementação um pouco mais complexa.
+Estes pacotes agrupam SVGs em tempo de compilação, mas os torna um pouco mais difíceis de se editar durante o tempo de execução, pois a _tag_ `<use>` pode introduzir problemas de compatibilidade entre navegadores para quaisquer ações mais complexas. Eles ainda deixam você com duas propriedades `viewBox` aninhadas e, desta forma, dois sistemas de coordenadas. Isto deixa a implementação um pouco mais complexa.

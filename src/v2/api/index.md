@@ -429,7 +429,7 @@ type: api
   }
   ```
 
-  <p class="tip">No Vue 2.x, `Vue.observable` diretamente modifica o objeto passado para ele, de forma que seja equivalente ao objeto retornado, como [demonstrado aqui](../guide/instance.html##Dados-e-Metodos). No Vue 3.x, um _proxy_ de reatividade será retornado, mantendo o objetivo original não-reativo se mutado diretamente. Sendo assim, para futura compatibilidade, recomendamos que sempre trabahe com o objeto retornado por `Vue.observable`, ao invés de utilizar o objeto originalmente passado para tal método.</p>
+  <p class="tip">No Vue 2.x, `Vue.observable` diretamente modifica o objeto passado para ele, de forma que seja equivalente ao objeto retornado, como [demonstrado aqui](../guide/instance.html##Dados-e-Metodos). No Vue 3.x, um _proxy_ de reatividade será retornado, mantendo o objetivo original não-reativo se mutado diretamente. Sendo assim, para futura compatibilidade, recomendamos que sempre trabalhe com o objeto retornado por `Vue.observable`, ao invés de utilizar o objeto originalmente passado para tal método.</p>
 
 - **Ver também:** [Reatividade em Profundidade](../guide/reactivity.html)
 
@@ -680,7 +680,7 @@ type: api
         handler: function (val, oldVal) { /* ... */ },
         deep: true
       },
-      // the callback will be called immediately after the start of the observation
+      // o callback será chamado imediatamente após o início da observação
       d: {
         handler: 'someMethod',
         immediate: true
@@ -890,7 +890,7 @@ type: api
 
 - **Detalhes:**
 
-  Invocado quando um componente kept-alive é ativado.
+  Invocado quando um componente keep-alive é ativado.
 
   **Este gatilho não é invocado em Renderização no Lado do Servidor.**
 
@@ -904,7 +904,7 @@ type: api
 
 - **Detalhes:**
 
-  Invocado quando um componente kept-alive é desativado.
+  Invocado quando um componente keep-alive é desativado.
 
   **Este gatilho não é invocado em Renderização no Lado do Servidor.**
 
@@ -1037,7 +1037,7 @@ type: api
 
   Possibilita estender outro componente declarativamente (pode ser tanto um objeto plano com opções ou um construtor) sem ter que usar `Vue.extend`. Isso visa primeiramente tornar mais fácil extensão entre componentes _single_ _file_.
 
-  Isso é parecido com `mixins`. 
+  Isso é parecido com `mixins`.
 
 - **Exemplo:**
 
@@ -2059,7 +2059,7 @@ type: api
   ```
 
   Em 2.6+, `v-for` também pode trabalhar em valores que implementam o [protocolo iterável](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Iteration_protocols#O_protocolo_iter%C3%A1vel_(iterable_protocol)), incluindo `Map` e `Set` nativos. No entanto, deve-se notar que o Vue 2.x atualmente não suporta a reatividade nos valores `Map` e `Set`, portanto não pode detectar automaticamente as alterações.
-  
+
   <p class="tip">Quando usada em conjunto com v-if, v-for tem uma prioridade maior. Veja o <a href="../guide/list.html#Utilizando-v-if-com-v-for">guia de Renderização de Listas</a> para detalhes.</p>
 
   O uso detalhado de `v-for` é explicado na seção de Guia com link abaixo.
@@ -2116,7 +2116,7 @@ type: api
 
   <!-- forma abreviada para evento dinâmico (2.6.0+) -->
   <button @[event]="doThis"></button>
-  
+
   <!-- para a propagação -->
   <button @click.stop="doThis"></button>
 
@@ -2689,7 +2689,7 @@ A correspondência é verificada pela primeira vez na opção `name` do componen
     <component :is="view"></component>
   </keep-alive>
   ```
-  
+
   <p class="tip">`<keep-alive>` não funciona com componentes funcionais porque eles não têm instâncias a serem armazenadas em cache.</p>
 
 - **Ver também:** [Componentes Dinâmicos - keep-alive](../guide/components.html#keep-alive)

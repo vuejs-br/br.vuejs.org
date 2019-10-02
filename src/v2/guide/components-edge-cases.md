@@ -239,7 +239,7 @@ Para aprender mais sobre escutas de eventos programáticas, dê uma conferida na
 
 <p class="tip">Observe que o sistema de eventos do Vue é diferente do sistema utilizado pelo navegador, a <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/EventTarget">API EventTarget</a>. Embora eles funcionem de modo semelhante, <code>$emit</code>, <code>$on</code> e <code>$off</code> <strong>não</strong> são apelidos para <code>dispatchEvent</code>, <code>addEventListener</code> e <code>removeEventListener</code>.</p>
 
-## Referências Circulares 
+## Referências Circulares
 
 ### Componentes Recursivos
 
@@ -357,7 +357,7 @@ Seu x-template precisa ser definido fora do elemento DOM ao qual o Vue está con
 
 ## Controlando Atualizações
 
-Graças ao sistema de reatividade do Vue, ele sempre sabe quando atualizar a interface (se você utilizá-lo corretamente). Há casos incomuns, porém, em que você pode querer forçar uma atualização, apesar do fato de nenhum dado reativo ter mudado. Além disso, há os casos em que você pode querer previnir atualizações desnecessárias.
+Graças ao sistema de reatividade do Vue, ele sempre sabe quando atualizar a interface (se você utilizá-lo corretamente). Há casos incomuns, porém, em que você pode querer forçar uma atualização, apesar do fato de nenhum dado reativo ter mudado. Além disso, há os casos em que você pode querer prevenir atualizações desnecessárias.
 
 ### Forçando uma Atualização
 

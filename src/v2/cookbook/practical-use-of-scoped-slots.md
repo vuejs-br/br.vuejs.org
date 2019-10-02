@@ -6,7 +6,7 @@ order: 14
 
 ## Exemplo Base
 
-Há situações em que você pode querer que o template dentro do slot consiga acessar os dados do componente filho que é responsável por renderizar o conteúdo do slot. Isso é particurlarmente útil quando você precisa da liberdade para criar templates customizados que usam propriedades do data do componente filho. Esse é um caso de uso típico para scoped slots.
+Há situações em que você pode querer que o template dentro do slot consiga acessar os dados do componente filho que é responsável por renderizar o conteúdo do slot. Isso é particularmente útil quando você precisa da liberdade para criar templates customizados que usam propriedades do data do componente filho. Esse é um caso de uso típico para scoped slots.
 
 Imagine um componente que configura e prepara uma API externa para ser utilizada em outro componente, mas não está diretamente ligado a nenhum template específico. Tal componente poderia então ser reutilizado em múltiplos lugares renderizando templates diferentes mas usando o mesmo objeto base com API específica.
 
@@ -139,7 +139,7 @@ No gaatilho `mounted` nós instanciamos os objetos `googleMapApi` e `Map` do `Go
 
 Até agora tudo bem. Com tudo isso feito, nós podemos continuar adicionando outros objetos ao map (Markers, Polylines, etc.) e utilizá-lo como um componente map comum.
 
-Mas, quremos usar nosso componente `GoogleMapLoader` apenas como um loader que prepara o mapa — não queremos renderizar nada nele.
+Mas, queremos usar nosso componente `GoogleMapLoader` apenas como um loader que prepara o mapa — não queremos renderizar nada nele.
 
 Para alcançar isso, nós precisamos permitir o componente pai que irá usar nosso `GoogleMapLoader` para acessar `this.google` e `this.map` que estão dentro do componente `GoogleMapLoader`. É aí que os [scoped slots](https://br.vuejs.org/v2/guide/components-slots.html#Scoped-Slots) brilham de verdade. Os Scoped slots nos permitem expor as propriedades de um componente filho para o componente pai. Isso pode parecer um Inception, mas fique comigo mais um minuto para entendermos melhor a capacidade dos scoped slots.
 
@@ -382,7 +382,7 @@ export default {
 
 ## Quando devemos evitar esse padrão
 
-Pode ser tentador criar uma solução bem compexa baseada nesse exemplo, mas em certo ponto nós podemos chegar à situação onde essa abstração se torna uma entidade independente vivendo dentro do nosso código fonte. Se nós chegarmos a esse ponto pode ser interessante considerar uma extração para um add-on.
+Pode ser tentador criar uma solução bem complexa baseada nesse exemplo, mas em certo ponto nós podemos chegar à situação onde essa abstração se torna uma entidade independente vivendo dentro do nosso código fonte. Se nós chegarmos a esse ponto pode ser interessante considerar uma extração para um add-on.
 
 ## Encerramento
 

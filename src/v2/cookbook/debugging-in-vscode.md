@@ -44,7 +44,7 @@ module.exports = {
 
 <p class="tip">Estamos assumindo que a porta seja `8080` aqui. Se não for o caso (por exemplo, se o `8080` estiver em uso e o Vue CLI escolher automaticamente outra porta para você), apenas modifique a configuração de acordo.</p>
 
-Clique no icone de depuração na barra de atividades para trazer a tela de depuração, então clique no icone de engrenagem para configurar o arquivo `launch.json`, selecionando **Chrome/Firefox: Launch** como o ambiente de execução. Substitua o conteúdo gerado no arquivo pela configuração correspondente:
+Clique no ícone de depuração na barra de atividades para trazer a tela de depuração, então clique no ícone de engrenagem para configurar o arquivo `launch.json`, selecionando **Chrome/Firefox: Launch** como o ambiente de execução. Substitua o conteúdo gerado no arquivo pela configuração correspondente:
 
 ![Adicionando Configuração do Chrome](/images/config_add.png)
 
@@ -87,7 +87,7 @@ Clique no icone de depuração na barra de atividades para trazer a tela de depu
 npm run serve
 ```
 
-3.  Vá até a tela de depuração e selecione a configuração **'vuejs: chrome/firefox'**, então presione F5 ou clique no botão verde de inicio.
+3.  Vá até a tela de depuração e selecione a configuração **'vuejs: chrome/firefox'**, então pressione F5 ou clique no botão verde de inicio.
 
 4.  Seu ponto de parada agora será ativado com a abertura do navegador na url `http://localhost:8080`.
 
@@ -97,7 +97,7 @@ npm run serve
 
 ### Vue Devtools
 
-Existem outros métodos para depurar, com diversas complexidades. Os mais populares e simples deles é usando o excelente Vue.js devtools [para Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) e [para Firefox](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/). Um dos beneficios de trabalhar com a ferramenta de desenvolvedor do Vue é poder ativar a edição em tempo real das propriedades e ver as mudanças refletidas imetiatamente. Outro grande benefício é a habilidade de realizar uma viagem temporal de depuração no histórico de mutações do Vuex.
+Existem outros métodos para depurar, com diversas complexidades. Os mais populares e simples deles é usando o excelente Vue.js devtools [para Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) e [para Firefox](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/). Um dos benefícios de trabalhar com a ferramenta de desenvolvedor do Vue é poder ativar a edição em tempo real das propriedades e ver as mudanças refletidas imediatamente. Outro grande benefício é a habilidade de realizar uma viagem temporal de depuração no histórico de mutações do Vuex.
 
 ![Depuração Temporal no Vue Devtools](/images/devtools-timetravel.gif)
 
@@ -105,7 +105,7 @@ Existem outros métodos para depurar, com diversas complexidades. Os mais popula
 
 ### Declaração Simples do Depurador
 
-O exemplo acima é um ótimo fluxo de trabalho. Entretando, existe uma simples opção alternativa, onde você pode usar a [declaração nativa de depuração (`debugger`)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/debugger) diretamente no seu código. Se você escolher trabalhar desse modo, é importante se lembrar de remover a declaração quando terminar a depuração.
+O exemplo acima é um ótimo fluxo de trabalho. Entretanto, existe uma simples opção alternativa, onde você pode usar a [declaração nativa de depuração (`debugger`)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/debugger) diretamente no seu código. Se você escolher trabalhar desse modo, é importante se lembrar de remover a declaração quando terminar a depuração.
 
 ```js
 <script>

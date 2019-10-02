@@ -12,7 +12,7 @@ Este exemplo pode ser útil se você precisar usar muitos dados/utilitários em 
 Vue.prototype.$appName = 'Meu Aplicativo'
 ```
 
-Agora `$appName` está disponível em todas as instâncias Vue, mesmo antes da criação. Se nós executarmos: 
+Agora `$appName` está disponível em todas as instâncias Vue, mesmo antes da criação. Se nós executarmos:
 
 ```js
 new Vue({
@@ -45,8 +45,8 @@ Então o que será esperado para ser logado abaixo?
 ```js
 new Vue({
   data: {
-    // Uh oh - appName é *também* o nome 
-    // da propriedade de instâncua que definimos!
+    // Uh oh - appName é *também* o nome
+    // da propriedade de instância que definimos!
     appName: 'O nome de algum outro aplicativo'
   },
   beforeCreate: function() {
@@ -62,9 +62,9 @@ Seria `"Meu Aplicativo"`, então `"O nome de algum outro aplicativo"`, porque `t
 
 ## Exemplo do Mundo Real: Substituindo Vue Resource por Axios
 
-Vamos dizer que você está substituindo o [aposentado Vue Resource](https://medium.com/the-vue-point/retiring-vue-resource-871a82880af4). Você realmente gostava de acessar os métodos de requisição através de `this.$http` e você gostaria de fazere a mesma coisa agora com o Axios.
+Vamos dizer que você está substituindo o [aposentado Vue Resource](https://medium.com/the-vue-point/retiring-vue-resource-871a82880af4). Você realmente gostava de acessar os métodos de requisição através de `this.$http` e você gostaria de fazer a mesma coisa agora com o Axios.
 
-Tudo que você tem que fazer é incluir o axios em seu projeto. 
+Tudo que você tem que fazer é incluir o axios em seu projeto.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>
@@ -140,7 +140,7 @@ Vue.prototype.$reverseText = propertyName => {
 }
 ```
 
-Jogaria um erro: 
+Jogaria um erro:
 
 ```log
 Uncaught TypeError: Cannot read property 'split' of undefined
@@ -160,7 +160,7 @@ E quais são as alternativas?
 
 ### Quando Não Está se Usando um Sistema de Módulos
 
-Em aplicações **sem** sistema de módulos (por exemplo Webpack ou Browserify), existe um padrão que é frequentemente usado com _qualquer_ front-end JavaScript avançado: Um objeto `App` global. 
+Em aplicações **sem** sistema de módulos (por exemplo Webpack ou Browserify), existe um padrão que é frequentemente usado com _qualquer_ front-end JavaScript avançado: Um objeto `App` global.
 
 Se o que você deseja adicionar não tem nada a ver com o Vue especificamente, esse pode ser uma boa alternativa. Aqui um exemplo:
 
@@ -181,11 +181,11 @@ var App = Object.freeze({
 })
 ```
 
-<p class="tip">Se você ergueu uma sombrancelha para `Object.freeze`, o que isso faz é previnir o objeto de ser alterado no futuro. Isso essencialmenete faz todas as propriedades serem constantes, protegendo você de futuros erros de estado.</p>
+<p class="tip">Se você ergueu uma sombrancelha para `Object.freeze`, o que isso faz é prevenir o objeto de ser alterado no futuro. Isso essencialmente faz todas as propriedades serem constantes, protegendo você de futuros erros de estado.</p>
 
 Agora a fonte dessas propriedades compartilhadas é mais óbvia: existe um objeto `App` definido em algum lugar do aplicativo. Para encontra-lo, os desenvolvedores pode realizar uma pesquisa em todo o projeto.
 
-Outra vantagem é que `App` pode agora ser usado _em qualquer lugar_ do seu código, seja relacionado ao Vue ou não. Isso inclui adicionar valores diretamente as opções da instância, ao invês de ter que inserir uma funcão para acessar as propriedades em `this`.
+Outra vantagem é que `App` pode agora ser usado _em qualquer lugar_ do seu código, seja relacionado ao Vue ou não. Isso inclui adicionar valores diretamente as opções da instância, ao invês de ter que inserir uma função para acessar as propriedades em `this`.
 
 ```js
 new Vue({
