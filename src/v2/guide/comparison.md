@@ -208,7 +208,7 @@ Com isto dito, seria provavelmente mais adequado uma comparação entre o núcle
 
 ## Knockout
 
-Knockout foi um pioneiro nas áreas de MVVM e rastreamento de dependências e seu sistema de reatividade é muito semelhante ao Vue. O [suporte a navegadores](http://knockoutjs.com/documentation/browser-support.html) é muito impressionante considerando tudo o que faz, suportante retroativamente até o IE6! Vue, por outro lado, suporta apenas IE9 e superiores.
+Knockout foi um pioneiro nas áreas de MVVM e rastreamento de dependências e seu sistema de reatividade é muito semelhante ao Vue. O [suporte a navegadores](http://knockoutjs.com/documentation/browser-support.html) é muito impressionante considerando tudo o que faz, suportando retroativamente até o IE6! Vue, por outro lado, suporta apenas IE9 e superiores.
 
 Com o tempo, porém, o desenvolvimento do Knockout começou a diminuir e está começando a dar sinais de sua idade. Por exemplo, seu sistema de componentes carece de um conjunto completo de eventos de ciclo de vida e, embora seja um caso muito comum, a interface para passagem de elementos filhos a um componente pai se mostra um pouco desajeitada em comparação com o [Vue](components.html#Content-Distribution-with-Slots).
 

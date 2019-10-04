@@ -11,7 +11,7 @@ partners_list:
         name: Vehikl
         logo: vehikl.png
         description:
-            Vehikl is a software consultancy specialising in PHP and JavaScript. We build best-in-class web applications written with popular frameworks such as Laravel, Express, NestJS, Vue, and React. Think of us as an extension of your team.
+            Vehikl é uma consultoria de software especializada em PHP e JavaScript. Construímos os melhores aplicativos da Web escritos com frameworks populares como Laravel, Express, NestJS, Vue e React. Pense em nós como uma extensão de sua equipe.
         proficiencies:
             - VueJs
             - Laravel
@@ -19,7 +19,7 @@ partners_list:
             - Team Augmentation
         location: Ontario, Canada
         languages:
-            - English
+            - Inglês
         url_text: www.vehikl.com
         url_link: www.vehikl.com?utm_source=vue_partners_page
         hire_url: www.vehikl.com/contact/?utm_source=vue_partners_page
@@ -42,7 +42,7 @@ partners_list:
         name: Modus Create
         logo: https://res.cloudinary.com/modus-labs/image/upload/v1533109874/modus/logo-vertical-black.svg
         description:
-            "Modus Create is a digital product agency that supports clients with business and product strategy consulting, customer experience, cloud services, and Agile software delivery. Our official partnerships with Atlassian, AWS, Cloudflare, GitHub, Ionic Framework, and Vue.js reinforce our proven results with digital transformation with organizations from startups to the Fortune 100."
+            "A Modus Create é uma agência de produtos digitais que auxilia seus clientes com consultoria de negócios e estratégia de produtos, experiência do cliente, serviços em nuvem e entrega ágil de software. Nossas parcerias oficiais com Atlassian, AWS, Cloudflare, GitHub, Ionic Framework e Vue.js reforçam nossos resultados comprovados em transformação digital com organizações desde startups até a Fortune 100."
         proficiencies:
             - VueJs
             - name: AWS
@@ -61,7 +61,7 @@ partners_list:
               url: https://moduscreate.com/what-we-do/cloud-migration/?utm_source=Vue&utm_medium=Partner-Page&utm_campaign=Vue_partnerpage
         location: Reston, VA, USA / Los Angeles, CA, USA / Cluj, Romania / San José, Costa Rica
         languages:
-            - English
+            - Inglês
             - Global
         url_text: moduscreate.com
         url_link: moduscreate.com/?utm_source=Vue&utm_medium=Partner-Page&utm_campaign=Vue_partnerpage

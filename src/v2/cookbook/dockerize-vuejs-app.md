@@ -53,7 +53,7 @@ Devemos conseguir acessar nossa aplicação Vue em `localhost:8080`.
 
 ## Exemplo do Mundo Real
 
-No exemplo anterior, nós usamos [servidor http](https://github.com/indexzero/http-server) simples com zero configurações para servir nossa aplicação Vue, o que é perfeitamente adequado para para prototipação rápida e _pode_ ser adequado para ambientes de produção simples. Até porque, a documentação diz:
+No exemplo anterior, nós usamos [servidor http](https://github.com/indexzero/http-server) simples com zero configurações para servir nossa aplicação Vue, o que é perfeitamente adequado para prototipação rápida e _pode_ ser adequado para ambientes de produção simples. Até porque, a documentação diz:
 
 > É poderoso o suficiente para uso em produção, mas é simples e customizável o suficiente para ser usado em testes, desenvolvimento local, e aprendizado.
 
