@@ -200,7 +200,7 @@ O prefixo `v-` serve como dica visual para identificar atributos específicos do
 <!-- abreviação -->
 <a :href="url"> ... </a>
 
-<!-- shorthand with dynamic argument (2.6.0+) -->
+<!-- abreviação com argumentos dinâmicos (2.6.0+) -->
 <a :[key]="url"> ... </a>
 ```
 
@@ -213,7 +213,7 @@ O prefixo `v-` serve como dica visual para identificar atributos específicos do
 <!-- abreviação -->
 <a @click="doSomething"> ... </a>
 
-<!-- shorthand with dynamic argument (2.6.0+) -->
+<!-- abreviação com argumentos dinâmicos (2.6.0+) -->
 <a @[event]="doSomething"> ... </a>
 ```
 
