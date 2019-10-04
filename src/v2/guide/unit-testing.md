@@ -88,7 +88,7 @@ Você pode definir a sua saída de renderização com diferentes propriedades, u
 import Vue from 'vue'
 import MyComponent from './MyComponent.vue'
 
-// helper function that mounts and returns the rendered text
+// função auxiliar que monta uma instância e retorna o texto renderizado
 function getRenderedText (Component, propsData) {
   const Constructor = Vue.extend(Component)
   const vm = new Constructor({ propsData: propsData }).$mount()

@@ -17,7 +17,7 @@ this.$emit('myEvent')
 Fazer a escuta a uma versão _kebab-cased_ do evento não terá efeito:
 
 ```html
-<!-- Won't work -->
+<!-- Não vai funcionar -->
 <my-component v-on:my-event="doSomething"></my-component>
 ```
 
