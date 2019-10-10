@@ -248,7 +248,7 @@ order: 803
     'Moscou, Rússia': [55.755826, 37.617300],
     'Munique, Alemanha': [48.137154, 11.576124],
     'Orlando, Estados Unidos': [28.538335, -81.379236],
-    'Oslo, Noruega': [59.911491, 10.757933]
+    'Oslo, Noruega': [59.911491, 10.757933],
     'Paris, França': [48.856614, 2.352222],
     'Pequim, China': [39.904200, 116.407396],
     'Posnânia, Polônia': [52.4006553, 16.761583],
