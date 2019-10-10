@@ -6,7 +6,7 @@ order: 401
 
 ## Introdução
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/introduction-to-single-file-components?friend=vuejs" target="_blank" rel="noopener" title="Lição gratuíta de Componentes Single-File no Vue.js">Assista a uma vídeo-lição gratuita em Vue School</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/introduction-to-single-file-components?friend=vuejs" target="_blank" rel="sponsored noopener" title="Lição gratuíta de Componentes Single-File com Vue.js">ssista a uma vídeo-lição gratuita na Vue School</a></div>
 
 Em muitos projetos Vue, componentes globais serão definidos com `Vue.component`, seguidos por `new Vue({ el: '#container '})` para atingir um elemento *container* no corpo de cada página.
 

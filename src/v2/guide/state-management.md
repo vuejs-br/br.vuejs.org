@@ -8,7 +8,7 @@ order: 502
 
 Aplicações grandes podem também crescer em complexidade, principalmente devido a múltiplos dados de estado da aplicação espalhados entre diversos componentes e interações entre eles. Para resolver este problema, Vue oferece [vuex](https://github.com/vuejs/vuex): nossa própria biblioteca de gerenciamento de estado inspirada em Elm. Além disso, ela se integra ao [vue-devtools](https://github.com/vuejs/vue-devtools), permitindo viajar pelo histórico de [mudanças de estado (*time travel*)]((https://raw.githubusercontent.com/vuejs/vue-devtools/master/media/demo.gif)) sem precisar de nenhuma configuração adicional.
 
-<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/mastering-vuex/intro-to-vuex/" target="_blank" rel="noopener" title="Vuex Tutorial">Assista a uma explicação em vídeo no Vue Mastery</a></div>
+<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/mastering-vuex/intro-to-vuex/" target="_blank" rel="sponsored noopener" title="Tutorial do Vuex">Assista a uma explicação em vídeo na Vue Mastery</a></div>
 
 ### Informação para Desenvolvedores React
 

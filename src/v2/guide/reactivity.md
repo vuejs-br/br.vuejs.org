@@ -6,7 +6,7 @@ order: 601
 
 Agora é hora de um mergulho mais profundo! Uma das características mais distintas do Vue é seu sistema de reatividade não obstrusivo. Modelos de dados são simplesmente objetos JavaScript puros. Quando você os modifica, a camada visual se atualiza. Isto torna o gerenciamento de estado simples e intuitivo, mas também é importante entender como funciona para evitar algumas pegadinhas. Nesta seção, estaremos nos aprofundando em alguns detalhes de baixo-nível do sistema de reatividade do Vue.
 
-<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/advanced-components/build-a-reactivity-system" target="_blank" rel="noopener" title="Vue Reactivity">Assista à uma explicação em vídeo no Vue Mastery</a></div>
+<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/advanced-components/build-a-reactivity-system" target="_blank" rel="sponsored noopener" title="Reatividade no Vue">Assista a uma explicação em vídeo na Vue Mastery</a></div>
 
 ## Como as Alterações são Monitoradas
 
