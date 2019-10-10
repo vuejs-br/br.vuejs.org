@@ -6,7 +6,7 @@ order: 302
 
 ## Introdução
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/create-vuejs-directive?friend=vuejs" target="_blank" rel="noopener" title="Explicação gratuita sobre Diretivas Customizadas do Vue.js">Assista à uma explicação em vídeo no Vue Mastery</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/create-vuejs-directive?friend=vuejs" target="_blank" rel="sponsored noopener" title="Lição Gratuita sobre Diretivas Customizadas do Vue.js">Assista a uma lição em vídeo gratuita na Vue School</a></div>
 
 Adicionalmente ao conjunto de diretivas incluídas em seu núcleo (`v-model` e `v-show`), Vue permite registrar suas próprias diretivas personalizadas. Note que no Vue 2.0, a forma primária de abstração e reuso de código são componentes - no entanto, pode haver casos em que você só precisa de um acesso de baixo nível ao DOM em elementos simples, e aí diretivas personalizadas seriam úteis. Um exemplo seria colocar o foco a um elemento _input_ como este:
 

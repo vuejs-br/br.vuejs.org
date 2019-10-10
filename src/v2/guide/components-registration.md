@@ -6,7 +6,7 @@ order: 101
 
 > Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/global-vs-local-components?friend=vuejs" target="_blank" rel="noopener" title="Explicação gratuita sobre Registração de Componentes do Vue">Assista à uma explicação em vídeo no Vue School</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/global-vs-local-components?friend=vuejs" target="_blank" rel="sponsored noopener" title="Lição Gratuita sobre Registro de Componentes no Vue.js">Assista a uma lição em vídeo gratuita na Vue School</a></div>
 
 ## Nome dos Componentes
 

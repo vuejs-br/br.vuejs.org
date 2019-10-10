@@ -58,7 +58,7 @@ new Vue({
 })
 ```
 
-Seria `"Meu Aplicativo"`, então `"O nome de algum outro aplicativo"`, porque `this.appName` é sobrescrito ([Mais ou menos](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26% %20prototypes/ch5.md)) pelo `data` quando a instância é criada. Nós definimos o escopo de propriedades de instância com `$` para evitar isto. Você pode até usar a sua própria convenção se você preferir, algo como `$_appName` ou `ΩappName`, para evitar conflitos com plugins ou futuras funcionalidades.
+Inicialmente seria `"Meu Aplicativo"`, mas passaria a ser `"O nome de algum outro aplicativo"`, pois `this.appName` é sobrescrito ([de certa forma](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/this-object-prototypes/ch5.md)) por `data` quando a instância é criada. Nós definimos o escopo de propriedades de instância com `$` para previnir isto. Você pode até usar a sua própria convenção se preferir, algo como `$_appName` ou `ΩappName`, para evitar conflitos com _plugins_ ou futuras funcionalidades.
 
 ## Exemplo do Mundo Real: Substituindo Vue Resource por Axios
 

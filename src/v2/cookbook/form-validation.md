@@ -6,9 +6,9 @@ order: 3
 
 ## Exemplo Base
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-form-validation-diy?friend=vuejs" target="_blank" rel="noopener" title="Explicação gratuita sobre Validação de Formulários do Vue.js">Assista à uma explicação em vídeo no Vue School</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-form-validation-diy?friend=vuejs" target="_blank" rel="noopener" title="Lição Gratuita sobre Validação de Formulários com Vue.js">Assista a uma lição gratuita em vídeo na Vue School</a></div>
 
-Validação de formulários é algo suportado nativamente pelo navegador. Porém, navegadores diferentes irão lidar com as coisas de um jeito que pode ser um pouco complicado. Mesmo quando uma validação é suportada perfeitamente, haverá, algumas vezes, a necessidade de a personalizar e, portanto, uma solução baseada em Vue poderá ser mais apropriada. Vamos começar com um exemplo simples.
+Validação de formulários é algo suportado nativamente pelo navegador, mas eventualmente navegadores diferentes liderão com as coisas de um jeito que pode ser um pouco complicado. Mesmo quando a validação é suportada perfeitamente, poderão haver necessidades de personalização e, portanto, uma solução baseada em Vue poderá ser mais apropriada. Vamos começar com um exemplo simples.
 
 Dado um formulário com três campos, faremos dois obrigatórios. Vamos ver o HTML primeiro:
 
@@ -17,7 +17,9 @@ Dado um formulário com três campos, faremos dois obrigatórios. Vamos ver o HT
   id="app"
   @submit="checkForm"
   action="https://vuejs.org/"
-  method="post">
+  method="post"
+>
+
   <p v-if="errors.length">
     <b>Por favor, corrija o(s) seguinte(s) erro(s):</b>
     <ul>
@@ -51,7 +53,8 @@ Dado um formulário com três campos, faremos dois obrigatórios. Vamos ver o HT
     <select
       id="movie"
       v-model="movie"
-      name="movie">
+      name="movie"
+    >
       <option>Star Wars</option>
       <option>Vanilla Sky</option>
       <option>Atomic Blonde</option>
@@ -64,6 +67,7 @@ Dado um formulário com três campos, faremos dois obrigatórios. Vamos ver o HT
       value="Enviar"
     >
   </p>
+
 </form>
 ```
 
@@ -71,7 +75,7 @@ Vamos avaliar do início. A _tag_ `<form>` tem um ID que nós usaremos para o co
 
 Abaixo do formulário, há um parágrafo que irá se mostrar ou se esconder baseando-se em um estado de erro. Isso renderizará uma lista de erros no topo do formulário. Além disso, note que colocamos a validação para ser disparada no evento de envio do formulário.
 
-A última coisa a se observar é que cada um dos três campos tem um `v-model` correspondente para conecta-lo com valores que iremos trabalhar no JavaScript. Agora, vamos ao exemplo.
+A última coisa a se observar é que cada um dos três campos tem um `v-model` correspondente para conectá-lo com valores que iremos trabalhar no JavaScript. Agora, vamos ao exemplo.
 
 ``` js
 const app = new Vue({
@@ -110,7 +114,7 @@ Bastante curto e simples. Definimos um Array para manter erros e fixamos valores
 
 ## Usando Validação Personalizada
 
-Para o segundo exemplo, o segundo campo de texto (_age_) será modificado para _email_, necessitando de uma pequena lógica de validação personalizada. O código foi retirado de uma pergunta do StackOverflow, [How to validate email address in JavaScript?](https://stackoverflow.com/questions/46155/how-to-validate-email-address-in-javascript). Esse é um ótimo exemplo de questão, pois faz com que seu maior embate político/religioso no Facebook pareça um leve desentendimento sobre quem faz a melhor cerveja.
+Para o segundo exemplo, o segundo campo de texto (_age_) será modificado para _email_, necessitando de uma pequena lógica de validação personalizada. O código foi retirado de uma pergunta do StackOverflow, [How to validate email address in JavaScript?](https://stackoverflow.com/questions/46155/how-to-validate-email-address-in-javascript). Esse é um ótimo exemplo de pergunta, pois faz com que seu maior embate político/religioso no Facebook pareça um leve desentendimento sobre quem faz a melhor cerveja. Sério - é insano. Aqui está o HTML, ainda que seja bem próximo do primeiro exemplo.
 
 ``` html
 <form
@@ -118,7 +122,9 @@ Para o segundo exemplo, o segundo campo de texto (_age_) será modificado para _
   @submit="checkForm"
   action="https://vuejs.org/"
   method="post"
-  novalidate="true">
+  novalidate="true"
+>
+
   <p v-if="errors.length">
     <b>Por favor, corrija o(s) seguinte(s) erro(s):</b>
     <ul>
@@ -151,7 +157,8 @@ Para o segundo exemplo, o segundo campo de texto (_age_) será modificado para _
     <select
       id="movie"
       v-model="movie"
-      name="movie">
+      name="movie"
+    >
       <option>Star Wars</option>
       <option>Vanilla Sky</option>
       <option>Atomic Blonde</option>
@@ -164,10 +171,11 @@ Para o segundo exemplo, o segundo campo de texto (_age_) será modificado para _
       value="Enviar"
     >
   </p>
+
 </form>
 ```
 
-Embora a mudança no _template_ seja pequena, perceba o `novalidate="true"` no início. Isso é muito importante, pois o navegador irá se atentar para a validação do endereço de email quando o campo for do tipo `type="email"`. Francamente, faria mais sentido confiar na validação do navegador nesse caso, mas como queremos um exemplo de validação com personalização, iremos desabilitá-la. Aqui está o JavaScript atualizado:
+Embora a mudança no _template_ seja pequena, perceba o `novalidate="true"` no início. Isso é muito importante, pois sem isso o navegador iria se responsabilizar pela validação do endereço de e-mail para o campo do tipo `type="email"`. Francamente, faria mais sentido confiar na validação do navegador nesse caso, mas como queremos um exemplo de validação com personalização, iremos desabilitá-la. Aqui está o JavaScript atualizado:
 
 ``` js
 const app = new Vue({
@@ -205,7 +213,7 @@ const app = new Vue({
 })
 ```
 
-Como se pode ver, adicionamos `validEmail` como um novo método, sendo chamado através do `checkForm`. Você pode testar este novo exemplo aqui:
+Como você pode ver, adicionamos `validEmail` como um novo método, sendo chamado através do `checkForm`. Você pode testar este novo exemplo aqui:
 
 <p data-height="265" data-theme-id="0" data-slug-hash="zmZove" data-default-tab="html,result" data-user="ErickPetru" data-embed-version="2" data-pen-title="Validação de Formulários com Vue 2" class="codepen">Veja o Pen <a href="https://codepen.io/ErickPetru/pen/zmZove/">Validação de Formulários com Vue 2</a> por Erick Eduardo Petrucelli (<a href="https://codepen.io/ErickPetru">@ErickPetru</a>) no <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
@@ -220,7 +228,9 @@ Para um terceiro exemplo, construiremos algo que provavelmente você já viu em 
   @submit="checkForm"
   action="https://vuejs.org/"
   method="post"
-  novalidate="true">
+  novalidate="true"
+>
+
   <p v-if="errors.length">
     <b>Por favor, corrija o(s) seguinte(s) erro(s):</b>
     <ul>
@@ -231,7 +241,7 @@ Para um terceiro exemplo, construiremos algo que provavelmente você já viu em 
   <p>
     Dado um orçamento de 100 dólares, indique
     quanto você gastaria nos seguintes recursos
-    para uma próxima geração da Estrela da Morte. 
+    para uma próxima geração da Estrela da Morte.
     O valor total deve ser 100.
   </p>
 
@@ -273,10 +283,11 @@ Para um terceiro exemplo, construiremos algo que provavelmente você já viu em 
       value="Enviar"
     >
   </p>
+
 </form>
 ```
 
-Note que os conjuntos de entrada cobrem os cinco diferentes recursos possíveis. Observe a adição do modificador `.number` para o atributo `v-model`. Isso diz ao Vue que deve converter automaticamente o valor informado para um Number quando for preenchido. No entanto, existe um problema com este recurso, pois quando o valor é vazio, ele se mantém como String. Você verá a solução abaixo. Para tornar a utilização um pouco mais fácil para o usuário, adicionamos uma exibição do total atual em tempo real. Agora vamos ver o JavaScript:
+Note que os conjuntos de `input` cobrem os cinco diferentes recursos possíveis. Observe a adição do modificador `.number` para o atributo `v-model`. Isso diz ao Vue que deve converter automaticamente o valor informado para um Number quando for preenchido. No entanto, existe um problema em potencial com este recurso, pois, quando o valor é vazio, ele se mantém como String. Você verá como contornar esta situação abaixo. Para tornar a utilização um pouco mais fácil para o usuário, adicionamos também uma exibição do total atual em tempo real, logo abaixo dos campos. Agora vamos ver o JavaScript:
 
 ``` js
 const app = new Vue({
@@ -291,7 +302,7 @@ const app = new Vue({
   },
   computed: {
      total: function () {
-       // Deve-se converter, pois o Vue mantém como String os valores vazios 
+       // Deve-se converter, pois o Vue mantém como String os valores vazios
        return Number(this.weapons) +
          Number(this.shields) +
          Number(this.coffee) +
@@ -317,14 +328,14 @@ const app = new Vue({
 })
 ```
 
-Definimos o valor total como um dado computado, fora do trecho que faz a validação, algo muito simples de se configurar. O método `checkForm`, agora, apenas precisa observar se o total é 100, só isso. Você pode testar isso aqui:
+Definimos o valor total como um dado computado, fora do trecho que faz a validação, algo muito simples de se configurar. O método `checkForm`, agora, apenas precisa observar se o total é 100, e é só isso. Você pode testar isso aqui:
 
 <p data-height="265" data-theme-id="0" data-slug-hash="pxeNyK" data-default-tab="html,result" data-user="ErickPetru" data-embed-version="2" data-pen-title="Validação de Formulários com Vue 3" class="codepen">Veja o Pen <a href="https://codepen.io/ErickPetru/pen/pxeNyK/">Validação de Formulários com Vue 3</a> por Erick Eduardo Petrucelli (<a href="https://codepen.io/ErickPetru">@ErickPetru</a>) no <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Validação no Lado do Servidor
 
-No último exemplo, construiremos algo que faz uso de Ajax para validar no servidor. O formulário pedirá para nomear um novo produto e, então, checará se o nome é único. Escrevemos uma rápida ação no _serverless_ [OpenWhisk](http://openwhisk.apache.org/) para fazer a validação desejada. Embora não seja muito importante, aqui está a lógica utilizada para fins de exemplo:
+No último exemplo, construiremos algo que faz uso de Ajax para validar no servidor. O formulário pedirá para nomear um novo produto e, então, checará para garantir que o nome escolhido é único. Escrevemos uma rápida ação no _serverless_ [OpenWhisk](http://openwhisk.apache.org/) para fazer a validação desejada. Embora não seja muito importante, aqui está a lógica utilizada para fins de exemplo:
 
 ``` js
 function main(params) {
@@ -347,7 +358,9 @@ Basicamente, qualquer nome exceto "vista", "empire" e "mbp" são aceitáveis. Va
 <form
   id="app"
   @submit="checkForm"
-  method="post">
+  method="post"
+>
+
   <p v-if="errors.length">
     <b>Por favor, corrija o(s) seguinte(s) erro(s):</b>
     <ul>
@@ -371,6 +384,7 @@ Basicamente, qualquer nome exceto "vista", "empire" e "mbp" são aceitáveis. Va
       value="Enviar"
     >
   </p>
+
 </form>
 ```
 
@@ -400,7 +414,7 @@ const app = new Vue({
           if (res.error) {
             this.errors.push(res.error);
           } else {
-            // Poderia redirecionar a uma nova URL ou faça qualquer outra coisa
+            // Poderia redirecionar a uma nova URL ou fazer qualquer outra coisa
             alert('Ok!');
           }
         });
@@ -417,7 +431,7 @@ Começamos com uma variável representando a URL da API que está executando no 
 
 ## Padrões Alternativos
 
-Embora esse tópico do Livro de Receitas tenha se focado em fazer validação de formulários "à mão", existe, claro, algumas ótimas bibliotecas Vue que vão lidar com muitos destes detalhes para você. Trocando para uma biblioteca pré-empacotada, você pode sentir um impacto no tamanho final de sua aplicação, mas o benefício pode ser enorme. Você terá código (muito provavelmente) testado e também atualizado regularmente. Alguns exemplos de bibliotecas de validação de formulários para o Vue incluem:
+Embora esse tópico do Livro de Receitas tenha se focado em fazer validação de formulários "à mão", existem, claro, algumas ótimas bibliotecas Vue que vão lidar com muitos destes detalhes para você. Trocando para uma biblioteca previamente construída, você pode sentir um impacto no tamanho final de sua aplicação, mas o benefício pode ser enorme. Você terá código (muito provavelmente) testado e também atualizado regularmente. Alguns exemplos de bibliotecas de validação de formulários para o Vue incluem:
 
 * [vuelidate](https://github.com/monterail/vuelidate)
 * [VeeValidate](https://logaretm.github.io/vee-validate/)
