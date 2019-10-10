@@ -122,7 +122,7 @@ No futuro, você pode consultar a [documentação da API](../api/#Propriedades-d
 
 ## Ciclo de Vida da Instância
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/understanding-the-vuejs-lifecycle-hooks?friend=vuejs" target="_blank" rel="sponsored noopener" title="Lição gratuita sobre Gatilhos do Ciclo de Vida do Vue.js">Assista a uma lição gratuita na Vue School</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/understanding-the-vuejs-lifecycle-hooks?friend=vuejs" target="_blank" rel="sponsored noopener" title="Lição gratuita sobre Gatilhos do Ciclo de Vida do Vue.js">Assista a uma lição gratuita em vídeo na Vue School</a></div>
 
 Cada instância Vue passa por uma série de etapas em sua inicialização - por exemplo, é necessário configurar a observação de dados, compilar o _template_, montar a instância no DOM, atualizar o DOM quando os dados forem alterados. Ao longo do caminho, ocorrerá a invocação de alguns **gatilhos de ciclo de vida**, oferecendo a oportunidade de executar lógicas personalizadas em etapas específicas.
 
