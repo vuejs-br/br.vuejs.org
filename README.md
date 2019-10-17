@@ -23,11 +23,12 @@ Problemas pontuais nas traduções já realizadas, como erros de grafia ou frase
 
 Se você se sente à vontade para traduzir/revisar conteúdos por conta, os passos são:
 
-- Verifique o que está em aberto nas _issues_, ou sugira algo que encontrar;
-- Faça um _fork_ deste _repo_ para sua própria conta;
-- Crie um _issue_ neste _repo_ para informar o que está fazendo;
+- Verifique o que está em aberto nas _issues_,
+  - Se necessário, crie uma _issue_ neste _repo_ para informar o que está fazendo;
+- Faça um _fork_ do _branch_ `dev` deste _repo_ para sua própria conta,
+  - Como o _branch_ `dev` é utilizado para sincronizar as atualizações do [repositório original em inglês](https://github.com/vuejs/vuejs.org), muitas vezes existentes conflitos de _merge_ para corrigir! Se estiver em dúvida se há onde ajudar no momento, procure por conflitos de _merge_ no _branch_ `dev`.
 - Faça as traduções/revisões nos arquivos que se propôs, usando o editor que quiser;
-- Ao finalizar, faça um _pull request_ **com a descrição do _commit_ em inglês**;
+- Ao finalizar, faça um _pull request_ para `dev` **com a descrição do _commit_ em inglês**;
 - Não se esqueça de obter as alterações mais recentes antes de recomeçar o processo.
 
 Caso não consiga terminar por completo algum arquivo, mas queira enviar o trabalho parcial, deixe isso claro na _issue_ de seu trabalho após a submissão, para informar quais problemas persistem no arquivo enviado.
