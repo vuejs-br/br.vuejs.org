@@ -8,7 +8,12 @@ platinum_sponsors_china:
 special_sponsors:
   - url: https://stdlib.com/
     img: stdlib.png
+<<<<<<< HEAD
     description: 'Construa APIs em minutos ao invés de dias, gratuitamente.'
+=======
+    name: Standard Library
+    description: 'Build APIs you need in minutes instead of days, for free.'
+>>>>>>> e91a60306843e19d3cd2a3d76856a8433a7d895e
 platinum_sponsors:
   - url: >-
       https://vueschool.io/?utm_source=Vuejs.org&utm_medium=Banner&utm_campaign=Sponsored%20Banner&utm_content=V1
@@ -95,7 +100,7 @@ gold_sponsors:
     img: devexpress.png
     name: DevExpress
   - url: 'https://fastcoding.jp/javascript/ '
-    img: fastcoding_inc.svg
+    img: fastcoding_inc.png
     name: FASTCODING Inc
   - url: 'https://usave.co.uk/utilities/broadband'
     img: usave.png

@@ -75,7 +75,7 @@ Vue.js oferece um [CLI oficial](https://github.com/vuejs/vue-cli) para rapidamen
 
 <p class="tip">Este assunto pressupõe conhecimento prévio em Node.js e ferramentas de _build_ associadas. Se você é novo no Vue ou neste tipo de ferramenta, recomendamos fortemente que passe por todo <a href="./">o guia</a> antes de tentar usar o CLI.</p>
 
-<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/real-world-vue-js/vue-cli" target="_blank" rel="sponsored noopener" title="Vue CLI">Assista a uma lição gratuita em vídeo na Vue Mastery</a></div>
+<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/real-world-vue-js/vue-cli" target="_blank" rel="sponsored noopener" title="Vue CLI">Assista a uma lição em vídeo gratuita na Vue Mastery</a></div>
 
 ## Explicação das Distribuições
 

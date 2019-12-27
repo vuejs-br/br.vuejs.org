@@ -8,7 +8,7 @@ order: 301
 
 Mixins são uma forma flexível de distribuir funcionalidade reutilizável em diversos componentes Vue. Um objeto _mixin_ pode conter quaisquer opções de componente. Quando um componente utiliza um _mixin_, todas as opções deste serão misturadas (em inglês, _mixed in_) com as opções do próprio componente.
 
-<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/next-level-vue/mixins" target="_blank" rel="noopener" title="Tutorial sobre Mixins com Vue.js">Assista a uma lição gratuita em vídeo na Vue Mastery</a></div>
+<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/next-level-vue/mixins" target="_blank" rel="noopener" title="Tutorial sobre Mixins com Vue.js">Assista a uma lição em vídeo gratuita na Vue Mastery</a></div>
 
 Exemplo:
 
