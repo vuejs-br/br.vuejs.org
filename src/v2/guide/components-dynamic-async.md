@@ -201,7 +201,7 @@ Confira mais detalhes sobre o `<keep-alive>` em [Referências de API](../api/#ke
 
 ## Componentes Assíncronos
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/dynamically-load-components?friend=vuejs" target="_blank" rel="sponsored noopener" title="Lição Gratuita sobre Componentes Assíncronos com Vue.js">Assista a uma lição gratuita em vídeo na Vue School</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/dynamically-load-components?friend=vuejs" target="_blank" rel="sponsored noopener" title="Lição Gratuita sobre Componentes Assíncronos com Vue.js">Assista a uma lição em vídeo gratuita na Vue School</a></div>
 
 Em aplicativos grandes, talvez seja necessário dividí-lo em partes menores e carregar apenas um componente do servidor quando necessário. Para tornar isto mais fácil, o Vue permite que você defina seu componente como uma função de fabricação (_factory function_), que resolve de forma assíncrona sua definição de componente. O Vue só acionará a função quando o componente precisar ser renderizado, e armazenará em _cache_ o resultado para novas renderizações futuras. Por exemplo:
 
