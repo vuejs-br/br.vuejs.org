@@ -169,7 +169,7 @@ new Vue({
 ```
 {% raw %}</div>{% endraw %}
 
-### Definição de propriedades <sup data-p="a">essential</sup>
+### Definição de propriedades <sup data-p="a">Essencial</sup>
 
 **A definição de propriedades deve ser a mais detalhada possível.**
 
