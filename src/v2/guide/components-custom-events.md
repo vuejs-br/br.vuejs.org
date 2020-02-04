@@ -58,11 +58,7 @@ Quando usamos o `v-model` neste componente:
 
 O valor de `lovingVue` será passado para a propriedade `checked`. E o `lovingVue` será atualizado quando o `<base-checkbox>` emitir o evento `change` com o novo valor.
 
-<<<<<<< HEAD
 <p class="tip">Observe que você ainda precisa declarar a propriedade <code>checked</code> que está contida nas opções de <code>props</code>.</p>
-=======
-<p class="tip">Note that you still have to declare the <code>checked</code> prop in the component's <code>props</code> option.</p>
->>>>>>> e91a60306843e19d3cd2a3d76856a8433a7d895e
 
 ## Eventos Nativos nos Componentes
 

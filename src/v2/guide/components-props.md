@@ -183,11 +183,7 @@ Normalmente há dois casos onde você tentará mudar uma propriedade:
 
 ## Validação de Propriedades
 
-<<<<<<< HEAD
 Componentes podem especificar requisitos para suas propriedades, como, por exemplo, os tipos de dados que você já viu. Se um requisito não é obedecido, o Vue irá avisar no console JavaScript do navegador. Isso é especialmente útil quando se está desenvolvendo um componente que será utilizado por outros.
-=======
-Components can specify requirements for their props, such as the types you've already seen. If a requirement isn't met, Vue will warn you in the browser's JavaScript console. This is especially useful when developing a component that's intended to be used by others.
->>>>>>> e91a60306843e19d3cd2a3d76856a8433a7d895e
 
 Para especificar validações de propriedades, atribua um objeto com requisitos de validações ao valor de `props`, ao invés de um Array de Strings. Exemplos:
 

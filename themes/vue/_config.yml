@@ -8,12 +8,8 @@ platinum_sponsors_china:
 special_sponsors:
   - url: https://stdlib.com/
     img: stdlib.png
-<<<<<<< HEAD
-    description: 'Construa APIs em minutos ao invés de dias, gratuitamente.'
-=======
     name: Standard Library
-    description: 'Build APIs you need in minutes instead of days, for free.'
->>>>>>> e91a60306843e19d3cd2a3d76856a8433a7d895e
+    description: 'Construa APIs em minutos ao invés de dias, gratuitamente.'
 platinum_sponsors:
   - url: >-
       https://vueschool.io/?utm_source=Vuejs.org&utm_medium=Banner&utm_campaign=Sponsored%20Banner&utm_content=V1
