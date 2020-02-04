@@ -167,7 +167,7 @@ Expressões de argumentos dinâmicos possuem algumas restrições de sintaxe por
 
 A solução alternativa é usar expressões sem espaço ou aspas, ou simplesmente substituir a expressão complexa por uma propriedade computada.
 
-Quando estiver usando _templates_ no DOM (_templates_ escritos diretamente no arquivo HTML), você também deve evitar nomear suas chaves de argumentos dinâmicos cm caracteres maiúsculos, já que os navegadores forçarão os nomes dos atributos a ficarem em minúsculas:
+Quando estiver usando _templates_ no DOM (_templates_ escritos diretamente no arquivo HTML), você também deve evitar nomear suas chaves de argumentos dinâmicos com caracteres maiúsculos, já que os navegadores forçarão os nomes dos atributos a ficarem em minúsculas:
 
 ``` html
 <!--
