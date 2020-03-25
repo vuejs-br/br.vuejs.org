@@ -206,7 +206,7 @@ const app = new Vue({
       e.preventDefault();
     },
     validEmail: function (email) {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     }
   }
@@ -335,20 +335,24 @@ Definimos o valor total como um dado computado, fora do trecho que faz a valida�
 
 ## Validação no Lado do Servidor
 
-No último exemplo, construiremos algo que faz uso de Ajax para validar no servidor. O formulário pedirá para nomear um novo produto e, então, checará para garantir que o nome escolhido é único. Escrevemos uma rápida ação no _serverless_ [OpenWhisk](http://openwhisk.apache.org/) para fazer a validação desejada. Embora não seja muito importante, aqui está a lógica utilizada para fins de exemplo:
+No último exemplo, construiremos algo que faz uso de Ajax para validar no servidor. O formulário pedirá para nomear um novo produto e, então, checará para garantir que o nome escolhido é único. Escrevemos uma rápida ação no _serverless_ [Netlify](https://netlify.com/) para fazer a validação desejada. Embora não seja muito importante, aqui está a lógica utilizada para fins de exemplo:
 
 ``` js
-function main(params) {
-    return new Promise((resolve, reject) => {
-        // Nome de produtos ruins: vista, empire, mbp
-        const badNames = ['vista', 'empire', 'mbp'];
+exports.handler = async (event, context) => {
+  // Nome de produtos ruins: vista, empire, mbp
+  const badNames = ['vista', 'empire', 'mbp'];
+  const name = event.queryStringParameters.name.toLowerCase();
 
-        if (badNames.includes(params.name.toLowerCase())) {
-          reject({error: 'Produto já existente.'});
-        }
+  if (badNames.includes(name)) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({error: 'Produto já existente.'})
+    }
+  }
 
-        resolve({status: 'ok'});
-    });
+  return {
+    statusCode: 204
+  }
 }
 ```
 
@@ -391,7 +395,7 @@ Basicamente, qualquer nome exceto "vista", "empire" e "mbp" são aceitáveis. Va
 Não há nada especial aqui. Então vamos para o JavaScript:
 
 ``` js
-const apiUrl = 'https://openwhisk.ng.bluemix.net/api/v1/web/vue_dev/get-http-resource/productName.json?name=';
+const apiUrl = 'https://vuecookbook.netlify.com/.netlify/functions/product-name?name=';
 
 const app = new Vue({
   el: '#app',
@@ -409,13 +413,13 @@ const app = new Vue({
         this.errors.push('O nome do produto é obrigatório.');
       } else {
         fetch(apiUrl + encodeURIComponent(this.name))
-        .then(res => res.json())
-        .then(res => {
-          if (res.error) {
-            this.errors.push(res.error);
-          } else {
-            // Poderia redirecionar a uma nova URL ou fazer qualquer outra coisa
-            alert('Ok!');
+        .then(async res => {
+          if (res.status === 204) {
+            // Poderia redirecionar a uma nova URL ou fazer qualquer outra coisa
+            alert('OK');
+          } else if (res.status === 400) {
+            let errorResponse = await res.json();
+            this.errors.push(errorResponse.error);
           }
         });
       }

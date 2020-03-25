@@ -193,7 +193,7 @@ new Vue({
 </script>
 {% endraw %}
 
-Agora, a guia _Postagens_ mantém seu estado (a postagem selecionada) mesmo quando não é renderizada. Veja [este exemplo](https://jsfiddle.net/chrisvfritz/Lp20op9o/) para o código completo.
+Agora, a guia _Postagens_ mantém seu estado (a postagem selecionada) mesmo quando não é renderizada. Veja [este exemplo](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-keep-alive-with-dynamic-components) para o código completo.
 
 <p class="tip">Perceba que o `<keep-alive>` requer que todos os componentes que estejam sendo trocados tenham nomes, seja usando a opção `name` do componente, seja através de registro local/global.</p>
 

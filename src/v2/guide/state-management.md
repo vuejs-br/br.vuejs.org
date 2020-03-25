@@ -19,13 +19,13 @@ Se você vem do React, é possível que esteja se perguntando como vuex se compa
 Muitas vezes as pessoas se esquecem que a "fonte da verdade" em aplicações Vue são os próprios objetos `data` - uma instância Vue apenas direciona o acesso a eles. Sendo assim, se você tiver um trecho de estado que deve ser compartilhado entre múltiplas instâncias, pode simplesmente compartilhar o mesmo objeto de dados:
 
 ``` js
-const sourceOfTruth = {}
+var sourceOfTruth = {}
 
-const vmA = new Vue({
+var vmA = new Vue({
   data: sourceOfTruth
 })
 
-const vmB = new Vue({
+var vmB = new Vue({
   data: sourceOfTruth
 })
 ```

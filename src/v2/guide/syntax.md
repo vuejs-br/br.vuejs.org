@@ -30,7 +30,7 @@ Você também pode realizar interpolações únicas que não são atualizadas qu
 
 ### HTML
 
-As chaves duplas interpretam os dados como texto simples, e não HTML. Para que você exiba HTML, utilize a diretiva `v-html`:
+As chaves duplas interpretam os dados como texto simples, e não HTML. Para que você exiba HTML, utilize a [diretiva `v-html`](../api/#v-html):
 
 ``` html
 <p>Interpolação textual: {{ rawHtml }}</p>
@@ -60,7 +60,7 @@ Os conteúdos do `span` serão substituídos com o valor da propriedade `rawHtml
 
 ### Atributos
 
-Chaves duplas não podem ser usadas em atributos HTML. Para isso, utilize a [diretiva v-bind](../api/#v-bind):
+Chaves duplas não podem ser usadas em atributos HTML. Para isso, utilize a [diretiva `v-bind`](../api/#v-bind):
 
 ``` html
 <div v-bind:id="dynamicId"></div>

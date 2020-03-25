@@ -4,13 +4,16 @@ type: guide
 order: 8
 ---
 
+<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-loops?friend=vuejs" target="_blank" rel="sponsored noopener" title="Aprenda como renderizar listas na Vue School">Aprenda como renderizar listas com uma aula gratuita na Vue School</a></div>
+
+
 ## Array em Elementos com `v-for`
 
 Podemos utilizar a diretiva `v-for` para renderizar uma lista de elementos com base nos dados de um Array. A diretiva requer uma sintaxe especial na forma de `item in items`, onde `items` é a fonte de dados e `item` é um **apelido** para o elemento que estiver sendo iterado:
 
 ``` html
 <ul id="example-1">
-  <li v-for="item in items">
+  <li v-for="item in items" :key="item.message">
     {{ item.message }}
   </li>
 </ul>
@@ -32,7 +35,7 @@ Resultado:
 
 {% raw %}
 <ul id="example-1" class="demo">
-  <li v-for="item in items">
+  <li v-for="item in items" :key="item.message">
     {{item.message}}
   </li>
 </ul>
@@ -205,7 +208,7 @@ new Vue({
 
 <p class="tip">Quando estiver iterando sobre um objeto, a ordem é baseada na enumeração do `Object.keys()`, a qual **não** é garantidamente consistente entre implementações distintas de motores JavaScript.</p>
 
-## Maintaining State
+## Manutenção de Estado
 
 Quando Vue está atualizando uma lista de elementos renderizados com `v-for`, por padrão se utiliza de uma estratégia de "remendo local". Se a ordem dos itens de dados tiver mudado, em vez de mover os elementos DOM para combinar com a nova ordem, Vue remendará o conteúdo de cada elemento em seu local atual, garantindo que o resultado reflita o que precisa ser renderizado em cada índice em particular. Isto é similar ao comportamento oferecido por `track-by="$index"` no Vue 1.x.
 
@@ -257,103 +260,7 @@ Você pode pensar que isto fará o Vue jogar fora todo o DOM existente e "re-ren
 
 ### Limitações
 
-Por limitações no JavaScript, Vue **não pode** detectar as seguintes mudanças em um Array:
-
-1. Quando se define diretamente um item em um índice: `vm.items[indexOfItem] = newValue`
-2. Quando se modifica diretamente o tamanho do Array: `vm.items.length = newLength`
-
-Por exemplo:
-
-``` js
-var vm = new Vue({
-  data: {
-    items: ['a', 'b', 'c']
-  }
-})
-vm.items[1] = 'x' // NÃO é reativo
-vm.items.length = 2 // NÃO é reativo
-```
-
-Para contornar a limitação 1, há duas alternativas ao `vm.items[indexOfItem] = newValue` que causam atualização de estado no sistema de reatividade:
-
-
-``` js
-// Vue.set
-Vue.set(vm.items, indexOfItem, newValue)
-```
-``` js
-// Array.prototype.splice
-vm.items.splice(indexOfItem, 1, newValue)
-```
-Também é possível usar o método de instância [`vm.$set`](https://vuejs.org/v2/api/#vm-set), um atalho para o global `Vue.set`:
-
-``` js
-vm.$set(vm.items, indexOfItem, newValue)
-```
-
-Para lidar com a limitação 2, é possível usar `splice`:
-
-``` js
-vm.items.splice(newLength)
-```
-
-## Detectando Mudanças em Objetos
-
-Novamente por limitações no JavaScript moderno, **Vue não pode detectar adição e remoção de propriedades**. Por exemplo:
-
-``` js
-var vm = new Vue({
-  data: {
-    a: 1
-  }
-})
-// `vm.a` é reativo
-
-vm.b = 2
-// `vm.b` NÃO é reativo
-```
-
-Vue não permite dinamicamente adicionar novas propriedades reativas em nível raiz para uma instância já criada. Entretanto, é possível adicionar propriedades reativas a objetos internos usando o método `Vue.set(object, propertyName, value)`. Por exemplo, dado o código:
-
-``` js
-var vm = new Vue({
-  data: {
-    userProfile: {
-      name: 'Zé Ninguém'
-    }
-  }
-})
-```
-
-Você poderia adicionar uma nova propriedade `age` ao objeto interno `userProfile` com:
-
-``` js
-Vue.set(vm.userProfile, 'age', 30)
-```
-
-Também é possível usar o método de instância [`vm.$set`](https://vuejs.org/v2/api/#vm-set), um atalho para o global `Vue.set`:
-
-``` js
-vm.$set(vm.userProfile, 'age', 27)
-```
-
-Às vezes, você pode querer adicionar várias novas propriedades a um objeto existente, utilizando por exemplo `Object.assign()` ou `_.extend()`. Nestes casos, você pode criar um objeto novo com propriedades mescladas de ambos os objetos. Então, em vez de:
-
-``` js
-Object.assign(vm.userProfile, {
-  age: 31,
-  favoriteColor: 'Verde Vue'
-})
-```
-
-Você poderia adicionar novas propriedades reativas com:
-
-``` js
-vm.userProfile = Object.assign({}, vm.userProfile, {
-  age: 31,
-  favoriteColor: 'Verde Vue'
-})
-```
+Por limitações no JavaScript, existem tipos de mudanças que o Vue **não pode** detectar em arrays e objetos. Esses são discutidos na seção [reatividade](reactivity.html#Limitacoes-na-Deteccao-de-Alteracoes).
 
 ## Mostrando Resultados Filtrados/Ordenados
 
@@ -380,13 +287,15 @@ computed: {
 
 Em situações onde dados computados não são factíveis (por exemplo, em repetições `v-for` aninhadas), você pode usar um método:
 
-``` html
-<li v-for="n in even(numbers)">{{ n }}</li>
+```html
+<ul v-for="set in sets">
+  <li v-for="n in even(set)">{{ n }}</li>
+</ul>
 ```
 
-``` js
+```js
 data: {
-  numbers: [ 1, 2, 3, 4, 5 ]
+  sets: [[ 1, 2, 3, 4, 5 ], [6, 7, 8, 9, 10]]
 },
 methods: {
   even: function (numbers) {

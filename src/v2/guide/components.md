@@ -203,7 +203,7 @@ Quando quisermos renderizar um componente para cada:
 ></blog-post>
 ```
 
-No exemplo acima, você verá que podemos usar `v-bind` para dinamicamente passar props. Isso é especialmente útil quando você não sabe, de antemão, exatamente que tipo de conteúdo irá renderizar, como ao [obter postagens de uma API](https://jsfiddle.net/chrisvfritz/sbLgr0ad).
+No exemplo acima, você verá que podemos usar `v-bind` para dinamicamente passar props. Isso é especialmente útil quando você não sabe, de antemão, exatamente que tipo de conteúdo irá renderizar, como ao [obter postagens de uma API](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-component-blog-post-example).
 
 Isso é tudo que você precisa saber de props por hora, mas assim que você terminar de ler essa página e se sentir confortável com o conteúdo, recomendamos retornar mais tarde para ler o guia completo em [Props](components-props.html).
 
@@ -422,7 +422,7 @@ methods: {
 
 ### Usando `v-model` em Componentes
 
-Eventos personalizados podem também ser usados para criar inputs personalizados que funcionam `v-model`. Lembre-se que:
+Eventos personalizados podem também ser usados para criar inputs personalizados que funcionam com `v-model`. Lembre-se que:
 
 ```html
 <input v-model="searchText">
@@ -601,7 +601,9 @@ No exemplo acima, `currentTabComponent` pode conter:
 - o nome do componente registrado, ou
 - o objeto de opções de um componente
 
-Veja [esse exemplo](https://jsfiddle.net/chrisvfritz/o3nycadu/) para experimentar com todo o código, ou [essa versão](https://jsfiddle.net/chrisvfritz/b2qj69o1/) para um exemplo ligando ao objeto de opções de um componente em vez de seu nome registrado.
+Veja [esse exemplo](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-dynamic-components) para experimentar com todo o código, ou [essa versão](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-dynamic-components-with-binding) para um exemplo ligando ao objeto de opções de um componente em vez de seu nome registrado.
+
+Keep in mind that this attribute can be used with regular HTML elements, however they will be treated as components, which means all attributes **will be bound as DOM attributes**. For some properties such as `value` to work as you would expect, you will need to bind them using the [`.prop` modifier](../api/#v-bind).
 
 Isso é tudo que você precisa saber sobre componentes dinâmicos por hora mas, assim que você terminar de ler essa página e se sentir confortável com o conteúdo, recomendamos retornar mais tarde para ler o guia completo sobre componentes [Dinâmicos & Assíncronos](components-dynamic-async.html).
 

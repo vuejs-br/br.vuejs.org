@@ -2,6 +2,10 @@
 
 Este é o repositório oficial da tradução em português brasileiro do _site_ [vuejs.org](http://www.vuejs.org/). O _site_ foi construído com [hexo](http://hexo.io/) e o conteúdo escrito em formato _Markdown_ na pasta `src`. _Pull requests_ são bem-vindos!
 
+## Writing
+
+See the [Vue Docs Writing Guide](https://github.com/vuejs/vuejs.org/blob/master/writing-guide.md) for our rules and recommendations on writing and maintaining documentation.
+
 ## Desenvolvendo
 
 ```

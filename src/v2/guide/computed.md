@@ -6,6 +6,8 @@ order: 5
 
 ## Dados Computados
 
+<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-computed-properties?friend=vuejs" target="_blank" rel="sponsored noopener" title="Aprenda como propriedades computadas funcionam com Vue School">Aprenda como propriedades computadas funcionam com uma aula gratuita na Vue School</a></div>
+
 Expressões dentro de _templates_ são muito convenientes, mas são destinadas a operações simples. Colocar muita lógica neles pode fazer com que fiquem inchados e que a sua manutenção fique mais complicada. Por exemplo:
 
 ``` html
