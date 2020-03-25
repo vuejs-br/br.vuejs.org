@@ -95,10 +95,10 @@ module.exports = {
 
 #### Rollup
 
-O procedimento é parecido com o do Webpack. Configure utilizando o [rollup-plugin-replace](https://github.com/rollup/rollup-plugin-replace):
+O procedimento é parecido com o do Webpack. Configure utilizando o [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace):
 
 ``` js
-const replace = require('rollup-plugin-replace')
+const replace = require('@rollup/plugin-replace')
 
 rollup({
   // ...

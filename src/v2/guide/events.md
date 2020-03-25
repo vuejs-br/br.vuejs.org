@@ -4,6 +4,8 @@ type: guide
 order: 9
 ---
 
+<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-user-events?friend=vuejs" target="_blank" rel="sponsored noopener" title="Aprenda como manipular eventos na Vue School">Aprenda como manipular eventos em uma aula gratuita na Vue School</a></div>
+
 ## Escutando Eventos
 
 Você pode usar a diretiva `v-on` para escutar eventos do DOM e rodar algum JavaScript quando tal evento for disparado.
@@ -154,7 +156,9 @@ new Vue({
 methods: {
   warn: function (message, event) {
     // agora temos acesso ao evento nativo
-    if (event) event.preventDefault()
+    if (event) {
+      event.preventDefault()
+    }
     alert(message)
   }
 }
@@ -285,10 +289,10 @@ Por exemplo:
 
 ```html
 <!-- Alt + C -->
-<input @keyup.alt.67="clear">
+<input v-on:keyup.alt.67="clear">
 
 <!-- Ctrl + Click -->
-<div @click.ctrl="doSomething">Faça alguma coisa</div>
+<div v-on:click.ctrl="doSomething">Faça alguma coisa</div>
 ```
 
 <p class="tip">Teclas modificadoras são diferentes de teclas comuns, e quando utilizadas com eventos `keyup`, precisam estar pressionadas quando o evento é emitido. Em outras palavras, `keyup.ctrl` só vai disparar se você soltar alguma tecla enquanto ainda estiver segurando `ctrl`. E não irá disparar se você soltar a tecla `ctrl` sozinha. Se você deseja tal comportamento, use o `keyCode` para `ctrl`: `keyup.17`.</p>
@@ -301,13 +305,13 @@ O modificador `.exact` permite controlar a exata combinação de modificadores d
 
 ``` html
 <!-- dispara mesmo se Alt ou Shift também estiverem pressionados -->
-<button @click.ctrl="onClick">A</button>
+<button v-on:click.ctrl="onClick">A</button>
 
 <!-- dispara quando somente Ctrl estiver pressionado -->
-<button @click.ctrl.exact="onCtrlClick">A</button>
+<button v-on:click.ctrl.exact="onCtrlClick">A</button>
 
 <!-- dispara somente se não houverem teclas de sistema pressionadas -->
-<button @click.exact="onClick">A</button>
+<button v-on:click.exact="onClick">A</button>
 ```
 
 ### Modificadores de Mouse

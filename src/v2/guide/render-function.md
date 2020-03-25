@@ -440,6 +440,7 @@ Para passar _slots_ a um componente filho usando funções de renderização, us
 
 ``` js
 render: function (createElement) {
+  // `<div><child v-slot="props"><span>{{ props.text }}</span></child></div>`
   return createElement('div', [
     createElement('child', {
       // passe `scopedSlots` no objeto de dados
@@ -640,6 +641,4 @@ Para este componente, `children` lhe fornecerá ambos os parágrafos, enquanto `
 
 Você pode estar interessado em saber que _templates_ do Vue são compilados para funções `render`. Este é um detalhe de implementação que você não necessita saber, mas se você quiser ver como _templates_ específicos ficam quando compilados, pode ser interessante. Abaixo uma pequena demonstração usando `Vue.compile` para compilar ao vivo uma String de _template_:
 
-{% raw %}
-<script async src="https://jsfiddle.net/phanan/5h0wx9np/embed/result,js,html/"></script>
-{% endraw %}
+<iframe src="https://codesandbox.io/embed/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-template-compilation?codemirror=1&hidedevtools=1&hidenavigation=1&theme=light&view=preview" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="vue-20-template-compilation" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>

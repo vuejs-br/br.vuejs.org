@@ -478,6 +478,7 @@ new Vue({
   methods: {
     beforeEnter: function (el) {
       el.style.opacity = 0
+      el.style.transformOrigin = 'left'
     },
     enter: function (el, done) {
       Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })
@@ -1243,7 +1244,7 @@ new Vue({
 
 <p class="tip">É importante notar que as transições FLIP não funcionam com elementos `display: inline`. Como alternativa, você pode usar `display: inline-block` ou colocar os elementos dentro de um contexto flex.</p>
 
-Estas animações FLIP também não são limitadas a um único eixo. Itens em uma grade multidimensional também [podem ser transitados](https://jsfiddle.net/ErickPetru/6yc69o7d/):
+Estas animações FLIP também não são limitadas a um único eixo. Itens em uma grade multidimensional também [podem ser transitados](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-list-move-transitions):
 
 {% raw %}
 <div id="sudoku-demo" class="demo">

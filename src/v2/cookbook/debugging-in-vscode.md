@@ -60,7 +60,7 @@ Clique no ícone de depuração na barra de atividades para trazer a tela de dep
       "webRoot": "${workspaceFolder}/src",
       "breakOnLoad": true,
       "sourceMapPathOverrides": {
-        "webpack:///./src/*": "${webRoot}/*"
+        "webpack:///src/*": "${webRoot}/*"
       }
     },
     {

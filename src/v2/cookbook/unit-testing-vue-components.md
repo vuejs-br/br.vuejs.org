@@ -14,7 +14,7 @@ Este exemplo simples testa se algum texto é renderizado:
 <template>
   <div>
     <input v-model="username">
-    <div 
+    <div
       v-if="error"
       class="error"
     >
@@ -105,7 +105,7 @@ Vamos dar uma olhada no código do componente primeiro:
       {{ message }}
     </div>
     Digite seu nome de usuário: <input v-model="username">
-    <div 
+    <div
       v-if="error"
       class="error"
     >
@@ -149,9 +149,11 @@ import Foo from './Foo.vue'
 describe('Foo', () => {
   it('exibe uma mensagem e responde corretamente à entrada do usuário', () => {
     const wrapper = shallowMount(Foo, {
-      data: {
-        message: 'Hello World',
-        username: ''
+      data() {
+        return {
+          message: 'Hello World',
+          username: ''
+        }
       }
     })
 

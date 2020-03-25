@@ -4,6 +4,8 @@ type: guide
 order: 7
 ---
 
+<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-conditionals?friend=vuejs" target="_blank" rel="sponsored noopener" title="Aprenda como renderização condicional funciona com Vue School">Aprenda como renderização condicional funciona com uma aula gratuita na Vue School</a></div>
+
 ## `v-if`
 
 A diretiva `v-if` é usada para renderizar condicionalmente um bloco. O bloco só será renderizado se a expressão da diretiva retornar um valor verdadeiro.

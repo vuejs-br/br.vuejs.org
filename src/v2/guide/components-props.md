@@ -6,6 +6,8 @@ order: 102
 
 > Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
 
+<div class="vueschool"><a href="https://vueschool.io/lessons/reusable-components-with-props?friend=vuejs" target="_blank" rel="sponsored noopener" title="Aprenda como props de componentes funcionam com Vue School">Aprenda como props de componentes funcionam com uma aula gratuita na Vue School</a></div>
+
 ## Notação (camelCase vs. kebab-case)
 
 O nome de atributos do HTML são insensíveis a maiúsculas e minúsculas, dessa forma os navegadores irão interpretar qualquer letra maiúscula como minúscula. Isso significa que quando você está usando _templates_ diretamente no DOM (quando o Vue é utilizado diretamente em uma página HTML existente), nomes de propriedades em camelCase precisam utilizar os seus equivalentes em kebab-case (delimitados por hífen):

@@ -6,6 +6,8 @@ order: 103
 
 > Esta página assume que você já leu o [Básico sobre Componentes](components.html). Leia lá primeiro se você for novo com componentes.
 
+<div class="vueschool"><a href="https://vueschool.io/lessons/communication-between-components?friend=vuejs" target="_blank" rel="sponsored noopener" title="Aprenda como trabalhar com eventos customizados com Vue School">Aprenda como trabalhar com eventos customizados em uma aula gratuita na Vue School</a></div>
+
 ## Nomes dos Eventos
 
 Diferente dos componentes e propriedades, os nomes dos eventos não possuem nenhuma transformação. Sendo assim, o nome de um evento emitido deve corresponder exatamente ao nome usado para chamar esse evento. Por exemplo, caso for emitir um nome de evento _camelCased_:

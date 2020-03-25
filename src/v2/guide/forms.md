@@ -15,7 +15,7 @@ Você pode usar a diretiva `v-model` para criar interligações de mão dupla (_
 - _checkboxes_ e _radiobuttons_ usam a propriedade `checked` e o evento `change`;
 - campos de seleção usam `value` como prop e `change` como um evento.
 
-<p class="tip" id="vmodel-ime-tip">Para linguagens que requerem um [IME](https://en.wikipedia.org/wiki/Input_method) (Chinês, Japonês, Coreano etc.), você notará que `v-model` não é atualizado durante a atualização da composição IME. Se você quiser atender a estas atualizações, use o evento `input` em vez do `v-model`.</p>
+<p class="tip" id="vmodel-ime-tip">Para linguagens que requerem um [IME](https://en.wikipedia.org/wiki/Input_method) (Chinês, Japonês, Coreano, etc.), você notará que `v-model` não é atualizado durante a atualização da composição IME. Se você quiser atender à estas atualizações, use o evento `input` em vez do `v-model`.</p>
 
 ### Input
 
@@ -211,7 +211,7 @@ new Vue({
 </script>
 {% endraw %}
 
-<p class="tip">Se o valor inicial da expressão `v-model` não corresponder a nenhuma das opções, o `<select>` será renderizado como "não selecionado". No iOS, isso impedirá o usuário de selecionar o primeiro item, pois não há disparo de eventos de alteração neste caso. Recomenda-se fornecer uma opção desativada com um valor vazio, como demonstrado no exemplo acima.</p>
+<p class="tip">Se o valor inicial da expressão `v-model` não corresponder a nenhuma das opções, o `<select>` será renderizado como "não selecionado". No iOS, isso impedirá o usuário de selecionar o primeiro item, pois não há disparo do evento `change` neste caso. Recomenda-se fornecer uma opção `disabled` com um valor vazio, como demonstrado no exemplo acima.</p>
 
 Seleção de múltiplos itens (vinculando a um Array):
 
@@ -330,7 +330,7 @@ vm.toggle === 'sim'
 vm.toggle === 'não'
 ```
 
-<p class="tip">Os atributos `true-value` e `false-value` não afetam o atributo `value` do _input_, pois os navegadores não incluem caixas não assinaladas na submissão de formulários. Para garantir que um dos dois valores seja submetido em um formulário (por exemplo, "sim" ou "não"), utilize _inputs_ do tipo `radio` no lugar.</p>
+<p class="tip">Os atributos `true-value` e `false-value` não afetam o atributo `value` do _input_, pois os navegadores não incluem caixas não assinaladas na submissão de formulários. Para garantir que um dos dois valores seja submetido em um formulário (ou seja, "sim" ou "não"), utilize _inputs_ do tipo `radio` no lugar.</p>
 
 ### Radio
 
@@ -362,16 +362,16 @@ vm.selected.number // => 123
 
 ### `.lazy`
 
-Por padrão, `v-model` sincroniza o elemento com os dados após cada evento do tipo `input` (com exceção para o caso de composição IME [descrito anteriormente](#vmodel-ime-tip)). Adicionando o modificador `lazy`, a sincronização ocorrerá somente após o evento `change`:
+Por padrão, `v-model` sincroniza o elemento com os dados após cada evento do tipo `input` (com exceção para o caso de composição IME [descrito anteriormente](#vmodel-ime-tip)). Mas adicionando o modificador `lazy`, a sincronização ocorrerá _após_ o evento `change`:
 
 ``` html
 <!-- sincronizado depois do "change" ao invés de "input" -->
-<input v-model.lazy="msg" >
+<input v-model.lazy="msg">
 ```
 
 ### `.number`
 
-Se você quiser que a entrada do usuário seja automaticamente convertida para um número, pode ser feito adicionando o modificador `number` ao `v-model` do elemento:
+Se você quiser que a entrada do usuário seja automaticamente convertida para Number, pode adicionar o modificador `number` ao `v-model` do elemento:
 
 ``` html
 <input v-model.number="age" type="number">
@@ -391,4 +391,6 @@ Se você quiser que a entrada do usuário seja automaticamente isenta de espaço
 
 > Se você não está familiarizado com componentes Vue, pode pular isto por enquanto.
 
-Os tipo de _input_ nativos do HTML nem sempre atendem todas as necessidades. Por sorte, componentes Vue permitem construir _inputs_ reutilizáveis com comportamento completamente personalizado. Estes componentes também funcionam com `v-model`! Para saber mais, leia sobre [componentes de formulário personalizados](components.html#Componentes-Suportando-v-model) no guia de Componentes.
+Os tipo de _input_ nativos do HTML nem sempre atendem todas as necessidades. Por sorte, componentes Vue permitem construir _inputs_ reutilizáveis com comportamento completamente personalizado. Estes componentes também funcionam com `v-model`!
+
+Para saber mais, leia sobre [inputs customizados](components.html#Usando-v-model-em-Componentes) no guia de Componentes.

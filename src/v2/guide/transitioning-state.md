@@ -18,7 +18,7 @@ Todos estes já estão armazenados como números brutos ou podem ser convertidos
 Observadores nos permitem animar mudanças de qualquer propriedade numérica para outra propriedade. Isso pode parecer complicado no começo, por isso vamos mergulhar em um exemplo usando [GreenSock](https://greensock.com/):
 
 ``` html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
 
 <div id="animated-number-demo">
   <input v-model.number="number" type="number" step="20">
@@ -40,14 +40,14 @@ new Vue({
   },
   watch: {
     number: function(newValue) {
-      TweenLite.to(this.$data, 0.5, { tweenedNumber: newValue });
+      gsap.to(this.$data, { duration: 0.5, tweenedNumber: newValue });
     }
   }
 })
 ```
 
 {% raw %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
 <div id="animated-number-demo" class="demo">
   <input v-model.number="number" type="number" step="20">
   <p>{{ animatedNumber }}</p>
@@ -66,7 +66,7 @@ new Vue({
   },
   watch: {
     number: function(newValue) {
-      TweenLite.to(this.$data, 0.5, { tweenedNumber: newValue });
+      gsap.to(this.$data, { duration: 0.5, tweenedNumber: newValue });
     }
   }
 })
@@ -366,7 +366,7 @@ function generatePoints (stats) {
 </style>
 {% endraw %}
 
-Veja [este _fiddle_](https://jsfiddle.net/chrisvfritz/65gLu2b6/) para o código completo por detrás do exemplo acima.
+Veja [este demo](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-dynamic-state-transitions) para o código completo por detrás do exemplo acima.
 
 ## Organizando Transições em Componentes
 

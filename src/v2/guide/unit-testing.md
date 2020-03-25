@@ -29,14 +29,17 @@ Você não precisa fazer nada especial em seus componentes para torná-los test�
 </script>
 ```
 
-Em seguida, importe as opções do componente junto com o Vue, e você pode fazer muitas asserções comuns (aqui estamos usando asserções `expect` estilo Jasmine/Jest apenas como um exemplo):
+Em seguida, importe o componente junto com o [Vue Test Utils](https://vue-test-utils.vuejs.org/), e você pode fazer muitas asserções comuns (aqui estamos usando asserções `expect` estilo Jest apenas como um exemplo):
 
 ``` js
-// Importando o Vue e o componente a ser testado
-import Vue from 'vue'
-import MyComponent from 'path/to/MyComponent.vue'
+// Importe `shallowMount` do Vue Test Utils e o componente sendo testado
+import { shallowMount } from '@vue/test-utils'
+import MyComponent from './MyComponent.vue'
 
-// Alguns testes do Jasmine 2.0, apesar de que você pode usar
+// Monte o componente
+const wrapper = shallowMount(MyComponent)
+
+// Aqui estão alguns testes Jest, apesar de poder usar
 // qualquer test runner / assertion library que preferir
 describe('MyComponent', () => {
   // Inspeciona as opções do componente
@@ -54,15 +57,12 @@ describe('MyComponent', () => {
 
   // Inspeciona a instância do componente ao montar
   it('correctly sets the message when created', () => {
-    const vm = new Vue(MyComponent).$mount()
-    expect(vm.message).toBe('bye!')
+    expect(wrapper.vm.$data.message).toBe('bye!')
   })
 
   // Monta uma instância e inspeciona a saída de renderização
   it('renders the correct message', () => {
-    const Constructor = Vue.extend(MyComponent)
-    const vm = new Constructor().$mount()
-    expect(vm.$el.textContent).toBe('bye!')
+    expect(wrapper.text()).toBe('bye!')
   })
 })
 ```
@@ -82,47 +82,50 @@ O resultado da renderização de componentes é primariamente determinado pelas 
   }
 </script>
 ```
-Você pode definir a sua saída de renderização com diferentes propriedades, usando a opção `propsData`:
+
+Você pode definir a sua saída de renderização com diferentes propriedades, usando [Vue Test Utils](https://vue-test-utils.vuejs.org/):
 
 ``` js
-import Vue from 'vue'
+import { shallowMount } from '@vue/test-utils'
 import MyComponent from './MyComponent.vue'
 
-// função auxiliar que monta uma instância e retorna o texto renderizado
-function getRenderedText (Component, propsData) {
-  const Constructor = Vue.extend(Component)
-  const vm = new Constructor({ propsData: propsData }).$mount()
-  return vm.$el.textContent
+// função auxiliar que monta e retorna o componente renderizado
+function getMountedComponent(Component, propsData) {
+  return shallowMount(Component, {
+    propsData
+  })
 }
 
 describe('MyComponent', () => {
   it('renders correctly with different props', () => {
-    expect(getRenderedText(MyComponent, {
-      msg: 'Hello'
-    })).toBe('Hello')
+    expect(
+      getMountedComponent(MyComponent, {
+        msg: 'Hello'
+      }).text()
+    ).toBe('Hello')
 
-    expect(getRenderedText(MyComponent, {
-      msg: 'Bye'
-    })).toBe('Bye')
+    expect(
+      getMountedComponent(MyComponent, {
+        msg: 'Bye'
+      }).text()
+    ).toBe('Bye')
   })
 })
 ```
 
 ## Definindo Atualizações Assíncronas
 
-Desde que o Vue [executa atualizações do DOM de forma assíncrona](reactivity.html#Async-Update-Queue), as definições sobre atualizações do DOM resultantes da mudança de estado deverão ser feitas em um callback `Vue.nextTick`:
+Desde que o Vue [executa atualizações do DOM de forma assíncrona](reactivity.html#Async-Update-Queue), as definições sobre atualizações do DOM resultantes da mudança de estado deverão ser feitas após `Vue.nextTick` ser resolvido:
 
 ``` js
 // Inspect the generated HTML after a state update
-it('updates the rendered message when vm.message updates', done => {
-  const vm = new Vue(MyComponent).$mount()
-  vm.message = 'foo'
+it('updates the rendered message when wrapper.message updates', async () => {
+  const wrapper = shallowMount(MyComponent)
+  wrapper.setData({ message: 'foo' })
 
-  // wait a "tick" after state change before asserting DOM updates
-  Vue.nextTick(() => {
-    expect(vm.$el.textContent).toBe('foo')
-    done()
-  })
+  // Wait a "tick" after state change before asserting DOM updates
+  await wrapper.vm.$nextTick()
+  expect(wrapper.text()).toBe('foo')
 })
 ```
 

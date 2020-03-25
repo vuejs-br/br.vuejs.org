@@ -20,7 +20,11 @@ Cada instância de componente tem um **observador** de instância correspondente
 
 ## Limitações na Detecção de Alterações
 
-Devido às limitações do JavaScript moderno (e o abandono do `Object.observe`), Vue **não pode detectar adição ou remoção de propriedades**. Uma vez que o processo de conversão em _getter_/_setters_ ocorre durante a inicialização da instância, propriedades já devem estar presentes no objeto `data` para que o Vue o torne reativo. Por exemplo:
+Devido às limitações do JavaScript, existem tipos de mudanças que o Vue **não pode** detectar. No entanto, existem maneiras de contornar isso para preservar a reatividade.
+
+### Para Objetos
+
+Vue **não pode** detectar adição ou remoção de propriedades. Uma vez que o processo de conversão em _getter_/_setters_ ocorre durante a inicialização da instância, propriedades já devem estar presentes no objeto `data` para que o Vue o torne reativo. Por exemplo:
 
 ``` js
 var vm = new Vue({
@@ -34,26 +38,80 @@ vm.b = 2
 // `vm.b` NÃO é reativo
 ```
 
-Vue não permite dinamicamente adicionar novas propriedades reativas em nível raiz para uma instância já criada. Entretanto, é possível adicionar propriedades reativas a objetos internos usando o método `Vue.set(object, propertyName, value)`:
+Vue não permite dinamicamente adicionar novas propriedades reativas em nível raiz para uma instância já criada. Entretanto, é possível adicionar propriedades reativas a objetos internos usando o método `Vue.set(object, propertyName, value)`. Por exemplo, dado o código:
 
 ``` js
-Vue.set(vm.someObject, 'b', 2)
+var vm = new Vue({
+  data: {
+    userProfile: {
+      name: 'Zé Ninguém'
+    }
+  }
+})
 ```
 
-Também há o método de instância `vm.$set`, um atalho para o global `Vue.set`:
+Você poderia adicionar uma nova propriedade `age` ao objeto interno `userProfile` com:
 
 ``` js
-this.$set(this.someObject, 'b', 2)
+Vue.set(vm.userProfile, 'age', 30)
+```
+
+Também é possível usar o método de instância [`vm.$set`](../api/#vm-set), um atalho para o global `Vue.set`:
+
+``` js
+vm.$set(vm.userProfile, 'age', 27)
 ```
 
 Às vezes, você pode querer adicionar várias novas propriedades a um objeto existente, utilizando por exemplo `Object.assign()` ou `_.extend()`. No entanto, novas propriedades adicionadas posteriormente não vão disparar mudanças. Nestes casos, você pode criar um objeto novo com propriedades mescladas do objeto original e das novidades:
 
 ``` js
-// em vez de `Object.assign(this.someObject, { a: 1, b: 2 })`
-this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })
+vm.userProfile = Object.assign({}, vm.userProfile, {
+  age: 31,
+  favoriteColor: 'Verde Vue'
+})
 ```
 
-Também existem algumas limitações quanto ao rastreamento de alterações em Arrays, já discutidas na seção sobre [Renderização de Listas](list.html#Limitacoes).
+### Para Arrays
+
+Vue não pode detectar as seguintes mudanças em um Array:
+
+1. Quando se define diretamente um item em um índice: `vm.items[indexOfItem] = newValue`
+2. Quando se modifica diretamente o tamanho do Array: `vm.items.length = newLength`
+
+Por exemplo:
+
+``` js
+var vm = new Vue({
+  data: {
+    items: ['a', 'b', 'c']
+  }
+})
+vm.items[1] = 'x' // NÃO é reativo
+vm.items.length = 2 // NÃO é reativo
+```
+
+Para contornar a limitação 1, há duas alternativas ao `vm.items[indexOfItem] = newValue` que causam atualização de estado no sistema de reatividade:
+
+``` js
+// Vue.set
+Vue.set(vm.items, indexOfItem, newValue)
+```
+``` js
+// Array.prototype.splice
+vm.items.splice(indexOfItem, 1, newValue)
+```
+
+Também é possível usar o método de instância [`vm.$set`](https://vuejs.org/v2/api/#vm-set), um atalho para o global `Vue.set`:
+
+``` js
+vm.$set(vm.items, indexOfItem, newValue)
+```
+
+Para lidar com a limitação 2, é possível usar `splice`:
+
+``` js
+vm.items.splice(newLength)
+```
 
 ## Declarando Propriedades Reativas
 

@@ -63,7 +63,7 @@ Entretanto, há casos, particulamente em bibliotecas compartilhadas, em que isso
 </google-map>
 ```
 
-O componente `<google-map>` pode definir uma propriedade `map` que todos os subcomponentes precisam acessar. Neste caso, o componente `<google-map-markers>` pode acessar aquele mapa através de algo como `this.$parent.getMap`, para poder adicionar alguns marcadores à ela. Você pode conferir esse padrão [em ação aqui](https://jsfiddle.net/chrisvfritz/ttzutdxh/).
+O componente `<google-map>` pode definir uma propriedade `map` que todos os subcomponentes precisam acessar. Neste caso, o componente `<google-map-markers>` pode acessar aquele mapa através de algo como `this.$parent.getMap`, para poder adicionar alguns marcadores à ela. Você pode conferir esse padrão [em ação aqui](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-accessing-parent-component-instance).
 
 Tenha em mente, no entanto, que componentes construídos com esse padrão são inerentemente frágeis. Por exemplo, imagine que nós adicionaremos um novo componente `<google-map-region>` e quando `<google-map-markers>` aparecer dentro dele, ele só deve renderizar marcadores que estiverem nessa região:
 
@@ -154,7 +154,7 @@ Então em qualquer descendente, podemos usar a opção `inject` para receber as 
 inject: ['getMap']
 ```
 
-Você pode ver o [exemplo completo](https://jsfiddle.net/chrisvfritz/tdv8dt3s/). A vantagem neste caso, em contraste com a utilização do `$parent`, é que podemos acessar `getMap` em _qualquer_ componente descendente, sem expor a instância inteira do `<google-map>`. Isso nos permite continuar o desenvolvimento desse componente com mais segurança, sem medo de que acabemos por alterar/remover algo que o componente filho esteja esperando. A interface entre esses componentes permanece claramente definida, assim como quando usamos `props`.
+Você pode ver o [exemplo completo](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-dependency-injection). A vantagem neste caso, em contraste com a utilização do `$parent`, é que podemos acessar `getMap` em _qualquer_ componente descendente, sem expor a instância inteira do `<google-map>`. Isso nos permite continuar o desenvolvimento desse componente com mais segurança, sem medo de que acabemos por alterar/remover algo que o componente filho esteja esperando. A interface entre esses componentes permanece claramente definida, assim como quando usamos `props`.
 
 Na verdade, você pode pensar sobre a injeção de dependência como uma espécie de "propriedade de longo alcance", exceto por:
 
@@ -233,7 +233,7 @@ methods: {
 }
 ```
 
-Veja [este _fiddle_](https://jsfiddle.net/chrisvfritz/1Leb7up8/) com o código completo. Entretanto, note que, caso esteja precisando fazer muito _setup_ e limpeza em um único componente, a melhor solução será, usualmente, criar componentes mais modulares. Neste caso, recomendaríamos criar um componente `<input-datepicker>` reutilizável.
+Veja [este Sandbox](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-programmatic-event-listeners) com o código completo. Entretanto, note que, caso esteja precisando fazer muito _setup_ e limpeza em um único componente, a melhor solução será, usualmente, criar componentes mais modulares. Neste caso, recomendaríamos criar um componente `<input-datepicker>` reutilizável.
 
 Para aprender mais sobre escutas de eventos programáticas, dê uma conferida na API de [Métodos de Instância de Eventos](https://vuejs.org/v2/api/#Instance-Methods-Events).
 

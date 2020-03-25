@@ -752,19 +752,20 @@ Algumas vantagens desta convenção:
 
 - Como esses componentes são frequentemente usados, você pode simplesmente torná-los globais em vez de importá-los em todos os lugares. Um prefixo torna isso possível com Webpack:
 
-``` js
-var requireComponent = require.context("./src", true, /^Base[A-Z]/)
-requireComponent.keys().forEach(function (fileName) {
-  var baseComponentConfig = requireComponent(fileName)
-  baseComponentConfig = baseComponentConfig.default || baseComponentConfig
-  var baseComponentName = baseComponentConfig.name || (
-    fileName
-      .replace(/^.+\//, '')
-      .replace(/\.\w+$/, '')
-  )
-  Vue.component(baseComponentName, baseComponentConfig)
-})
-```
+
+  ``` js
+  var requireComponent = require.context("./src", true, /Base[A-Z]\w+\.(vue|js)$/)
+  requireComponent.keys().forEach(function (fileName) {
+    var baseComponentConfig = requireComponent(fileName)
+    baseComponentConfig = baseComponentConfig.default || baseComponentConfig
+    var baseComponentName = baseComponentConfig.name || (
+      fileName
+        .replace(/^.+\//, '')
+        .replace(/\.\w+$/, '')
+    )
+    Vue.component(baseComponentName, baseComponentConfig)
+  })
+  ```
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
@@ -1559,7 +1560,6 @@ Esta é a ordem padrão que recomendamos para os atributos de componentes. Eles 
 6. **Atributos Únicos** (atributos que requerem valores únicos)
   - `ref`
   - `key`
-  - `slot`
 
 7. **Vinculação Bidirecional** (combinando vinculação e eventos)
   - `v-model`
@@ -1695,7 +1695,7 @@ computed: {
 
 **É usualmente melhor usar `key` com `v-if` + `v-else`, se eles são do mesmo tipo de elemento (ex. dois elementos `<div>`).**
 
-Por padrão, o Vue atualiza o DOM da forma mais eficiente possível. Isso significa que, ao alternar entre elementos do mesmo tipo, ele simplesmente atualiza o elemento existente, em vez de removê-lo e adicionar um novo em seu lugar. Isso pode ter [efeitos colaterais não intencionais](https://jsfiddle.net/chrisvfritz/bh8fLeds/) se esses elementos não devessem realmente ser considerados os mesmos.
+Por padrão, o Vue atualiza o DOM da forma mais eficiente possível. Isso significa que, ao alternar entre elementos do mesmo tipo, ele simplesmente atualiza o elemento existente, em vez de removê-lo e adicionar um novo em seu lugar. Isso pode ter [efeitos colaterais não intencionais](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-priority-d-rules-unintended-consequences) se esses elementos não devessem realmente ser considerados os mesmos.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Mal Exemplo
@@ -1885,7 +1885,9 @@ Vue.component('TodoItem', {
 
 **[Vuex](https://github.com/vuejs/vuex) deve ser preferido para o gerenciamento de estado global, em vez de `this.$root` ou um barramento de eventos global.**
 
-Gerenciar o estado com `this.$root` e/ou usando um [barramento de eventos global](https://vuejs.org/v2/guide/migration.html#dispatch-and-broadcast-replaced) pode ser conveniente para casos muito simples, mas não são apropriados para a maioria dos aplicativos. O Vuex oferece não apenas um local central para gerenciar o estado, mas também ferramentas para organizar, rastrear e depurar alterações de estado.
+Gerenciar o estado com `this.$root` e/ou usando um [barramento de eventos global](https://vuejs.org/v2/guide/migration.html#dispatch-and-broadcast-replaced) pode ser conveniente para casos muito simples, mas não são apropriados para a maioria dos aplicativos.
+
+Vuex is the [official flux-like implementation](https://vuejs.org/v2/guide/state-management.html#Official-Flux-Like-Implementation) for Vue e oferece não apenas um local central para gerenciar o estado, mas também ferramentas para organizar, rastrear e depurar alterações de estado. It integrates well in the Vue ecosystem (including full [Vue DevTools](https://vuejs.org/v2/guide/installation.html#Vue-Devtools) support).
 
 {% raw %}</details>{% endraw %}
 
