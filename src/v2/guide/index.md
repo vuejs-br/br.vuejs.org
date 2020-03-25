@@ -23,7 +23,7 @@ Se você é um desenvolvedor _frontend_ experiente e quer saber como Vue se comp
 
 <p class="tip">O guia oficial supõe um nível intermediário em HTML, CSS e JavaScript. Se você é totalmente novo no mundo do _frontend_, mergulhar diretamente em um _framework_ pode não ser a melhor ideia para começar - compreenda primeiro o básico e depois volte! Experiência anterior com outros _frameworks_ ajuda, mas não é obrigatória.</p>
 
-A forma mais simples de testar Vue.js é usando o [exemplo de Olá Mundo no JSFiddle](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-hello-world). Sinta-se à vontade para abrí-lo em outra aba e acompanhar conosco durante alguns exemplos básicos. Ou, você pode <a href="https://github.com/vuejs/vuejs.org/blob/master/src/v2/examples/vue-20-hello-world/index.html" target="_blank" download="index.html" rel="noopener noreferrer">criar um arquivo <code>index.html</code></a> e incluir Vue com:
+A forma mais simples de testar Vue.js é usando o [exemplo de Olá Mundo no CodeSandbox](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-hello-world). Sinta-se à vontade para abrí-lo em outra aba e acompanhar conosco durante alguns exemplos básicos. Ou, você pode <a href="https://github.com/vuejs/vuejs.org/blob/master/src/v2/examples/vue-20-hello-world/index.html" target="_blank" download="index.html" rel="noopener noreferrer">criar um arquivo <code>index.html</code></a> e incluir Vue com:
 
 ``` html
 <!-- versão de desenvolvimento, inclui avisos úteis no console  -->

@@ -1205,7 +1205,7 @@ order: 803
       github: 'gregg',
       twitter: 'greggpollack',
       work: {
-        role: 'Intrutor Vue',
+        role: 'Instrutor Vue',
         org: 'Vue Mastery',
         orgUrl: 'https://www.vuemastery.com/'
       },
@@ -1221,7 +1221,7 @@ order: 803
       github: 'atomjar',
       twitter: 'adamjahr',
       work: {
-        role: 'Intrutor Vue',
+        role: 'Instrutor Vue',
         org: 'Vue Mastery',
         orgUrl: 'https://www.vuemastery.com/'
       },

@@ -4,7 +4,7 @@ Este é o repositório oficial da tradução em português brasileiro do _site_ 
 
 ## Writing
 
-See the [Vue Docs Writing Guide](https://github.com/vuejs/vuejs.org/blob/master/writing-guide.md) for our rules and recommendations on writing and maintaining documentation.
+See the [Vue Docs Writing Guide](./writing-guide.md) for our rules and recommendations on writing and maintaining documentation.
 
 ## Desenvolvendo
 
