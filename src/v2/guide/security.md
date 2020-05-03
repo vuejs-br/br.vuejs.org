@@ -1,95 +1,92 @@
 ---
-title: Security
+title: Segurança
 type: guide
 order: 504
 ---
 
-<p class="tip">**Nota da Equipe de Tradução**	
-Este arquivo ainda não foi traduzido! Leia a versão original em inglês a seguir e, se puder, colabore com sua tradução: acesse [nosso projeto no GitHub](https://github.com/vuejs-br/br.vuejs.org/issues), avise que irá contribuir e inicie a tradução. Sua participação é muito importante!</p>
+## Reportando Vulnerabilidades
 
-## Reporting Vulnerabilities
+Quando uma vulnerabilidade é reportada, ela se torna imediatamente nossa principal preocupação, com um contribuidor em tempo integral parando tudo para trabalhar nela. Para reportar uma vulnerabilidade, por favor envie email para [security@vuejs.org](mailto:security@vuejs.org).
 
-When a vulnerability is reported, it immediately becomes our top concern, with a full-time contributor dropping everything to work on it. To report a vulnerability, please email [security@vuejs.org](mailto:security@vuejs.org).
+Mesmo que a descoberta de novas vulnerabilidades seja rara, nós também recomendamos sempre usar as últimas versões do Vue e suas bibliotecas de apoio para assegurar que sua aplicação se mantenha o mais segura possível.
 
-While the discovery of new vulnerabilities is rare, we also recommend always using the latest versions of Vue and its official companion libraries to ensure your application remains as secure as possible.
+## Regra No.1: Nunca Utilize Templates Não-confiáveis
 
-## Rule No.1: Never Use Non-trusted Templates
-
-The most fundamental security rule when using Vue is **never use non-trusted content as your component template**. Doing so is equivalent to allowing arbitrary JavaScript execution in your application - and worse, could lead to server breaches if the code is executed during server-side rendering. An example of such usage:
+A regra de segurança mais fundamental quando se utiliza Vue é **nunca utilizar conteúdo não-confiável como template do seu componente**. Fazer isso é equivalente a liberar execução de JavaScript arbitrário em sua aplicação - e pior, isso pode levar a violações ao servidor se o código é executado durante a renderização no lado do servidor. Um exemplo dessa utilização:
 
 ``` js
 new Vue({
   el: '#app',
-  template: `<div>` + userProvidedString + `</div>` // NEVER DO THIS
+  template: `<div>` + userProvidedString + `</div>` // NUNCA FAÇA ISSO
 })
 ```
 
-Vue templates are compiled into JavaScript, and expressions inside templates will be executed as part of the rendering process. Although the expressions are evaluated against a specific rendering context, due to the complexity of potential global execution environments, it is impractical for a framework like Vue to completely shield you from potential malicious code execution without incurring unrealistic performance overhead. The most straightforward way to avoid this category of problems altogether is to make sure the contents of your Vue templates are always trusted and entirely controlled by you.
+Os templates Vue são compilados em JavaScript, e expressões dentro dos templates serão executadas como parte do processo de renderização. Ainda que as expressões sejam processadas em um contexto específico de renderização, devido a complexidade do ambiente de execução global, não é prático para um framework como o Vue proteger completamente contra potencial execução de código malicioso sem que haja uma sobrecarga irreal de performance. A maneira mais direta para evitar essa categoria de problemas completamente é garantir que os templates Vue são confiáveis e inteiramente controlados por você.
 
-## What Vue Does to Protect You
+## O Que o Vue Faz para Proteger Você
 
-### HTML content
+### Conteúdo HTML
 
-Whether using templates or render functions, content is automatically escaped. That means in this template:
+Seja usando templates ou funções de renderização, conteúdo é automaticamente convertido como texto. Isso significa que nesse template:
 
 ```html
 <h1>{{ userProvidedString }}</h1>
 ```
 
-if `userProvidedString` contained:
+se `userProvidedString` contiver:
 
 ```js
 '<script>alert("hi")</script>'
 ```
 
-then it would be escaped to the following HTML:
+então ele será convertido como texto de acordo com o HTML seguinte:
 
 ```html
 &lt;script&gt;alert(&quot;hi&quot;)&lt;/script&gt;
 ```
 
-thus preventing the script injection. This escaping is done using native browser APIs, like `textContent`, so a vulnerability can only exist if the browser itself is vulnerable.
+para prevenir a injeção de script. Essa conversão para texto é feita usando APIs nativas do navegador, como `textContent`, então uma vulnerabilidade só pode existir se o navegador em si estiver vulnerável.
 
-### Attribute bindings
+### Interligações de Atributo
 
-Similarly, dynamic attribute bindings are also automatically escaped. That means in this template:
+De maneira similar, interligações de atributos dinâmica também são automaticamente convertidas como texto. Isso significa que ensse template:
 
 ```html
 <h1 v-bind:title="userProvidedString">
-  hello
+  oi
 </h1>
 ```
 
-if `userProvidedString` contained:
+se `userProvidedString` contiver:
 
 ```js
-'" onclick="alert(\'hi\')'
+'" onclick="alert(\'oi\')'
 ```
 
-then it would be escaped to the following HTML:
+então ele será convertido como texto de acordo com o seguinte HTML:
 
 ```html
-&quot; onclick=&quot;alert('hi')
+&quot; onclick=&quot;alert('oi')
 ```
 
-thus preventing the close of the `title` attribute to inject new, arbitrary HTML. This escaping is done using native browser APIs, like `setAttribute`, so a vulnerability can only exist if the browser itself is vulnerable.
+para prevenir que o fechamento do atributo `title` injete HTML novo e arbitrário. Essa conversão para texto é feita usando APIs nativas do navegador, como `textContent`, então uma vulnerabilidade só pode existir se o navegador em si estiver vulnerável.
 
-## Potential Dangers
+## Perigos Potenciais
 
-In any web application, allowing unsanitized, user-provided content to be executed as HTML, CSS, or JavaScript is potentially dangerous, so should be avoided wherever possible. There are times when some risk be acceptable though.
+Qualquer aplicação web que permita que conteúdo provido pelo usuário sem sanitização seja executado como HTML, CSS ou JavaScript é potencialmente perigosa, então isso deve ser evitado sempre que possível. No entanto, existem alguns casos em que esse risco pode ser aceito.
 
-For example, services like CodePen and JSFiddle allow user-provided content to be executed, but it's in a context where this is expected and sandboxed to some extent inside iframes. In the cases when an important feature inherently requires some level of vulnerability, it's up to your team to weigh the importance of the feature against the worst-case scenarios the vulnerability enables.
+Por exemplo, serviços como CodePen e JSFiddle permitem que conteúdo provido pelo usuário seja executado, mas é em um contexto onde isso é esperado e tratado como sandbox dentro de iframes. Nesses casos quando uma importante funcionalidade inerentemente requer algum nível de vulnerabilidade, está na responsabilidade de seu time pesar a importânncia da funcionalidade contra os piores casos dos cenários que a vulnerabilidade habilita.
 
-### Injecting HTML
+### Injetando HTML
 
-As you learned earlier, Vue automatically escapes HTML content, preventing you from accidentally injecting executable HTML into your application. However, in cases where you know the HTML is safe, you can explicitly render HTML content:
+Como você aprendeu anteriormente, o Vue automaticamente converte conteúdo HTML como texto se necessário, prevenindo que você acidentalmente injete um HTML executável em sua aplicação. De qualquer forma, em casos que você saiba que o HTML é confiável, você poderá renderizar explicitamente o conteúdo HTML:
 
-- Using a template:
+- Usando um template:
   ```html
   <div v-html="userProvidedHtml"></div>
   ```
 
-- Using a render function:
+- Usando uma função de renderização:
   ```js
   h('div', {
     domProps: {
@@ -98,49 +95,49 @@ As you learned earlier, Vue automatically escapes HTML content, preventing you f
   })
   ```
 
-- Using a render function with JSX:
+- Usando uma função de renderização com JSX:
   ```jsx
   <div domPropsInnerHTML={this.userProvidedHtml}></div>
   ```
 
-<p class="tip">Note that user-provided HTML can never be considered 100% safe unless it's in a sandboxed iframe or in a part of the app where only the user who wrote that HTML can ever be exposed to it. Additionally, allowing users to write their own Vue templates brings similar dangers.</p>
+<p class="tip">Observe que HTML provido pelo usuário nunca será considerado 100% confiável a não ser que esteja em um iframe tratado como sandbox ou em uma parte da aplicação onde apenas o usuário que escreveu esse código será exposto a ele. Adicionalmente, liberar usuários a escrever seus próprios templates Vue geram perigos similares.</p>
 
-### Injecting URLs
+### Injetando URLs
 
-In a URL like this:
+Em uma URL como essa:
 
 ```html
 <a v-bind:href="userProvidedUrl">
-  click me
+  clique aqui
 </a>
 ```
 
-There's a potential security issue if the URL has not been "sanitized" to prevent JavaScript execution using `javascript:`. There are libraries such as [sanitize-url](https://www.npmjs.com/package/@braintree/sanitize-url) to help with this, but note:
+Existe um problema potencial de segurança se a URL não tiver sido sanitizada para prevenir execução usando `javascript:`. Existem bibliotecas como [sanitize-url](https://www.npmjs.com/package/@braintree/sanitize-url) para nos ajudar com isso, mas observe:
 
-<p class="tip">If you're ever doing URL sanitization on the frontend, you already have a security issue. User-provided URLs should always be sanitized by your backend before even being saved to a database. Then the problem is avoided for _every_ client connecting to your API, including native mobile apps. Also note that even with sanitized URLs, Vue cannot help you guarantee that they lead to safe destinations.</p>
+<p class="tip">Se você estiver fazendo sanitização em algum lugar do frontend, você já tem um problema de segurança. URLs providas por usuários sempre devem ser sanitizadas pelo seu backend antes de serem salvas em um banco de dados. Então o problema será evitado em _qualquer_ cliente que esteja conectado a sua API, incluindo aplicações nativas para celular. Também observe que ainda que você sanitize URLs, o Vue não pode ajudá-lo a garantir que elas levarão a destinos seguros.</p>
 
-### Injecting Styles
+### Injetando Estilos
 
-Looking at this example:
+Veja este exemplo:
 
 ```html
 <a
   v-bind:href="sanitizedUrl"
   v-bind:style="userProvidedStyles"
 >
-  click me
+  clique aqui
 </a>
 ```
 
-let's assume that `sanitizedUrl` has been sanitized, so that it's definitely a real URL and not JavaScript. With the `userProvidedStyles`, malicious users could still provide CSS to "click jack", e.g. styling the link into a transparent box over the "Log in" button. Then if `https://user-controlled-website.com/` is built to resemble the login page of your application, they might have just captured a user's real login information.
+vamos assumir que `sanitizedUrl` foi sanitizada, então é definitivamente uma URL e não um JavaScript. Com a `userProvidedStyles`, usuários maliciosos ainda podem prover CSS para "furto de clique", por ex. estilizando o link como uma caixa transparente acima do botão de "Log in". Então se `https://user-controlled-website.com/` é criado para simular a página de login da sua aplicaçao, eles podem capturar informação real de login de usuários.
 
-You may be able to imagine how allowing user-provided content for a `<style>` element would create an even greater vulnerability, giving that user full control over how to style the entire page. That's why Vue prevents rendering of style tags inside templates, such as:
+Você deve imaginar que liberando conteúdo provido pelo usuário para um elemento `<style>` vá criar uma vulnerabilidade ainda maior, dando àquele usuário controle total sobre como estilizar a página inteira. É por isso que o Vue previne rederização de tags de estilo dentro de templates, como abaixo:
 
 ```html
 <style>{{ userProvidedStyles }}</style>
 ```
 
-To keep your users fully safe from click jacking, we recommend only allowing full control over CSS inside a sandboxed iframe. Alternatively, when providing user control through a style binding, we recommend using its [object syntax](class-and-style.html#Object-Syntax-1) and only allowing users to provide values for specific properties it's safe for them to control, like this:
+Para manter seus usuários inteiramente protegidos de furto de click, nós recomendamos apenas liberar controle total sobre CSS dentro de um iframe de sandbox. Alternativamente, quando prover ao usuário controle sobre uma interligação de estilo, nós recomendamos usar sua [sintaxe de objeto](class-and-style.html#Object-Syntax-1) e apenas liberar ao usuário prover valores para propriedades específicas que sejam seguras para ele controlar, como no exemplo:
 
 ```html
 <a
@@ -150,39 +147,39 @@ To keep your users fully safe from click jacking, we recommend only allowing ful
     background: userProvidedBackground
   }"
 >
-  click me
+  clique aqui
 </a>
 ```
 
-### Injecting JavaScript
+### Injetando JavaScript
 
-We strongly discourage ever rendering a `<script>` element with Vue, since templates and render functions should never have side effects. However, this isn't the only way to include strings that would be evaluated as JavaScript at runtime.
+Nós desencorajamos fortemente qualquer renderização de um elemento `<script>` no Vue, templates e funções de renderização nunca devem ter efeitos colaterais. No entanto, essa não é a única forma de incluir strings que podem ser processadas como JavaScript em tempo de execução.
 
-Every HTML element has attributes with values accepting strings of JavaScript, such as `onclick`, `onfocus`, and `onmouseenter`. Binding user-provided JavaScript to any of these event attributes is a potential security risk, so should be avoided.
+Cada elemento HTML tem atributos com valores que aceitam strings de JavaScript, assim como `onclick`, `onfocus`, e `onmouseenter`. Interligar JavaScript provido pelo usuário a qualquer desses atributos de evento é um risco potencial de segurança, então deveria ser evitado.
 
-<p class="tip">Note that user-provided JavaScript can never be considered 100% safe unless it's in a sandboxed iframe or in a part of the app where only the user who wrote that JavaScript can ever be exposed to it.</p>
+<p class="tip">Observe que JavaScript provido pelo usuário nunca será considerado 100% confiável a não ser que esteja em um iframe tratado como sandbox ou em uma parte da aplicação onde apenas o usuário que escreveu esse código JavaScript será exposto a ele.</p>
 
-Sometimes we receive vulnerability reports on how it's possible to do cross-site scripting (XSS) in Vue templates. In general, we do not consider such cases to be actual vulnerabilities, because there's no practical way to protect developers from the two scenarios that would allow XSS:
+Algumas vezes recebemos avisos de vulnerabilidades sobre como é possível fazer cross-site scripting (XSS) nos templates Vue. Em geral, nós não consideramos esses casos como vulnerabilidades atuais, porque não existe uma maneira prática de proteger desenvolvedores de dois cenários que permitem XSS:
 
-1. The developer is explicitly asking Vue to render user-provided, unsanitized content as Vue templates. This is inherently unsafe and there's no way for Vue to know the origin.
+1. O desenvolvedor está explicitamente pedindo ao Vue para renderizar conteúdo provido pelo usuário sem sanitização como templates Vue. Isso é inerentemente inseguro e não existe uma maneira de o Vue saber a origem.
 
-2. The developer is mounting Vue to an entire HTML page which happens to contain server-rendered and user-provided content. This is fundamentally the same problem as \#1, but sometimes devs may do it without realizing. This can lead to possible vulnerabilities where the attacker provides HTML which is safe as plain HTML but unsafe as a Vue template. The best practice is to never mount Vue on nodes that may contain server-rendered and user-provided content.
+2. O desenvolvedor está montando um Vue como uma página HTML inteira em que existe conteúdo renderizado no lado do servidor e conteúdo provido pelo usuário. Isso é fundamentalmente o mesmo problema de \#1, mas as vezes os desenvolvedores podem fazê-lo sem intenção. Isso leva a possíveis vulnerabilidades em que o atacante provê HTML que é seguro enquanto HTML simples mas inseguro como um template Vue. A melhor prática é nunca montar Vue em nós que podem conter conteúdo renderizado no lado do servidor e provido pelo usuário.
 
-## Best Practices
+## Melhores Práticas
 
-The general rule is that if you allow unsanitized, user-provided content to be executed (as either HTML, JavaScript, or even CSS), you might be opening yourself up to attacks. This advice actually holds true whether using Vue, another framework, or even no framework.
+Como regra geral se você permite que conteúdo provido pelo usuário sem sanitização seja executado (seja como HTML, JavaScript, ou até mesmo CSS), você pode tornar você mesmo aberto a ataques. Esse conselho se aplica independentemente de você usar Vue, outro framework, ou até mesmo nenhum framework.
 
-Beyond the recommendations made above for [Potential Dangers](#Potential-Dangers), we also recommend familiarizing yourself with these resources:
+Além das recomendações que fizemos acima para [Perigos Potenciais](#Perigos-Potenciais), nós também recomendamos que você se familiarize com esses recursos:
 
-- [HTML5 Security Cheat Sheet](https://html5sec.org/)
-- [OWASP's Cross Site Scripting (XSS) Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
+- [Folha de Dicas para Segurança HTML5](https://html5sec.org/)
+- [Folha de Dicas para Prevenção de Cross Site Scripting (XSS) da OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
 
-Then use what you learn to also review the source code of your dependencies for potentially dangerous patterns, if any of them include 3rd-party components or otherwise influence what's rendered to the DOM.
+Então use o que você aprender para também revisar o código fonte de suas dependências para utilização de padrões potencialmente perigosos, se qualquer uma delas incluir componentes de terceiros ou influenciar no que é renderizado no DOM.
 
-## Backend Coordination
+## Coordenação com Backend
 
-HTTP security vulnerabilities, such as cross-site request forgery (CSRF/XSRF) and cross-site script inclusion (XSSI), are primarily addressed on the backend, so aren't a concern of Vue's. However, it's still a good idea to communicate with your backend team to learn how to best interact with their API, e.g. by submitting CSRF tokens with form submissions.
+Vulnerabilidades de segurança HTTP, tal como cross-site request forgery (CSRF/XSRF) e cross-site script inclusion (XSSI), são primariamente endereçadas no backend, então não são preocupação do Vue. No entanto, ainda assim é uma boa ideia se comunicar com o seu time de backend para entender de que forma melhor interagir com a sua API, por ex. submentendo tokens CSRF na submissão de formulários.
 
-## Server-Side Rendering (SSR)
+## Renderização no Lado do Servidor (SSR)
 
-There are some additional security concerns when using SSR, so make sure to follow the best practices outlined throughout [our SSR documentation](https://ssr.vuejs.org/) to avoid vulnerabilities.
+Existem algumas preocupações adicionais de segurança quando se utiliza SSR, então tenha certeza de seguir as melhores práticas descritas em [nossa documentação SSR documentation](https://ssr.vuejs.org/) para evitar vulnerabilidades.
