@@ -603,7 +603,7 @@ No exemplo acima, `currentTabComponent` pode conter:
 
 Veja [esse exemplo](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-dynamic-components) para experimentar com todo o código, ou [essa versão](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-dynamic-components-with-binding) para um exemplo ligando ao objeto de opções de um componente em vez de seu nome registrado.
 
-Keep in mind that this attribute can be used with regular HTML elements, however they will be treated as components, which means all attributes **will be bound as DOM attributes**. For some properties such as `value` to work as you would expect, you will need to bind them using the [`.prop` modifier](../api/#v-bind).
+Tenha em mente que esse atributo pode ser utilizado com elementos HTML comuns, porém, eles serão tratados como componentes, o que significa que todos os atributos **serão ligados (bind) como atributos da DOM**. Para algumas propriedades, como `value`, funcionarem da maneira esperada, você terá que realizar o bind nestas propriedades utilizando o [modificador `.prop`](../api/#v-bind).
 
 Isso é tudo que você precisa saber sobre componentes dinâmicos por hora mas, assim que você terminar de ler essa página e se sentir confortável com o conteúdo, recomendamos retornar mais tarde para ler o guia completo sobre componentes [Dinâmicos & Assíncronos](components-dynamic-async.html).
 
