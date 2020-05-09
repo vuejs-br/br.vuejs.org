@@ -1887,7 +1887,7 @@ Vue.component('TodoItem', {
 
 Gerenciar o estado com `this.$root` e/ou usando um [barramento de eventos global](https://vuejs.org/v2/guide/migration.html#dispatch-and-broadcast-replaced) pode ser conveniente para casos muito simples, mas não são apropriados para a maioria dos aplicativos.
 
-Vuex is the [official flux-like implementation](https://vuejs.org/v2/guide/state-management.html#Official-Flux-Like-Implementation) for Vue e oferece não apenas um local central para gerenciar o estado, mas também ferramentas para organizar, rastrear e depurar alterações de estado. It integrates well in the Vue ecosystem (including full [Vue DevTools](https://vuejs.org/v2/guide/installation.html#Vue-Devtools) support).
+Vuex é a [implementação oficial estilo flux](https://br.vuejs.org/v2/guide/state-management.html#Implementacao-Oficial-Estilo-Flux) do Vue, e oferece não apenas um local central para gerenciar o estado, mas também ferramentas para organizar, rastrear e depurar alterações de estado. Ele se integra bem ao ecossistema Vue (incluindo suporte completo ao [Vue DevTools](https://br.vuejs.org/v2/guide/installation.html#Vue-Devtools)).
 
 {% raw %}</details>{% endraw %}
 
