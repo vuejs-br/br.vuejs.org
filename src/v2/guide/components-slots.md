@@ -450,7 +450,7 @@ No entanto, mesmo isso apenas arranha a superfície do que _slots_ com escopo s�
 
 ### _Slots_ Nomeados com o atributo `slot`
 
-> <abbr title="Ainda suportado em todas as versões 2.X do Vue, mas não mais recomendada.">Obsoleta</abbr> no 2.6.0+. Veja [aqui](#slots-nomeados) a nova e recomendada sintaxe.
+> <abbr title="Ainda suportado em todas as versões 2.X do Vue, mas não mais recomendada.">Obsoleta</abbr> no 2.6.0+. Veja [aqui](#Slots-Nomeados) a nova e recomendada sintaxe.
 
 Para passar conteúdos para os _slots_ nomeados a partir do pai, use o atributo especial `slot` no `<template>` (usando o componente `<base-layout>` descrito [aqui](#slots-nomeados) como exemplo):
 
