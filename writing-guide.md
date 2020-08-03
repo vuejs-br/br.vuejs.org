@@ -33,11 +33,11 @@ Writing documentation is an exercise in empathy. We're not describing an objecti
 
 ### Style
 
-- **Headings should describe problems**, not solutions. For example, a less effective heading might be "Using props", because it describes a solution. A better heading might be "Passing Data to Child Components with Props", because it provides the context of the problem props solve. Users won't really start paying attention to the explanation of a feature until they have some idea of why/when they'd use it.
-- **When you assume knowledge, declare it** at the beginning and link to resources for less common knowledge that you're expecting.
-- **Introduce only one new concept at a time whenever possible** (including both text and code examples). Even if many people are able to understand when you introduce more than one, there are also many who will become lost - and even those who don't become lost will have depleted more of their cognitive capacity.
-- **Avoid special content blocks for tips and caveats when possible.** It's generally preferable to blend these more naturally into the main content, e.g. by building on examples to demonstrate an edge case.
-- **Don't include more than two interwoven tips and caveats per page.** If you find that more than two tips are needed in a page, consider adding a caveats section to address these issues. The guide is meant to be read straight through, and tips and caveats can be overwhelming or distracting to someone trying to understand the base concepts.
+- **Cabeçalhos devem descrever problemas**, não soluções. Um exemplo, de cabeçalho menos efetivo, poderia ser "Use props", pois descreve a solução. Um cabeçalho melhor poderia ser "Enviando dados para um componente filho com Props", pois há um melhor contexto do que o props resolve. Usuários não começam prestando atenção realmente na explicação da funcionalidade, antes deles terem alguma ideia do porque/quando eles vão usar.
+- **Ao assumir o conhecimento, declare-o** no início, e conecte-o a recursos para um conhecimento menos comum que você espera.
+- **Introduza apenas um conceito por ver sempre que possível** (Tanto o texto quanto o código de exemplo). Mesmo que você introduza mais de um exemplo, alguns irão entender, enquanto outros ficarão perdidos - e mesmo aqueles que não ficarem perdidos, terão sua capacidade cognitiva esgotada mais rápididamente.
+- **Quando possível, evite blocos com conteúdo especial para dicas e advertências .** No geral, é preferível misturá-los de uma forma mais natural dentro do conteúdo principal, ex:. construindo exemplos para demonstrar um caso pontual.
+- **Não inclua mais de duas dicas e adveertências entrelaçadas.** Se mais de duas dicas forem necessárias na página, considere adicionar uma seção de advertências para resolver esses problemas. A intenção desse guia é ser lido diretamente, e as dicas e advertências podem sobrecarregar ou distrair uma pessoa que está tentando entender os conceitos básicos.
 - **Avoid appeals to authority** (e.g. "you should do X, because that's a best practice" or "X is best because it gives you full separation of concerns"). Instead, demonstrate with examples the specific human problems caused and/or solved by a pattern.
 - **When deciding what to teach first, think of what knowledge will provide the best power/effort ratio.** That means teaching whatever will help users solve the greatest pains or greatest number of problems, with the relatively least effort to learn. This helps learners feel smart, powerful, and curious, so their cognitive capacity will drain more slowly.
 - **Unless the context assumes a string template or build system, only write code that works in any environment by the software (e.g. Vue, Vuex, etc).**
@@ -45,13 +45,13 @@ Writing documentation is an exercise in empathy. We're not describing an objecti
 - **Almost always avoid humor (for English docs)**, especially sarcasm and pop culture references, as it doesn't translate well across cultures.
 - **Never assume a more advanced context than you have to.**
 - **In most cases, prefer links between sections of the docs over repeating the same content in multiple sections.** Some repetition in content is unavoidable and even essential for learning. However, too much repetition also makes the docs more difficult to maintain, because a change in the API will require changes in many places and it's easy to miss something. This is a difficult balance to strike.
-- **Specific is better than generic.** For example, a `<BlogPost>` component example is better than `<ComponentA>`.
-- **Relatable is better than obscure.** For example, a `<BlogPost>` component example is better than `<CurrencyExchangeSettings>`.
-- **Be emotionally relevant.** Explanations and examples that relate to something people have experience with and care about will always be more effective.
+- **Específico é melhor que genêrico.** Por exemplo, o componente a seguir `<BlogPost>` é melhor do que `<ComponentA>`.
+- **Legibilidade é melhor que obscuridade.** Por exemplo, o componente a `<BlogPost>` é melhor do que `<CurrencyExchangeSettings>`.
+- **Seja emocionalmente relevante.** Explicações e exemplos que se aproximam a algo que as pessoas tem experiência e se importam, terão sempre mais efetivas.
 - **Always prefer simpler, plainer language over complex or jargony language.** For example:
   - "you can use Vue with a script element" instead of "in order to initiate the usage of Vue, one possible option is to actually inject it via a script HTML element"
   - "function that returns a function" instead of "higher order function"
-- **Avoid language that invalidate struggle**, such as "easy", "just", "obviously", etc. For reference, see [Words To Avoid in Educational Writing](https://css-tricks.com/words-avoid-educational-writing/).
+- **Evite palavras que invalidem o esforço**, como "fácil", "apenas", "obviamente", etc. para refência, veja [Palavras a serem evitadas em uma escrita educacional](https://css-tricks.com/words-avoid-educational-writing/).
 
 ### Grammar
 
