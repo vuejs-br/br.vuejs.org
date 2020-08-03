@@ -42,15 +42,15 @@ Writing documentation is an exercise in empathy. We're not describing an objecti
 - **When deciding what to teach first, think of what knowledge will provide the best power/effort ratio.** That means teaching whatever will help users solve the greatest pains or greatest number of problems, with the relatively least effort to learn. This helps learners feel smart, powerful, and curious, so their cognitive capacity will drain more slowly.
 - **Unless the context assumes a string template or build system, only write code that works in any environment by the software (e.g. Vue, Vuex, etc).**
 - **Show, don't tell.** For example, "To use Vue on a page, you can add this to your HTML" (then show the script tag), instead of "To use Vue on a page, you can add a script element with a src attribute, the value of which should be a link to Vue's compiled source".
-- **Almost always avoid humor (for English docs)**, especially sarcasm and pop culture references, as it doesn't translate well across cultures.
-- **Never assume a more advanced context than you have to.**
+- **Quase sempre, evite humor (Para documentos em inglês)**, especialmente referências da cultura pop e sarcasmo, visto que uma tradução não ocorre bem entre culturas.
+- **Não assuma um contexto mais avançado do que o necessário.**
 - **In most cases, prefer links between sections of the docs over repeating the same content in multiple sections.** Some repetition in content is unavoidable and even essential for learning. However, too much repetition also makes the docs more difficult to maintain, because a change in the API will require changes in many places and it's easy to miss something. This is a difficult balance to strike.
 - **Específico é melhor que genêrico.** Por exemplo, o componente a seguir `<BlogPost>` é melhor do que `<ComponentA>`.
 - **Legibilidade é melhor que obscuridade.** Por exemplo, o componente a `<BlogPost>` é melhor do que `<CurrencyExchangeSettings>`.
 - **Seja emocionalmente relevante.** Explicações e exemplos que se aproximam a algo que as pessoas tem experiência e se importam, terão sempre mais efetivas.
-- **Always prefer simpler, plainer language over complex or jargony language.** For example:
-  - "you can use Vue with a script element" instead of "in order to initiate the usage of Vue, one possible option is to actually inject it via a script HTML element"
-  - "function that returns a function" instead of "higher order function"
+- **Sempre prefira, simplicidade, e uma linguagem clara ao invês de complexidade e jargões de linguagem.** Por exemplo:
+  - "Você pode usar Vue com um script de elemento" ao invês de "a fim de iniciar o uso do Vue, uma opção possível é é injetar-lo através de um elemento de script HTML"
+  - "Uma função que retorna uma função" ao invês de "função de ordem superior"
 - **Evite palavras que invalidem o esforço**, como "fácil", "apenas", "obviamente", etc. para refência, veja [Palavras a serem evitadas em uma escrita educacional](https://css-tricks.com/words-avoid-educational-writing/).
 
 ### Grammar
