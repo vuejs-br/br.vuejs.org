@@ -29,29 +29,29 @@ Writing documentation is an exercise in empathy. We're not describing an objecti
 - **Style Guide**: There are necessarily some key pieces in development that need a decision, but are not core to the API. The style guide provides educated, opinionated recommendations to help guide these decisions. They shouldn't be followed blindly, but can help teams save time by being aligned on smaller details.
 - **Cookbook**: Recipes in the cookbook are written with some assumption of familiarity with Vue and its ecosystem. Each is a highly structured document that walks through some common implementation details that a Vue dev might encounter.
 
-## Writing & Grammar
+## Escrita e Gramática
 
-### Style
+### Estilo
 
-- **Headings should describe problems**, not solutions. For example, a less effective heading might be "Using props", because it describes a solution. A better heading might be "Passing Data to Child Components with Props", because it provides the context of the problem props solve. Users won't really start paying attention to the explanation of a feature until they have some idea of why/when they'd use it.
-- **When you assume knowledge, declare it** at the beginning and link to resources for less common knowledge that you're expecting.
-- **Introduce only one new concept at a time whenever possible** (including both text and code examples). Even if many people are able to understand when you introduce more than one, there are also many who will become lost - and even those who don't become lost will have depleted more of their cognitive capacity.
-- **Avoid special content blocks for tips and caveats when possible.** It's generally preferable to blend these more naturally into the main content, e.g. by building on examples to demonstrate an edge case.
-- **Don't include more than two interwoven tips and caveats per page.** If you find that more than two tips are needed in a page, consider adding a caveats section to address these issues. The guide is meant to be read straight through, and tips and caveats can be overwhelming or distracting to someone trying to understand the base concepts.
-- **Avoid appeals to authority** (e.g. "you should do X, because that's a best practice" or "X is best because it gives you full separation of concerns"). Instead, demonstrate with examples the specific human problems caused and/or solved by a pattern.
-- **When deciding what to teach first, think of what knowledge will provide the best power/effort ratio.** That means teaching whatever will help users solve the greatest pains or greatest number of problems, with the relatively least effort to learn. This helps learners feel smart, powerful, and curious, so their cognitive capacity will drain more slowly.
-- **Unless the context assumes a string template or build system, only write code that works in any environment by the software (e.g. Vue, Vuex, etc).**
-- **Show, don't tell.** For example, "To use Vue on a page, you can add this to your HTML" (then show the script tag), instead of "To use Vue on a page, you can add a script element with a src attribute, the value of which should be a link to Vue's compiled source".
-- **Almost always avoid humor (for English docs)**, especially sarcasm and pop culture references, as it doesn't translate well across cultures.
-- **Never assume a more advanced context than you have to.**
-- **In most cases, prefer links between sections of the docs over repeating the same content in multiple sections.** Some repetition in content is unavoidable and even essential for learning. However, too much repetition also makes the docs more difficult to maintain, because a change in the API will require changes in many places and it's easy to miss something. This is a difficult balance to strike.
-- **Specific is better than generic.** For example, a `<BlogPost>` component example is better than `<ComponentA>`.
-- **Relatable is better than obscure.** For example, a `<BlogPost>` component example is better than `<CurrencyExchangeSettings>`.
-- **Be emotionally relevant.** Explanations and examples that relate to something people have experience with and care about will always be more effective.
-- **Always prefer simpler, plainer language over complex or jargony language.** For example:
-  - "you can use Vue with a script element" instead of "in order to initiate the usage of Vue, one possible option is to actually inject it via a script HTML element"
-  - "function that returns a function" instead of "higher order function"
-- **Avoid language that invalidate struggle**, such as "easy", "just", "obviously", etc. For reference, see [Words To Avoid in Educational Writing](https://css-tricks.com/words-avoid-educational-writing/).
+- **Cabeçalhos devem descrever problemas**, não soluções. Um exemplo, de cabeçalho menos efetivo, poderia ser "Use props", pois descreve a solução. Um cabeçalho melhor poderia ser "Enviando dados para um componente filho com Props", pois há um melhor contexto do que o props resolve. Usuários não começam prestando atenção realmente na explicação da funcionalidade, antes deles terem alguma ideia do porque/quando eles vão usá-la.
+- **Ao assumir o conhecimento, declare-o** no início, e conecte-o a recursos para um conhecimento menos comum que você espera.
+- **Introduza apenas um conceito por vez sempre que possível** (Tanto o texto quanto o código de exemplo). Mesmo que você introduza mais de um exemplo, alguns irão entender, enquanto outros ficarão perdidos - e mesmo aqueles que não ficarem perdidos, terão sua capacidade cognitiva esgotada mais rapidamente.
+- **Evite blocos com conteúdo especial para dicas e advertências.** No geral, é preferível misturá-los de uma forma mais natural dentro do conteúdo principal, ex.: construindo exemplos para demonstrar um caso pontual.
+- **Não inclua mais de duas dicas e advertências entrelaçadas.** Se mais de duas dicas forem necessárias na página, considere adicionar uma seção de advertências para resolver esses problemas. A intenção deste guia é ser lido diretamente, e as dicas e advertências podem sobrecarregar ou distrair uma pessoa que está tentando entender os conceitos básicos.
+- **Evite apelar à autoridade** (por ex. "você deveria fazer assim, pois essa é a melhor prática" ou "fazer assim é melhor, pois te dará uma maior separação das partes"). Ao invés disso, demonstre com exemplos mais humanos da causa do problema e/ou a solução por um padrão.
+- **Quando decidir o que ensinar, primeiro, pense no conhecimento que será mostrado e a melhor relação esforço/energia** Isso significa que ensinar qualquer coisa, irá ajudar o usuário a resolver grandes incômodos ou inúmeros problemas, com um pouco menos de esforço para aprender. Isso ajuda o aprendiz a se sentir esperto, confiante e curioso, então, sua capacidade cognitiva será drenada mais lentamente.
+- **A não ser que o contexto assuma que há uma string template ou um sistema de produção, escreva um código que funcione em qualquer ambiente pelo software (por ex.: Vue, Vuex, etc.).**
+- **Mostre, não diga.** Por exemplo, "Para usar Vue em uma página, você pode adicionar isso ao seu HTML" (Então mostre uma tag de script), ao invés de, "Para usar Vue em uma página, você pode adicionar um elemento de script com um atributo src, o valor de cada pode ser um link para código compilado do Vue".
+- **Quase sempre, evite humor (Para documentos em inglês)**, especialmente referências da cultura pop e sarcasmo, visto que uma tradução não ocorre bem entre culturas.
+- **Não assuma um contexto mais avançado do que o necessário.**
+- **Em muitos casos, prefira link's entre seções do documento do que repetir o mesmo conteúdo em várias partes** Algumas repetições no conteúdo são inevitáveis e até essenciais para o aprendizado. No entanto, muita repetição também torna o documento mais difícil de manter, pois uma alteração na API acarretará em uma mudança em vários lugares, o que torna fácil perder alguma coisa. Essa é uma balança difícil de se acertar.
+- **Específico é melhor que genêrico.** Por exemplo, o componente a seguir `<BlogPost>` é melhor do que `<ComponentA>`.
+- **Legibilidade é melhor que obscuridade.** Por exemplo, o componente a `<BlogPost>` é melhor do que `<CurrencyExchangeSettings>`.
+- **Seja emocionalmente relevante.** Explicações e exemplos que se aproximam a algo que as pessoas têm experiência e se importam, serão sempre mais efetivas.
+- **Sempre prefira simplicidade e uma linguagem clara ao invés de complexidade e jargões de linguagem.** Por exemplo:
+  - "Você pode usar Vue com um elemento de script" ao invés de "a fim de iniciar o uso do Vue, uma opção possível, é injetar-lo através de um elemento de script HTML"
+  - "Uma função que retorna uma função" ao invés de "função de ordem superior"
+- **Evite palavras que invalidam o esforço**, como "fácil", "apenas", "obviamente", etc. para refência, veja [Palavras a serem evitadas em uma escrita educacional](https://css-tricks.com/words-avoid-educational-writing/).
 
 ### Grammar
 
