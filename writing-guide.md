@@ -29,12 +29,12 @@ Escrever documentação é um exercício de empatia. Nós não estamos descreven
 - **Guia de Estilo**: Existem algumas peças chave no desenvolvimento que precisam de decisões, mas não são o principal para a API. O guia de estilo fornece de maneira educada, recomendações baseadas na sua opinião para ajudar a guiar nessas escolhas. Isso não deve ser seguido cegamente, mas pode ajudar os times a economizarem tempo para estarem alinhados nos mínimos detalhes.
 - **Livro de Receitas**: Receitas no livro de receitas são escritas com certa suposição sobre a familiaridade com o Vue e seu ecossistema. Cada uma é um documenta altamente estrutura que percorre algumas implementações comuns com detalhes que um desenvolvedor Vue pode encontrar.
 
-## Writing & Grammar
+##Escrita e Gramática
 
-### Style
+### Modelo
 
-- **Headings should describe problems**, not solutions. For example, a less effective heading might be "Using props", because it describes a solution. A better heading might be "Passing Data to Child Components with Props", because it provides the context of the problem props solve. Users won't really start paying attention to the explanation of a feature until they have some idea of why/when they'd use it.
-- **When you assume knowledge, declare it** at the beginning and link to resources for less common knowledge that you're expecting.
+- **Cabeçalhos(titulos) devem descrever problemas**, não soluções. Por exemplo, por menos efetivo que um cabeçalho mesmo usando "props", porque isso descreve uma solução. Um jeito melhor para um cabeçalho seria "Passando Dados com Props", isso inclui um contexto para possíveis soluções. Usuários não se atentam para explicação antes de terem ideia do que se trata e quando poderá usar isso.
+- ** Quando você souber, diga** no começo com links ou fontes para que seja de conhecimento comum.
 - **Introduce only one new concept at a time whenever possible** (including both text and code examples). Even if many people are able to understand when you introduce more than one, there are also many who will become lost - and even those who don't become lost will have depleted more of their cognitive capacity.
 - **Avoid special content blocks for tips and caveats when possible.** It's generally preferable to blend these more naturally into the main content, e.g. by building on examples to demonstrate an edge case.
 - **Don't include more than two interwoven tips and caveats per page.** If you find that more than two tips are needed in a page, consider adding a caveats section to address these issues. The guide is meant to be read straight through, and tips and caveats can be overwhelming or distracting to someone trying to understand the base concepts.
