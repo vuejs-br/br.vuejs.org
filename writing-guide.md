@@ -45,7 +45,7 @@ Escrever documentação é um exercício de empatia. Nós não estamos descreven
 - **Evite, ao máximo, humor (para documentos em inglês)**, especialmente sarcasmo, piadas geográficas ou culturais. Quando é traduzido pode não saor bem em outras culturas.
 - **Nunca tente fazer algo que não está ao seu alcance.**
 - **Em vários casos, prefira links entre as sessões dos docs de forma que evite a repetição desnecessária do mesmo conteúdo.**  Algumas repetições são invevitáveis e, às vezes, essenciais para o aprendizado. No entando, quanto mais repetições, mais complicado fica a documentação para atualizar, porque uma pequena mudança no API requer mudanças em vários outros locais, fácil de esquecer algo. Isso é algo dificil de conciliar.
-- **Seja bastante especéfico, tente ser menos genérico !.** Exemplo, um <BlogPost> é um exemplo melhor que <ComponentA>.
+- **Seja bastante especéfico, tente ser menos genérico !.** Exemplo, um `<BlogPost>` é um exemplo melhor que `<ComponentA>`.
 - **Descrição é o melhor caminho para o esclarecimento** Por exemplo, um <link> tem explicação melhor que <a `<BlogPost>` component example is better than `<DetalhesSobreMoedas>`.
 - **Seja compreensível**.  Explicações e exemplos que relatam alguma experiência de vida ou demonstra sensibilidade sobre o assunto será sempre mais efetivo. 
 - **Sempre dê preferência a uma linguagem simples e de fácil entendimento, evitando jargõe.** Exemplo:
