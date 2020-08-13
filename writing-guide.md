@@ -29,58 +29,59 @@ Escrever documentação é um exercício de empatia. Nós não estamos descreven
 - **Guia de Estilo**: Existem algumas peças chave no desenvolvimento que precisam de decisões, mas não são o principal para a API. O guia de estilo fornece de maneira educada, recomendações baseadas na sua opinião para ajudar a guiar nessas escolhas. Isso não deve ser seguido cegamente, mas pode ajudar os times a economizarem tempo para estarem alinhados nos mínimos detalhes.
 - **Livro de Receitas**: Receitas no livro de receitas são escritas com certa suposição sobre a familiaridade com o Vue e seu ecossistema. Cada uma é um documenta altamente estrutura que percorre algumas implementações comuns com detalhes que um desenvolvedor Vue pode encontrar.
 
-##Escrita e Gramática
+## Escrita e Gramática
 
 ### Modelo
 
-- **Cabeçalhos(titulos) devem descrever problemas**, não soluções. Por exemplo, por menos efetivo que um cabeçalho mesmo usando "props", porque isso descreve uma solução. Um jeito melhor para um cabeçalho seria "Passando Dados com Props", isso inclui um contexto para possíveis soluções. Usuários não se atentam para explicação antes de terem ideia do que se trata e quando poderá usar isso.
-- ** Quando você souber, diga** no começo com links ou fontes para que seja de conhecimento comum.
-- **Introduce only one new concept at a time whenever possible** (including both text and code examples). Even if many people are able to understand when you introduce more than one, there are also many who will become lost - and even those who don't become lost will have depleted more of their cognitive capacity.
-- **Avoid special content blocks for tips and caveats when possible.** It's generally preferable to blend these more naturally into the main content, e.g. by building on examples to demonstrate an edge case.
-- **Don't include more than two interwoven tips and caveats per page.** If you find that more than two tips are needed in a page, consider adding a caveats section to address these issues. The guide is meant to be read straight through, and tips and caveats can be overwhelming or distracting to someone trying to understand the base concepts.
-- **Avoid appeals to authority** (e.g. "you should do X, because that's a best practice" or "X is best because it gives you full separation of concerns"). Instead, demonstrate with examples the specific human problems caused and/or solved by a pattern.
-- **When deciding what to teach first, think of what knowledge will provide the best power/effort ratio.** That means teaching whatever will help users solve the greatest pains or greatest number of problems, with the relatively least effort to learn. This helps learners feel smart, powerful, and curious, so their cognitive capacity will drain more slowly.
-- **Unless the context assumes a string template or build system, only write code that works in any environment by the software (e.g. Vue, Vuex, etc).**
-- **Show, don't tell.** For example, "To use Vue on a page, you can add this to your HTML" (then show the script tag), instead of "To use Vue on a page, you can add a script element with a src attribute, the value of which should be a link to Vue's compiled source".
-- **Almost always avoid humor (for English docs)**, especially sarcasm and pop culture references, as it doesn't translate well across cultures.
-- **Never assume a more advanced context than you have to.**
-- **In most cases, prefer links between sections of the docs over repeating the same content in multiple sections.** Some repetition in content is unavoidable and even essential for learning. However, too much repetition also makes the docs more difficult to maintain, because a change in the API will require changes in many places and it's easy to miss something. This is a difficult balance to strike.
-- **Specific is better than generic.** For example, a `<BlogPost>` component example is better than `<ComponentA>`.
-- **Relatable is better than obscure.** For example, a `<BlogPost>` component example is better than `<CurrencyExchangeSettings>`.
-- **Be emotionally relevant.** Explanations and examples that relate to something people have experience with and care about will always be more effective.
-- **Always prefer simpler, plainer language over complex or jargony language.** For example:
-  - "you can use Vue with a script element" instead of "in order to initiate the usage of Vue, one possible option is to actually inject it via a script HTML element"
-  - "function that returns a function" instead of "higher order function"
-- **Avoid language that invalidate struggle**, such as "easy", "just", "obviously", etc. For reference, see [Words To Avoid in Educational Writing](https://css-tricks.com/words-avoid-educational-writing/).
+- **Cabeçalhos (titulos) devem descrever problemas**, não soluções. Por exemplo, um cabeçalho menos efetivo seria usando "props", porque isso descreve uma solução. Um jeito melhor para um cabeçalho seria "Passando Dados com Props", isso inclui um contexto para possíveis soluções. Usuários não se atentam para explicação antes de terem ideia do que se trata e quando poderá usar isso.
+- **Quando você souber, diga**  no começo com links ou fontes para que seja de conhecimento comum.
+- **Apresente apenas um conceito por vez, sempre que possível** (incluindo código e texto). Mesmo se muitas pessoas forem capaz de entender o que apresentou, muitas outras também não conseguirão entender e, mesmo aqueles que não ficaram perdidos, poderão perder bastante tempo tentando entender sua lógica.
+- **Evite avisos e observações sempre que possível.** É mais viável criar exemplos com casos específicos.
+- **Evite utlizar mais que duas dicas ou advertências por página..** Se você considera necessário adicionar mais que duas dicas ou avisos na página, considere adicionar uma sessão para evidenciar os erros. O guia é feito para ser rápido e direto, dicas e advêrtencias podem acabar distraindo ou confundindo o usuário logo nos conceitos básicos. 
+- **Evite soar aturotário.** Exemplo: "Você deve usar X, porque isso é uma boa prática". " X é melhor porque da a você uma melhor divisão de tarefas." Ao invés desses exemplos, demonstre estudos especificando artigos ou várias tarefas resolvidas, assim monstando o porquê usar X método.
+- **Quando for ensinar algo, tenha em mente quais conceitos apresentam melhor eficácia e eficiência.** Isso quer dizer que, os melhores metodos são os práticos e rápidos que demandem menos esforços para aprender. Isso ajuda os iniciantes a se sentirem entusiasmados, inteligentes, e motivados, dessa forma, seu desgaste se torna lento.
+- **A menos que o contexto necessite de um modelo de string ou algo especifico, apenas escreva codigos que sejam multiplataforma. Ex: Vuem Vuex, etc**
+- **Não fale, mostre !** Por exemplo, "Para usar a página do Vue, você pode adicionar isso ao HTML ( então, moste o script), ao invés de: "Para usar a página do Vue, você pode adicionar um script com um atributo src, o resultado deve retornar um link para o compilador do Vue."
+- **Evite, ao máximo, humor (para documentos em inglês)**, especialmente sarcasmo, piadas geográficas ou culturais. Quando é traduzido pode não saor bem em outras culturas.
+- **Nunca tente fazer algo que não está ao seu alcance.**
+- **Em vários casos, prefira links entre as sessões dos docs de forma que evite a repetição desnecessária do mesmo conteúdo.**  Algumas repetições são invevitáveis e, às vezes, essenciais para o aprendizado. No entando, quanto mais repetições, mais complicado fica a documentação para atualizar, porque uma pequena mudança no API requer mudanças em vários outros locais, fácil de esquecer algo. Isso é algo dificil de conciliar.
+- **Seja bastante especéfico, tente ser menos genérico !.** Exemplo, um <BlogPost> é um exemplo melhor que <ComponentA>.
+- **Descrição é o melhor caminho para o esclarecimento** Por exemplo, um <link> tem explicação melhor que <a `<BlogPost>` component example is better than `<DetalhesSobreMoedas>`.
+- **Seja compreensível**.  Explicações e exemplos que relatam alguma experiência de vida ou demonstra sensibilidade sobre o assunto será sempre mais efetivo. 
+- **Sempre dê preferência a uma linguagem simples e de fácil entendimento, evitando jargõe.** Exemplo:
+  - "Você pode usar Vue com um script" ao invés de "Com a intenção de fazer uso do Vue, uma das opções cabíveis a ser tomada é a introdução de um script através da reconfiguração do codígo fonte, implementando um script."
+  - "Uma função que retorne outra função" ao invés de "função de ordem superior".
+- **Evite palavras que causam desmotivação**, como "fácil", "apenas", "obviamente", etc. Para referência, veja [Words To Avoid in Educational Writing](https://css-tricks.com/words-avoid-educational-writing/).
 
-### Grammar
+### Gramática
 
-- **Avoid abbreviations** in writing and code examples (e.g. `attribute` is better than `attr`, `message` is better than `msg`), unless you are specifically referencing an abbreviation in an API (e.g. `$attrs`). Abbreviation symbols included on standard keyboards (e.g. `@`, `#`, `&`) are OK.
-- **When referencing a directly following example, use a colon (`:`) to end a sentence**, rather than a period (`.`).
-- **Use the Oxford comma** (e.g. "a, b, and c" instead of "a, b and c"). ![Why the Oxford comma is important](https://raw.githubusercontent.com/vuejs/vuejs.org/master/src/images/oxford-comma.jpg)
-- **When referencing the name of a project, prioritize the broader conventions of English over internal branding conventions of that project.** For example, "webpack" and "npm" both disregard conventions such as "always start a word at the beginning of a sentence with a capital letter", "project names always use Title Case", and "acronyms are always capitalized". Instead, always write "Webpack and NPM" to provide a more consistent experience in the docs and avoid sentences like "If you don't want to use Vue CLI, you can use webpack or Rollup directly by installing them via npm or Yarn".
-- **Use Title Case for headings** - at least for now, since it's what we use through the rest of the docs. There's research suggesting that sentence case (only first word of the heading starts with a capital) is actually superior for legibility and also reduces the cognitive overhead for documentation writers, since they don't have to try to remember whether to capitalize words like "and", "with", and "about".
-- **Don't use emojis (except in discussions).** Emojis are cute and friendly, but they can be a distraction in documentation and some emoji even convey  different meanings in different cultures.
+- **Evite abreviações** Na escrita e no código (ex. `atributo` melhor que `atrb`, 'mensagem' melhor que `msg`), caso esteja sendo especifico a uma referência, um API (`$attrs`) - por exemplo-. Abreviações com simbolos, inclusos no teclado padrão ( `@`, `#`, `&`) são plausivéis. 
+- **Quando fizer referência direta a um exemplo, use dois pontos (`:`) para terminar uma sentença**, ao invés do ponto final. (`.`).
+- **Use virgulas para separar elementos.** (ex. "a, b, e c" instead of "a, b e c"). ![Why the Oxford comma is important](https://raw.githubusercontent.com/vuejs/vuejs.org/master/src/images/oxford-comma.jpg)
+- **Quando for fazer referência a algum projeto, priorize usar o modelo de escrita Inglês.** Exemplo, "webpack" e "npm", abombos disconsideram as regras ("Sempre começar com letras maiúsculas", "projetos devem começar com letras maiúsculas", e "siglas sempre em maisculas"). Ao contrário, utilize sempre "WebPack e NPM" para deixar mais consistente na documentação e evitar frases do tipo: "Se você não quiser usar o Vue CLI, pode usar o werbpack ou Rollup instalando pelo npm ou Yarn."
+- **Utilize caixa alta no cabeçalho (título)** - Até o momento, desde que nós fazemos isso em toda a documentação. Há uma procura com diferença entre maiúscula e minúsculas (apenas a primeiras letras vão em caixa alta - maiúsculo- ex: Guia Para Documentação) além de ser bastante legivel, reduz a sobrecarga cognitiva dos escritores de documentação, uma vez que eles não irão lembrar de colocar as palavras "e", "com", and "sobre" em maiúsculo.
+- **Não use emojis (a não ser em discussões).** Emnojis são legais e amigaveis, mas pode ser uma distração na documentação e pode haver vários significados a depender da região.
 
-## Iteration & Communication
+## Interação e Comunicação
 
-- **Excellence comes from iteration.** First drafts are always bad, but writing them is a vital part of the process. It's extremely difficult to avoid the slow progression of Bad -> OK -> Good -> Great -> Inspiring -> Transcendent.
-- **Only wait until something is "Good" before publishing.** The community will help you push it further down the chain.
-- **Try not to get defensive when receiving feedback.** Our writing can be very personal to us, but if we get upset with the people who help us make it better, they will either stop giving feedback or start limiting the kind of feedback they give.
-- **Proof-read your own work before showing it to others.** If you show someone work with a lot of spelling/grammar mistakes, you'll get feedback about spelling grammar/mistakes instead of more valuable notes about whether the writing is achieving your goals.
-- **When you ask people for feedback, tell reviewers what:**
-  - **you're trying to do**
-  - **your fears are**
-  - **balances you're trying to strike**
-- **When someone reports a problem, there is almost always a problem**, even if the solution they proposed isn't quite right. Keep asking follow-up questions to learn more.
-- People need to feel safe asking questions when contributing/reviewing content. Here's how you can do that:
-  - **Thank people for their contributions/reviews, even if you're feeling grumpy.** For example:
-    - "Great question!"
-    - "Thanks for taking the time to explain. 🙂"
-    - "This is actually intentional, but thanks for taking the time to contribute. 😊"
-  - **Listen to what people are saying and mirror if you're not sure you're understanding correctly.** This can help validate people's feelings and experiences, while also understanding if *you're* understanding *them* correctly.
-  - **Use a lot of positive and empathetic emojis.** It's always better to seem a little strange than mean or impatient.
-  - **Kindly communicate rules/boundaries.** If someone behaves in a way that's abusive/inappropriate, respond only with kindness and maturity, but also make it clear that this behavior is not acceptable and what will happen (according to the code of conduct) if they continue behaving poorly.
+- **Prática leva a perfeição** Os primeiros rascunhos sempre serão ruins, mas faz parte do processo. É bastante dificil evitar a prograssão do Ruim > Legal > Bom > Perfeito > Inspirador > Inalcançável
+- **Espere até que algo esteja "bom" para publicar.** A comunidade pode ajudar a dificultar as coisas.
+- **Tente não ficar na defensiva quando receber um feedback** Nosso código pode ser bastante pessoal para nós, mas se nós ficarmos com raiva com quem quer nos ajudar, deixar o código melhor, eles irão parar de nos dar  feedback ou limitar o que dizer a você.
+- **Revise seu trabalho antes de mostrar aos outros.** Se você postar um trabalho com vários erros de ortografia, você irá receber mais feedbacks a respeito da ortografia do que sobre o código.
+- **Quando você pedir um feedback deixe claro que: **
+  - **você está tentando fazer**
+  - **Seus medos são**
+  - **O que voc~e está tentado alcançar**
+- **Quando alguém reporta um erro, há quase sempre um erro**, mesmo se a solução não seja a correta. Continue fazendo perguntas para aprender mais.
+- Pessoas precisam se sentir seguras para fazer perguntas e contribuir. Aqui está como você pode fazer isso:
+
+  - **Obrigado as pessoas que contribuiram ou revisaram, mesmo os grosseiros.** Exemplo:
+    - "Boa pergunta!"
+    - "Obrigado por dispor do seu tempo para explicar. 🙂"
+    - "Na verdade isso é intencional, mas obrigado pelo seu tempo e por contribuir. 😊"
+  - **Ouça o que as pessoas tem a dizer e se pergunte se você tem certeza se está entendendo corretamente.** Isso ajuda as pessoas a terem certeza a respeito do que está sentindo e suas experiências, enquanto você compreende se está entendo eles corretamente.
+  - **Use bastante emojis positivos e empáticos.** Isso sempre parecerá estranho, mas é melhor do que aparentar ser maldoso ou impaciente.
+  - **Estabeleça regras e limites** Se alguém for abusivo/inapropriado, responda apenas com maturidade e bondade, mas você precisa deixar claro que isso não é aceitável e, se isso continuar, medidas serão tomadas de acordo com as regras de contuta.
 
 ## Recursos
 
