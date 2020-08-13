@@ -68,7 +68,7 @@ Escrever documentação é um exercício de empatia. Nós não estamos descreven
 - **Espere até que algo esteja "bom" para publicar.** A comunidade pode ajudar a dificultar as coisas.
 - **Tente não ficar na defensiva quando receber um feedback** Nosso código pode ser bastante pessoal para nós, mas se nós ficarmos com raiva com quem quer nos ajudar, deixar o código melhor, eles irão parar de nos dar  feedback ou limitar o que dizer a você.
 - **Revise seu trabalho antes de mostrar aos outros.** Se você postar um trabalho com vários erros de ortografia, você irá receber mais feedbacks a respeito da ortografia do que sobre o código.
-- **Quando você pedir um feedback deixe claro que: **
+- **Quando você pedir um feedback deixe claro que:**
   - **você está tentando fazer**
   - **Seus medos são**
   - **O que você está tentado alcançar**
