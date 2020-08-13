@@ -71,7 +71,7 @@ Escrever documentação é um exercício de empatia. Nós não estamos descreven
 - **Quando você pedir um feedback deixe claro que: **
   - **você está tentando fazer**
   - **Seus medos são**
-  - **O que voc~e está tentado alcançar**
+  - **O que você está tentado alcançar**
 - **Quando alguém reporta um erro, há quase sempre um erro**, mesmo se a solução não seja a correta. Continue fazendo perguntas para aprender mais.
 - Pessoas precisam se sentir seguras para fazer perguntas e contribuir. Aqui está como você pode fazer isso:
 
