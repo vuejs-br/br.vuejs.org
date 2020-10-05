@@ -10,9 +10,9 @@ gz_size: "30.90"
 
 Vue **não** suporta IE8 e versões anteriores, pois usa funcionalidades ECMAScript 5 incompatíveis nestes. Entretanto, suporta todos os [navegadores compatíveis com ECMAScript 5](https://caniuse.com/#feat=es5).
 
-### Semantic Versioning
+### Versionamento Semântico
 
-Vue follows [Semantic Versioning](https://semver.org/) in all its official projects for documented features and behavior. For undocumented behavior or exposed internals, changes are described in [release notes](https://github.com/vuejs/vue/releases).
+Vue segue o [Versionamento Semântico](https://semver.org/lang/pt-BR/) em todos os seus projetos oficiais onde são documentados features e comportamentos. Para comportamentos não documentados ou partes internas expostas, as mudanças estão descritas nas [notas de lançamento](https://github.com/vuejs/vue/releases).
 
 ### Notas de Lançamento
 

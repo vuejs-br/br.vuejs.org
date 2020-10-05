@@ -92,7 +92,7 @@ var themeData = [
   },
   {
     name: "MDBootstrap",
-    description: `Check out the themes, UI Kits and plugins below built by our partners from [MDBootstrap](https://mdbootstrap.com/?utm_ref_id=82665). Learn how to use Vue in professional projects along such technologies as Bootstrap. Templates & ready components make your development faster and more efficient.`,
+    description: `Confira abaixo os temas, kits de interface (UI) e extensões (plugins) criados por nossos parceiros do [MDBootstrap](https://mdbootstrap.com/?utm_ref_id=82665). Aprenda a usar o Vue em projetos profissionais com tecnologias como o Bootstrap. Templates e componentes prontos tornam seu desenvolvimento mais rápido e eficiente.`,
     seeMoreUrl: "https://mdbootstrap.com/docs/vue?utm_ref_id=82665",
     products: [
       {
@@ -127,7 +127,7 @@ var themeData = [
   },
   {
     name: 'PrimeVue',
-    description: `The open-source UI component library [PrimeVue](https://www.primefaces.org/primevue/#/?af_id=4218) offers over 50 flexible components to build your apps with! They have a ton of different component themes and Vue-CLI application templates available to get the look&feel that suits you best.`,
+    description: `A biblioteca de componentes de interface (UI) de código aberto [PrimeVue](https://www.primefaces.org/primevue/#/?af_id=4218) oferece mais de 50 componentes flexíveis para criar seus aplicativos! Eles têm vários temas de componentes e templates de aplicação Vue-CLI disponíveis para obter a aparência que melhor combina com você.`,
     seeMoreUrl: 'https://www.primefaces.org/primevue/#/?af_id=4218',
     products: [
       {

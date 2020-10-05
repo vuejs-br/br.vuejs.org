@@ -76,7 +76,7 @@ var app = new Vue({
 
 Acabamos de criar nosso primeiro aplicativo Vue! Isso parece muito similar a renderizar uma _template string_, mas Vue fez bastante trabalho interno. Os dados e o DOM estão agora interligados e tudo se tornou **reativo**. Como podemos ter certeza? Apenas abra o _console_ JavaScript de seu navegador (agora mesmo, nesta página) e atribua um valor diferente em `app.message`. Você verá o exemplo renderizado acima se atualizando de acordo.
 
-Note that we no longer have to interact with the HTML directly. A Vue app attaches itself to a single DOM element (`#app` in our case) then fully controls it. The HTML is our entry point, but everything else happens within the newly created Vue instance.
+Perceba que não temos mais que interagir diretamente com o HTML. Um app Vue acopla-se a um único elemento da DOM (`#app` no nosso caso) e então o controla completamente. O HTML é o nosso ponto de entrada, mas todo o resto acontece dentro da recém criada instância do Vue.
 
 Além de simples interpolação de texto, podemos interligar atributos de elementos:
 

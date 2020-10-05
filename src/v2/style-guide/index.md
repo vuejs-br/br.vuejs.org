@@ -44,7 +44,7 @@ Existem alguns recursos do Vue usados para lidar com casos isolados ou migraçõ
 Isto [previne conflitos](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name) com elementos HTML existentes e futuros, visto que todos os elementos HTML são formados por apenas uma única palavra.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` js
 Vue.component('todo', {
@@ -114,7 +114,7 @@ data: function () {
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` js
 Vue.component('some-comp', {
@@ -190,7 +190,7 @@ No código, a definição de propriedades deve ser a mais detalhada possível, e
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` js
 //  Isto está bom apenas enquanto prototipa
@@ -267,7 +267,7 @@ Em nossa experiência, o melhor é _sempre_ adicionar uma chave única, para que
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` html
 <ul>
@@ -399,7 +399,7 @@ Em vez disso, verificamos apenas uma vez e nem avaliamos o `v-for` se `shouldSho
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` html
 <ul>
@@ -476,7 +476,7 @@ Além do atributo `scoped`, usar nomes de classes únicas pode garantir que CSS 
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` html
 <template>
@@ -569,7 +569,7 @@ Em vez disso, recomendamos combinar os dois prefixos em `$_`, como uma convenç�
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` js
 var myGreatMixin = {
@@ -660,7 +660,7 @@ export default myGreatMixin
 Isso ajuda você a encontrar mais rapidamente um componente quando precisar editá-lo ou verificar como usá-lo.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` js
 Vue.component('TodoList', {
@@ -696,7 +696,7 @@ components/
 Notação com _PascalCase_ garante melhor auto-completação nos editores de código, pois é consistente com a forma como nós referenciamos os componentes no JS(X) e templates, onde for possível. No entanto, tipos de nomes de arquivos mistos podem, às vezes, criar problemas em sistemas insensíveis a maiúsculas e minúculas, quando o _kebab-case_ é mais aceitável.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ```
 components/
@@ -769,7 +769,7 @@ Algumas vantagens desta convenção:
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ```
 components/
@@ -811,7 +811,7 @@ components/
 Isto não quer dizer que o componente é somente utilizado em uma única página, mas somente utilizado uma vez a _cada página_. Este tipo de componente não aceita qualquer prop, uma vez que são específicos de sua aplicação, não ao contexto deles dentro do app. Se você achar que precisa adicionar props, pode ser uma boa indicação que este é um componente reusável que somente é usado uma vez por página, _por enquanto_.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ```
 components/
@@ -872,7 +872,7 @@ Isto não é recomendado, pois como resultado temos:
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ```
 components/
@@ -964,7 +964,7 @@ Você pode querer resolver este problema de forma diferente, aninhando todos os 
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ```
 components/
@@ -1000,7 +1000,7 @@ Componentes auto-fechados não somente informam que não têm conteúdo, mas **g
 Infelizmente, HTML não permite que elementos customizados tenham fechamento próprio - somente nos [elementos "void" oficiais](https://www.w3.org/TR/html/syntax.html#void-elements). É por isso que esta estratégia somente é possível quando os _templates_ Vue são compilados antes de estarem no DOM, para que possam então servir um HTML compatível com a especificação.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` html
 <!-- Em componentes Single-File, templates String e JSX -->
@@ -1044,7 +1044,7 @@ Infelizmente, como o HTML é insensível a maiúsculas e minúsculas, _templates
 Além disso, observe que se você já investiu bastante em `kebab-case`, mantendo a consistência com as convenções HTML e usando essa mesma abordagem para todos os seus projetos, isso pode ser mais importante do que as vantagens listadas acima. Nestes casos, **use _kebab-case_ sempre que for aceitável**.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` html
 <!-- Em componentes Single-File e templates String -->
@@ -1104,7 +1104,7 @@ No entanto, para aplicações que usam **apenas** a definição global de compon
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` js
 Vue.component('myComponent', {
@@ -1165,7 +1165,7 @@ export default {
 O preenchimento automático nos editores de código torna o custo de escrever nomes mais longos muito baixo, enquanto a clareza que eles fornecem é inestimável. Abreviações incomuns, em particular, devem ser sempre evitadas.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ```
 components/
@@ -1191,7 +1191,7 @@ components/
 Estamos apenas seguindo as convenções para cada linguagem. No JavaScript, camelCase é mais natural. Com HTML, usa-se mais kebab-case. 
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` js
 props: {
@@ -1225,7 +1225,7 @@ props: {
 No JavaScript, dividir objetos que possuem várias propriedades em várias linhas, é considerado uma boa convenção, porque é muito mais fácil de ler. Nossos modelos e [JSX](.../guia/render-function.html#JSX) merecem a mesma consideração.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` html
 <img src="https://vuejs.org/images/logo.png" alt="Vue Logo">
@@ -1262,7 +1262,7 @@ No JavaScript, dividir objetos que possuem várias propriedades em várias linha
 Expressões complexas nos seus templates os tornam menos declarativos. Devemos nos esforçar em exibir _o que_ está acontecendo, não _como_ o valor está sendo computado. Propriedades computadas e métodos também permitem que o código seja reutilizado.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` html
 {{
@@ -1323,7 +1323,7 @@ Propriedades computadas simples e bem nomeadas são:
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` js
 computed: {
@@ -1363,7 +1363,7 @@ computed: {
 Enquanto os valores de atributos sem espaços não são necessários para ter aspas no HTML, esta prática geralmente leva a 'evitar' espaços, tornando os valores de atributos menos legíveis.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` html
 <input type=text>
@@ -1391,7 +1391,7 @@ Enquanto os valores de atributos sem espaços não são necessários para ter as
 **Abreviações de diretiva (`:` para `v-bind:`, `@` para `v-on:` e `#` para `v-slot`) devem ser sempre usadas ou nunca usadas, matendo-se um padrão.**
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` html
 <input
@@ -1640,7 +1640,7 @@ computed: {
 **[Componentes single-file](../guide/single-file-components.html) devem sempre ordenar as tags `<script>`, `<template>`, e `<style>`, consistentemente, com `<style>` por último, já que um dos dois primeiros sempre é necessário.**
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` html
 <style>/* ... */</style>
@@ -1698,7 +1698,7 @@ computed: {
 Por padrão, o Vue atualiza o DOM da forma mais eficiente possível. Isso significa que, ao alternar entre elementos do mesmo tipo, ele simplesmente atualiza o elemento existente, em vez de removê-lo e adicionar um novo em seu lugar. Isso pode ter [efeitos colaterais não intencionais](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-priority-d-rules-unintended-consequences) se esses elementos não devessem realmente ser considerados os mesmos.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` html
 <div v-if="error">
@@ -1759,7 +1759,7 @@ O problema é que uma grande quantidade de [seletores do atributo elemento](http
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` html
 <template>
@@ -1799,7 +1799,7 @@ Uma aplicação ideal do Vue é usada com props para baixo e eventos para acima.
 O problema é que também existem muitos casos _simples_ em que esses padrões podem oferecer conveniência. Cuidado: não se deixe seduzir por abrir mão de simplicidade (poder entender o fluxo do seu estado) em detrimento de conveniência de curto prazo (escrever menos código).
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` js
 Vue.component('TodoItem', {
@@ -1887,12 +1887,12 @@ Vue.component('TodoItem', {
 
 Gerenciar o estado com `this.$root` e/ou usando um [barramento de eventos global](https://vuejs.org/v2/guide/migration.html#dispatch-and-broadcast-replaced) pode ser conveniente para casos muito simples, mas não são apropriados para a maioria dos aplicativos.
 
-Vuex is the [official flux-like implementation](https://vuejs.org/v2/guide/state-management.html#Official-Flux-Like-Implementation) for Vue e oferece não apenas um local central para gerenciar o estado, mas também ferramentas para organizar, rastrear e depurar alterações de estado. It integrates well in the Vue ecosystem (including full [Vue DevTools](https://vuejs.org/v2/guide/installation.html#Vue-Devtools) support).
+Vuex é a [implementação oficial estilo flux](https://br.vuejs.org/v2/guide/state-management.html#Implementacao-Oficial-Estilo-Flux) do Vue, e oferece não apenas um local central para gerenciar o estado, mas também ferramentas para organizar, rastrear e depurar alterações de estado. Ele se integra bem ao ecossistema Vue (incluindo suporte completo ao [Vue DevTools](https://br.vuejs.org/v2/guide/installation.html#Vue-Devtools)).
 
 {% raw %}</details>{% endraw %}
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
-#### Mal Exemplo
+#### Mau Exemplo
 
 ``` js
 // main.js
