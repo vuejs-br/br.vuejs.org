@@ -124,7 +124,7 @@ Quando estiver usando Componentes Single-File, o CSS dentro deles é dinamicamen
 
 Acesse a documentação da respectiva ferramenta de _build_ para ver como é feito:
 
-- [Webpack + vue-loader](https://vue-loader.vuejs.org/en/configurations/extract-css.html) (o modelo webpack do `vue-cli` já tem isso pré-configurado)
+- [Webpack + vue-loader](https://vue-loader.vuejs.org/en/configurations/extract-css.html) (o modelo Webpack do `vue-cli` já tem isso pré-configurado)
 - [Browserify + vueify](https://github.com/vuejs/vueify#css-extraction)
 - [Rollup + rollup-plugin-vue](https://vuejs.github.io/rollup-plugin-vue/#/en/2.3/?id=custom-handler)
 
