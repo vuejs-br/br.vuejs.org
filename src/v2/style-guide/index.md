@@ -5,11 +5,11 @@ type: style-guide
 
 # Guia de Estilos <sup class="beta">beta</sup>
 
-Este é o guia oficial de estilos para o código Vue. Se você usa Vue em seus projetos, é uma boa referência para evitar erros, perda de tempo e adoção de anti-padrões. Entretanto, nós não acreditamos que qualquer guia de estilos seja o ideal para todos os times ou projetos, então pequenas alterações são encorajadas, baseadas em sua experiência, na tecnologia envolvida e nos valores pessoais.
+Este é o guia oficial de estilos para o código Vue. Se você usa Vue em seus projetos, é uma boa referência para evitar erros, perda de tempo e adoção de antipadrões. Entretanto, nós não acreditamos que qualquer guia de estilos seja o ideal para todos os times ou projetos, então pequenas alterações são encorajadas, baseadas em sua experiência, na tecnologia envolvida e nos valores pessoais.
 
 Na maior parte do guia, também evitamos sugestões sobre JavaScript ou HTML de um modo em geral. Não é importante para o guia se você usa ponto-e-vírgula no final da linha, ou se usa aspas simples ou duplas nos valores de atributos de seu HTML. Entretanto, algumas exceções podem existir, se encontrarmos algum detalhe particular que seja interessante no contexto do Vue.
 
-> **Em breve, proveremos dicas para automação.** As vezes temos que ser apenas disciplinados, mas sempre que possível, devemos exibir a vocês como usar o ESLint e outros programas do tipo para tornar este trabalho mais fácil.
+> **Em breve, proveremos dicas para automação.** Às vezes temos que ser apenas disciplinados, mas sempre que possível, devemos exibir a vocês como usar o ESLint e outros programas do tipo para tornar este trabalho mais fácil.
 
 Finalmente, vamos dividir as regras de estilos em quatro categorias:
 
@@ -37,9 +37,9 @@ Existem alguns recursos do Vue usados para lidar com casos isolados ou migraçõ
 
 ## Prioridade A: Essencial (Prevenindo Erros)
 
-### Nomes de componentes com multi-palavras <sup data-p="a">Essencial</sup>
+### Nomes de componentes com multipalavras <sup data-p="a">Essencial</sup>
 
-**Nomes de componentes devem ser sempre multi-palavras, exceto pelo componente `App` raiz e componentes internos fornecidos pelo Vue, como `<transition>` ou `<component>`.**
+**Nomes de componentes devem ser sempre multipalavras, exceto pelo componente `App` raiz e componentes internos fornecidos pelo Vue, como `<transition>` ou `<component>`.**
 
 Isto [previne conflitos](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name) com elementos HTML existentes e futuros, visto que todos os elementos HTML são formados por apenas uma única palavra.
 
@@ -99,7 +99,7 @@ data: {
 }
 ```
 
-Podemos querer reutilizar este componente, permitindo que usuários utilizem múltiplas listas (como lista de compras, lista de tarefas do dia-a-dia, dentre outras). Ainda existe outro problema: como cada instância de um componente referencia o mesmo objeto `data`, alterar o título em uma destas listas alteraria também o título de todas as outras listas. O mesmo aconteceria ao adicionar/editar/excluir uma tarefa do _todo_.
+Podemos querer reutilizar este componente, permitindo que usuários utilizem múltiplas listas (como lista de compras, lista de tarefas do dia a dia, dentre outras). Ainda existe outro problema: como cada instância de um componente referencia o mesmo objeto `data`, alterar o título em uma destas listas alteraria também o título de todas as outras listas. O mesmo aconteceria ao adicionar/editar/excluir uma tarefa do _todo_.
 
 Em vez disso, queremos que cada instância gerencie os seus próprios dados. Para que isso aconteça, cada instância deve gerar um objeto de dados único. No JavaScript, isso pode ser feito através do retorno de um objeto em uma função:
 
@@ -469,7 +469,7 @@ Isso torna os estilos internos mais fáceis, com nomes de classes legíveis, sem
 </summary>
 {% endraw %}
 
-Se você está desenvolvendo um projeto maior, trabalhando com outros desenvolvedores, ou as vezes incluindo algum HTML/CSS de terceiros (ex.: algo do Auth0), usar escopo de forma consistente garante que seu estilo se aplica somente aos componentes destinados a ele.
+Se você está desenvolvendo um projeto maior, trabalhando com outros desenvolvedores, ou às vezes incluindo algum HTML/CSS de terceiros (ex.: algo do Auth0), usar escopo de forma consistente garante que seu estilo se aplica somente aos componentes destinados a ele.
 
 Além do atributo `scoped`, usar nomes de classes únicas pode garantir que CSS de terceiros não se aplicará ao seu HTML. Por exemplo, muitos projetos usam classes como `button`, `btn` ou `icon`. Então, mesmo que não use uma estratégia como a BEM, adicionar um prefixo específico da aplicação ou do componente (ex.: `ButtonClose-icon`) pode oferecer alguma proteção.
 
@@ -693,7 +693,7 @@ components/
 
 **Nomes de arquivos de [componentes Single-File](../guide/single-file-components.html) devem ser sempre _PascalCase_ ou _kebab-case_.**
 
-Notação com _PascalCase_ garante melhor auto-completação nos editores de código, pois é consistente com a forma como nós referenciamos os componentes no JS(X) e templates, onde for possível. No entanto, tipos de nomes de arquivos mistos podem, às vezes, criar problemas em sistemas insensíveis a maiúsculas e minúculas, quando o _kebab-case_ é mais aceitável.
+Notação com _PascalCase_ garante melhor autocompletação nos editores de código, pois é consistente com a forma como nós referenciamos os componentes no JS(X) e templates, onde for possível. No entanto, tipos de nomes de arquivos mistos podem, às vezes, criar problemas em sistemas insensíveis a maiúsculas e minúsculas, quando o _kebab-case_ é mais aceitável.
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Mau Exemplo
@@ -748,7 +748,7 @@ Algumas vantagens desta convenção:
 
 - Quando organizados em ordem alfabética nos editores, os componentes de base serão listados em conjunto, tornando-os mais fáceis de identificar.
 
-- Como os nomes dos componentes sempre devem ser multi-palavras, esta convenção te previne de escolher um prefixo arbitrário para simples wrappers de componentes (por exemplo, `MyButton`, `VueButton`).
+- Como os nomes dos componentes sempre devem ser multipalavras, esta convenção te previne de escolher um prefixo arbitrário para simples wrappers de componentes (por exemplo, `MyButton`, `VueButton`).
 
 - Como esses componentes são frequentemente usados, você pode simplesmente torná-los globais em vez de importá-los em todos os lugares. Um prefixo torna isso possível com Webpack:
 
@@ -991,11 +991,11 @@ components/
 ```
 {% raw %}</div>{% endraw %}
 
-### Componentes com auto-fechamento <sup data-p="b">Altamente Recomendado</sup>
+### Componentes com autofechamento <sup data-p="b">Altamente Recomendado</sup>
 
-**Componentes sem conteúdo devem ser auto-fechados em [componentes Single-File](../guide/single-file-components.html), _templates_ baseados em Strings e [JSX](../guide/render-function.html#JSX) - mas nunca em _templates_ do DOM.**
+**Componentes sem conteúdo devem ser autofechados em [componentes Single-File](../guide/single-file-components.html), _templates_ baseados em Strings e [JSX](../guide/render-function.html#JSX) - mas nunca em _templates_ do DOM.**
 
-Componentes auto-fechados não somente informam que não têm conteúdo, mas **garantem** que não devem ter conteúdo. É a diferença entre uma página em branco em um livro e uma dizendo "Esta página intencionalmente foi deixada em branco". No entanto, seu código também é mais limpo sem a tag de fechamento desnecessária.
+Componentes autofechados não somente informam que não têm conteúdo, mas **garantem** que não devem ter conteúdo. É a diferença entre uma página em branco em um livro e uma dizendo "Esta página intencionalmente foi deixada em branco". No entanto, seu código também é mais limpo sem a tag de fechamento desnecessária.
 
 Infelizmente, HTML não permite que elementos customizados tenham fechamento próprio - somente nos [elementos "void" oficiais](https://www.w3.org/TR/html/syntax.html#void-elements). É por isso que esta estratégia somente é possível quando os _templates_ Vue são compilados antes de estarem no DOM, para que possam então servir um HTML compatível com a especificação.
 
@@ -1033,9 +1033,9 @@ Infelizmente, HTML não permite que elementos customizados tenham fechamento pr�
 
 _PascalCase_ tem algumas vantagens sobre _kebab-case_:
 
-- Editores podem auto-completar nomes de componentes nos _templates_, já que no JavaScript também se usa _PascalCase_.
+- Editores podem autocompletar nomes de componentes nos _templates_, já que no JavaScript também se usa _PascalCase_.
 
-- `<MyComponent>` é mais distinto visualmente do que um simples elemento HTML como `<my-component>`, porque há dois caracteres distintos (as duas maiúsculas), ao invés de apenas um (o hífem).
+- `<MyComponent>` é mais distinto visualmente do que um simples elemento HTML como `<my-component>`, porque há dois caracteres distintos (as duas maiúsculas), ao invés de apenas um (o hífen).
 
 - Se você usar qualquer elemento não Vue em seus _templates_, como um componente web, _PascalCase_ reforça que os seus componentes Vue são mais visíveis.
 
@@ -1218,7 +1218,7 @@ props: {
 {% endcodeblock %}
 {% raw %}</div>{% endraw %}
 
-### Elementos multi-atributo <sup data-p="b">Altamente Recomendado</sup>
+### Elementos multiatributo <sup data-p="b">Altamente Recomendado</sup>
 
 **Elementos com vários atributos devem abranger várias linhas, com um atributo por linha.**
 
@@ -1388,7 +1388,7 @@ Enquanto os valores de atributos sem espaços não são necessários para ter as
 
 ### Abreviação de diretivas <sup data-p="b">Altamente Recomendado</sup>
 
-**Abreviações de diretiva (`:` para `v-bind:`, `@` para `v-on:` e `#` para `v-slot`) devem ser sempre usadas ou nunca usadas, matendo-se um padrão.**
+**Abreviações de diretiva (`:` para `v-bind:`, `@` para `v-on:` e `#` para `v-slot`) devem ser sempre usadas ou nunca usadas, mantendo-se um padrão.**
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### Mau Exemplo
