@@ -8,7 +8,7 @@ order: 3
 
 <div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-form-validation-diy?friend=vuejs" target="_blank" rel="noopener" title="Lição Gratuita sobre Validação de Formulários com Vue.js">Assista a uma lição em vídeo gratuita na Vue School</a></div>
 
-Validação de formulários é algo suportado nativamente pelo navegador, mas eventualmente navegadores diferentes liderão com as coisas de um jeito que pode ser um pouco complicado. Mesmo quando a validação é suportada perfeitamente, poderão haver necessidades de personalização e, portanto, uma solução baseada em Vue poderá ser mais apropriada. Vamos começar com um exemplo simples.
+Validação de formulários é algo suportado nativamente pelo navegador, mas eventualmente navegadores diferentes lidarão com as coisas de um jeito que pode ser um pouco complicado. Mesmo quando a validação é suportada perfeitamente, poderão haver necessidades de personalização e, portanto, uma solução baseada em Vue poderá ser mais apropriada. Vamos começar com um exemplo simples.
 
 Dado um formulário com três campos, faremos dois obrigatórios. Vamos ver o HTML primeiro:
 
